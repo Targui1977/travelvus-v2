@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useMemo } from "react";
 import { calcRealCost, monetaryWinner, detectChange, estimateThreshold } from "@/lib/decision-engine";
+import { deriveEditorial, deriveThreshold, deriveFlips, deriveContextStrip, deriveChangedConsequence } from "@/lib/derive-content";
 import type { CostLine, OptionResult, OptionId, FullResultData } from "@/lib/types";
 import type { CostLineDisplay, CostColumnDisplay } from "@/components/result/RealCost";
 import {
@@ -111,7 +112,7 @@ export default function ResultClient({
     if (change) {
       setChangedState({
         cause: change.cause,
-        consequence: `Option A — Stansted — now wins on money.`,
+        consequence: deriveChangedConsequence(change.newWinner, newA.realCost, oldB.realCost),
         previousWinner: change.previousWinner,
         newWinner: change.newWinner,
       });
@@ -128,6 +129,15 @@ export default function ResultClient({
   const keep = useCallback(() => {
     setChangedState(null);
   }, []);
+
+  /* ── Derived dynamic content ────────────────────────── */
+  const editorial = useMemo(() => deriveEditorial(optionA, optionB), [optionA, optionB]);
+  const dynThreshold = useMemo(() => deriveThreshold(optionA, optionB), [optionA, optionB]);
+  const dynFlips = useMemo(
+    () => deriveFlips(optionA, optionB, bagRemoved, initialOptionA, initialOptionB),
+    [optionA, optionB, bagRemoved, initialOptionA, initialOptionB]
+  );
+  const contextStrip = useMemo(() => deriveContextStrip(optionA, optionB).text, [optionA, optionB]);
 
   /* ── Verdict data ────────────────────────────────────── */
 
@@ -278,8 +288,7 @@ export default function ResultClient({
               color: "var(--muted)",
             }}
           >
-            B wins &middot; &euro;{d.savingsEuro} &middot;{" "}
-            {d.savingsTimeLabel} faster
+            {contextStrip}
           </span>
         </div>
       )}
@@ -412,7 +421,7 @@ export default function ResultClient({
           editorial={
             isChanged || !initialSupported
               ? undefined
-              : d.realCostEditorial
+              : editorial
           }
           sectionTitle={
             isChanged
@@ -460,8 +469,8 @@ export default function ResultClient({
         {/* ═══ 4-6. THRESHOLD + FLIPS + DEBT ═══ */}
         {!isChanged && initialSupported && (
           <>
-            <DecisionThreshold data={d.threshold} />
-            <SecondaryFlips flips={d.secondaryFlips} />
+            <DecisionThreshold data={dynThreshold.data} />
+            <SecondaryFlips flips={dynFlips} />
             <DecisionDebt
               title={d.decisionDebt.title}
               textHtml={d.decisionDebt.textHtml}

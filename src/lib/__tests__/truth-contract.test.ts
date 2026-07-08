@@ -2,7 +2,8 @@ import { describe, it, expect } from "vitest";
 import { normalizeTime, normalizeInput, extractCode, isSupportedComparison, buildVerdict } from "../normalize";
 import { encodeCompareParams, decodeCompareParams } from "../navigation";
 import { calcRealCost, monetaryWinner, detectChange, estimateThreshold } from "../decision-engine";
-import type { CostLine, OptionResult } from "../types";
+import { deriveEditorial, deriveThreshold, deriveFlips, deriveChangedConsequence } from "../derive-content";
+import type { CostLine, OptionResult, OptionId } from "../types";
 
 describe("normalizeTime", () => {
   it("accepts HH:MM", () => expect(normalizeTime("20:40")).toBe("20:40"));
@@ -167,5 +168,113 @@ describe("buildVerdict", () => {
   it("tie at equal costs", () => {
     const v = buildVerdict(171, 171, "8h 05m", "5h 10m", false, false);
     expect(v.headlineHtml).toContain("tied");
+  });
+});
+
+/* ── Dynamic content tests (Phase 10.1) ─────────────────── */
+
+const makeOption = (
+  id: OptionId,
+  ticket: number,
+  bag: number,
+  seat: number,
+  origin: number,
+  transfer: number,
+  name: string,
+  code: string,
+  time: string,
+  mins: number
+): OptionResult => ({
+  id, name, code, visibleTicketPrice: ticket, doorToDoorLabel: time, doorToDoorMinutes: mins,
+  costLines: [
+    { label: "Ticket", amount: ticket, confidence: "user" },
+    ...(bag === 0
+      ? [{ label: "Checked bag — removed", amount: 0, confidence: "user" as const, isIncluded: true }]
+      : [{ label: "Checked bag", amount: bag, confidence: "estimate" as const }]),
+    { label: "Seat", amount: seat, confidence: "user" },
+    { label: "Origin → airport", amount: origin, confidence: "estimate" },
+    { label: "STN → Central", amount: transfer, confidence: "estimate" },
+  ],
+  realCost: ticket + bag + seat + origin + transfer,
+});
+
+const canonicalA = makeOption("A", 58, 45, 12, 15, 74, "Stansted", "STN", "8h 05m", 485);
+const canonicalB = makeOption("B", 126, 0, 12, 15, 18, "Heathrow", "LHR", "5h 10m", 310);
+const ticket20A = makeOption("A", 20, 45, 12, 15, 74, "Stansted", "STN", "8h 05m", 485);
+const ticket20NoBagA = makeOption("A", 20, 0, 12, 15, 74, "Stansted", "STN", "8h 05m", 485);
+
+describe("deriveEditorial", () => {
+  it("CASE A — canonical: mentions €58 and correct cost", () => {
+    const e = deriveEditorial(canonicalA, canonicalB);
+    expect(e).toContain("€58");
+    expect(e).toContain("more expensive trip"); // B wins, A is more expensive
+  });
+  it("CASE B — A ticket €20: mentions €20, NOT €58", () => {
+    const e = deriveEditorial(ticket20A, canonicalB);
+    expect(e).toContain("€20");
+    expect(e).not.toContain("€58");
+  });
+  it("CASE C — A ticket €20 + bag removed: mentions €20", () => {
+    const e = deriveEditorial(ticket20NoBagA, canonicalB);
+    expect(e).toContain("€20");
+    expect(e).not.toContain("€58");
+  });
+});
+
+describe("deriveThreshold", () => {
+  it("CASE A — canonical: B wins, distance = 33 (calculated exact)", () => {
+    const t = deriveThreshold(canonicalA, canonicalB);
+    expect(t.aAlreadyCrossed).toBe(false);
+    expect(t.data.leadLabel).toContain("where B stops winning");
+    expect(t.data.statementHtml).toContain("€33");
+  });
+  it("CASE B — A ticket €20: A already wins, crossed the line", () => {
+    const t = deriveThreshold(ticket20A, canonicalB);
+    expect(t.aAlreadyCrossed).toBe(true);
+    expect(t.data.leadLabel).toContain("A crossed it");
+    expect(t.data.statementHtml).not.toContain("B wins");
+  });
+  it("CASE C — A ticket €20 + bag removed: A wins, crossed farther", () => {
+    const t = deriveThreshold(ticket20NoBagA, canonicalB);
+    expect(t.aAlreadyCrossed).toBe(true);
+    expect(t.data.statementHtml).toContain("€50");
+  });
+});
+
+describe("deriveFlips", () => {
+  it("CASE A — canonical: shows remove bag flip, A wins by €12", () => {
+    const flips = deriveFlips(canonicalA, canonicalB, false, canonicalA, canonicalB);
+    const bagFlip = flips.find(f => f.conditionHtml.includes("Remove the checked bag"));
+    expect(bagFlip).toBeDefined();
+    expect(bagFlip!.outcomeHtml).toContain("€12");
+  });
+  it("CASE B — A ticket €20: remove bag shows correct diff", () => {
+    const flips = deriveFlips(ticket20A, canonicalB, false, ticket20A, canonicalB);
+    const bagFlip = flips.find(f => f.conditionHtml.includes("Remove the checked bag"));
+    expect(bagFlip!.outcomeHtml).toContain("€50");
+    expect(bagFlip!.outcomeHtml).not.toContain("€12");
+  });
+  it("CASE C — bag already removed: NO remove bag flip", () => {
+    const flips = deriveFlips(ticket20NoBagA, canonicalB, true, ticket20NoBagA, canonicalB);
+    const bagFlip = flips.find(f => f.conditionHtml.includes("Remove the checked bag"));
+    expect(bagFlip).toBeUndefined();
+  });
+  it("CASE D — canonical flip: after remove bag, correct diff", () => {
+    const bagRemovedA = makeOption("A", 58, 0, 12, 15, 74, "Stansted", "STN", "8h 05m", 485);
+    const flips = deriveFlips(bagRemovedA, canonicalB, true, canonicalA, canonicalB);
+    expect(flips.find(f => f.conditionHtml.includes("Remove"))).toBeUndefined();
+  });
+});
+
+describe("deriveChangedConsequence", () => {
+  it("A wins by €12", () => {
+    expect(deriveChangedConsequence("A", 159, 171)).toContain("€12");
+  });
+  it("A wins by €50", () => {
+    expect(deriveChangedConsequence("A", 121, 171)).toContain("€50");
+  });
+  it("B wins by €33", () => {
+    const c = deriveChangedConsequence("B", 204, 171);
+    expect(c).toContain("€33");
   });
 });
