@@ -1,0 +1,1356 @@
+@import "tailwindcss";
+
+/* ================================================================
+   TRAVELVUS V2 — DESIGN TOKENS & GLOBAL STYLES
+   Source: Design-to-Code Handoff Specification §01
+   Exact values from the approved build. Never approximate.
+   ================================================================ */
+
+/* ---- 0. CUSTOM BREAKPOINT ---- */
+/* Matches Handoff Spec: ≤ 720px = mobile contract */
+@variant mobile (@media (max-width: 720px));
+
+/* ---- 1. DESIGN TOKENS (CSS custom properties — canonical source) ---- */
+:root {
+  /* Type families */
+  --sans: "Geist Sans", "Geist", "Hanken Grotesk", system-ui, sans-serif;
+  --serif: "Instrument Serif", Georgia, serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Color — exact hex values from the Handoff Spec */
+  --paper: #f4f1ea;       /* Primary background (warm paper). Default canvas. */
+  --paper-2: #ede9df;     /* Recessed fills: robustness notes, secondary chips, hatched estimate fills. */
+  --card: #fcfaf5;        /* Card / module surface (a hair lighter than paper). Header background. */
+  --navy: #1e2a33;        /* Authority surface (Verdict) AND primary text color. Same hex, two jobs. */
+  --navy-2: #26343e;      /* Navy variant (used in Hi-Fi). */
+  --ink: #1e2a33;         /* Primary text color. */
+  --copper: #b85c38;      /* The answer / the threshold / the conclusion. Disciplined accent only. */
+  --copper-lt: #e0916e;   /* Copper on navy (labels, signature line on dark). */
+  --peach: #f0c4ae;       /* The winning word inside the navy Verdict (italic highlight) only. */
+  --muted: #6b7078;       /* Secondary text, labels, the losing option's supporting text. */
+  --pmuted: #9aa4ac;      /* Muted text on navy. */
+  --line: #e6ddcc;        /* Hairline dividers, cost-row rules. */
+  --line-2: #d8cdb9;      /* Field baselines, card borders, axis rule. */
+  --grey: #8a959d;        /* The non-winning option's big numbers (cost/time). Cool, never red. */
+  --ok: #5c8a5e;          /* "Strong confidence" dot & "€0 / included" only. Never the winner signal. */
+
+  /* Spacing & geometry */
+  --container-compare: 960px;
+  --container-decision: 1000px;
+  --reading-width: 620px;
+  --section-pad-y: 30px;
+  --section-pad-x: 38px;
+  --radius-card: 12px;
+  --radius-button: 10px;
+  --radius-chip: 20px;
+
+  /* Breakpoint */
+  --bp-mobile: 720px;
+}
+
+/* ---- 2. TAILWIND THEME INTEGRATION ---- */
+/* Tailwind uses our tokens; our tokens never adapt to Tailwind defaults. */
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-card: var(--card);
+  --color-navy: var(--navy);
+  --color-navy-2: var(--navy-2);
+  --color-ink: var(--ink);
+  --color-copper: var(--copper);
+  --color-copper-lt: var(--copper-lt);
+  --color-peach: var(--peach);
+  --color-muted: var(--muted);
+  --color-pmuted: var(--pmuted);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-grey: var(--grey);
+  --color-ok: var(--ok);
+
+  --font-sans: var(--sans);
+  --font-serif: var(--serif);
+  --font-mono: var(--mono);
+
+  --radius-card: var(--radius-card);
+  --radius-button: var(--radius-button);
+  --radius-chip: var(--radius-chip);
+}
+
+/* ---- 3. GLOBAL RESET & BASE ---- */
+body {
+  margin: 0;
+  background: #e4e2dc; /* The neutral outer canvas behind the paper container */
+  font-family: var(--sans);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Links use copper — the only accent that signals action/answer */
+a {
+  color: var(--copper);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #8f4327; /* Handoff-approved darker copper on hover */
+}
+
+/* Remove default margins from semantic headings */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+/* ---- 4. UTILITY LAYERS ---- */
+/* Kicker / eyebrow — mono, uppercase, tight tracking */
+.kicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* Mono utility */
+.font-mono,
+.mono {
+  font-family: var(--mono);
+}
+
+/* Serif utility */
+.font-serif,
+.serif {
+  font-family: var(--serif);
+}
+
+/* ---- 5. QUICK COMPARE SPECIFICS ---- */
+
+/* Underline field — the "not a form" pattern (Handoff + Hi-Fi T2) */
+.field-underline {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--line-2);
+  border-radius: 0;
+  padding: 7px 2px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.field-underline-label {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: #9a9484;
+  white-space: nowrap;
+}
+
+.field-underline-value {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+/* VS divider — central column between A and B */
+.vs-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 40px;
+  gap: 8px;
+}
+
+.vs-divider-text {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.vs-divider-rail {
+  width: 1px;
+  flex: 1;
+  background: var(--line-2);
+}
+
+/* Mobile A|B tab switcher */
+.qc-tab {
+  flex: 1;
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  padding: 11px;
+  border-radius: 9px;
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.qc-tab-active {
+  background: var(--navy);
+  color: var(--paper);
+}
+
+.qc-tab-inactive {
+  border: 1px solid var(--line-2);
+  color: var(--muted);
+}
+
+/* Quick Compare CTA — matches .btn from Hi-Fi */
+.qc-cta {
+  background: var(--navy);
+  color: var(--paper);
+  border-radius: 10px;
+  padding: 15px 22px;
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: 0;
+  width: 100%;
+}
+
+.qc-cta:hover {
+  background: var(--navy-2);
+}
+
+/* Secondary "Add details" link */
+.qc-refine-link {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--copper);
+  border-bottom: 1px solid rgba(184, 92, 56, 0.4);
+  padding-bottom: 1px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Sticky footer bar (mobile) */
+.qc-sticky-footer {
+  padding: 14px 18px;
+  border-top: 1px solid var(--line);
+  background: var(--card);
+  padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+}
+
+/* App header — reused across surfaces */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 26px;
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+}
+
+.app-header-brand {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 8px;
+}
+
+.app-header-wordmark {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.app-header-line {
+  position: absolute;
+  left: 1px;
+  bottom: 0;
+  height: 3px;
+  width: 52px;
+  background: var(--copper);
+  border-radius: 1px;
+}
+
+.app-header-dot {
+  position: absolute;
+  bottom: -1px;
+  left: 57px;
+  width: 4px;
+  height: 4px;
+  background: var(--ink);
+  border-radius: 1px;
+}
+
+.app-header-nav {
+  display: flex;
+  gap: 24px;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .app-header {
+    padding: 14px 18px;
+  }
+  .app-header-wordmark {
+    font-size: 16px;
+  }
+  .app-header-line {
+    width: 41px;
+  }
+  .app-header-dot {
+    left: 46px;
+  }
+}
+
+/* ---- 6. FULL RESULT SPECIFICS ---- */
+
+/* Verdict block (navy authority) */
+.verdict-block {
+  background: var(--navy);
+  color: var(--paper);
+  padding: 34px 38px;
+  position: relative;
+  overflow: hidden;
+}
+
+.verdict-block h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.12;
+  color: var(--paper);
+  max-width: 640px;
+  margin: 0;
+}
+
+.verdict-highlight {
+  color: var(--peach);
+  font-style: italic;
+}
+
+.verdict-sub {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.55;
+  color: #c8d0d6;
+  margin-top: 16px;
+  max-width: 560px;
+}
+
+.verdict-sub b {
+  color: var(--paper);
+  font-weight: 600;
+}
+
+.verdict-foot {
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(244, 241, 234, 0.14);
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Section label (01 / 02 / 03 + title) */
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.section-label-num {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  letter-spacing: 0.1em;
+}
+
+.section-label-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Real Cost grid */
+.cost-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+.cost-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.cost-column-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.cost-column-name {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.cost-column-code {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* A single cost row */
+.cost-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.cost-row-label {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.3;
+  color: #4a5560;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.cost-row-amount {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.cost-row-amount.zero {
+  color: var(--ok);
+}
+
+/* Real cost total */
+.cost-total {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.cost-total-label {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.cost-total-struck {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1;
+  color: #b0aa9a;
+  text-decoration: line-through;
+}
+
+.cost-total-num {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1;
+}
+
+/* Winner badge */
+.winner-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--copper);
+  padding: 5px 9px;
+  border-radius: 20px;
+  margin-left: auto;
+}
+
+/* Door-to-Door T2 refined: gap hero */
+.dd-hero {
+  display: flex;
+  align-items: flex-start;
+  gap: 34px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.dd-gap {
+  flex: none;
+}
+
+.dd-gap-kicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.dd-gap-big {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 82px;
+  line-height: 0.9;
+  color: var(--ink);
+  margin: 10px 0 8px;
+  letter-spacing: -0.01em;
+}
+
+.dd-gap-cap {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.4;
+  color: #4a5560;
+  max-width: 280px;
+}
+
+.dd-totals {
+  flex: 1;
+  min-width: 190px;
+  padding-top: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dd-total-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.dd-total-who {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dd-total-dur {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.dd-total-dur.muted {
+  color: var(--grey);
+}
+
+.dd-footnote {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin-top: 12px;
+}
+
+/* Decision Threshold T2: "The line" measured ruler */
+.threshold-block {
+  border-top: 1px solid var(--ink);
+  padding-top: 20px;
+}
+
+.threshold-lead {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 14px;
+}
+
+.threshold-stmt {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.28;
+  color: var(--ink);
+  max-width: 660px;
+  margin-bottom: 26px;
+}
+
+.threshold-amt {
+  font-style: normal;
+  color: var(--copper);
+  white-space: nowrap;
+}
+
+/* The measured number-line (ruler, not bar) */
+.threshold-axis {
+  position: relative;
+  height: 58px;
+  margin: 0 8px 6px;
+}
+
+.threshold-axis-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16px;
+  height: 1px;
+  background: var(--line-2);
+}
+
+.threshold-axis-seg {
+  position: absolute;
+  top: 15px;
+  height: 3px;
+  background: var(--copper);
+  border-radius: 2px;
+}
+
+.threshold-axis-tk {
+  position: absolute;
+  top: 8px;
+  width: 1px;
+  height: 17px;
+  background: var(--ink);
+  transform: translateX(-50%);
+}
+
+.threshold-axis-tk.soft {
+  background: var(--line-2);
+  height: 13px;
+  top: 10px;
+}
+
+.threshold-axis-lab {
+  position: absolute;
+  top: 30px;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.threshold-axis-lab-k {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 3px;
+}
+
+.threshold-axis-lab-v {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.threshold-axis-lab.here .threshold-axis-lab-v {
+  color: var(--muted);
+}
+
+.threshold-gap {
+  position: absolute;
+  top: -2px;
+  transform: translateX(-50%);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  white-space: nowrap;
+}
+
+/* Secondary flips — editorial list (T2: NOT cards) */
+.flips-header {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.flips-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flips-item {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.flips-condition {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--ink);
+  flex: 1;
+}
+
+.flips-condition b {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.flips-outcome {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.flip-arrow {
+  color: var(--copper);
+}
+
+/* Decision Debt / hidden trade-off */
+.debt-card {
+  border: 1px solid var(--line-2);
+  border-left: 3px solid var(--copper);
+  border-radius: 0 12px 12px 0;
+  background: var(--card);
+  padding: 18px 20px;
+}
+
+.debt-card h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.debt-card p {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4a5560;
+  margin-bottom: 13px;
+  max-width: 600px;
+}
+
+.debt-term {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+}
+
+.debt-factors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.debt-factor {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* Result section divider */
+.result-divider {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 26px 0;
+}
+
+/* Result pad (content area below verdict) */
+.result-pad {
+  padding: 30px 38px;
+}
+
+/* Mobile verdict sticky strip */
+.verdict-sticky-strip {
+  background: var(--navy);
+  padding: 9px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.verdict-sticky-strip span {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--paper);
+}
+
+/* Confidence tag (dot + label) */
+.confidence-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.3;
+  color: var(--muted);
+}
+
+.confidence-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--grey);
+  flex: none;
+}
+
+.confidence-dot.strong {
+  background: var(--ok);
+}
+
+.confidence-dot.estimate {
+  background: var(--copper-lt);
+}
+
+.confidence-dot.user {
+  background: var(--navy);
+}
+
+/* ---- 8. DECISION PAGE SPECIFICS ---- */
+
+/* Live comparison module — matches Hi-Fi .livewrap */
+.live-wrap {
+  border: 1px solid var(--line-2);
+  border-radius: 14px;
+  background: var(--card);
+  overflow: hidden;
+}
+
+.live-wrap-hd {
+  padding: 11px 18px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.live-wrap-body {
+  padding: 24px 26px;
+  display: flex;
+  align-items: flex-end;
+  gap: 34px;
+  flex-wrap: wrap;
+}
+
+.live-wrap-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--copper);
+  padding: 3px 7px;
+  border-radius: 20px;
+}
+
+.live-wrap-ctrls {
+  display: flex;
+  gap: 9px;
+  margin-top: 0;
+  flex-wrap: wrap;
+  padding: 18px 26px 20px;
+  border-top: 1px solid var(--line);
+}
+
+.live-wrap-toggle {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--copper);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(184, 92, 56, 0.4);
+  padding: 0 0 1px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Editorial reading area */
+.editorial-read {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+.editorial-read-wide {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+/* Decision Page prose */
+.dp-prose h2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.dp-prose p {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.62;
+  color: #3c4650;
+  margin-bottom: 14px;
+}
+
+.dp-prose .big {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+/* Scenario cards */
+.scenario-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.scenario-card {
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.scenario-card h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.scenario-card p {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.scenario-card .scenario-outcome {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  margin-top: 4px;
+}
+
+/* Ad zone placeholder */
+.ad-zone {
+  border: 1px dashed var(--line-2);
+  border-radius: 8px;
+  background: repeating-linear-gradient(
+    45deg,
+    #f4f1ea,
+    #f4f1ea 8px,
+    #ede9df 8px,
+    #ede9df 16px
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 1.4;
+  color: #a8a291;
+  letter-spacing: 0.06em;
+  text-align: center;
+  padding: 14px;
+}
+
+/* Control chip */
+.ctrl-chip {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  padding: 9px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 20px;
+  background: #fff;
+  color: #4a5560;
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+}
+
+/* Decision Page responsive */
+@media (max-width: 720px) {
+  .live-wrap-body {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .live-wrap-ctrls {
+    padding: 10px 16px 14px;
+  }
+
+  .scenario-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dp-prose h2 {
+    font-size: 22px;
+  }
+}
+
+/* Result responsive — mobile ≤720px */
+@media (max-width: 720px) {
+  .verdict-block {
+    padding: 22px 18px;
+  }
+
+  .verdict-block h2 {
+    font-size: 26px;
+  }
+
+  .verdict-sub {
+    font-size: 13px;
+    margin-top: 11px;
+  }
+
+  .verdict-foot {
+    margin-top: 16px;
+    padding-top: 12px;
+  }
+
+  .result-pad {
+    padding: 16px 18px;
+  }
+
+  .cost-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .dd-hero {
+    gap: 9px;
+    margin-bottom: 14px;
+  }
+
+  .dd-gap-big {
+    font-size: 64px;
+  }
+
+  .dd-gap-cap {
+    font-size: 15px;
+  }
+
+  .threshold-stmt {
+    font-size: 21px;
+    margin-bottom: 22px;
+  }
+
+  .flips-condition {
+    font-size: 14px;
+  }
+
+  .debt-card h4 {
+    font-size: 16px;
+  }
+}
+
+/* ---- 7. VERDICT CHANGED SPECIFICS ---- */
+
+/* Flip banner (navy, between header and verdict) */
+.flip-banner {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--paper);
+}
+
+.flip-chip {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  background: var(--copper-lt);
+  padding: 5px 8px;
+  border-radius: 5px;
+  flex: none;
+}
+
+.flip-text {
+  flex: 1;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--paper);
+}
+
+.flip-text b {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.flip-undo-btn {
+  border: 1px solid rgba(244, 241, 234, 0.4);
+  color: var(--paper);
+  border-radius: 8px;
+  padding: 9px 14px;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  white-space: nowrap;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Edited cost row */
+.cost-row.edited {
+  background: var(--paper-2);
+  border-radius: 6px;
+  margin: 0 -6px;
+  padding: 8px 6px;
+}
+
+.edit-tag {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 8px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--navy);
+  color: var(--paper);
+  padding: 3px 5px;
+  border-radius: 3px;
+  margin-right: 6px;
+}
+
+/* Robustness note */
+.robustness-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--paper-2);
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a5560;
+}
+
+.robustness-label {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  flex: none;
+  margin-top: 1px;
+}
+
+/* Unchanged marker */
+.unchanged-marker {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+  margin-left: auto;
+}
+
+/* Undo / Keep button row */
+.undo-keep-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.undo-keep-note {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* Outline button (secondary / undo) */
+.btn-outline {
+  background: #fff;
+  border: 1px solid var(--line-2);
+  color: var(--ink);
+  border-radius: 10px;
+  padding: 12px 18px;
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.btn-filled {
+  background: var(--navy);
+  color: var(--paper);
+  border-radius: 10px;
+  padding: 12px 22px;
+  text-align: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: 0;
+}
+
+/* Edit panel */
+.edit-panel {
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+}
+
+/* Mobile: flip banner stacks */
+@media (max-width: 720px) {
+  .flip-banner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 11px;
+    padding: 13px 15px;
+  }
+
+  .flip-chip {
+    align-self: flex-start;
+  }
+
+  .flip-text {
+    font-size: 15px;
+  }
+
+  .flip-undo-btn {
+    padding: 6px 10px;
+  }
+
+  .undo-keep-row {
+    padding: 12px 18px;
+    border-top: 1px solid var(--line);
+    background: var(--card);
+    position: sticky;
+    bottom: 0;
+  }
+}
