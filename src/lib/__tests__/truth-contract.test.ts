@@ -222,22 +222,58 @@ describe("deriveEditorial", () => {
 });
 
 describe("deriveThreshold", () => {
-  it("CASE A — canonical: B wins, distance = 33 (calculated exact)", () => {
+  // Canonical: A other = 146, B = 171. tiePoint = 25, firstWin = 24. current = 58.
+  // Distance to first win = 58 - 24 = 34.
+  it("CASE A — canonical (€58): B wins, distance to first win = 34", () => {
     const t = deriveThreshold(canonicalA, canonicalB);
     expect(t.aAlreadyCrossed).toBe(false);
     expect(t.data.leadLabel).toContain("where B stops winning");
-    expect(t.data.statementHtml).toContain("€33");
+    expect(t.data.lineValue).toBe(24);  // first winning fare
+    expect(t.data.currentValue).toBe(58);
+    expect(t.data.distanceToLine).toBe(34);
+    expect(t.data.statementHtml).toContain("€34");
   });
-  it("CASE B — A ticket €20: A already wins, crossed the line", () => {
+
+  it("CASE TIE — A ticket €25: exact tie", () => {
+    const tieA = makeOption("A", 25, 45, 12, 15, 74, "Stansted", "STN", "8h 05m", 485);
+    const t = deriveThreshold(tieA, canonicalB);
+    expect(t.aAlreadyCrossed).toBe(false); // not winning, just tied
+    expect(t.data.leadLabel).toContain("tie");
+    // 25 is tie, firstWin = 24. distance = 25 - 24 = 1
+    expect(t.data.lineValue).toBe(24);
+    expect(t.data.currentValue).toBe(25);
+    expect(t.data.distanceToLine).toBe(1);
+  });
+
+  it("CASE A wins by €1 — A ticket €24: first winning fare", () => {
+    const winA = makeOption("A", 24, 45, 12, 15, 74, "Stansted", "STN", "8h 05m", 485);
+    const t = deriveThreshold(winA, canonicalB);
+    expect(t.aAlreadyCrossed).toBe(true);
+    expect(t.data.lineValue).toBe(24);
+    expect(t.data.currentValue).toBe(24);
+    expect(t.data.distanceToLine).toBe(0);
+    // A is AT the line (winning by €1, but at the displayed boundary)
+  });
+
+  it("CASE A ticket €20: A deep in winning territory", () => {
     const t = deriveThreshold(ticket20A, canonicalB);
     expect(t.aAlreadyCrossed).toBe(true);
-    expect(t.data.leadLabel).toContain("A crossed it");
+    expect(t.data.leadLabel).toContain("crossed");
+    expect(t.data.lineValue).toBe(24);
+    expect(t.data.currentValue).toBe(20);
+    // distance = 20 - 24 = -4, abs = 4
+    expect(t.data.distanceToLine).toBe(4);
     expect(t.data.statementHtml).not.toContain("B wins");
   });
-  it("CASE C — A ticket €20 + bag removed: A wins, crossed farther", () => {
+
+  it("CASE A ticket €20 + bag removed: A deep win", () => {
     const t = deriveThreshold(ticket20NoBagA, canonicalB);
     expect(t.aAlreadyCrossed).toBe(true);
-    expect(t.data.statementHtml).toContain("€50");
+    // With bag removed: other = 0+12+15+74 = 101. tiePoint = 171-101 = 70. firstWin = 69.
+    // current = 20. distance = 20 - 69 = -49, abs = 49
+    expect(t.data.lineValue).toBe(69);
+    expect(t.data.currentValue).toBe(20);
+    expect(t.data.distanceToLine).toBe(49);
   });
 });
 

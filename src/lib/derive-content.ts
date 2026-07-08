@@ -51,6 +51,22 @@ export interface DynamicThreshold {
   aAlreadyCrossed: boolean;
 }
 
+/**
+ * Derive the Decision Threshold from actual current state.
+ *
+ * Two key values:
+ *   tiePoint  = exact break-even (A total == B total)
+ *   firstWin  = first whole-euro fare where A wins
+ *
+ * "The line" displayed to the user is firstWin — the point
+ * where A STARTS winning, not where it ties.
+ *
+ * Canonical example:
+ *   A other costs = €146, B total = €171
+ *   tiePoint = 25  (A total = 25 + 146 = 171 = B total → tie)
+ *   firstWin = 24  (A total = 24 + 146 = 170 < 171 → A wins by €1)
+ *   current = 58, distance to winning = 58 - 24 = 34
+ */
 export function deriveThreshold(
   optionA: OptionResult,
   optionB: OptionResult
@@ -59,36 +75,51 @@ export function deriveThreshold(
   const otherA = nonTicketCost(optionA.costLines);
   const costB = optionB.realCost;
 
-  // Break-even: A_ticket + otherA = costB → A_ticket = costB - otherA
-  const line = costB - otherA;
-  const distance = ticketA - line;
+  // Exact break-even point (tie)
+  const tiePoint = costB - otherA;
+
+  // First whole-euro winning fare for A
+  // If tiePoint is an integer (e.g. 25), first win is tiePoint - 1 (24)
+  // If tiePoint has decimals (e.g. 25.50), first win is Math.floor(tiePoint) (25)
+  const firstWin = Number.isInteger(tiePoint) ? tiePoint - 1 : Math.floor(tiePoint);
+
+  // Which side is A on?
   const aWins = optionA.realCost < optionB.realCost;
-  const aCrossed = aWins || distance <= 0;
+  const aTies = optionA.realCost === optionB.realCost;
+  const aCrossed = aWins; // "crossed" = actually winning (not just at tie)
+
+  // Distance from current ticket to first winning fare
+  const distanceToWin = ticketA - firstWin;
 
   // Position ticks on a normalized axis
-  // Axis shows from 0 to max(line, ticketA) * 1.3 for padding
-  const maxVal = Math.max(line, ticketA, 1) * 1.25;
-  const linePct = Math.max(5, (line / maxVal) * 100);
+  const maxVal = Math.max(firstWin, ticketA, 1) * 1.25;
+  const linePct = Math.max(5, (firstWin / maxVal) * 100);
   const nowPct = Math.min(95, (ticketA / maxVal) * 100);
 
-  const absDist = Math.abs(distance);
+  const absDist = Math.abs(distanceToWin);
 
   let leadLabel: string;
   let statementHtml: string;
   let gapLabel: string;
 
-  if (aCrossed && aWins) {
-    // A already crossed the line
-    leadLabel = "The line — A crossed it";
-    statementHtml = `Stansted is already <em class="threshold-amt">${formatMoney(absDist)}</em> below the break-even point. At €${line} the two trips cost the same — A is cheaper now.`;
-    gapLabel = `${formatMoney(absDist)} below the line`;
-  } else if (aCrossed && !aWins) {
-    // Tie or very close
-    leadLabel = "The line — at the break-even";
-    statementHtml = `At the current fare, both trips cost practically the same. A small change tips the balance.`;
-    gapLabel = "at the line";
+  if (aWins) {
+    // A already winning
+    if (absDist <= 1) {
+      leadLabel = "The line — A is just across it";
+      statementHtml = `Stansted is barely across the line — a <em class="threshold-amt">€1</em> fare increase would erase the lead. At €${tiePoint} the two trips tie.`;
+      gapLabel = `${formatMoney(absDist)} below the line`;
+    } else {
+      leadLabel = "The line — A crossed it";
+      statementHtml = `Stansted is already <em class="threshold-amt">${formatMoney(absDist)}</em> below the winning line. At €${tiePoint} the two trips tie — below €${firstWin}, A wins.`;
+      gapLabel = `${formatMoney(absDist)} below the line`;
+    }
+  } else if (aTies) {
+    // Exact tie
+    leadLabel = "The line — they tie here";
+    statementHtml = `At €${ticketA}, both trips cost exactly the same. One euro less for Stansted's fare would tip the balance.`;
+    gapLabel = "at the line — tie";
   } else {
-    // B still wins — show how much A must fall
+    // B wins — show how much A must fall to START winning
     leadLabel = "The line — where B stops winning";
     statementHtml = `Option B wins until Stansted's fare falls another <em class="threshold-amt">${formatMoney(absDist)}</em>. Below that, the cheaper ticket finally becomes the cheaper trip.`;
     gapLabel = `${formatMoney(absDist)} to the line`;
@@ -98,8 +129,8 @@ export function deriveThreshold(
     aAlreadyCrossed: aCrossed,
     data: {
       variable: "Stansted's fare",
-      lineValue: line,
-      currentValue: ticketA,
+      lineValue: firstWin,      // displayed "The line" = first winning fare
+      currentValue: ticketA,     // displayed "Now"
       distanceToLine: absDist,
       unit: "€",
       leadLabel,
