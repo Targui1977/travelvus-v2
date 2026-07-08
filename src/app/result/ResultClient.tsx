@@ -1,12 +1,8 @@
 "use client";
 
-import { useState, useCallback, useMemo } from "react";
-import { useSearchParams } from "next/navigation";
-import { MOCK_RESULT } from "@/lib/mock-data";
+import { useState, useCallback } from "react";
 import { calcRealCost, monetaryWinner, detectChange, estimateThreshold } from "@/lib/decision-engine";
-import { decodeCompareParams } from "@/lib/navigation";
-import { normalizeInput, isSupportedComparison, buildVerdict, extractCode } from "@/lib/normalize";
-import type { CostLine, OptionResult, OptionId } from "@/lib/types";
+import type { CostLine, OptionResult, OptionId, FullResultData } from "@/lib/types";
 import type { CostLineDisplay, CostColumnDisplay } from "@/components/result/RealCost";
 import {
   Verdict,
@@ -51,76 +47,31 @@ function buildCol(
   };
 }
 
+/* ── Props ───────────────────────────────────────────────── */
+
+interface ResultClientProps {
+  initialOptionA: OptionResult;
+  initialOptionB: OptionResult;
+  initialVerdict: FullResultData["verdict"];
+  initialSupported: boolean;
+  initialDataRef: FullResultData;
+}
+
 /* ── Page ────────────────────────────────────────────────── */
 
-export default function ResultClient() {
-  const searchParams = useSearchParams();
-  const d = MOCK_RESULT;
-
-  /* Merge URL params with canonical data (fallback when absent).
-   * Only full result for supported scenarios; partial for unsupported. */
-  const initialData = useMemo(() => {
-    const raw = decodeCompareParams(searchParams);
-    if (!raw) return { data: d, supported: true as const, verdict: d.verdict };
-
-    const norm = normalizeInput(raw);
-    if (!norm) return { data: d, supported: true as const, verdict: d.verdict };
-
-    const supported = isSupportedComparison(norm);
-
-    if (!supported) {
-      // Partial: only tickets, no canonical additional costs
-      const partialA: OptionResult = {
-        id: "A", name: extractCode(norm.toA) === "STN" ? "Stansted" : norm.toA,
-        code: extractCode(norm.toA), visibleTicketPrice: norm.ticketA,
-        costLines: [{ label: "Ticket", amount: norm.ticketA, confidence: "user" }],
-        realCost: norm.ticketA, doorToDoorMinutes: 0, doorToDoorLabel: "—",
-      };
-      const partialB: OptionResult = {
-        id: "B", name: extractCode(norm.toB) === "LHR" ? "Heathrow" : norm.toB,
-        code: extractCode(norm.toB), visibleTicketPrice: norm.ticketB,
-        costLines: [{ label: "Ticket", amount: norm.ticketB, confidence: "user" }],
-        realCost: norm.ticketB, doorToDoorMinutes: 0, doorToDoorLabel: "—",
-      };
-      const mWinner = monetaryWinner(partialA.realCost, partialB.realCost);
-      return {
-        data: { ...d, optionA: partialA, optionB: partialB } as typeof d,
-        supported: false as const,
-        verdict: buildVerdict(partialA.realCost, partialB.realCost, "—", "—", mWinner === "A", mWinner === "B"),
-      };
-    }
-
-    // Supported: full canonical data with user ticket prices
-    const baseA = { ...d.optionA };
-    const baseB = { ...d.optionB };
-
-    baseA.costLines = baseA.costLines.map((l, i) =>
-      i === 0 ? { ...l, amount: norm.ticketA } : l
-    );
-    baseA.visibleTicketPrice = norm.ticketA;
-    baseA.realCost = calcRealCost(baseA.costLines);
-
-    baseB.costLines = baseB.costLines.map((l, i) =>
-      i === 0 ? { ...l, amount: norm.ticketB } : l
-    );
-    baseB.visibleTicketPrice = norm.ticketB;
-    baseB.realCost = calcRealCost(baseB.costLines);
-
-    const mWinner = monetaryWinner(baseA.realCost, baseB.realCost);
-    return {
-      data: { ...d, optionA: baseA, optionB: baseB } as typeof d,
-      supported: true as const,
-      verdict: buildVerdict(baseA.realCost, baseB.realCost, baseA.doorToDoorLabel, baseB.doorToDoorLabel, mWinner === "A", mWinner === "B"),
-    };
-  }, [searchParams, d]);
-
+export default function ResultClient({
+  initialOptionA,
+  initialOptionB,
+  initialVerdict,
+  initialSupported,
+  initialDataRef: d,
+}: ResultClientProps) {
   /* State */
-  const [optionA, setOptionA] = useState<OptionResult>({ ...initialData.data.optionA });
-  const [optionB, setOptionB] = useState<OptionResult>({ ...initialData.data.optionB });
+  const [optionA, setOptionA] = useState<OptionResult>(initialOptionA);
+  const [optionB, setOptionB] = useState<OptionResult>(initialOptionB);
   const [showEdit, setShowEdit] = useState(false);
   const [bagRemoved, setBagRemoved] = useState(false);
   const [shareMsg, setShareMsg] = useState<string | null>(null);
-  const isSupported = initialData.supported;
   /* Verdict Changed surface state */
   const [changedState, setChangedState] = useState<{
     cause: string;
@@ -130,18 +81,16 @@ export default function ResultClient() {
   } | null>(null);
 
   /* Derived */
-  const baseA = initialData.data.optionA; // reference for old values
+  const baseA = initialOptionA;
   const winner = monetaryWinner(optionA.realCost, optionB.realCost);
   const isChanged = changedState !== null;
 
   /* ── Actions ─────────────────────────────────────────── */
 
   const removeBag = useCallback(() => {
-    // Snapshot current state for change detection
     const oldA = { ...optionA, realCost: calcRealCost(optionA.costLines) };
     const oldB = { ...optionB, realCost: calcRealCost(optionB.costLines) };
 
-    // Remove A's checked bag (index 1 in cost lines: 58, 45, 12, 15, 74)
     const newLines: CostLine[] = optionA.costLines.map((l, i) =>
       i === 1
         ? { ...l, amount: 0, isIncluded: true, label: "Checked bag — removed" }
@@ -153,7 +102,6 @@ export default function ResultClient() {
       realCost: calcRealCost(newLines),
     };
 
-    // Detect change
     const change = detectChange(oldA, oldB, newA, oldB);
 
     setOptionA(newA);
@@ -171,15 +119,14 @@ export default function ResultClient() {
   }, [optionA, optionB]);
 
   const undo = useCallback(() => {
-    setOptionA({ ...initialData.data.optionA });
-    setOptionB({ ...initialData.data.optionB });
+    setOptionA({ ...initialOptionA });
+    setOptionB({ ...initialOptionB });
     setChangedState(null);
     setBagRemoved(false);
-  }, [initialData]);
+  }, [initialOptionA, initialOptionB]);
 
   const keep = useCallback(() => {
     setChangedState(null);
-    // State persists as-is (bag removed stays)
   }, []);
 
   /* ── Verdict data ────────────────────────────────────── */
@@ -195,13 +142,13 @@ export default function ResultClient() {
             : 'Option B — <span class="verdict-highlight">Heathrow</span> — is the better overall deal.',
         subtextHtml:
           changedState!.newWinner === "A"
-            ? "A is now <b>€12 cheaper</b> — a near-tie your Balanced priority breaks toward cash. The time gap is unchanged: A still costs 2h 55m more."
-            : d.verdict.subtextHtml,
-        confidenceLabel: initialData.verdict.confidenceLabel,
-        provenance: initialData.verdict.provenance,
-        priority: initialData.verdict.priority,
+            ? "A is now <b>€12 cheaper</b> — a near-tie. The time gap is unchanged: A still costs more door-to-door."
+            : initialVerdict.subtextHtml,
+        confidenceLabel: initialVerdict.confidenceLabel,
+        provenance: initialVerdict.provenance,
+        priority: initialVerdict.priority,
       }
-    : initialData.verdict;
+    : initialVerdict;
 
   /* ── Cost columns ────────────────────────────────────── */
 
@@ -217,10 +164,10 @@ export default function ResultClient() {
     isUnchanged: isChanged,
   });
 
-  /* ── Robustness threshold (dynamic) ──────────────────── */
+  /* ── Robustness threshold ────────────────────────────── */
   const robustnessInfo =
     isChanged && changedState!.newWinner === "A"
-      ? estimateThreshold(optionA, optionB, 4) // index 4 = STN→Central taxi
+      ? estimateThreshold(optionA, optionB, 4)
       : null;
   const robustnessText = robustnessInfo
     ? `This result depends on the estimated night taxi cost. Option A wins on money only while that transfer stays below <b>€${robustnessInfo.threshold}</b>.`
@@ -338,7 +285,7 @@ export default function ResultClient() {
       )}
 
       {/* ═══ Edit panel ═══ */}
-      {showEdit && (
+      {initialSupported && showEdit && (
         <div className="result-pad" style={{ paddingBottom: 0 }}>
           <div className="edit-panel">
             <p
@@ -463,28 +410,30 @@ export default function ResultClient() {
           optionB={costB}
           winner={winner as OptionId}
           editorial={
-            isChanged
+            isChanged || !initialSupported
               ? undefined
               : d.realCostEditorial
           }
           sectionTitle={
             isChanged
               ? "Real cost — one line changed"
+              : !initialSupported
+              ? "Ticket comparison only"
               : undefined
           }
         />
 
-        {/* ═══ Robustness note (only after change) ═══ */}
+        {/* ═══ Robustness note ─────────────────────────── */}
         {isChanged && (
           <div style={{ marginTop: 20 }}>
             <RobustnessNote textHtml={robustnessText} />
           </div>
         )}
 
-        {!isChanged && <hr className="result-divider" />}
+        {!isChanged && initialSupported && <hr className="result-divider" />}
 
         {/* ═══ 3. DOOR-TO-DOOR ═══ */}
-        {!isChanged && (
+        {!isChanged && initialSupported && (
           <>
             <DoorToDoor
               gapLabel={d.doorToDoorGapLabel}
@@ -508,8 +457,8 @@ export default function ResultClient() {
           </>
         )}
 
-        {/* ═══ 4. DECISION THRESHOLD ═══ */}
-        {!isChanged && (
+        {/* ═══ 4-6. THRESHOLD + FLIPS + DEBT ═══ */}
+        {!isChanged && initialSupported && (
           <>
             <DecisionThreshold data={d.threshold} />
             <SecondaryFlips flips={d.secondaryFlips} />
@@ -521,7 +470,7 @@ export default function ResultClient() {
           </>
         )}
 
-        {/* ═══ Undo / Keep (after change) ═══ */}
+        {/* ═══ Undo / Keep ═══ */}
         {isChanged && (
           <div className="undo-keep-row">
             <button className="btn-outline" onClick={undo}>
