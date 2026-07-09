@@ -306,9 +306,18 @@ h1, h2, h3, h4, h5, h6, p {
   gap: 24px;
   font-family: var(--sans);
   font-weight: 500;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1;
   color: var(--muted);
+}
+
+.app-header-nav span {
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.app-header-nav span:hover {
+  color: var(--ink);
 }
 
 @media (max-width: 720px) {
@@ -1406,7 +1415,7 @@ h1, h2, h3, h4, h5, h6, p {
 .lvg-verdict-evidence {
   font-family: var(--mono);
   font-weight: 400;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1.4;
   color: var(--muted);
 }
@@ -1712,7 +1721,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 .home-hero-evidence {
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.4;
   color: var(--muted);
 }
@@ -2189,6 +2198,12 @@ h1, h2, h3, h4, h5, h6, p {
   letter-spacing: -0.01em;
   cursor: pointer;
   border: 0;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.btn-filled:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(30, 42, 51, 0.15);
 }
 
 /* Edit panel */
