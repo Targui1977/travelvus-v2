@@ -142,8 +142,14 @@ export default function HomePage() {
       </section>
 
       {/* ═══ 4. QUICK COMPARE ═══ */}
-      <section id="compare">
-        <QuickCompare />
+      <section id="compare" className="home-compare-section">
+        <div className="section-label" style={{ paddingLeft: 38, paddingRight: 38, marginBottom: 12 }}>
+          <span className="section-label-num"></span>
+          <span className="section-label-title">Compare your flights</span>
+        </div>
+        <div className="compare-embedded">
+          <QuickCompare />
+        </div>
       </section>
 
       {/* ═══ 5. BOUNDARIES ═══ */}

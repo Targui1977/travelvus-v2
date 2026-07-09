@@ -1652,6 +1652,21 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* ---- 10. HOME SPECIFICS ---- */
 
+/* Hide duplicate shell when QuickCompare is embedded in Home */
+.compare-embedded .app-header { display: none; }
+.compare-embedded > div { max-width: none !important; margin: 0 !important; box-shadow: none !important; background: transparent !important; padding-bottom: 40px !important; }
+.compare-embedded > div > div:first-of-type { padding-top: 0 !important; }
+.compare-embedded h1 { font-size: 28px !important; }
+
+/* Fix proof cards display */
+.home-proof-card {
+  display: flex !important;
+  flex-direction: column !important;
+}
+.home-proof-grid {
+  display: grid !important;
+}
+
 /* Hero */
 .home-hero {
   padding: 56px 38px 40px;
