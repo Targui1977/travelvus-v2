@@ -89,6 +89,11 @@ export default function HomePage() {
             Test scenarios. Undo. Keep.
           </p>
         </div>
+        <p className="lvg-evidence-note" style={{ marginTop: 10 }}>
+          <Link href="/methodology" className="text-[var(--copper)] no-underline hover:underline">
+            How Travelvus works &rarr;
+          </Link>
+        </p>
       </section>
 
       {/* ═══ 3. PROOF CARDS ═══ */}

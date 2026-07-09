@@ -1934,6 +1934,350 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 
+/* ---- 11. METHODOLOGY SPECIFICS ---- */
+
+.method-hero {
+  padding: 48px 38px 36px;
+  text-align: center;
+}
+
+.method-hero-h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 640px;
+  margin: 12px auto 14px;
+}
+
+.method-hero-sub {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #4a5560;
+  max-width: 560px;
+  margin: 0 auto 18px;
+}
+
+.method-hero-evidence {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.method-section {
+  padding: 14px 38px 20px;
+}
+
+.method-prose {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4a5560;
+  max-width: 620px;
+}
+
+/* Pipeline */
+.pipeline-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.pipeline-row {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+}
+
+.pipeline-boundary {
+  border-left: 3px solid var(--copper);
+  border-bottom: none;
+  padding-left: 14px;
+  margin-top: 4px;
+}
+
+.pipeline-num {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  letter-spacing: 0.1em;
+  flex: none;
+  padding-top: 2px;
+}
+
+.pipeline-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.pipeline-label {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.pipeline-text {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 3px 0 0;
+}
+
+.pipeline-tag {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+  white-space: nowrap;
+  padding-top: 3px;
+}
+
+/* Evidence bands */
+.evidence-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.evidence-band {
+  background: var(--paper-2);
+  border-left: 3px solid var(--line-2);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+}
+
+.evidence-band-label {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.evidence-band-text {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 0 0 8px;
+}
+
+.evidence-band-tag {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* Rounding example */
+.rounding-example {
+  margin-top: 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.rounding-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 10px 14px;
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.rounding-row:first-child {
+  border-bottom: 1px solid var(--line);
+  background: var(--card);
+}
+
+.rounding-label {
+  font-weight: 500;
+  color: var(--muted);
+  min-width: 50px;
+}
+
+.rounding-val {
+  color: var(--ink);
+}
+
+.rounding-dot { color: var(--muted); }
+.rounding-arrow { color: var(--copper); }
+.rounding-winner { font-weight: 600; color: var(--ink); }
+
+/* Handoff block */
+.handoff-block {
+  background: var(--navy);
+  color: var(--paper);
+  border-radius: 12px;
+  padding: 30px 32px;
+}
+
+.handoff-block-kicker {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper-lt);
+  margin-bottom: 8px;
+}
+
+.handoff-block-headline {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+
+.handoff-block-text {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #c8d0d6;
+  max-width: 560px;
+  margin: 0 0 10px;
+}
+
+.handoff-block-footnote {
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--paper);
+  margin: 14px 0 0;
+}
+
+/* Coverage cards */
+.coverage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.coverage-card {
+  background: var(--paper-2);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.coverage-card-label {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.coverage-card-text {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 0 0 8px;
+}
+
+.coverage-card-foot {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+.coverage-card-foot a { color: var(--copper); text-decoration: none; }
+
+/* Proof rows */
+.proof-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.proof-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  flex-wrap: wrap;
+}
+
+.proof-row:hover { background: var(--card); }
+
+.proof-num {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  color: var(--copper);
+  flex: none;
+  min-width: 20px;
+}
+
+.proof-label {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.25;
+  color: var(--ink);
+  flex: none;
+  min-width: 140px;
+}
+
+.proof-lesson {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.35;
+  color: var(--ink);
+  flex: 1;
+  min-width: 200px;
+}
+
+.proof-evidence {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--copper);
+  white-space: nowrap;
+}
+
+/* Methodology responsive */
+@media (max-width: 720px) {
+  .method-hero { padding: 36px 18px 28px; }
+  .method-hero-h1 { font-size: 28px; }
+  .method-hero-sub { font-size: 17px; }
+  .method-section { padding-left: 18px; padding-right: 18px; }
+  .handoff-block { padding: 22px 18px; }
+  .handoff-block-headline { font-size: 22px; }
+  .proof-row { flex-direction: column; gap: 6px; }
+  .proof-label { min-width: 0; }
+  .proof-evidence { white-space: normal; }
+}
+
 /* Mobile responsive */
 @media (max-width: 720px) {
   .dest-tabs {
