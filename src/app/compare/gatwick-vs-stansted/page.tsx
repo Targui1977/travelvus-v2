@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import Kicker from "@/components/ui/Kicker";
 import OptionToken from "@/components/ui/OptionToken";
@@ -31,7 +32,7 @@ export default function DecisionPage() {
         </span>
         <nav className="app-header-nav mobile:hidden">
           <span>Compare</span>
-          <span className="text-[var(--ink)]">Airports</span>
+          <Link href="/london-airports" className="text-[var(--ink)] no-underline">Airports</Link>
           <span>Guides</span>
         </nav>
         <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">

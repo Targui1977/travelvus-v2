@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import LiveComparison from "@/components/decision-page/LiveComparison";
 import Kicker from "@/components/ui/Kicker";
@@ -83,7 +84,7 @@ export default function DecisionPage() {
         </span>
         <nav className="app-header-nav mobile:hidden">
           <span>Compare</span>
-          <span className="text-[var(--ink)]">Airports</span>
+          <Link href="/london-airports" className="text-[var(--ink)] no-underline">Airports</Link>
           <span>Guides</span>
         </nav>
         <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">
@@ -246,6 +247,8 @@ export default function DecisionPage() {
           Open Compare &rarr;
         </a>
       </section>
+
+      <div style={{ padding: "0 38px 8px", textAlign: "center" }}><Link href="/london-airports" className="font-[var(--sans)] text-[13px] text-[var(--copper)] no-underline hover:underline">{/* ═══ Ad zone ═══ */}larr; More London airports</Link></div>
 
       {/* ═══ Ad zone ═══ */}
       <section style={{ padding: "0 38px 40px" }}>

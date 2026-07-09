@@ -1,0 +1,169 @@
+/* London Airports Hub — CSS Module */
+
+.hero {
+  padding: 48px 38px 36px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.heroKicker {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.heroH1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 600px;
+  margin: 0 auto 14px;
+}
+
+.heroSub {
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Decision rows */
+.rowList {
+  padding: 10px 0;
+}
+
+.decisionRow {
+  padding: 30px 38px;
+  border-bottom: 1px solid var(--line);
+}
+
+.decisionRow:last-child {
+  border-bottom: none;
+}
+
+.rowNum {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.rowLabel {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.rowQuestion {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.rowPair {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.rowInsight {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  max-width: 520px;
+  margin-bottom: 8px;
+}
+
+.rowCta {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--copper);
+  text-decoration: none;
+}
+
+.rowCta:hover {
+  text-decoration: underline;
+}
+
+/* Coverage */
+.coverage {
+  padding: 18px 38px 10px;
+  text-align: center;
+}
+
+.coverageText {
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Links area */
+.links {
+  padding: 6px 38px 16px;
+  text-align: center;
+}
+
+.links a {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--copper);
+  text-decoration: none;
+  margin: 0 12px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* CTA */
+.ctaSection {
+  padding: 10px 38px 28px;
+  text-align: center;
+}
+
+.ctaLabel {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 14px;
+}
+
+/* Responsive */
+@media (max-width: 720px) {
+  .hero { padding: 36px 18px 28px; }
+  .heroH1 { font-size: 28px; }
+  .heroSub { font-size: 14px; }
+  .decisionRow { padding: 22px 18px; }
+  .rowQuestion { font-size: 20px; }
+  .coverage { padding-left: 18px; padding-right: 18px; }
+  .links { padding-left: 18px; padding-right: 18px; }
+}

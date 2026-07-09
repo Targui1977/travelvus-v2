@@ -19,7 +19,7 @@ export default function MethodologyPage() {
           <span className="app-header-dot" />
         </span>
         <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span><span>Airports</span><span>Guides</span>
+          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><span>Guides</span>
         </nav>
         <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
       </header>

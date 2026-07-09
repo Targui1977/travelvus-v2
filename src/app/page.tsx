@@ -24,7 +24,7 @@ export default function HomePage() {
         </span>
         <nav className="app-header-nav mobile:hidden">
           <span className="text-[var(--ink)]">Compare</span>
-          <span>Airports</span>
+          <Link href="/london-airports" className="no-underline">Airports</Link>
           <span>Guides</span>
         </nav>
         <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">
@@ -92,6 +92,10 @@ export default function HomePage() {
         <p className="lvg-evidence-note" style={{ marginTop: 10 }}>
           <Link href="/methodology" className="text-[var(--copper)] no-underline hover:underline">
             How Travelvus works &rarr;
+          </Link>
+          {" "}&middot;{" "}
+          <Link href="/london-airports" className="text-[var(--copper)] no-underline hover:underline">
+            All London comparisons &rarr;
           </Link>
         </p>
       </section>
