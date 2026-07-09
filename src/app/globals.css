@@ -261,7 +261,7 @@ h1, h2, h3, h4, h5, h6, p {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 26px;
+  padding: 18px 26px;
   background: var(--card);
   border-bottom: 1px solid var(--line);
 }
@@ -275,7 +275,7 @@ h1, h2, h3, h4, h5, h6, p {
 .app-header-wordmark {
   font-family: var(--sans);
   font-weight: 700;
-  font-size: 20px;
+  font-size: 22px;
   line-height: 1;
   letter-spacing: -0.04em;
   color: var(--ink);
@@ -286,7 +286,7 @@ h1, h2, h3, h4, h5, h6, p {
   left: 1px;
   bottom: 0;
   height: 3px;
-  width: 52px;
+  width: 56px;
   background: var(--copper);
   border-radius: 1px;
 }
@@ -294,9 +294,9 @@ h1, h2, h3, h4, h5, h6, p {
 .app-header-dot {
   position: absolute;
   bottom: -1px;
-  left: 57px;
-  width: 4px;
-  height: 4px;
+  left: 61px;
+  width: 5px;
+  height: 5px;
   background: var(--ink);
   border-radius: 1px;
 }
@@ -325,13 +325,13 @@ h1, h2, h3, h4, h5, h6, p {
     padding: 14px 18px;
   }
   .app-header-wordmark {
-    font-size: 16px;
+    font-size: 18px;
   }
   .app-header-line {
-    width: 41px;
+    width: 44px;
   }
   .app-header-dot {
-    left: 46px;
+    left: 48px;
   }
 }
 
@@ -916,7 +916,7 @@ h1, h2, h3, h4, h5, h6, p {
   border-bottom: 1px solid var(--line);
   font-family: var(--mono);
   font-weight: 600;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1305,7 +1305,7 @@ h1, h2, h3, h4, h5, h6, p {
   display: block;
   font-family: var(--mono);
   font-weight: 600;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1594,7 +1594,7 @@ h1, h2, h3, h4, h5, h6, p {
 .contrast-card-label {
   font-family: var(--mono);
   font-weight: 600;
-  font-size: 9px;
+  font-size: 10px;
   line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1867,14 +1867,14 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* Footer */
 .home-footer {
-  padding: 24px 38px 30px;
+  padding: 30px 38px 30px;
   border-top: 1px solid var(--line);
   text-align: center;
 }
 
 .home-footer-links {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 14px;
@@ -1883,7 +1883,7 @@ h1, h2, h3, h4, h5, h6, p {
 .home-footer-links a {
   font-family: var(--mono);
   font-weight: 500;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1;
   color: var(--muted);
   text-decoration: none;
@@ -1901,15 +1901,11 @@ h1, h2, h3, h4, h5, h6, p {
 .home-footer-note {
   font-family: var(--mono);
   font-weight: 400;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   color: var(--muted);
   max-width: 560px;
   margin: 0 auto;
-}
-
-.home-footer-links a {
-  font-size: 12px;
 }
 
 /* Home responsive */
