@@ -1092,6 +1092,117 @@ h1, h2, h3, h4, h5, h6, p {
   align-items: center;
 }
 
+/* Saving-Worth cards (LGW vs STN) */
+.saving-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.saving-card {
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.saving-card-handoff {
+  border-left: 3px solid var(--copper);
+  border-radius: 0 12px 12px 0;
+}
+
+.saving-card-value {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.saving-card-result {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.saving-card-boundary {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.saving-card-text {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #4a5560;
+  margin: 0;
+}
+
+/* Access friction table (LGW vs STN) */
+.friction-table {
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.friction-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.friction-row:last-child {
+  border-bottom: none;
+}
+
+.friction-label {
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.friction-lgw {
+  text-align: center;
+  color: var(--muted);
+}
+
+.friction-stn {
+  text-align: center;
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .saving-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .friction-row {
+    grid-template-columns: 1fr 1fr;
+    font-size: 12px;
+  }
+
+  .friction-label {
+    grid-column: 1 / -1;
+    margin-bottom: 2px;
+  }
+}
+
 /* Decision Page responsive */
 @media (max-width: 720px) {
   .live-wrap-body {
