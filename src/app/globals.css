@@ -1652,11 +1652,10 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* ---- 10. HOME SPECIFICS ---- */
 
-/* Hide duplicate shell when QuickCompare is embedded in Home */
-.compare-embedded .app-header { display: none; }
-.compare-embedded > div { max-width: none !important; margin: 0 !important; box-shadow: none !important; background: transparent !important; padding-bottom: 40px !important; }
-.compare-embedded > div > div:first-of-type { padding-top: 0 !important; }
-.compare-embedded h1 { font-size: 28px !important; }
+/* Hide duplicate QuickCompare shell when embedded in Home */
+.compare-embedded .app-header { display: none !important; }
+.compare-embedded > div:first-child { max-width: none !important; margin: 0 !important; box-shadow: none !important; background: transparent !important; padding-bottom: 0 !important; }
+.compare-embedded > div:first-child > div:first-of-type { padding-top: 0 !important; }
 
 /* Fix proof cards display */
 .home-proof-card {
@@ -1824,7 +1823,7 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* Boundaries */
 .home-bounds {
-  padding: 10px 38px 30px;
+  padding: 30px 38px 34px;
   max-width: var(--reading-width);
   margin: 0 auto;
   border-top: 1px solid var(--line);
@@ -1891,9 +1890,15 @@ h1, h2, h3, h4, h5, h6, p {
 .home-footer-note {
   font-family: var(--mono);
   font-weight: 400;
-  font-size: 10px;
-  line-height: 1.4;
+  font-size: 11px;
+  line-height: 1.5;
   color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.home-footer-links a {
+  font-size: 12px;
 }
 
 /* Home responsive */
