@@ -147,8 +147,8 @@ export default function HomePage() {
           <span className="section-label-num"></span>
           <span className="section-label-title">Compare your flights</span>
         </div>
-        <div className="compare-embedded">
-          <QuickCompare />
+        <div className="compare-body-wrapper">
+          <QuickCompare standalone={false} />
         </div>
       </section>
 

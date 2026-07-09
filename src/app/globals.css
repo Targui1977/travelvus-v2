@@ -1652,10 +1652,12 @@ h1, h2, h3, h4, h5, h6, p {
 
 /* ---- 10. HOME SPECIFICS ---- */
 
-/* Hide duplicate QuickCompare shell when embedded in Home */
-.compare-embedded .app-header { display: none !important; }
-.compare-embedded > div:first-child { max-width: none !important; margin: 0 !important; box-shadow: none !important; background: transparent !important; padding-bottom: 0 !important; }
-.compare-embedded > div:first-child > div:first-of-type { padding-top: 0 !important; }
+/* QuickCompare body wrapper in Home */
+.compare-body-wrapper {
+  max-width: var(--container-compare);
+  margin: 0 auto;
+  background: var(--paper);
+}
 
 /* Fix proof cards display */
 .home-proof-card {

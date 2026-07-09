@@ -133,7 +133,7 @@ function VsDivider() {
 }
 
 /* ── Main component ────────────────────────────────────── */
-export default function QuickCompare() {
+export default function QuickCompare({ standalone = true }: { standalone?: boolean }) {
   const router = useRouter();
   const [state, setState] = useState<ComparisonState>(INITIAL);
   const [activeTab, setActiveTab] = useState<"A" | "B">("A");
@@ -191,26 +191,9 @@ export default function QuickCompare() {
   const a = state.optionA;
   const b = state.optionB;
 
-  return (
-    <div className="max-w-[var(--container-compare)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      {/* ═══ App Header ═══ */}
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
 
-        <nav className="app-header-nav mobile:hidden">
-          <Link href="/" className="text-[var(--ink)] no-underline">Compare</Link>
-          <span>Airports</span>
-          <span>Guides</span>
-        </nav>
-
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">
-          &#9776;
-        </span>
-      </header>
+  const qcBody = (
+    <>
 
       {/* ═══ Body ═══ */}
       <div className="px-[32px] pt-[28px] pb-[28px] mobile:px-[18px] mobile:pt-[20px]">
@@ -221,9 +204,9 @@ export default function QuickCompare() {
         </Kicker>
 
         {/* ── Headline ── */}
-        <h1 className="font-[var(--serif)] font-normal text-[38px] leading-[1.12] tracking-[-0.01em] max-w-[520px] mb-[8px] mobile:text-[27px] mobile:leading-[1.13] mobile:mb-[8px]">
+        <h2 className="font-[var(--serif)] font-normal text-[38px] leading-[1.12] tracking-[-0.01em] max-w-[520px] mb-[8px] mobile:text-[27px] mobile:leading-[1.13] mobile:mb-[8px]">
           You found two flights. Which really wins?
-        </h1>
+        </h2>
 
         {/* ── Supporting copy ── */}
         <p className="font-[var(--sans)] font-normal text-[14px] leading-[1.5] text-[var(--muted)] max-w-[480px] mb-[6px] mobile:text-[12.5px] mobile:leading-[1.45] mobile:mb-[18px]">
@@ -383,6 +366,32 @@ export default function QuickCompare() {
           See which option really wins
         </button>
       </div>
+    </>
+  );
+
+  if (!standalone) return qcBody;
+
+  return (
+    <div className="max-w-[var(--container-compare)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
+      {/* ═══ App Header ═══ */}
+      <header className="app-header">
+        <span className="app-header-brand">
+          <span className="app-header-wordmark">Travelvus</span>
+          <span className="app-header-line" />
+          <span className="app-header-dot" />
+        </span>
+
+        <nav className="app-header-nav mobile:hidden">
+          <Link href="/" className="text-[var(--ink)] no-underline">Compare</Link>
+          <span>Airports</span>
+          <span>Guides</span>
+        </nav>
+
+        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">
+          &#9776;
+        </span>
+      </header>
+      {qcBody}
     </div>
   );
 }
