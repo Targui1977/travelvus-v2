@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import LhrVsLgwInteractive from "@/components/decision-page/LhrVsLgwInteractive";
 import Kicker from "@/components/ui/Kicker";
 import DecisionDebt from "@/components/result/DecisionDebt";
-import { getThresholdData } from "@/lib/lhr-vs-lgw-data";
+import { getThresholdData, DESTINATIONS, calculateResult } from "@/lib/lhr-vs-lgw-data";
 
 /* ── SEO ─────────────────────────────────────────────── */
 export const metadata: Metadata = {
@@ -13,6 +13,10 @@ export const metadata: Metadata = {
 };
 
 const THRESHOLD = getThresholdData();
+
+/* Contrast data — computed server-side from verified matrix */
+const canaryWharf = calculateResult(DESTINATIONS[2]); // Canary Wharf
+const paddington = calculateResult(DESTINATIONS[1]);  // Paddington
 
 /* ═══════════════════════════════════════════════════════ */
 
@@ -114,12 +118,12 @@ export default function DecisionPage() {
             <div className="contrast-pair">
               <div className="contrast-card">
                 <span className="contrast-card-label">Canary Wharf</span>
-                <div className="contrast-card-value">&euro;37</div>
+                <div className="contrast-card-value">&euro;{canaryWharf.marginDisplay}</div>
                 <span className="contrast-card-sub">Robust Gatwick win</span>
               </div>
               <div className="contrast-card">
                 <span className="contrast-card-label">Paddington</span>
-                <div className="contrast-card-value">&euro;1</div>
+                <div className="contrast-card-value">&euro;{paddington.marginDisplay}</div>
                 <span className="contrast-card-sub">Near-tie &middot; money can&rsquo;t decide</span>
               </div>
             </div>

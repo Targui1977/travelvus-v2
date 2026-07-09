@@ -153,9 +153,9 @@ export default function LhrVsLgwInteractive() {
           </div>
         </div>
         <p className="lvg-evidence-note">
-          UK transport costs converted at 1 GBP &asymp; 1.17 EUR. Fares: walk-up
-          single, contactless/Oyster, off-peak daytime. Both airports measured
-          identically.
+          Totals rounded to nearest euro. UK transport converted at 1 GBP
+          &asymp; 1.17 EUR. Walk-up single, contactless/Oyster, off-peak.
+          Both airports measured identically.
         </p>
       </div>
 
@@ -163,30 +163,40 @@ export default function LhrVsLgwInteractive() {
       <div style={{ marginTop: 20 }}>
         <div className="group-size-note">
           <h4>Does group size change the answer?</h4>
-          <p className="lvg-evidence-note" style={{ marginBottom: 12 }}>
-            The winner direction stays the same — but your group size amplifies
-            the saving or the cost of choosing the cheaper airport.
-          </p>
-          <div className="group-size-row">
-            <div className="group-size-item">
-              <span className="group-size-item-label">Solo</span>
-              <span className="group-size-item-value">
-                &euro;{Math.round(result.marginDisplay / 2)}
-              </span>
-            </div>
-            <div className="group-size-item">
-              <span className="group-size-item-label">Couple</span>
-              <span className="group-size-item-value">
-                &euro;{result.marginDisplay}
-              </span>
-            </div>
-            <div className="group-size-item">
-              <span className="group-size-item-label">Family of 4</span>
-              <span className="group-size-item-value">
-                &euro;{result.marginDisplay * 2}
-              </span>
-            </div>
-          </div>
+          {result.marginClass === "NEAR_TIE" ? (
+            <p className="lvg-evidence-note">
+              Group size doesn&rsquo;t resolve this one. The cost gap remains
+              too small — so time and simplicity still decide, no matter how
+              many of you are travelling.
+            </p>
+          ) : (
+            <>
+              <p className="lvg-evidence-note" style={{ marginBottom: 12 }}>
+                The winner direction stays the same — but your group size
+                amplifies the saving or the cost of choosing the cheaper airport.
+              </p>
+              <div className="group-size-row">
+                <div className="group-size-item">
+                  <span className="group-size-item-label">Solo</span>
+                  <span className="group-size-item-value">
+                    &euro;{Math.round(result.marginDisplay / 2)}
+                  </span>
+                </div>
+                <div className="group-size-item">
+                  <span className="group-size-item-label">Couple</span>
+                  <span className="group-size-item-value">
+                    &euro;{result.marginDisplay}
+                  </span>
+                </div>
+                <div className="group-size-item">
+                  <span className="group-size-item-label">Family of 4</span>
+                  <span className="group-size-item-value">
+                    &euro;{result.marginDisplay * 2}
+                  </span>
+                </div>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
