@@ -8,7 +8,7 @@ import { CANONICAL, getVerdict, getScenarios, getAccessFriction } from "@/lib/lg
 export const metadata: Metadata = {
   title: "Gatwick or Stansted: Which Budget Airport Is Actually Cheaper? | Travelvus",
   description:
-    "Stansted is usually cheaper — but the extra train time may not be worth the saving. Compare real costs, transfer times, and when the margin is too thin.",
+    "Stansted is usually cheaper on the ticket — but the extra train time and higher fixed costs may erase the saving. Compare real costs and when the margin is worth it.",
   alternates: { canonical: "/compare/gatwick-vs-stansted" },
 };
 
@@ -49,14 +49,17 @@ export default function DecisionPage() {
             Gatwick or Stansted: which budget airport is actually cheaper?
           </h1>
           <p className="font-[var(--serif)] font-normal text-[34px] leading-[1.2] text-[var(--ink)] mobile:text-[24px] mobile:leading-[1.22]">
-            Stansted is &euro;{t.displayDiff} cheaper —{" "}
+            Stansted saves &euro;{t.stnFlightAdvantage} on the flight —{" "}
             <span style={{ borderBottom: "2px solid var(--copper)", paddingBottom: 2 }}>
-              but the extra train time may not be worth the saving.
+              but &euro;{t.stnFixedDisadvantage} more in fixed costs narrows the net saving to &euro;{t.displayDiff}.
             </span>
+          </p>
+          <p className="lvg-evidence-note" style={{ marginTop: 12 }}>
+            The money truth is calculable. Whether the trade is worth it is personal.
           </p>
           <div
             style={{
-              display: "flex", gap: 14, justifyContent: "center", marginTop: 18,
+              display: "flex", gap: 14, justifyContent: "center", marginTop: 14,
               fontFamily: "var(--mono)", fontWeight: 400, fontSize: 11, lineHeight: 1, color: "var(--muted)",
             }}
           >
@@ -65,19 +68,19 @@ export default function DecisionPage() {
         </div>
       </section>
 
-      {/* ═══ MONEY TRUTH — The Trade ═══ */}
+      {/* ═══ MONEY TRUTH ═══ */}
       <section style={{ padding: "8px 38px 28px" }}>
         <div className="editorial-read">
           <div className="lvg-module">
             <div className="lvg-module-hd">
-              <span className="lvg-module-kicker">The trade — what you save and what you give up</span>
+              <span className="lvg-module-kicker">The trade</span>
             </div>
             <div className="lvg-verdict">
               <span className="lvg-verdict-label">Money truth</span>
               <div className="lvg-verdict-line">{v.headline}</div>
               <p className="lvg-verdict-interp">{v.subtext}</p>
               {v.handoff && (
-                <div className="lvg-handoff">
+                <div className="lvg-handoff lvg-handoff-visible">
                   <span className="lvg-handoff-kicker">Your call.</span>
                   <p className="lvg-handoff-text">{v.handoffText}</p>
                 </div>
@@ -140,18 +143,15 @@ export default function DecisionPage() {
             <span className="section-label-title">Where the money ties</span>
           </div>
           <p className="lvg-evidence-note" style={{ maxWidth: 560, marginBottom: 12 }}>
-            Stansted&rsquo;s flight is &euro;{t.stnFlightAdvantage} cheaper before transfer costs. But its
-            transfer costs &euro;{t.transferPenalty} more than Gatwick&rsquo;s. At a
-            flight-price saving of &euro;{t.tiePointDisplay}, the two
-            airports tie on total cost. Below that, Gatwick wins on money.
-            Above that, Stansted wins.
+            Stansted&rsquo;s flight is &euro;{t.stnFlightAdvantage} cheaper, but its fixed costs
+            (baggage + transfer) are &euro;{t.stnFixedDisadvantage} higher than Gatwick&rsquo;s.
+            The break-even is at a flight saving of &euro;{t.tiePointDisplay} — below that,
+            Gatwick wins on total cost. Above that, Stansted wins.
           </p>
           <div className="method-box">
-            <b>Two boundaries, not one.</b> The &euro;{t.tiePointDisplay} tie point is mathematical
-            — where the money calculation says both cost the same. Whether
-            &euro;{t.displayDiff} is worth 20 extra minutes is personal —
-            Travelvus can calculate the money truth but cannot decide your
-            tolerance for extra journey time.
+            <b>Two boundaries.</b> The &euro;{t.tiePointDisplay} break-even is mathematical.
+            Whether &euro;{t.displayDiff} is worth 20 extra minutes is personal — Travelvus
+            calculates the money truth but cannot decide your tolerance for extra journey time.
           </div>
         </div>
       </section>
@@ -193,7 +193,7 @@ export default function DecisionPage() {
             ))}
           </div>
           <p className="lvg-evidence-note">
-            Gatwick: 1 direct train to Victoria. Stansted: 1 train to Liverpool St + 1 Tube/bus change — 20 extra minutes.
+            Gatwick: 1 direct train to Victoria (40 min). Stansted: train + Tube change (60 min).
           </p>
         </div>
       </section>
@@ -207,9 +207,41 @@ export default function DecisionPage() {
           </div>
           <DecisionDebt
             title="What each airport costs beyond money"
-            textHtml="Stansted&rsquo;s cheaper flight depends on accepting a longer, more complex ground journey. Gatwick delivers you to Victoria in 40 minutes on one direct train — but typically charges &euro;10–20 more for comparable flights. Both are budget airports serving mainly European routes. easyJet serves both; Ryanair is Stansted-only."
+            textHtml="Stansted&rsquo;s saving depends on accepting 20 extra minutes and a train change. Gatwick delivers you to Victoria on one direct train — but its flights are typically €10–20 more. Both serve European routes. easyJet serves both airports; Ryanair is Stansted-only."
             factors={["20 min extra journey", "1 extra train change", "Ryanair STN-only", "easyJet serves both", "Comparable rail frequency"]}
           />
+        </div>
+      </section>
+
+      {/* ═══ FAQ ═══ */}
+      <section style={{ padding: "6px 38px 20px" }}>
+        <div className="editorial-read">
+          <div className="section-label">
+            <span className="section-label-num"></span>
+            <span className="section-label-title">Quick answers</span>
+          </div>
+          <div className="faq-list">
+            <div className="faq-item">
+              <h3 className="faq-q">Is Gatwick cheaper than Stansted?</h3>
+              <p className="faq-a">Usually no — Stansted flights are typically €10–20 cheaper. But Stansted&rsquo;s higher fixed costs (baggage + transfer) can narrow the real saving to a few euros, and for some destinations Gatwick wins on total cost.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-q">How much cheaper should a Stansted flight be to win?</h3>
+              <p className="faq-a">Stansted needs to save at least €{t.tiePointDisplay} on the flight to reliably beat Gatwick on total door-to-door cost — because its fixed costs are about €{t.stnFixedDisadvantage} higher.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-q">Which airport is faster to central London?</h3>
+              <p className="faq-a">Gatwick: 40 minutes direct to Victoria on one train. Stansted: 60 minutes with a train change. Gatwick wins on time and simplicity for most central London destinations.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-q">Which airport is better for Victoria?</h3>
+              <p className="faq-a">Gatwick — the Southern Railway serves Victoria directly in 40 minutes. Stansted requires the Express to Liverpool Street plus a connecting Tube, adding 20 minutes and a change.</p>
+            </div>
+            <div className="faq-item">
+              <h3 className="faq-q">Do airlines fly from both airports?</h3>
+              <p className="faq-a">easyJet, Jet2, and TUI serve both Gatwick and Stansted — so you can sometimes choose between airports on the same airline. Ryanair serves Stansted only.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -233,7 +265,6 @@ export default function DecisionPage() {
         </div>
       </section>
 
-      {/* ═══ Ad zone ═══ */}
       <section style={{ padding: "0 38px 40px" }}>
         <div className="editorial-read"><div className="ad-zone">Ad &middot; editorial zone only</div></div>
       </section>

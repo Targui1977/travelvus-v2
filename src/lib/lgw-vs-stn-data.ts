@@ -1,88 +1,69 @@
 /**
- * Gatwick vs Stansted — Verified data from Phase 21 Evidence Contract.
+ * Gatwick vs Stansted — Verified data from Phase 21 + 23.1 correction.
  *
  * All costs in EUR. UK transport converted at 1 GBP = 1.17 EUR.
  * Fare basis: walk-up single, contactless/Oyster, off-peak daytime.
- * Time basis: station-to-station + 5min platform + 5min interchange.
  *
  * Page type: NON-INTERACTIVE editorial Decision Page.
  * Unique capability: SAVING-WORTH HANDOFF.
+ *
+ * THRESHOLD CORRECTION (Phase 23.1):
+ * The tie point is NOT just the transfer penalty.
+ * STN has €15.65 more in fixed costs (transfer + baggage).
+ * Exact tie: STN flight saving = €15.65.
+ * First whole-euro STN win: S = 16. First LGW win: S = 15.
  */
-
-/* ── Types ─────────────────────────────────────────────── */
 
 export type VerdictState = "STN_NARROW" | "MONEY_TIE" | "STN_CLEAR" | "LGW_WINS";
 
 export interface SavingScenario {
-  stnSaving: number;   // STN flight-price advantage in EUR
-  label: string;       // "€4 saved" etc
-  moneyResult: string; // "Stansted wins by €4"
-  boundaryRelation: string; // "Below the tie point"
+  stnSaving: number;
+  label: string;
+  moneyResult: string;
+  boundaryRelation: string;
   handoffActive: boolean;
   handoffText: string;
 }
 
 export interface CanonicalData {
-  /* Raw values (for calculation) */
-  lgwFlightRaw: number;
-  stnFlightRaw: number;
-  lgwBagRaw: number;
-  stnBagRaw: number;
-  lgwSeatRaw: number;
-  stnSeatRaw: number;
-  lgwTransferGBP: number;
-  stnTransferGBP: number;
+  /* Raw values */
+  lgwFlightRaw: number; stnFlightRaw: number;
+  lgwBagRaw: number; stnBagRaw: number;
+  lgwSeatRaw: number; stnSeatRaw: number;
+  lgwTransferRaw: number; stnTransferRaw: number;
   gbpToEur: number;
+  lgwTotalRaw: number; stnTotalRaw: number; rawDiff: number;
 
-  /* Computed raw */
-  lgwTotalRaw: number;
-  stnTotalRaw: number;
-  rawDiff: number; // positive = LGW more expensive
-
-  /* Display values (rounded) */
-  lgwFlight: number;
-  stnFlight: number;
-  lgwBag: number;
-  stnBag: number;
-  lgwTransfer: number;
-  stnTransfer: number;
-  lgwTotal: number;
-  stnTotal: number;
-  displayDiff: number;
+  /* Display values */
+  lgwFlight: number; stnFlight: number;
+  lgwBag: number; stnBag: number;
+  lgwTransfer: number; stnTransfer: number;
+  lgwTotal: number; stnTotal: number; displayDiff: number;
 
   /* Winner */
   moneyWinner: "LGW" | "STN" | "TIE";
   verdictState: VerdictState;
 
   /* Access friction */
-  lgwTransferMins: number;
-  stnTransferMins: number;
-  extraTimeMins: number;
-  lgwTransferCount: number;
-  stnTransferCount: number;
-  extraTransfers: number;
+  lgwTransferMins: number; stnTransferMins: number; extraTimeMins: number;
+  lgwTransferCount: number; stnTransferCount: number; extraTransfers: number;
 
-  /* Threshold */
-  stnFlightAdvantage: number;  // LGW flight - STN flight
-  transferPenaltyRaw: number;   // STN transfer - LGW transfer
-  transferPenalty: number;      // display rounded
-  tiePoint: number;             // STN advantage where costs equal (raw)
-  tiePointDisplay: number;      // display rounded
-  firstLgwWin: number;          // first whole-euro STN saving where LGW wins
+  /* Threshold (corrected) */
+  stnFlightAdvantage: number;  // canonical: 20
+  stnFixedDisadvantageRaw: number;  // STN bag+seat+transfer - LGW bag+seat+transfer (=15.65)
+  stnFixedDisadvantage: number;     // display rounded (=16)
+  tiePoint: number;                 // exact tie (raw) = 15.65
+  tiePointDisplay: number;          // display = 16
 }
 
 /* ── Constants ─────────────────────────────────────────── */
 
 const GBP = 1.17;
-
-const LGW_FLIGHT = 95;
-const STN_FLIGHT = 75;
-const LGW_BAG = 30;
-const STN_BAG = 35;
-const LGW_SEAT = 8;
-const STN_SEAT = 8;
+const LGW_FLIGHT = 95, STN_FLIGHT = 75;
+const LGW_BAG = 30, STN_BAG = 35;
+const LGW_SEAT = 8, STN_SEAT = 8;
 const LGW_TRANSFER_GBP = 10.70;
-const STN_TRANSFER_GBP = 17.00 + 2.80; // Express + Victoria Line tube
+const STN_TRANSFER_GBP = 17.00 + 2.80;
 
 /* ── Calculation ───────────────────────────────────────── */
 
@@ -90,8 +71,12 @@ function compute(): CanonicalData {
   const lgwTransferRaw = LGW_TRANSFER_GBP * GBP;
   const stnTransferRaw = STN_TRANSFER_GBP * GBP;
 
-  const lgwTotalRaw = LGW_FLIGHT + LGW_BAG + LGW_SEAT + lgwTransferRaw;
-  const stnTotalRaw = STN_FLIGHT + STN_BAG + STN_SEAT + stnTransferRaw;
+  const lgwFixed = LGW_BAG + LGW_SEAT + lgwTransferRaw;  // ~50.52
+  const stnFixed = STN_BAG + STN_SEAT + stnTransferRaw;  // ~66.17
+  const stnFixedDisadvantageRaw = stnFixed - lgwFixed;    // 15.65
+
+  const lgwTotalRaw = LGW_FLIGHT + lgwFixed;
+  const stnTotalRaw = STN_FLIGHT + stnFixed;
   const rawDiff = lgwTotalRaw - stnTotalRaw; // positive = LGW more expensive
 
   const lgwTotal = Math.round(lgwTotalRaw);
@@ -99,40 +84,19 @@ function compute(): CanonicalData {
   const displayDiff = Math.round(Math.abs(rawDiff));
 
   const moneyWinner: "LGW" | "STN" | "TIE" =
-    lgwTotal < stnTotal ? "LGW" : stnTotal < lgwTotal ? "STN" : "TIE";
+    rawDiff > 0.005 ? "STN" : rawDiff < -0.005 ? "LGW" : "TIE";
 
-  // Threshold
-  const stnFlightAdvantage = LGW_FLIGHT - STN_FLIGHT; // €20
-  const transferPenaltyRaw = stnTransferRaw - lgwTransferRaw;
-  const transferPenalty = Math.round(transferPenaltyRaw);
+  const stnFlightAdvantage = LGW_FLIGHT - STN_FLIGHT; // 20
+  const tiePoint = stnFixedDisadvantageRaw;            // 15.65
+  const tiePointDisplay = Math.round(tiePoint);        // 16
 
-  // Tie point: where STN advantage == transfer penalty
-  const tiePoint = transferPenaltyRaw;
-  const tiePointDisplay = Math.round(tiePoint);
-
-  // First whole-euro STN saving where LGW wins (STN saves ≤ tiePoint)
-  // If tiePoint = 10.65, first LGW win is when STN saves ≤ 10
-  // If tiePoint = 11.00 (rounded), first LGW win is 11
-  const firstLgwWin = Number.isInteger(tiePoint) ? tiePoint : Math.floor(tiePoint);
-  // Actually: firstLgwWin means "at this STN saving, LGW wins on money"
-  // STN wins when saving > tiePoint. LGW wins when saving <= tiePoint.
-  // Display: LGW wins at €11 STN saving, STN wins at €12.
-  const firstLgwWinDisplay = Math.round(tiePoint);
-
-  // Verdict state
-  const state = rawDiff <= firstLgwWin && rawDiff >= -firstLgwWin
-    ? (rawDiff >= -1 && rawDiff <= 1 ? "MONEY_TIE" : rawDiff > 0 ? "STN_NARROW" : "LGW_WINS")
-    : rawDiff > firstLgwWin ? "STN_CLEAR" : "LGW_WINS";
-
-  // Default to canonical state (STN wins narrowly at €4.35 raw diff)
   const verdictState: VerdictState = "STN_NARROW";
 
   return {
     lgwFlightRaw: LGW_FLIGHT, stnFlightRaw: STN_FLIGHT,
     lgwBagRaw: LGW_BAG, stnBagRaw: STN_BAG,
     lgwSeatRaw: LGW_SEAT, stnSeatRaw: STN_SEAT,
-    lgwTransferGBP: LGW_TRANSFER_GBP, stnTransferGBP: STN_TRANSFER_GBP,
-    gbpToEur: GBP,
+    lgwTransferRaw, stnTransferRaw, gbpToEur: GBP,
     lgwTotalRaw, stnTotalRaw, rawDiff,
     lgwFlight: LGW_FLIGHT, stnFlight: STN_FLIGHT,
     lgwBag: LGW_BAG, stnBag: STN_BAG,
@@ -141,47 +105,58 @@ function compute(): CanonicalData {
     moneyWinner, verdictState,
     lgwTransferMins: 40, stnTransferMins: 60, extraTimeMins: 20,
     lgwTransferCount: 1, stnTransferCount: 2, extraTransfers: 1,
-    stnFlightAdvantage, transferPenaltyRaw, transferPenalty,
-    tiePoint, tiePointDisplay, firstLgwWin: firstLgwWinDisplay,
+    stnFlightAdvantage, stnFixedDisadvantageRaw, stnFixedDisadvantage: Math.round(stnFixedDisadvantageRaw),
+    tiePoint, tiePointDisplay,
   };
 }
 
 export const CANONICAL = compute();
 
+/* ── Compute result at any STN flight saving ───────────── */
+
+export function computeAtSaving(stnSaving: number): {
+  lgwTotal: number; stnTotal: number; winner: "LGW" | "STN" | "TIE"; diff: number;
+} {
+  const stnFlight = LGW_FLIGHT - stnSaving;
+  const lgwTotal = CANONICAL.lgwTotalRaw;
+  const stnTotal = stnFlight + CANONICAL.stnBagRaw + CANONICAL.stnSeatRaw + CANONICAL.stnTransferRaw;
+  const diff = lgwTotal - stnTotal;
+  const winner: "LGW" | "STN" | "TIE" = diff > 0.005 ? "STN" : diff < -0.005 ? "LGW" : "TIE";
+  return { lgwTotal, stnTotal, winner, diff };
+}
+
 /* ── Verdict semantics ─────────────────────────────────── */
 
 export function getVerdict(state: VerdictState): {
-  headline: string;
-  subtext: string;
-  handoff: boolean;
-  handoffText: string;
+  headline: string; subtext: string; handoff: boolean; handoffText: string;
 } {
+  const t = CANONICAL;
   switch (state) {
     case "STN_NARROW":
       return {
-        headline: `Stansted is €${CANONICAL.displayDiff} cheaper — but the margin is thin.`,
-        subtext: `Stansted saves you about €${CANONICAL.displayDiff} on the canonical comparison. In return, you spend 20 extra minutes on the train and change at Victoria. Whether that trade is worth it is personal.`,
+        headline: `Stansted is €${t.displayDiff} cheaper — but the margin is thin.`,
+        subtext: `Stansted saves €${t.stnFlightAdvantage} on the flight, but €${t.stnFixedDisadvantage} more in fixed costs. The result: only €${t.displayDiff} net saving — and 20 extra minutes on the train.`,
         handoff: true,
-        handoffText: "The money says Stansted — by a thin margin. Only you can decide whether the saving is worth the extra journey.",
+        handoffText: `Stansted is ahead by €${t.displayDiff}. Whether that is worth the extra journey is personal.`,
       };
     case "MONEY_TIE":
       return {
         headline: "The money is a tie — the journey decides.",
-        subtext: "At this saving, both airports cost essentially the same door-to-door. Gatwick's direct train makes it the simpler choice.",
+        subtext: "At this saving, both airports cost essentially the same. Gatwick's direct train makes it the simpler choice.",
         handoff: true,
-        handoffText: "Money doesn't separate them. Your tolerance for extra journey time makes the decision.",
+        handoffText: "Money doesn't separate them. Your tolerance for extra journey time decides.",
       };
     case "STN_CLEAR":
       return {
         headline: "Stansted wins clearly on money.",
-        subtext: `The saving is large enough to compensate for the longer transfer. Stansted is the better deal for this scenario.`,
+        subtext: "The saving comfortably exceeds the extra fixed costs. Stansted is the better money choice.",
         handoff: false,
         handoffText: "",
       };
     case "LGW_WINS":
       return {
         headline: "Gatwick wins.",
-        subtext: "The Stansted flight doesn't save enough to offset the higher transfer cost. Gatwick is cheaper door-to-door.",
+        subtext: "The Stansted flight does not save enough to offset its higher fixed costs. Gatwick is cheaper door-to-door.",
         handoff: false,
         handoffText: "",
       };
@@ -192,30 +167,38 @@ export function getVerdict(state: VerdictState): {
 
 export function getScenarios(): SavingScenario[] {
   const t = CANONICAL;
+
+  // S=10: LGW wins (below tie of 15.65)
+  const s10 = computeAtSaving(10);
+  // S=16: STN just wins (first whole-euro above tie)
+  const s16 = computeAtSaving(16);
+  // S=20: STN clear (canonical)
+  const s20 = computeAtSaving(20);
+
   return [
     {
-      stnSaving: t.displayDiff, // 4
-      label: `€${t.displayDiff} saved`,
-      moneyResult: `Stansted wins by €${t.displayDiff}`,
-      boundaryRelation: "Below the tie point",
+      stnSaving: 10,
+      label: "Stansted saves €10",
+      moneyResult: `Gatwick wins by €${Math.round(Math.abs(s10.diff))}`,
+      boundaryRelation: "Below the break-even",
+      handoffActive: false,
+      handoffText: `At €10 saving, Stansted's cheaper flight does not overcome its €${t.stnFixedDisadvantage} in higher fixed costs. Gatwick is cheaper door-to-door.`,
+    },
+    {
+      stnSaving: 16,
+      label: "Stansted saves €16",
+      moneyResult: `Stansted wins by €${Math.round(Math.abs(s16.diff))}`,
+      boundaryRelation: "Just above the break-even",
       handoffActive: true,
-      handoffText: `Is €${t.displayDiff} worth 20 extra minutes? Only you can decide.`,
+      handoffText: `At €16, Stansted crosses the break-even — but by less than €1. The margin is razor-thin.`,
     },
     {
-      stnSaving: t.tiePointDisplay + 1, // 12
-      label: `€${t.tiePointDisplay + 1} saved`,
-      moneyResult: "Stansted just crosses the line",
-      boundaryRelation: "At the boundary",
+      stnSaving: 20,
+      label: "Stansted saves €20",
+      moneyResult: `Stansted wins by €${Math.round(Math.abs(s20.diff))}`,
+      boundaryRelation: "Clearly above the break-even",
       handoffActive: false,
-      handoffText: `At €${t.tiePointDisplay + 1}, Stansted's saving just exceeds the transfer penalty. The money tips to Stansted.`,
-    },
-    {
-      stnSaving: t.stnFlightAdvantage, // 20
-      label: `€${t.stnFlightAdvantage} saved`,
-      moneyResult: "Stansted wins clearly",
-      boundaryRelation: "Well above the tie point",
-      handoffActive: false,
-      handoffText: `At €${t.stnFlightAdvantage}, the saving comfortably exceeds the extra transfer cost. Stansted is the clear money winner.`,
+      handoffText: `At €20, Stansted's flight saving exceeds its higher fixed costs by a clear margin.`,
     },
   ];
 }
@@ -228,10 +211,7 @@ export function getAccessFriction() {
     primary: [
       { label: "Extra ground time", lgw: `${t.lgwTransferMins} min`, stn: `${t.stnTransferMins} min`, extra: `${t.extraTimeMins} min` },
       { label: "Train changes", lgw: "Direct (0)", stn: "1 change at Victoria", extra: "+1" },
-      { label: "Transfer cost", lgw: `€${t.lgwTransfer}`, stn: `€${t.stnTransfer}`, extra: `€${t.transferPenalty} more` },
-    ],
-    secondary: [
-      { label: "Rail frequency", lgw: "4+ trains/hour", stn: "4 trains/hour" },
+      { label: "Fixed costs (bag+transfer)", lgw: `€${Math.round(t.lgwBagRaw + t.lgwTransferRaw)}`, stn: `€${Math.round(t.stnBagRaw + t.stnTransferRaw)}`, extra: `€${t.stnFixedDisadvantage} more` },
     ],
   };
 }
