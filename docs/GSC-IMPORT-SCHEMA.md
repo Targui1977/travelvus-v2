@@ -1,8 +1,22 @@
 # Travelvus V2 — GSC Import Schema + URL Decision Matrix
 
-**Phase:** 18
-**Status:** AWAITING OWNER GSC EXPORTS
+**Phase:** 18.1 — COLD-START CORRECTION
+**Status:** GSC OBSERVATIONAL ONLY (connected ~24h ago, ~10 impressions)
 **Date:** 2026-07-08
+
+---
+
+## ⚠️ CRITICAL CONTEXT (Phase 18.1 override)
+
+GSC was connected approximately **24 hours ago.** Current data: ~10 impressions total.
+
+**This means:**
+
+- Zero impressions = **NO EVIDENCE**, not zero demand
+- Zero clicks = **NO EVIDENCE**, not zero value
+- No URL may be confirmed for 410 based on current GSC data
+- No migration decision can be downgraded based on absent GSC traffic
+- GSC data today is **observational only** — early discovery signals, not decision authority
 
 ---
 
@@ -198,14 +212,109 @@ After GSC join, each rebuild candidate gets a priority score:
 
 ---
 
-## G. Next Step
+## G. Next Step (Superseded by Phase 18.1)
 
-1. Owner exports GSC CSVs → places in `docs/gsc-exports/`
-2. I load, join to master ledger, apply decision rules
-3. I produce **final migration action** for all 70 URLs
-4. I produce **prioritized build order** for legacy pages
-5. Phase 18 closes → Migration plan becomes evidence-based
+**Do NOT export CSVs yet.** GSC data is too immature for CSV analysis. Wait for observation checkpoints.
 
 ---
 
-**DETENTE.** Awaiting CSVs. No code changes. No redirects. No DNS. No deploy.
+# PHASE 18.1 — COLD-START MIGRATION STRATEGY
+
+## 1. Invalidated Rules (from Phase 18)
+
+| Original Rule | Status | Replacement |
+|---------------|--------|-------------|
+| "Zero traffic → confidence upgrades, 410 confirmed" | **INVALIDATED** | Zero GSC data → PENDING EVIDENCE. Only 410 with owner-confirmed abandonment. |
+| "Active traffic → must preserve" | **STILL VALID** (but threshold lowered) | Any non-zero impression → flag for investigation. |
+| Priority scoring model | **FROZEN** | Cannot score without GSC data. Resume when 30+ days of data exist. |
+
+## 2. Current Role of ~10 Impressions
+
+The ~10 impressions currently in GSC are **early discovery signals only.** They may:
+
+- ✅ Reveal themes Google already associates with Travelvus
+- ✅ Detect URLs unexpectedly receiving visibility
+- ✅ Increase investigation priority for those URLs
+- ❌ Confirm a URL for 410
+- ❌ Prove absence of demand
+- ❌ Prove absence of rankings
+- ❌ Decide any migration definitively
+
+## 3. Evidence We CAN Use Now (without GSC maturity)
+
+| Evidence | Status | Can Decide |
+|----------|--------|-----------|
+| Live HTTP status | ✅ Available | Content removal (404 → plan fix) |
+| Sitemap membership | ✅ Available | Identify indexed vs unindexed |
+| Content quality assessment | ✅ Available | Identify thin vs substantive |
+| WordPress content export | ❌ No access | Would unlock internal link analysis |
+| URL age | ✅ Available | Older URLs may have residual authority |
+| Owner-confirmed abandonment | ✅ Available | `/london/`, `/cities/`, `/europe/` → APPROVED RETIREMENT |
+| SERP manual checks | ✅ Possible | Sample queries, observe presence |
+| Topic / V2 strategic fit | ✅ Available | Direct, Adjacent, Legacy, Low |
+| Backlink evidence | ❌ No tool access | Would need Ahrefs/Semrush |
+| Internal links | ❌ No WP access | Would need WordPress export |
+
+## 4. 7 / 14 / 30 / 60 / 90-Day Observation Plan
+
+| Checkpoint | GSC Data Expected | Decisions Possible | Still Cannot |
+|------------|------------------|-------------------|-------------|
+| **7 days** | ~50-100 impressions, maybe 2-3 clicks | Identify which URLs Google is discovering first | Confirm any 410. Confirm any rebuild priority. |
+| **14 days** | ~200-500 impressions, query patterns emerging | Flag URLs with early query traction. Begin investigating top queries. | Decide any migration action. Score rebuild priority. |
+| **30 days** | 1000+ impressions, stable query sample | First-pass priority scoring for top URLs. Identify clearly-zero URLs. | Confirm 410 (need 60+ days). Finalize build order. |
+| **60 days** | 2000+ impressions, ranking patterns visible | Confirm zero-traffic URLs safe for 410. Score most rebuild candidates. | Finalize all 70 URLs (some may still need 90 days). |
+| **90 days** | 4000+ impressions, mature sample | Final migration decisions for majority of URLs. Only edge cases remain PENDING. | Tiny fraction may still need external backlink data. |
+
+## 5. Revised Migration Decision Framework (Cold-Start)
+
+**Allowed final actions NOW:**
+
+| Action | Condition |
+|--------|-----------|
+| **REBUILD SAME URL** | Strategically clear + V2 components exist + owner approves |
+| **301 TO SPECIFIC URL** | High-confidence duplicate with confirmed primary URL |
+| **APPROVED RETIREMENT** | Owner-confirmed abandoned experiment (`/london/`, `/cities/`, `/europe/`) |
+| **PRESERVE TEMPORARILY** | Any URL with possible value that cannot yet be confirmed |
+| **PENDING EVIDENCE** | All remaining URLs until GSC matures |
+| **410 CANDIDATE** | Thin content + no V2 fit — but NEVER upgrade to CONFIRMED from current GSC |
+
+**Never allowed NOW:**
+- ❌ 410 CONFIRMED (need 60+ days of zero GSC impressions)
+- ❌ Priority scoring based on GSC (need 30+ days)
+- ❌ Migration decisions based on "zero traffic" (GSC is too new)
+
+## 6. Conclusions That Remain Safe NOW
+
+| Conclusion | Safe? | Reason |
+|-----------|-------|--------|
+| 7 high-confidence 301 merges (confirmed duplicates) | ✅ | Content audit, not GSC-dependent |
+| `/home/` → `/` 301 | ✅ | Duplicate URL, self-evident |
+| 12 URLs marked 410 CANDIDATE | ✅ (as CANDIDATE only) | Thin content confirmed. GSC will confirm/deny traffic. |
+| 3 URLs APPROVED RETIREMENT | ✅ | Owner-confirmed abandoned experiment |
+| V2 candidate classification (DIRECT/ADJACENT/LEGACY/LOW) | ✅ | Content + strategy, not traffic-dependent |
+| Top 10 rebuild priorities | ⚠️ | Retain as provisional. GSC may reorder. |
+
+## 7. Conclusions That Must Return to PENDING EVIDENCE
+
+| Previous Conclusion | Must Return To | Reason |
+|--------------------|---------------|--------|
+| Any low-confidence migration action | PENDING EVIDENCE | No GSC data to confirm or deny |
+| Any URL assumed to have "no traffic" | PENDING EVIDENCE | GSC is 24h old — too early |
+| Priority order for rebuilds | PROVISIONAL ONLY | Wait 30+ days for GSC query data |
+
+## 8. Action Executable TODAY Without GSC
+
+**We can rebuild the second Decision Page (Heathrow vs Gatwick) — already done in Phase 16.** The next build(s) should target URLs with:
+
+- ✅ Strategic V2 fit (DIRECT or ADJACENT)
+- ✅ Reusable existing V1 component architecture
+- ✅ Topic that Travelvus can authoritatively answer
+- ✅ No dependency on GSC traffic data to justify
+
+**Candidate:** `/google-flight-matrix/` → Decision Page (flight comparison tool, reusable template, strong V2 fit).
+
+This decision does NOT require GSC data. It is strategically clear from content audit and V2 product fit alone.
+
+---
+
+**DETENTE.** No code. No redirects. No 410. No DNS. No deploy. Awaiting GSC observation checkpoints.
