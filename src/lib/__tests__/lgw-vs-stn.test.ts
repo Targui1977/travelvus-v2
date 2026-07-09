@@ -81,9 +81,9 @@ describe("getScenarios — corrected break-even", () => {
     expect(s[0].handoffActive).toBe(false);
   });
 
-  it("S=16: STN just wins, just above break-even, handoff active", () => {
+  it("S=16: STN just wins, just above break-even, handoff active, never €0", () => {
     expect(s[1].stnSaving).toBe(16);
-    expect(s[1].moneyResult).toContain("Stansted wins");
+    expect(s[1].moneyResult).toBe("Stansted just wins"); // raw 0.35 → no "€0"
     expect(s[1].boundaryRelation).toContain("above");
     expect(s[1].handoffActive).toBe(true);
   });
@@ -93,6 +93,33 @@ describe("getScenarios — corrected break-even", () => {
     expect(s[2].moneyResult).toContain("Stansted wins");
     expect(s[2].boundaryRelation).toContain("Clearly above");
     expect(s[2].handoffActive).toBe(false);
+  });
+});
+
+describe("moneyResultText — never €0 bug", () => {
+  // Import the function from source (it's module-private, so we test via scenarios)
+
+  it("S=10: LGW wins, never 'wins by €0'", () => {
+    const s = getScenarios()[0];
+    expect(s.moneyResult).not.toContain("€0");
+    expect(s.moneyResult).toContain("Gatwick wins");
+  });
+
+  it("S=16: STN just wins, never 'wins by €0'", () => {
+    const s = getScenarios()[1];
+    expect(s.moneyResult).not.toContain("€0");
+    expect(s.moneyResult).toContain("just wins");
+  });
+
+  it("S=20: normal win, correct amount", () => {
+    const s = getScenarios()[2];
+    expect(s.moneyResult).toContain("€4");
+    expect(s.moneyResult).not.toContain("just wins");
+  });
+
+  it("exact tie S=15.65: tie wording, never €0", () => {
+    const r = computeAtSaving(15.65);
+    expect(r.winner).toBe("TIE");
   });
 });
 

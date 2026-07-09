@@ -163,23 +163,31 @@ export function getVerdict(state: VerdictState): {
   }
 }
 
+/* ── Display helper ────────────────────────────────────── */
+
+/** Produce money-result text. Never emits "wins by €0". */
+function moneyResultText(winner: "LGW" | "STN" | "TIE", rawDiff: number): string {
+  const displayAmt = Math.round(Math.abs(rawDiff));
+  if (winner === "TIE") return "Exact tie";
+  const who = winner === "STN" ? "Stansted" : "Gatwick";
+  if (displayAmt === 0) return `${who} just wins`;
+  return `${who} wins by €${displayAmt}`;
+}
+
 /* ── Saving scenarios ──────────────────────────────────── */
 
 export function getScenarios(): SavingScenario[] {
   const t = CANONICAL;
 
-  // S=10: LGW wins (below tie of 15.65)
   const s10 = computeAtSaving(10);
-  // S=16: STN just wins (first whole-euro above tie)
   const s16 = computeAtSaving(16);
-  // S=20: STN clear (canonical)
   const s20 = computeAtSaving(20);
 
   return [
     {
       stnSaving: 10,
       label: "Stansted saves €10",
-      moneyResult: `Gatwick wins by €${Math.round(Math.abs(s10.diff))}`,
+      moneyResult: moneyResultText(s10.winner, s10.diff),
       boundaryRelation: "Below the break-even",
       handoffActive: false,
       handoffText: `At €10 saving, Stansted's cheaper flight does not overcome its €${t.stnFixedDisadvantage} in higher fixed costs. Gatwick is cheaper door-to-door.`,
@@ -187,7 +195,7 @@ export function getScenarios(): SavingScenario[] {
     {
       stnSaving: 16,
       label: "Stansted saves €16",
-      moneyResult: `Stansted wins by €${Math.round(Math.abs(s16.diff))}`,
+      moneyResult: moneyResultText(s16.winner, s16.diff),
       boundaryRelation: "Just above the break-even",
       handoffActive: true,
       handoffText: `At €16, Stansted crosses the break-even — but by less than €1. The margin is razor-thin.`,
@@ -195,7 +203,7 @@ export function getScenarios(): SavingScenario[] {
     {
       stnSaving: 20,
       label: "Stansted saves €20",
-      moneyResult: `Stansted wins by €${Math.round(Math.abs(s20.diff))}`,
+      moneyResult: moneyResultText(s20.winner, s20.diff),
       boundaryRelation: "Clearly above the break-even",
       handoffActive: false,
       handoffText: `At €20, Stansted's flight saving exceeds its higher fixed costs by a clear margin.`,

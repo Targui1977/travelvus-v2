@@ -1092,16 +1092,24 @@ h1, h2, h3, h4, h5, h6, p {
   align-items: center;
 }
 
-/* Handoff visibility fix */
+/* Handoff on paper bg — readable contrast */
+.lvg-handoff-visible {
+  border-top-color: var(--line) !important;
+}
+
 .lvg-handoff-visible .lvg-handoff-kicker {
   font-size: 11px;
   font-weight: 600;
   color: var(--copper);
+  letter-spacing: 0.08em;
 }
 
 .lvg-handoff-visible .lvg-handoff-text {
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.45;
   color: var(--ink);
+  font-family: var(--serif);
 }
 
 /* FAQ list */
