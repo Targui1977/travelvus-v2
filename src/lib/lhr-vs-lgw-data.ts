@@ -23,8 +23,13 @@ export interface CalculatedResult {
   destination: DestinationData;
   lhrTotal: number;
   lgwTotal: number;
+  /** Rounded for display (€323 not €322.82) */
+  lhrDisplay: number;
+  lgwDisplay: number;
   winner: "LHR" | "LGW" | "TIE";
   margin: number;
+  /** Rounded margin for display */
+  marginDisplay: number;
   marginClass: MarginClass;
   timeWinner: "LHR" | "LGW" | "TIE";
 }
@@ -101,6 +106,7 @@ export function calculateResult(dest: DestinationData): CalculatedResult {
   const lgwTotal = PRE_TRANSFER_LGW + dest.lgwTransferCostEUR;
 
   const margin = Math.abs(lhrTotal - lgwTotal);
+  const marginDisplay = Math.round(margin);
   const winner: "LHR" | "LGW" | "TIE" =
     lhrTotal < lgwTotal ? "LHR" : lgwTotal < lhrTotal ? "LGW" : "TIE";
 
@@ -110,7 +116,18 @@ export function calculateResult(dest: DestinationData): CalculatedResult {
     : dest.lgwTransferMins < dest.lhrTransferMins ? "LGW"
     : "TIE";
 
-  return { destination: dest, lhrTotal, lgwTotal, winner, margin, marginClass, timeWinner };
+  return {
+    destination: dest,
+    lhrTotal,
+    lgwTotal,
+    lhrDisplay: Math.round(lhrTotal),
+    lgwDisplay: Math.round(lgwTotal),
+    winner,
+    margin,
+    marginDisplay,
+    marginClass,
+    timeWinner,
+  };
 }
 
 export function classifyMargin(margin: number): MarginClass {
@@ -136,7 +153,7 @@ export function getVerdictText(r: CalculatedResult): {
   isHandoff: boolean;
 } {
   const w = r.winner === "LHR" ? "Heathrow" : r.winner === "LGW" ? "Gatwick" : null;
-  const m = `€${r.margin}`;
+  const m = `€${r.marginDisplay}`;
 
   if (r.marginClass === "NEAR_TIE") {
     return {

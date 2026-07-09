@@ -8,10 +8,8 @@ import { getThresholdData } from "@/lib/lhr-vs-lgw-data";
 export const metadata: Metadata = {
   title: "Heathrow or Gatwick: Which London Airport Is Actually Cheaper? | Travelvus",
   description:
-    "Gatwick usually wins on money — but your London destination determines by how much. A full comparison of real costs, transfer times, and when the answer changes.",
-  alternates: {
-    canonical: "/compare/heathrow-vs-gatwick",
-  },
+    "Gatwick usually wins on money — but your London destination determines by how much. Compare real costs, transfer times, and when the answer changes.",
+  alternates: { canonical: "/compare/heathrow-vs-gatwick" },
 };
 
 const THRESHOLD = getThresholdData();
@@ -38,8 +36,8 @@ export default function DecisionPage() {
         </span>
       </header>
 
-      {/* ═══ 1. HERO — QUESTION + IMMEDIATE ANSWER ═══ */}
-      <section style={{ padding: "44px 38px 24px" }}>
+      {/* ═══ HERO — question + answer ═══ */}
+      <section style={{ padding: "44px 38px 28px" }}>
         <div className="editorial-read" style={{ textAlign: "center" }}>
           <Kicker color="copper" className="mb-[14px]">
             London Airports &middot; Decision
@@ -66,43 +64,52 @@ export default function DecisionPage() {
               color: "var(--muted)",
             }}
           >
-            <span>2 travellers &middot; Barcelona flights &middot; contactless fares</span>
-            <span>&middot;</span>
-            <span>Verified Jul 2026</span>
+            <span>2 travellers &middot; Barcelona flights &middot; Verified Jul 2026</span>
           </div>
         </div>
       </section>
 
-      {/* ═══ 2. LIVE INTERACTIVE — destination selector + verdict + Real Cost ═══ */}
-      <section style={{ padding: "8px 38px 30px" }}>
+      {/* ═══ LIVE DECISION MODULE ═══ */}
+      <section style={{ padding: "0 38px 28px" }}>
         <LhrVsLgwInteractive />
       </section>
 
-      {/* ═══ 3. WHY DESTINATION CHANGES THE MARGIN ═══ */}
-      <section style={{ padding: "6px 38px 10px" }}>
-        <div className="editorial-read dp-prose">
-          <h2>Why destination changes the margin</h2>
-          <p>
-            The same airports. The same flights. But your final destination inside
-            London determines the transfer cost — and that can turn a clear win into
-            almost no win at all.
+      {/* ═══ 02 — THE LINE ═══ */}
+      <section style={{ padding: "8px 38px 24px" }}>
+        <div className="editorial-read">
+          <div className="section-label">
+            <span className="section-label-num">02</span>
+            <span className="section-label-title">The line — where the transfer penalty erases the flight advantage</span>
+          </div>
+          <p className="lvg-evidence-note" style={{ maxWidth: 560, marginBottom: 12 }}>
+            Gatwick flights are about &euro;{Math.abs(THRESHOLD.flightAdvantage)} cheaper
+            for 2 travellers before any transfer costs. Gatwick can absorb up to
+            &euro;{Math.abs(THRESHOLD.flightAdvantage)} in higher transfer costs
+            and still win. Most destinations keep Gatwick&rsquo;s transfer penalty
+            below that line. Paddington — with Heathrow Express advance fares —
+            pushes the transfer advantage high enough to create a near-tie.
           </p>
-          <p>
-            {THRESHOLD.explanation} Most destinations keep Gatwick&rsquo;s transfer
-            penalty below that threshold. Paddington, with Heathrow Express advance
-            fares, pushes the transfer advantage high enough to create a near-tie.
-          </p>
+          <div className="method-box">
+            <b>How this works.</b> Flight advantage (&minus;&euro;34)
+            vs transfer disadvantage (varies by destination). When transfer
+            penalty exceeds flight advantage, the winner changes. For most
+            London destinations, the penalty stays below the threshold — Gatwick
+            holds. Only Paddington pushes it to the boundary.
+          </div>
         </div>
       </section>
 
-      {/* ═══ 4. CONTRAST MOMENT ═══ */}
-      <section style={{ padding: "8px 38px 30px" }}>
+      {/* ═══ 03 — CONTRAST MOMENT ═══ */}
+      <section style={{ padding: "4px 38px 24px" }}>
         <div className="editorial-read">
+          <div className="section-label">
+            <span className="section-label-num">03</span>
+            <span className="section-label-title">Same flights. Two different answers.</span>
+          </div>
           <div className="contrast-section">
-            <h3>Same flights. Two different answers.</h3>
-            <p>
-              Only the final destination changed. Everything else — flights, bags,
-              travellers — stayed the same.
+            <p style={{ maxWidth: 560, margin: "0 0 16px" }}>
+              Only the final destination changed. Everything else — flights,
+              bags, travellers — stayed the same.
             </p>
             <div className="contrast-pair">
               <div className="contrast-card">
@@ -120,13 +127,17 @@ export default function DecisionPage() {
         </div>
       </section>
 
-      {/* ═══ 5. DECISION DEBT ═══ */}
+      {/* ═══ 04 — DECISION DEBT ═══ */}
       <section style={{ padding: "0 38px 20px" }}>
         <div className="editorial-read">
+          <div className="section-label">
+            <span className="section-label-num">04</span>
+            <span className="section-label-title">The hidden trade-offs</span>
+          </div>
           <DecisionDebt
-            title="The hidden trade-offs at each airport"
+            title="What each airport costs beyond money"
             textHtml={
-              'Gatwick&rsquo;s cheaper flights depend on rail access to London. Without a rail connection, taxi costs rise significantly — eroding the fare advantage. Heathrow offers more transport diversity — Tube, Elizabeth Line, Express, taxi, and coach — but flights are typically €10–20 more for comparable routes.'
+              'Gatwick&rsquo;s cheaper flights depend on rail access to London. Without a rail connection, taxi costs rise significantly — eroding the fare advantage. Heathrow offers more transport diversity — Tube, Elizabeth Line, Express, taxi, and coach — but flights are typically &euro;10–20 more for comparable routes.'
             }
             factors={[
               "Rail-dependent",
@@ -139,15 +150,20 @@ export default function DecisionPage() {
         </div>
       </section>
 
-      {/* ═══ 6. CTA ═══ */}
-      <section style={{ padding: "0 38px 20px", textAlign: "center" }}>
-        <a
-          href="/"
-          className="btn-filled inline-block no-underline"
-          style={{ padding: "15px 28px" }}
-        >
-          Open Compare &rarr;
-        </a>
+      {/* ═══ CTA ═══ */}
+      <section style={{ padding: "24px 38px 20px", textAlign: "center" }}>
+        <div className="editorial-read">
+          <p className="font-[var(--serif)] font-normal text-[22px] leading-[1.3] text-[var(--ink)] mb-[16px]">
+            Bring your own two flights.
+          </p>
+          <a
+            href="/"
+            className="btn-filled inline-block no-underline"
+            style={{ padding: "15px 28px", background: "var(--copper)" }}
+          >
+            Open Compare &rarr;
+          </a>
+        </div>
       </section>
 
       {/* ═══ Ad zone ═══ */}
