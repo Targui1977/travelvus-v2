@@ -68,7 +68,7 @@ export default function HomePage() {
         <div className="home-step">
           <span className="home-step-num">01</span>
           <p className="home-step-text">
-            <b>You bring two flights you already found.</b> Ticket price,
+            <b>You bring two flights you already found.</b>{" "}Ticket price,
             airports, departure and arrival times. That&rsquo;s it. No search.
             No booking. You already did the work.
           </p>
@@ -76,7 +76,7 @@ export default function HomePage() {
         <div className="home-step">
           <span className="home-step-num">02</span>
           <p className="home-step-text">
-            <b>We compare the real trip.</b> Checked baggage, seat selection,
+            <b>We compare the real trip.</b>{" "}Checked baggage, seat selection,
             airport transfers, and door-to-door time &mdash; not just the
             ticket price you saw online.
           </p>
@@ -84,7 +84,7 @@ export default function HomePage() {
         <div className="home-step">
           <span className="home-step-num">03</span>
           <p className="home-step-text">
-            <b>You get a verdict you can challenge.</b> See who wins, by how
+            <b>You get a verdict you can challenge.</b>{" "}See who wins, by how
             much, and exactly what would change the answer. Edit variables.
             Test scenarios. Undo. Keep.
           </p>
