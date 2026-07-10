@@ -109,9 +109,9 @@
   text-decoration: underline;
 }
 
-/* Coverage */
+/* Coverage + trust group */
 .coverage {
-  padding: 18px 38px 10px;
+  padding: 24px 38px 0;
   text-align: center;
 }
 
@@ -124,9 +124,9 @@
   margin: 0 auto;
 }
 
-/* Links area */
+/* Methodology link — attached to coverage */
 .links {
-  padding: 6px 38px 16px;
+  padding: 10px 38px 0;
   text-align: center;
 }
 
@@ -135,17 +135,18 @@
   font-size: 11px;
   color: var(--copper);
   text-decoration: none;
-  margin: 0 12px;
 }
 
 .links a:hover {
   text-decoration: underline;
 }
 
-/* CTA */
+/* CTA — deliberate handoff moment */
 .ctaSection {
-  padding: 10px 38px 28px;
+  padding: 40px 38px 34px;
   text-align: center;
+  border-top: 1px solid var(--line);
+  margin-top: 24px;
 }
 
 .ctaLabel {
