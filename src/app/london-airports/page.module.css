@@ -109,6 +109,61 @@
   text-decoration: underline;
 }
 
+/* Question card — links to QP */
+.questionCard {
+  margin: 10px 38px 0;
+  border: 1px solid var(--line-2);
+  border-radius: 12px;
+  background: var(--card);
+  padding: 18px 22px;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.questionCardKicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.questionCardLink {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--ink);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.questionCardLink:hover {
+  color: var(--copper);
+}
+
+.questionCardText {
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 0 0 8px;
+}
+
+.questionCardCta {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--copper);
+}
+
 /* Coverage + trust group */
 .coverage {
   padding: 24px 38px 0;
@@ -165,6 +220,8 @@
   .heroSub { font-size: 14px; }
   .decisionRow { padding: 22px 18px; }
   .rowQuestion { font-size: 20px; }
+  .questionCard { margin-left: 18px; margin-right: 18px; padding: 14px 16px; }
+  .questionCardLink { font-size: 16px; }
   .coverage { padding-left: 18px; padding-right: 18px; }
   .links { padding-left: 18px; padding-right: 18px; }
 }

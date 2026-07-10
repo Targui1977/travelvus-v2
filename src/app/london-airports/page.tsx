@@ -77,6 +77,18 @@ export default function HubPage() {
         ))}
       </div>
 
+      {/* Question card */}
+      <section className={styles.questionCard}>
+        <span className={styles.questionCardKicker}>Question</span>
+        <Link href="/questions/london-airport-break-even" className={styles.questionCardLink}>
+          &ldquo;How much cheaper should a London flight be to justify a different airport?&rdquo;
+        </Link>
+        <p className={styles.questionCardText}>
+          The break-even ranges from about &euro;7 to over &euro;100 — depending on which airports you are comparing. Three real airport pairs, one principle.
+        </p>
+        <span className={styles.questionCardCta}>Read the answer &rarr;</span>
+      </section>
+
       {/* Coverage */}
       <section className={styles.coverage}>
         <p className={styles.coverageText}>

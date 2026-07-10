@@ -1,0 +1,468 @@
+/* Question Page: London Airport Break-Even — CSS Module */
+/* Phase 46: First Question Page. Unique grammar — not a clone of any existing page. */
+
+/* ---- 1. HERO ---- */
+.qpHero {
+  padding: 44px 38px 38px;
+  text-align: center;
+}
+
+.qpHeroKicker {
+  display: block;
+  margin-bottom: 14px;
+}
+
+.qpHeroH1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 660px;
+  margin: 0 auto 18px;
+}
+
+.qpHeroAnswer {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 1.28;
+  color: var(--ink);
+  max-width: 620px;
+  margin: 0 auto 18px;
+}
+
+.qpHeroEvidence {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* ---- 2. SECTIONS ---- */
+.qpSection {
+  padding: 18px 38px 22px;
+}
+
+.qpSectionLabel {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.qpSectionLabelNum {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  letter-spacing: 0.1em;
+}
+
+.qpSectionLabelTitle {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---- 3. BREAK-EVEN MODEL ---- */
+.qpModel {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+.qpModelFormula {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--ink);
+  padding: 14px 18px;
+  background: var(--paper-2);
+  border-radius: 8px;
+  border-left: 3px solid var(--copper);
+  margin-bottom: 14px;
+}
+
+.qpModelProse {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4a5560;
+  max-width: 620px;
+}
+
+/* ---- 4. THREE BREAK-EVEN PROOF STRIPS ---- */
+/* NOT cards. NOT tables. NOT Home proof rows. A new grammar. */
+.breakEvenList {
+  display: flex;
+  flex-direction: column;
+}
+
+.breakEvenStrip {
+  display: flex;
+  align-items: flex-start;
+  gap: 36px;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.breakEvenStrip:first-child {
+  padding-top: 0;
+}
+
+.breakEvenStrip:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.stripLeft {
+  flex: none;
+  min-width: 160px;
+}
+
+.stripPair {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.stripCenter {
+  flex: none;
+  min-width: 110px;
+  text-align: center;
+}
+
+.stripNumber {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.stripRight {
+  flex: 1;
+  min-width: 200px;
+}
+
+.stripQualifier {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.stripExplanation {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin-bottom: 8px;
+}
+
+.stripLink {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--copper);
+  text-decoration: none;
+}
+
+.stripLink:hover {
+  text-decoration: underline;
+}
+
+/* ---- 5. WHAT MOVES THE BREAK-EVEN ---- */
+/* Editorial rows. Mono labels. Sans explanations. No grid. No icons. */
+.whatMovesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.whatMovesRow {
+  display: flex;
+  gap: 20px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: flex-start;
+}
+
+.whatMovesRow:first-child {
+  padding-top: 0;
+}
+
+.whatMovesRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.whatMovesLabel {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1.3;
+  color: var(--ink);
+  flex: none;
+  min-width: 140px;
+  padding-top: 1px;
+}
+
+.whatMovesText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+}
+
+/* ---- 6. COVERAGE BOUNDARY NOTE ---- */
+.coverageNote {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+  padding: 12px 0 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+}
+
+.coverageNote p {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 0 0 8px;
+}
+
+.coverageNote p:last-child {
+  margin-bottom: 0;
+}
+
+.coverageNote a {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--copper);
+  text-decoration: none;
+}
+
+.coverageNote a:hover {
+  text-decoration: underline;
+}
+
+/* ---- 7. DESTINATION-EFFECT PARAGRAPH (inside What Moves) ---- */
+.destEffect {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: var(--paper-2);
+  border-radius: 8px;
+  border-left: 3px solid var(--line-2);
+}
+
+.destEffect p {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 0;
+}
+
+/* ---- 8. HANDOFF BLOCK (navy) ---- */
+/* Adapted from Methodology handoff. Same DNA, QP-specific framing. */
+.handoffBlock {
+  background: var(--navy);
+  color: var(--paper);
+  border-radius: 12px;
+  padding: 30px 32px;
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+.handoffBlockKicker {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper-lt);
+  margin-bottom: 8px;
+}
+
+.handoffBlockHeadline {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+
+.handoffBlockText {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: #c8d0d6;
+  max-width: 520px;
+  margin: 0 0 10px;
+}
+
+.handoffBlockText:last-of-type {
+  margin-bottom: 0;
+}
+
+/* ---- 9. CTA ---- */
+.ctaSection {
+  padding: 20px 38px 20px;
+  text-align: center;
+}
+
+.ctaPrimaryBtn {
+  display: inline-block;
+  background: var(--copper);
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px 28px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  margin-bottom: 20px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.ctaPrimaryBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(184, 92, 56, 0.25);
+  color: #fff;
+}
+
+.ctaSupporting {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaSupporting a {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--copper);
+  text-decoration: none;
+}
+
+.ctaSupporting a:hover {
+  text-decoration: underline;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 720px) {
+  .qpHero {
+    padding: 36px 18px 28px;
+  }
+
+  .qpHeroH1 {
+    font-size: 28px;
+  }
+
+  .qpHeroAnswer {
+    font-size: 22px;
+  }
+
+  .qpSection {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* Proof strips stack vertically */
+  .breakEvenStrip {
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 0;
+  }
+
+  .stripLeft {
+    min-width: 0;
+  }
+
+  .stripCenter {
+    min-width: 0;
+    text-align: left;
+  }
+
+  .stripNumber {
+    font-size: 28px;
+  }
+
+  .stripRight {
+    min-width: 0;
+  }
+
+  /* What moves rows stack */
+  .whatMovesRow {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .whatMovesLabel {
+    min-width: 0;
+  }
+
+  /* Handoff full-width */
+  .handoffBlock {
+    padding: 22px 18px;
+    border-radius: 0;
+    max-width: none;
+    margin-left: -18px;
+    margin-right: -18px;
+    width: calc(100% + 36px);
+  }
+
+  .handoffBlockHeadline {
+    font-size: 22px;
+  }
+
+  .ctaSection {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .ctaPrimaryBtn {
+    display: block;
+    width: 100%;
+  }
+
+  .ctaSupporting {
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+}
