@@ -239,6 +239,9 @@ export default function QuestionPage() {
             Explore all London airport decisions &rarr;
           </Link>
           <Link href="/methodology">How we calculate this &rarr;</Link>
+          <Link href="/google-flight-matrix">
+            Which flight search tool to use? &rarr;
+          </Link>
         </div>
       </section>
 

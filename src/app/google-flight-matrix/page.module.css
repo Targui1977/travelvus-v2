@@ -1,0 +1,410 @@
+/* Tool-Choice Question Page — CSS Module */
+/* Phase 51: ITA Matrix vs Google Flights. TASK→TOOL mechanic. */
+
+/* ---- 1. HERO ---- */
+.hero {
+  padding: 40px 38px 32px;
+  text-align: center;
+}
+
+.heroKicker {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.heroH1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  max-width: 620px;
+  margin: 0 auto 16px;
+}
+
+.heroAnswer {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.3;
+  color: var(--ink);
+  max-width: 600px;
+  margin: 0 auto 14px;
+}
+
+.heroEvidence {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* ---- 2. ENTITY CORRECTION ---- */
+.entityNote {
+  text-align: center;
+  padding: 0 38px 20px;
+}
+
+.entityNote p {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---- 3. SECTIONS ---- */
+.section {
+  padding: 18px 38px 22px;
+}
+
+.sectionLabel {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.sectionLabelNum {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+  letter-spacing: 0.1em;
+}
+
+.sectionLabelTitle {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---- 4. CAPABILITY CONTEXT ---- */
+.contextWrap {
+  max-width: var(--reading-width);
+  margin: 0 auto;
+}
+
+.contextP {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #4a5560;
+  margin: 0 0 16px;
+}
+
+.contextP:last-child {
+  margin-bottom: 0;
+}
+
+.contextP b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* ---- 5. TASK → TOOL SYSTEM ---- */
+.taskList {
+  display: flex;
+  flex-direction: column;
+}
+
+.taskRow {
+  display: flex;
+  align-items: baseline;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+  gap: 24px;
+}
+
+.taskRow:first-child {
+  padding-top: 0;
+}
+
+.taskRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Boundary task — elevated breathing room */
+.taskBoundary {
+  padding-top: 36px;
+  margin-top: 16px;
+  border-top: 1px solid var(--line-2);
+  border-bottom: none;
+}
+
+.taskBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.taskLabel {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.35;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.taskEvidence {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.taskOutcome {
+  flex: none;
+  text-align: right;
+  min-width: 140px;
+}
+
+.taskOutcomeSingle {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.taskOutcomeDual {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+
+.taskOutcomeDual span {
+  display: block;
+  color: var(--copper);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  margin: 2px 0;
+}
+
+/* ---- 6. HINGE ---- */
+.hinge {
+  padding: 10px 38px 8px;
+  text-align: center;
+}
+
+.hingeRule {
+  border: none;
+  border-top: 1px solid var(--line);
+  max-width: var(--reading-width);
+  margin: 0 auto 10px;
+}
+
+.hingeLine {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+/* ---- 7. HANDOFF RELAY ---- */
+.relay {
+  display: flex;
+  gap: 0;
+  max-width: 680px;
+  margin: 0 auto;
+  align-items: flex-start;
+}
+
+.relayStage {
+  flex: 1;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.relayStage:first-child {
+  padding-left: 0;
+}
+
+.relayStage:last-child {
+  padding-right: 0;
+}
+
+.relayConnector {
+  flex: none;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 8px;
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--copper);
+  line-height: 1;
+}
+
+.relayNum {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  color: var(--copper);
+  margin-bottom: 7px;
+}
+
+.relayLabel {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+
+.relayText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 0;
+}
+
+/* ---- 8. CTA ---- */
+.ctaSection {
+  padding: 24px 38px 20px;
+  text-align: center;
+}
+
+.ctaPrimaryBtn {
+  display: inline-block;
+  background: var(--copper);
+  color: #fff;
+  border-radius: 10px;
+  padding: 15px 28px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  margin-bottom: 18px;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.ctaPrimaryBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(184, 92, 56, 0.25);
+  color: #fff;
+}
+
+.ctaSupporting {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ctaSupporting a {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--copper);
+  text-decoration: none;
+}
+
+.ctaSupporting a:hover {
+  text-decoration: underline;
+}
+
+/* ---- RESPONSIVE ---- */
+@media (max-width: 720px) {
+  .hero {
+    padding: 32px 18px 24px;
+  }
+
+  .heroH1 {
+    font-size: 28px;
+  }
+
+  .heroAnswer {
+    font-size: 20px;
+  }
+
+  .entityNote {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .section {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  /* Tasks stack */
+  .taskRow {
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 0;
+  }
+
+  .taskOutcome {
+    text-align: left;
+    min-width: 0;
+  }
+
+  /* Handoff relay stacks vertically */
+  .relay {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .relayStage {
+    padding: 0;
+    text-align: left;
+  }
+
+  .relayConnector {
+    padding-top: 0;
+    text-align: center;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .hinge {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .ctaSection {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .ctaPrimaryBtn {
+    display: block;
+    width: 100%;
+  }
+
+  .ctaSupporting {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+}

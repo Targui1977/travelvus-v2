@@ -101,6 +101,10 @@ export default function HomePage() {
           <Link href="/questions/london-airport-break-even" className="text-[var(--copper)] no-underline hover:underline">
             Break-even question &rarr;
           </Link>
+          {" "}&middot;{" "}
+          <Link href="/google-flight-matrix" className="text-[var(--copper)] no-underline hover:underline">
+            Which flight search tool? &rarr;
+          </Link>
         </p>
       </section>
 
