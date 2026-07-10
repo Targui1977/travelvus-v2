@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useCallback, useMemo } from "react";
+import Link from "next/link";
 import { calcRealCost, monetaryWinner, detectChange, estimateThreshold } from "@/lib/decision-engine";
 import { deriveEditorial, deriveThreshold, deriveFlips, deriveContextStrip, deriveChangedConsequence } from "@/lib/derive-content";
 import type { CostLine, OptionResult, OptionId, FullResultData } from "@/lib/types";
@@ -16,6 +17,7 @@ import {
   RobustnessNote,
 } from "@/components/result";
 import Signature from "@/components/ui/Signature";
+import styles from "./page.module.css";
 
 /* ── Helpers ────────────────────────────────────────────── */
 
@@ -55,6 +57,7 @@ interface ResultClientProps {
   initialOptionB: OptionResult;
   initialVerdict: FullResultData["verdict"];
   initialSupported: boolean;
+  isDemo: boolean;
   initialDataRef: FullResultData;
 }
 
@@ -65,6 +68,7 @@ export default function ResultClient({
   initialOptionB,
   initialVerdict,
   initialSupported,
+  isDemo,
   initialDataRef: d,
 }: ResultClientProps) {
   /* State */
@@ -196,6 +200,19 @@ export default function ResultClient({
         </span>
 
         <nav className="app-header-nav mobile:hidden">
+          <Link
+            href="/"
+            style={{
+              fontFamily: "var(--sans)",
+              fontWeight: 500,
+              fontSize: 13,
+              lineHeight: 1,
+              color: "var(--muted)",
+              textDecoration: "none",
+            }}
+          >
+            &larr; Compare
+          </Link>
           <button
             onClick={() => setShowEdit(!showEdit)}
             className="cursor-pointer bg-transparent border-0 p-0"
@@ -497,7 +514,7 @@ export default function ResultClient({
 
       {/* ═══ Mobile Undo/Keep footer ═══ */}
       {isChanged && (
-        <div className="hidden mobile:flex gap-[10px] undo-keep-row">
+        <div className="hidden mobile:flex gap-[10px] items-center mt-[20px]">
           <button
             className="btn-outline flex-1"
             onClick={undo}
@@ -514,6 +531,59 @@ export default function ResultClient({
           </button>
         </div>
       )}
+
+      {/* ═══ Continuation Block ═══ */}
+      {!isChanged && (
+        <div className={styles.continuationBlock}>
+          <hr className={styles.continuationDivider} />
+
+          {/* Primary action */}
+          {isDemo ? (
+            <Link href="/#compare" className={styles.primaryAction}>
+              Compare your own flights &rarr;
+            </Link>
+          ) : initialSupported ? (
+            <Link href="/#compare" className={styles.primaryAction}>
+              Compare another pair &rarr;
+            </Link>
+          ) : (
+            <Link href="/methodology" className={styles.primaryAction}>
+              How we calculate this &rarr;
+            </Link>
+          )}
+
+          {/* Secondary links */}
+          <div className={styles.secondaryLinks}>
+            {!initialSupported ? (
+              <>
+                <Link href="/#compare" className={styles.secondaryLink}>
+                  Compare another pair &rarr;
+                </Link>
+              </>
+            ) : (
+              <>
+                <Link href="/methodology" className={styles.secondaryLink}>
+                  How we calculate this &rarr;
+                </Link>
+                <span className={styles.secondarySep}>&middot;</span>
+                <Link
+                  href="/questions/london-airport-break-even"
+                  className={styles.secondaryLink}
+                >
+                  How break-evens work &rarr;
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ═══ Reduced Product Footer ═══ */}
+      <footer className={styles.resultFooter}>
+        <Link href="/">Home</Link>
+        <Link href="/methodology">How Travelvus works</Link>
+        <Link href="/london-airports">London Airports</Link>
+      </footer>
     </div>
   );
 }

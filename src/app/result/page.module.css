@@ -1,0 +1,95 @@
+/* Result Continuation — CSS Module */
+/* Phase 55: quiet editorial ending after the verdict */
+
+/* ---- Continuation Block ---- */
+.continuationBlock {
+  padding: 18px 38px 0;
+}
+
+.continuationDivider {
+  border: none;
+  border-top: 1px solid var(--line);
+  margin: 0 0 16px;
+}
+
+.primaryAction {
+  display: block;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--copper);
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+
+.primaryAction:hover {
+  color: #8f4327;
+}
+
+.secondaryLinks {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.secondaryLink {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.secondaryLink:hover {
+  color: var(--copper);
+}
+
+.secondarySep {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* ---- Reduced Footer ---- */
+.resultFooter {
+  padding: 14px 38px 24px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  margin-top: 22px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.resultFooter a {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.resultFooter a:hover {
+  color: var(--copper);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+  .continuationBlock {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .resultFooter {
+    padding-left: 18px;
+    padding-right: 18px;
+    gap: 14px;
+  }
+}

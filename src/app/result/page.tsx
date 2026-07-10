@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import ResultClient from "./ResultClient";
 import { decodeCompareParams } from "@/lib/navigation";
 import { normalizeInput, isSupportedComparison, buildVerdict } from "@/lib/normalize";
@@ -5,11 +6,11 @@ import { MOCK_RESULT } from "@/lib/mock-data";
 import { calcRealCost, monetaryWinner } from "@/lib/decision-engine";
 import type { OptionResult } from "@/lib/types";
 
-/**
- * Server component — reads searchParams at request time,
- * normalizes data, and passes to ResultClient as props.
- * SSR produces visible content (no Suspense fallback for SEO).
- */
+export const metadata: Metadata = {
+  title: "Travelvus — Comparison Result",
+  robots: "noindex, follow",
+};
+
 export default async function ResultPage({
   searchParams,
 }: {
@@ -71,12 +72,15 @@ export default async function ResultPage({
     initialSupported = true;
   }
 
+  const isDemo = !norm;
+
   return (
     <ResultClient
       initialOptionA={initialOptionA}
       initialOptionB={initialOptionB}
       initialVerdict={initialVerdict}
       initialSupported={initialSupported}
+      isDemo={isDemo}
       initialDataRef={d}
     />
   );
