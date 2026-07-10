@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "ITA Matrix vs Google Flights: Which Flight Search Tool? | Travelvus",
   description:
     "For most searches, Google Flights. For advanced routing control, ITA Matrix. Neither calculates the real trip cost — Travelvus does. Verified July 2026.",
-  alternates: { canonical: "/google-flight-matrix/" },
+  alternates: { canonical: "/google-flight-matrix" },
 };
 
 const TASKS = [
