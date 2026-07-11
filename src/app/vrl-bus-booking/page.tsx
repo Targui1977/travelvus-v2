@@ -21,7 +21,7 @@ export default function VrlBusBookingPage() {
         <nav className="app-header-nav mobile:hidden">
           <span>Compare</span>
           <Link href="/london-airports" className="no-underline">Airports</Link>
-          <span>Guides</span>
+          <Link href="/wego-flight" className="no-underline">Guides</Link>
         </nav>
         <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
       </header>

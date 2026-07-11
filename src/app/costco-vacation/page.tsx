@@ -14,7 +14,7 @@ export default function CostcoVacationPage() {
     <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
       <header className="app-header">
         <span className="app-header-brand"><span className="app-header-wordmark">Travelvus</span><span className="app-header-line" /><span className="app-header-dot" /></span>
-        <nav className="app-header-nav mobile:hidden"><span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><span>Guides</span></nav>
+        <nav className="app-header-nav mobile:hidden"><span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link></nav>
         <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
       </header>
 

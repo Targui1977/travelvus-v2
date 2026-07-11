@@ -18,7 +18,7 @@ export default function InterrailingPage() {
           <span className="app-header-line" /><span className="app-header-dot" />
         </span>
         <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><span>Guides</span>
+          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link>
         </nav>
         <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
       </header>

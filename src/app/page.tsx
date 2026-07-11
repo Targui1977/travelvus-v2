@@ -1,219 +1,285 @@
 import type { Metadata } from "next";
 import { QuickCompare } from "@/components/compare";
 import Link from "next/link";
+import styles from "./page.module.css";
 
-/* ── SEO ─────────────────────────────────────────────── */
 export const metadata: Metadata = {
   title: "Travelvus — Compare Two Flights and Find Out Which Really Wins",
   description:
-    "Found two flights and can't decide? Travelvus compares the real trip — door-to-door costs, baggage, transfers, and time. Verified for London airports.",
+    "The cheapest ticket isn't always the cheapest journey. We compare the complete trip — ticket, baggage, transfer and time.",
   alternates: { canonical: "/" },
 };
 
-/* ═══════════════════════════════════════════════════════ */
-
 export default function HomePage() {
   return (
-    <div className="max-w-[var(--container-compare)] mx-auto w-full bg-[var(--paper)] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      {/* ═══ Header ═══ */}
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span className="text-[var(--ink)]">Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <span>Guides</span>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">
-          &#9776;
-        </span>
-      </header>
+    <div style={{ background: "#F4F1EA", color: "#1E2A33", minHeight: "100vh" }}>
+      <div style={{ maxWidth: 1240, margin: "0 auto", background: "#F4F1EA" }}>
 
-      {/* ═══ 1. HERO ═══ */}
-      <section className="home-hero">
-        <span
-          className="kicker mb-[14px]"
-          style={{ color: "var(--copper)", display: "block", textAlign: "center" }}
-        >
-          Travelvus
-        </span>
-        <h1 className="home-hero-h1">
-          The ticket price shows one number.
-          <br />
-          We compare the real trip.
-        </h1>
-        <p className="home-hero-sub">
-          Bring two flights you already found. Travelvus adds baggage, airport
-          transfers, and door-to-door time. Then tells you which really wins
-          &mdash; and what would change the answer.
-        </p>
-        <a href="#compare" className="home-hero-cta">
-          Compare your flights &darr;
-        </a>
-        <p className="home-hero-evidence">
-          Verified for London airports &middot; Heathrow, Gatwick, Stansted
-          &middot; 3 real comparisons below
-        </p>
-      </section>
+        {/* ═══ HEADER ═══ */}
+        <header className={styles.header}>
+          <span className={styles.headerBrand}>
+            <span className={styles.headerWordmark}>Travelvus</span>
+            <span className={styles.headerLine} />
+            <span className={styles.headerDot} />
+          </span>
+          <nav className={styles.headerNav}>
+            <Link href="/">Compare</Link>
+            <Link href="/london-airports">Airport Decisions</Link>
+            <Link href="/wego-flight">Guides</Link>
+            <Link href="/#compare" className={styles.headerCta}>Open Engine →</Link>
+          </nav>
+        </header>
 
-      {/* ═══ 2. HOW TRAVELVUS THINKS ═══ */}
-      <section className="home-how">
-        <div className="section-label">
-          <span className="section-label-num"></span>
-          <span className="section-label-title">How Travelvus thinks</span>
+        {/* ═══ HERO ═══ */}
+        <section className={styles.hero}>
+          <h1 className={styles.heroH1}>The cheapest ticket isn&rsquo;t<br />always the cheapest journey.</h1>
+          <p className={styles.heroSub}>We compare the complete journey cost — ticket, baggage, transfer and time.</p>
+        </section>
+        <div className={styles.heroMicro}>
+          <p>Already found two flights? Paste them in — we&rsquo;ll calculate the real winner.</p>
         </div>
-        <div className="home-step">
-          <span className="home-step-num">01</span>
-          <p className="home-step-text">
-            <b>You bring two flights you already found.</b>{" "}Ticket price,
-            airports, departure and arrival times. That&rsquo;s it. No search.
-            No booking. You already did the work.
-          </p>
-        </div>
-        <div className="home-step">
-          <span className="home-step-num">02</span>
-          <p className="home-step-text">
-            <b>We compare the real trip.</b>{" "}Checked baggage, seat selection,
-            airport transfers, and door-to-door time &mdash; not just the
-            ticket price you saw online.
-          </p>
-        </div>
-        <div className="home-step">
-          <span className="home-step-num">03</span>
-          <p className="home-step-text">
-            <b>You get a verdict you can challenge.</b>{" "}See who wins, by how
-            much, and exactly what would change the answer. Edit variables.
-            Test scenarios. Undo. Keep.
-          </p>
-        </div>
-        <p className="lvg-evidence-note" style={{ marginTop: 10 }}>
-          <Link href="/methodology" className="text-[var(--copper)] no-underline hover:underline">
-            How Travelvus works &rarr;
+
+        {/* ═══ COMPARISON ENGINE (static demo) ═══ */}
+        <section className={styles.engineWrap}>
+          <div className={styles.engine}>
+            <div className={styles.engineHd}>
+              <span>Verified transfer data</span>
+              <span className={styles.engineHdDot}>
+                <span className={styles.engineLiveDot} />
+                Calculated now
+              </span>
+            </div>
+
+            <div className={styles.engineCols}>
+              {/* Option A — Gatwick (loses) */}
+              <div className={styles.engineCol}>
+                <div className={styles.engineColHd}>
+                  <span className={styles.engineColLabel}>Option A · Gatwick</span>
+                  <span className={`${styles.engineColBadge} ${styles.engineColBadgeLose}`}>A</span>
+                </div>
+                <div className={styles.engineRow}><span>Ticket</span><span className={styles.engineRowAmount}>£58</span></div>
+                <div className={styles.engineRow}><span>Cabin bag</span><span className={styles.engineRowAmount}>Included</span></div>
+                <div className={styles.engineRow}><span>Checked bag</span><span className={styles.engineRowAmount}>+£42</span></div>
+                <div className={styles.engineRow}><span>Airport transfer</span><span className={styles.engineRowAmount}>+£71</span></div>
+                <div className={styles.engineRow}><span>Door-to-door time</span><span className={styles.engineRowAmount}>3h 52m</span></div>
+                <div className={styles.engineTotal}>
+                  <span className={styles.engineTotalLabel}>Real cost</span>
+                  <span className={styles.engineTotalLose}>£171</span>
+                </div>
+              </div>
+
+              {/* Option B — Heathrow (wins) */}
+              <div className={styles.engineCol}>
+                <div className={styles.engineColHd}>
+                  <span className={styles.engineColLabel}>Option B · Heathrow</span>
+                  <span className={`${styles.engineColBadge} ${styles.engineColBadgeWin}`}>B</span>
+                </div>
+                <div className={styles.engineRow}><span>Ticket</span><span className={styles.engineRowAmount}>£126</span></div>
+                <div className={styles.engineRow}><span>Cabin bag</span><span className={styles.engineRowAmount}>Included</span></div>
+                <div className={styles.engineRow}><span>Checked bag</span><span className={styles.engineRowAmount}>Included</span></div>
+                <div className={styles.engineRow}><span>Airport transfer</span><span className={styles.engineRowAmount}>+£18</span></div>
+                <div className={styles.engineRow}><span>Door-to-door time</span><span className={styles.engineRowAmount}>2h 41m</span></div>
+                <div className={styles.engineTotal}>
+                  <span className={styles.engineTotalLabel}>Real cost</span>
+                  <span className={styles.engineTotalWin}>£144</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Verdict */}
+            <div className={styles.verdict}>
+              <div className={styles.verdictHd}>
+                <span className={styles.verdictKicker}>Travelvus verdict</span>
+                <span className={styles.verdictSig}>
+                  <span className={styles.verdictSigLine} />
+                  <span className={styles.verdictSigDot} />
+                </span>
+              </div>
+              <div className={styles.verdictHeadline}>Heathrow wins.</div>
+              <div className={styles.verdictStats}>
+                <div>
+                  <div className={styles.verdictStatLabel}>Real trip cost</div>
+                  <div className={styles.verdictStatVal}>£144</div>
+                </div>
+                <div>
+                  <div className={styles.verdictStatLabel}>Money saved</div>
+                  <div className={styles.verdictStatSaved}>£27</div>
+                </div>
+                <div>
+                  <div className={styles.verdictStatLabel}>Journey time</div>
+                  <div className={styles.verdictStatVal}>71 min faster</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.engineCta}>
+            <a href="#compare" className={styles.engineCtaBtn}>Reveal the real winner</a>
+          </div>
+          <div className={styles.engineTrust}>
+            <span>Verified London transfer data</span>
+            <span className={styles.engineTrustSep}>·</span>
+            <span>TfL</span>
+            <span className={styles.engineTrustSep}>·</span>
+            <span>National Rail</span>
+            <span className={styles.engineTrustSep}>·</span>
+            <span>Updated daily</span>
+          </div>
+        </section>
+
+        {/* ═══ REAL QUICK COMPARE ═══ */}
+        <section id="compare" className={styles.qcSection}>
+          <div className={styles.qcSectionLabel}>Compare your own flights</div>
+          <div className={styles.qcWrapper}>
+            <QuickCompare standalone={false} />
+          </div>
+        </section>
+
+        {/* ═══ HOW TRAVELVUS THINKS ═══ */}
+        <section className={styles.howSection}>
+          <div className={styles.howGrid}>
+            <div className={styles.howStep}>
+              <div className={styles.howIcon}><span className={styles.howIconInner} /></div>
+              <div className={styles.howLabel}>Add both flights</div>
+            </div>
+            <div className={styles.howStep}>
+              <div className={styles.howIcon}><span className={styles.howIconBar} /></div>
+              <div className={styles.howLabel}>We add the hidden costs</div>
+            </div>
+            <div className={styles.howStep}>
+              <div className={`${styles.howIcon} ${styles.howIconDark}`}><span className={styles.howIconCircle} /></div>
+              <div className={styles.howLabel}>See the real winner</div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ REAL COMPARISON STORIES ═══ */}
+        <section className={styles.storiesSection}>
+          <h2 className={styles.storiesH2}>Real comparison stories</h2>
+          <div className={styles.storiesGrid}>
+            <Link href="/compare/heathrow-vs-gatwick/" className={styles.storyCard}>
+              <img src="/home/canary-wharf-dlr.webp" alt="DLR platform near Canary Wharf in London" className={styles.storyImg} />
+              <div className={styles.storyBody}>
+                <span className={styles.storyKicker}>Heathrow vs Gatwick · Canary Wharf</span>
+                <div className={`${styles.storyNumber} ${styles.storyNumberDark}`}>€37</div>
+                <p className={styles.storyText}>A robust Gatwick win — the flight advantage survives the transfer almost intact.</p>
+              </div>
+            </Link>
+            <Link href="/compare/heathrow-vs-gatwick/" className={styles.storyCard}>
+              <img src="/home/paddington-station.webp" alt="Interior of London Paddington railway station" className={styles.storyImg} />
+              <div className={styles.storyBody}>
+                <span className={styles.storyKicker}>Heathrow vs Gatwick · Paddington</span>
+                <div className={`${styles.storyNumber} ${styles.storyNumberCopper}`}>€1</div>
+                <p className={styles.storyText}>A near-tie — the transfer eats the flight advantage. Money stops deciding here.</p>
+              </div>
+            </Link>
+          </div>
+        </section>
+
+        {/* ═══ POPULAR AIRPORT DECISIONS ═══ */}
+        <section className={styles.decisionsSection}>
+          <h2 className={styles.decisionsH2}>Popular airport decisions</h2>
+          <Link href="/compare/heathrow-vs-gatwick/" className={styles.decisionRow}>
+            <span className={styles.decisionPair}>Heathrow vs Gatwick</span>
+            <p className={styles.decisionText}>The winner changes with your destination — €37 to €1.</p>
+            <span className={styles.decisionCta}>Compare →</span>
           </Link>
-          {" "}&middot;{" "}
-          <Link href="/london-airports" className="text-[var(--copper)] no-underline hover:underline">
-            All London comparisons &rarr;
+          <Link href="/compare/heathrow-vs-stansted/" className={styles.decisionRow}>
+            <span className={styles.decisionPair}>Heathrow vs Stansted</span>
+            <p className={styles.decisionText}>The budget ticket rarely survives baggage and a long coach transfer.</p>
+            <span className={styles.decisionCta}>Compare →</span>
           </Link>
-          {" "}&middot;{" "}
-          <Link href="/questions/london-airport-break-even" className="text-[var(--copper)] no-underline hover:underline">
-            Break-even question &rarr;
+          <Link href="/compare/gatwick-vs-stansted/" className={styles.decisionRow}>
+            <span className={styles.decisionPair}>Gatwick vs Stansted</span>
+            <p className={styles.decisionText}>Similar tickets, different transfers — the door-to-door cost rarely matches.</p>
+            <span className={styles.decisionCta}>Compare →</span>
           </Link>
-          {" "}&middot;{" "}
-          <Link href="/google-flight-matrix" className="text-[var(--copper)] no-underline hover:underline">
-            Which flight search tool? &rarr;
-          </Link>
-        </p>
-      </section>
+        </section>
 
-      {/* ═══ 3. PROOF CARDS ═══ */}
-      <section className="home-proofs">
-        <div className="section-label">
-          <span className="section-label-num"></span>
-          <span className="section-label-title">Real comparisons</span>
-        </div>
-        <div className="home-proof-grid">
-          {/* Card 1: LHR vs STN */}
-          <Link href="/compare/heathrow-vs-stansted/" className="home-proof-card">
-            <span className="home-proof-eyebrow">Hidden real cost</span>
-            <span className="home-proof-insight">
-              &ldquo;The &euro;58 ticket produced a &euro;204 journey.&rdquo;
-            </span>
-            <span className="home-proof-evidence">
-              Once the checked bag and night taxi were counted, Heathrow saved
-              &euro;33 &mdash; despite the &euro;68 higher fare.
-            </span>
-            <span className="home-proof-link">Heathrow vs Stansted &rarr;</span>
-          </Link>
+        {/* ═══ TRAVEL QUESTIONS ═══ */}
+        <section className={styles.questionsSection}>
+          <h2 className={styles.questionsH2}>Travel questions</h2>
+          <div className={styles.questionsGrid}>
+            <div className={styles.questionItem}>
+              <div className={styles.questionTitle}>Is it worth flying budget to save £40?</div>
+              <p className={styles.questionText}>Once baggage and transfer are counted, the saving rarely survives.</p>
+              <Link href="/questions/london-airport-break-even" className={styles.questionCta}>Read the answer →</Link>
+            </div>
+            <div className={styles.questionItem}>
+              <div className={styles.questionTitle}>Does the landing airport matter more than price?</div>
+              <p className={styles.questionText}>For some destinations, yes — the transfer can outweigh the ticket saving.</p>
+              <Link href="/compare/heathrow-vs-gatwick/" className={styles.questionCta}>Read the answer →</Link>
+            </div>
+          </div>
+        </section>
 
-          {/* Card 2: LHR vs LGW */}
-          <Link href="/compare/heathrow-vs-gatwick/" className="home-proof-card">
-            <span className="home-proof-eyebrow">Destination matters</span>
-            <span className="home-proof-insight">
-              &ldquo;Gatwick usually wins on money &mdash; but your destination
-              changes the margin.&rdquo;
-            </span>
-            <span className="home-proof-evidence">
-              Same flights, same travellers. Only the London destination
-              changed. Paddington: near-tie. Canary Wharf: &euro;37 Gatwick win.
-            </span>
-            <span className="home-proof-link">Heathrow vs Gatwick &rarr;</span>
-          </Link>
+        {/* ═══ FEATURED GUIDES ═══ */}
+        <section className={styles.guidesSection}>
+          <h2 className={styles.guidesH2}>Featured guides</h2>
+          <div className={styles.guidesGrid}>
+            <div>
+              <img src="/home/heathrow-express.webp" alt="Heathrow Express train at a station platform" className={styles.guideCardImg} />
+              <div className={styles.guideCardTitle}>Heathrow to central London</div>
+              <p className={styles.guideCardText}>Every route and price, and when the Express is worth it.</p>
+              <Link href="/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system" className={styles.guideCardCta}>Read guide →</Link>
+            </div>
+            <div>
+              <img src="/home/airport-check-in-baggage.webp" alt="Airport check-in counters with passenger baggage" className={styles.guideCardImg} />
+              <div className={styles.guideCardTitle}>Baggage fees, compared honestly</div>
+              <p className={styles.guideCardText}>Where the &ldquo;cheap&rdquo; airlines make it back — and how to avoid it.</p>
+              <Link href="/tsa-precheck-cost" className={styles.guideCardCta}>Read guide →</Link>
+            </div>
+            <div>
+              <img src="/home/family-airport-travel.webp" alt="Family travelling through an airport with luggage" className={styles.guideCardImg} />
+              <div className={styles.guideCardTitle}>Travelling as a group of four</div>
+              <p className={styles.guideCardText}>How group size changes the math without changing the winner.</p>
+              <Link href="/kayak-flights" className={styles.guideCardCta}>Read guide →</Link>
+            </div>
+          </div>
+        </section>
 
-          {/* Card 3: LGW vs STN */}
-          <Link href="/compare/gatwick-vs-stansted/" className="home-proof-card">
-            <span className="home-proof-eyebrow">The saving that nearly vanished</span>
-            <span className="home-proof-insight">
-              &ldquo;Stansted saves &euro;20 on the flight &mdash; but &euro;16
-              more in fixed costs leaves only &euro;4.&rdquo;
-            </span>
-            <span className="home-proof-evidence">
-              Stansted was cheaper on the ticket but baggage and a longer train
-              journey nearly erased the gain.
-            </span>
-            <span className="home-proof-link">Gatwick vs Stansted &rarr;</span>
-          </Link>
-        </div>
-      </section>
+        {/* ═══ METHODOLOGY ═══ */}
+        <section className={styles.methodSection}>
+          <div className={styles.methodInner}>
+            <span className={styles.methodKicker}>Methodology</span>
+            <p className={styles.methodText}>Travelvus adds ticket price, checked baggage and the transfer to your actual destination — then compares the complete door-to-door cost, not just the fare.</p>
+            <Link href="/methodology" className={styles.methodCta}>Read our methodology →</Link>
+          </div>
+        </section>
 
-      {/* ═══ 4. QUICK COMPARE ═══ */}
-      <section id="compare" className="home-compare-section">
-        <div className="section-label" style={{ paddingLeft: 38, paddingRight: 38, marginBottom: 12 }}>
-          <span className="section-label-num"></span>
-          <span className="section-label-title">Compare your flights</span>
-        </div>
-        <div className="compare-body-wrapper">
-          <QuickCompare standalone={false} />
-        </div>
-      </section>
+        {/* ═══ FOOTER ═══ */}
+        <footer className={styles.footer}>
+          <div className={styles.footerGrid}>
+            <div>
+              <span className={styles.footerBrand}>Travelvus</span>
+              <p className={styles.footerBrandText}>Decision engine for smarter air travel.</p>
+            </div>
+            <div>
+              <div className={styles.footerColTitle}>Product</div>
+              <div className={styles.footerColLinks}>
+                <Link href="/">Compare</Link>
+                <Link href="/london-airports">Airport Decisions</Link>
+                <Link href="/wego-flight">Travel Guides</Link>
+                <Link href="/methodology">Methodology</Link>
+              </div>
+            </div>
+            <div>
+              <div className={styles.footerColTitle}>Company</div>
+              <div className={styles.footerColLinks} style={{ marginBottom: 28 }}>
+                <Link href="/about">About</Link>
+                <Link href="/contact">Contact</Link>
+              </div>
+              <div className={styles.footerColTitle} style={{ marginBottom: 12 }}>Verified with</div>
+              <p className={styles.footerVerified}>TfL · National Rail · Public airport information</p>
+            </div>
+          </div>
+          <div className={styles.footerBottom}>
+            <span className={styles.footerTagline}>Know the real cost before you book.</span>
+            <span className={styles.footerCopy}>© 2026 Travelvus</span>
+          </div>
+        </footer>
 
-      {/* ═══ 5. BOUNDARIES ═══ */}
-      <section className="home-bounds">
-        <div className="section-label">
-          <span className="section-label-num"></span>
-          <span className="section-label-title">What Travelvus can answer today</span>
-        </div>
-        <div className="home-bounds-content">
-          <p>
-            <b>Currently verified for London airports:</b> Heathrow, Gatwick,
-            and Stansted.
-          </p>
-          <p>
-            For these airports, we compare real cost (ticket + baggage +
-            transfer), door-to-door journey time, what would change the
-            winner, and hidden trade-offs between options.
-          </p>
-          <p>
-            <b>For other airports,</b> you can still compare ticket prices
-            &mdash; and we&rsquo;ll tell you honestly when we don&rsquo;t yet
-            have the full transfer data to judge the complete trip.
-          </p>
-          <p className="home-bounds-note">
-            Travelvus calculates the money truth. Whether the saving is worth
-            the extra journey time is personal &mdash; we hand that decision
-            to you.
-          </p>
-        </div>
-      </section>
-
-      {/* ═══ 6. FOOTER ═══ */}
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/compare/heathrow-vs-stansted/">Heathrow vs Stansted</Link>
-          <Link href="/compare/heathrow-vs-gatwick/">Heathrow vs Gatwick</Link>
-          <Link href="/compare/gatwick-vs-stansted/">Gatwick vs Stansted</Link>
-        </div>
-        <div className="home-footer-ad">
-          <div className="ad-zone">Ad &middot; editorial zone only</div>
-        </div>
-        <p className="home-footer-note">
-          &copy; 2026 Travelvus. Methodology: walk-up contactless fares, UK
-          transport at 1 GBP &asymp; 1.17 EUR. All totals rounded.
-        </p>
-      </footer>
+      </div>
     </div>
   );
 }
