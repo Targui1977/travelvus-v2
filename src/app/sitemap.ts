@@ -17,5 +17,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/vrl-bus-booking`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: `${baseUrl}/trimet-trip-planner`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
     { url: `${baseUrl}/top-rated-tourists-attractions-in-rome`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/tsa-precheck-cost`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/kayak-flights`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/points-guy`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/irctc-train-ticket-booking`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/defense-travel-system`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/bart-trip-planner`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
+    { url: `${baseUrl}/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.5 },
   ];
 }
