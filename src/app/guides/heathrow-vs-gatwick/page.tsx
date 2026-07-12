@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
+import FAQAccordion from "@/components/guide/FAQAccordion";
+import MobileTOC from "@/components/guide/MobileTOC";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -68,9 +70,7 @@ function GuidePage() {
                 ))}
               </ul>
             </div>
-            <div className={styles.tocMobile}>
-              <button className={styles.tocMobileBtn}>On this page <span>+</span></button>
-            </div>
+            <MobileTOC items={TOC_ITEMS.map((label, i) => ({ label, anchor: `#section-${i}` }))} />
           </div>
 
           <div className={styles.guideContent}>
@@ -241,22 +241,12 @@ function GuidePage() {
 
             {/* FAQ */}
             <h2 id="section-7">FAQ</h2>
-            <div className={styles.faqItem}>
-              <button className={styles.faqTrigger}>Is Heathrow always more expensive on the ticket? <span>+</span></button>
-              <div className={styles.faqPanel}><p>Not always. Heathrow has a wider range of airlines including budget carriers. But for comparable routes and airlines, Heathrow tickets tend to be £30–£90 more expensive than Gatwick.</p></div>
-            </div>
-            <div className={styles.faqItem}>
-              <button className={styles.faqTrigger}>Can I use Oyster or contactless at both airports? <span>+</span></button>
-              <div className={styles.faqPanel}><p>Yes. Both Heathrow and Gatwick accept Oyster cards and contactless payment on TfL and National Rail services. Gatwick Express also accepts contactless but not Oyster.</p></div>
-            </div>
-            <div className={styles.faqItem}>
-              <button className={styles.faqTrigger}>What if I am travelling as a family or group? <span>+</span></button>
-              <div className={styles.faqPanel}><p>Per-person costs remain the same, but the total saving multiplies. A €22 per-person Gatwick advantage becomes €88 for a family of four. Heathrow Express group discounts can narrow this gap — always check advance fares.</p></div>
-            </div>
-            <div className={styles.faqItem}>
-              <button className={styles.faqTrigger}>Does the time of day matter? <span>+</span></button>
-              <div className={styles.faqPanel}><p>Yes. Off-peak fares significantly reduce transfer costs for both airports. Late-night arrivals at Gatwick face limited train service and may require a taxi — which can flip the total-cost winner. Travelvus uses daytime off-peak fares in all comparisons unless stated otherwise.</p></div>
-            </div>
+            <FAQAccordion items={[
+              { question: "Is Heathrow always more expensive on the ticket?", answer: "Not always. Heathrow has a wider range of airlines including budget carriers. But for comparable routes and airlines, Heathrow tickets tend to be £30–£90 more expensive than Gatwick." },
+              { question: "Can I use Oyster or contactless at both airports?", answer: "Yes. Both Heathrow and Gatwick accept Oyster cards and contactless payment on TfL and National Rail services. Gatwick Express also accepts contactless but not Oyster." },
+              { question: "What if I am travelling as a family or group?", answer: "Per-person costs remain the same, but the total saving multiplies. A €22 per-person Gatwick advantage becomes €88 for a family of four. Heathrow Express group discounts can narrow this gap — always check advance fares." },
+              { question: "Does the time of day matter?", answer: "Yes. Off-peak fares significantly reduce transfer costs for both airports. Late-night arrivals at Gatwick face limited train service and may require a taxi — which can flip the total-cost winner. Travelvus uses daytime off-peak fares in all comparisons unless stated otherwise." },
+            ]} />
 
             {/* Methodology */}
             <div className={styles.methodBlock}>
