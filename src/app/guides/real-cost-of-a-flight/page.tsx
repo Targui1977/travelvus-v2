@@ -99,14 +99,14 @@ export default function RealCostGuide() {
             <p style={{ marginTop: 20 }}>Apply this formula to both flight options. Measure every cost the same way for both. Then compare the totals. The winner is the option with the lower total real cost — not the lower ticket price.</p>
             <p>If the margin between the two totals is very small — less than €10 — then non-monetary factors like arrival time, airline reliability, and personal convenience should guide your decision. Travelvus calls this the personal handoff.</p>
 
-            <div className={styles.workedExample}>
-              <div className={styles.workedExampleHd}><span style={{ color: "var(--copper)" }}>Travelvus Calculation</span></div>
-              <div style={{ padding: "28px 32px", display: "flex", flexDirection: "column", gap: 8 }}>
-                {["Ticket price","+ Checked baggage fees","+ Seat selection cost","+ Departure airport transfer","+ Arrival airport transfer","+ Parking (if driving)","+ Schedule-related costs (late arrival hotel, early departure taxi)","+ Connection costs (meals, lounge, risk buffer)","+ Time impact (personal valuation)","= Real Trip Cost"].map((line, i) => (
-                  <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: i === 9 ? "10px 0 0" : i === 0 ? "0" : "6px 0", borderTop: i === 9 ? "1.5px solid var(--line-3)" : "none", font: i === 9 ? "600 15px/1 Geist, sans-serif" : "400 14px/1.5 Geist, sans-serif", color: i === 9 ? "var(--ink)" : "var(--muted)" }}><span>{line}</span></div>
+            <div className={styles.insightNode} style={{ borderRadius: 14, padding: "28px 32px" }}>
+              <span className={styles.insightNodeLabel}>Travelvus Calculation</span>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4, marginTop: 14 }}>
+                {["Ticket price","+ Checked baggage fees","+ Seat selection cost","+ Departure airport transfer","+ Arrival airport transfer","+ Parking (if driving)","+ Schedule-related costs","+ Connection costs","+ Time impact (personal valuation)","= Real Trip Cost"].map((line, i) => (
+                  <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: i === 9 ? "12px 0 0" : i === 0 ? "0" : "4px 0", borderTop: i === 9 ? "1px solid rgba(244,241,234,.18)" : "none", font: i === 9 ? "600 16px/1 Geist, sans-serif" : "400 14px/1.5 Geist, sans-serif", color: i === 9 ? "#FFFFFF" : "#c8d0d6" }}><span>{line}</span></div>
                 ))}
-                <p style={{ font: "400 13px/1.5 Geist, sans-serif", color: "var(--muted)", margin: "8px 0 0" }}>Apply this to both flights. Measure every cost the same way. The lower real cost wins.</p>
               </div>
+              <p style={{ font: "400 13px/1.5 Geist, sans-serif", color: "var(--pmuted)", margin: "14px 0 0" }}>Apply this to both flights. Measure every cost the same way. The lower real cost wins.</p>
             </div>
 
             <h2 id="section-3">Worked example: two flights compared</h2>
@@ -212,10 +212,15 @@ export default function RealCostGuide() {
               <Link href="/#compare" className={styles.ctaBlockBtn}>Compare your flights →</Link>
             </div>
 
-            <div className={styles.relatedGuides}>
+            <h2 style={{ marginTop: 56 }}>Travellers also compare</h2>
+            <div className={styles.relatedGuides} style={{ marginTop: 20 }}>
               <Link href="/guides/heathrow-vs-gatwick" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs Gatwick: The Complete Decision Guide</div><p className={styles.relatedGuideDesc}>Which airport actually costs less — and why your destination changes the answer</p></div><span className={styles.relatedGuideCta}>Read →</span></Link>
-              <Link href="/questions/london-airport-break-even" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London airport break-even question</div><p className={styles.relatedGuideDesc}>How much cheaper should a flight be to justify a different airport?</p></div><span className={styles.relatedGuideCta}>Read →</span></Link>
               <Link href="/compare/heathrow-vs-stansted" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs Stansted</div><p className={styles.relatedGuideDesc}>The hidden real cost — when the budget ticket becomes the expensive trip</p></div><span className={styles.relatedGuideCta}>Read →</span></Link>
+              <div className={styles.relatedGuideRow} style={{ opacity: .5, cursor: "default" }}><div><div className={styles.relatedGuideTitle}>Direct flight vs connecting flight</div><p className={styles.relatedGuideDesc}>Is the layover worth the saving? How to value your time against a cheaper fare.</p></div><span style={{ font: "600 12px/1 Geist, sans-serif", color: "var(--muted)" }}>Coming soon</span></div>
+            </div>
+
+            <div className={styles.relatedGuides} style={{ marginTop: 0 }}>
+              <Link href="/questions/london-airport-break-even" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London airport break-even question</div><p className={styles.relatedGuideDesc}>How much cheaper should a flight be to justify a different airport?</p></div><span className={styles.relatedGuideCta}>Read →</span></Link>
             </div>
           </div>
         </div>
