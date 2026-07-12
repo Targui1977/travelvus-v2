@@ -6,6 +6,10 @@ export const metadata: Metadata = {
   title: "Travelvus — Which really wins?",
   description:
     "A second opinion before you book. You found two flights. Travelvus compares the full trip and tells you which one really wins.",
+  icons: {
+    icon: "/icon.svg",
+    apple: "/apple-icon.svg",
+  },
 };
 
 export default function RootLayout({
