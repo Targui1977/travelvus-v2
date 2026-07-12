@@ -4,11 +4,25 @@ import { decodeCompareParams } from "@/lib/navigation";
 import { normalizeInput, isSupportedComparison, buildVerdict } from "@/lib/normalize";
 import { MOCK_RESULT } from "@/lib/mock-data";
 import { calcRealCost, monetaryWinner } from "@/lib/decision-engine";
+import { buildCalculationResult } from "@/lib/calculation-contract";
+import { STEP_IDS } from "@/lib/experience-state";
 import type { OptionResult } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Travelvus — Comparison Result",
   robots: "noindex, follow",
+};
+
+/* ── Step labels ───────────────────────────────────────────── */
+
+const STEP_LABELS: Record<string, string> = {
+  reading_flight_details: "Reading your flight details",
+  adding_baggage_and_extras: "Adding baggage and extras",
+  calculating_airport_transfers: "Calculating airport transfers",
+  measuring_journey_time: "Measuring total journey time",
+  calculating_real_cost: "Calculating real trip cost",
+  comparing_journeys: "Comparing both journeys",
+  preparing_verdict: "Preparing your Travelvus Verdict",
 };
 
 export default async function ResultPage({
@@ -19,10 +33,11 @@ export default async function ResultPage({
   const sp = await searchParams;
   const d = MOCK_RESULT;
 
-  // Build initial data server-side
-  const raw = decodeCompareParams(new URLSearchParams(
-    Object.entries(sp).map(([k, v]) => [k, String(v ?? "")])
-  ));
+  const raw = decodeCompareParams(
+    new URLSearchParams(
+      Object.entries(sp).map(([k, v]) => [k, String(v ?? "")])
+    )
+  );
   const norm = raw ? normalizeInput(raw) : null;
   const supported = norm ? isSupportedComparison(norm) : false;
 
@@ -47,7 +62,10 @@ export default async function ResultPage({
     const mw = monetaryWinner(baseA.realCost, baseB.realCost);
     initialOptionA = baseA;
     initialOptionB = baseB;
-    initialVerdict = buildVerdict(baseA.realCost, baseB.realCost, baseA.doorToDoorLabel, baseB.doorToDoorLabel, mw === "A", mw === "B");
+    initialVerdict = buildVerdict(
+      baseA.realCost, baseB.realCost, baseA.doorToDoorLabel, baseB.doorToDoorLabel,
+      mw === "A", mw === "B"
+    );
     initialSupported = true;
   } else if (norm && !supported) {
     const partialA: OptionResult = {
@@ -63,7 +81,9 @@ export default async function ResultPage({
     const mw = monetaryWinner(partialA.realCost, partialB.realCost);
     initialOptionA = partialA;
     initialOptionB = partialB;
-    initialVerdict = buildVerdict(partialA.realCost, partialB.realCost, "—", "—", mw === "A", mw === "B");
+    initialVerdict = buildVerdict(
+      partialA.realCost, partialB.realCost, "—", "—", mw === "A", mw === "B"
+    );
     initialSupported = false;
   } else {
     initialOptionA = { ...d.optionA };
@@ -74,6 +94,25 @@ export default async function ResultPage({
 
   const isDemo = !norm;
 
+  // Build the CalculationResult for the cascade experience
+  const calculationResult = buildCalculationResult({
+    optionA: initialOptionA,
+    optionB: initialOptionB,
+    verdict: initialVerdict,
+    savingsEuro: Math.abs(initialOptionA.realCost - initialOptionB.realCost),
+    savingsTimeMinutes: Math.abs(
+      initialOptionA.doorToDoorMinutes - initialOptionB.doorToDoorMinutes
+    ),
+    savingsTimeLabel: formatTimeDiff(
+      initialOptionA.doorToDoorMinutes,
+      initialOptionB.doorToDoorMinutes
+    ),
+    isSupported: initialSupported,
+    calculatedAt: Date.now(),
+  });
+
+  const stepLabels = STEP_IDS.map((id) => STEP_LABELS[id] ?? id);
+
   return (
     <ResultClient
       initialOptionA={initialOptionA}
@@ -82,6 +121,19 @@ export default async function ResultPage({
       initialSupported={initialSupported}
       isDemo={isDemo}
       initialDataRef={d}
+      calculationResult={calculationResult}
+      stepLabels={stepLabels}
     />
   );
+}
+
+/* ── Helpers ───────────────────────────────────────────────── */
+
+function formatTimeDiff(minsA: number, minsB: number): string {
+  const diff = Math.abs(minsA - minsB);
+  const h = Math.floor(diff / 60);
+  const m = diff % 60;
+  if (h === 0) return `${m}m`;
+  if (m === 0) return `${h}h`;
+  return `${h}h ${m}m`;
 }

@@ -258,9 +258,9 @@ export default function QuickCompare({ standalone = true }: { standalone?: boole
           <button
             className="qc-cta flex-1 max-w-[380px]"
             onClick={handleCtaClick}
-            aria-label="Compare options and see which really wins"
+            aria-label="Reveal the real winner"
           >
-            See which option really wins
+            Reveal the real winner
           </button>
           <span className="qc-refine-link">Add details to refine &rarr;</span>
         </div>
