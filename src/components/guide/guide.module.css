@@ -36,7 +36,7 @@
 .guideHeroDot { width: 5px; height: 5px; border-radius: 50%; background: var(--ok); }
 
 /* ---- Decision Summary ---- */
-.decisionSummary { border: 1.5px solid var(--line-3); border-radius: 14px; padding: 32px 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 36px; background: var(--card); margin-bottom: 56px; max-width: 860px; }
+.decisionSummary { border: 1.5px solid var(--line-3); border-radius: 14px; padding: 32px 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px 36px; background: var(--card); margin-bottom: 56px; }
 .decisionSummaryLabel { font: 600 10px/1 'IBM Plex Mono', monospace; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
 .decisionSummaryValue { font: 600 16px/1.3 'Geist', sans-serif; color: var(--ink); }
 
@@ -58,10 +58,10 @@
 .tocMobileList a:last-child { border-bottom: none; }
 
 /* ---- Content column ---- */
-.guideContent { max-width: 720px; }
-.guideContent h2 { font: 400 28px/1.2 'Instrument Serif', Georgia, serif; color: var(--ink); margin: 56px 0 20px; }
-.guideContent h3 { font: 600 18px/1.3 'Geist', sans-serif; color: var(--ink); margin: 32px 0 12px; }
-.guideContent p { font: 400 16px/1.6 'Geist', sans-serif; color: #4a5560; margin: 0 0 14px; }
+.guideContent { }
+.guideContent h2 { font: 400 28px/1.2; max-width: 720px 'Instrument Serif', Georgia, serif; color: var(--ink); margin: 56px 0 20px; }
+.guideContent h3 { font: 600 18px/1.3; max-width: 720px 'Geist', sans-serif; color: var(--ink); margin: 32px 0 12px; }
+.guideContent p { font: 400 16px/1.6; max-width: 720px 'Geist', sans-serif; color: #4a5560; margin: 0 0 14px; }
 
 /* ---- Anticipation Bridge ---- */
 .bridge { display: flex; align-items: center; gap: 16px; margin: 36px 0 24px; }
@@ -69,7 +69,7 @@
 .bridgeText { font: italic 400 15px/1 'Instrument Serif', Georgia, serif; color: var(--muted); white-space: nowrap; }
 
 /* ---- Worked Example ---- */
-.workedExample { border: 1.5px solid var(--line-3); border-radius: 14px; overflow: hidden; background: var(--card); margin-bottom: 8px; max-width: 880px; }
+.workedExample { border: 1.5px solid var(--line-3); border-radius: 14px; overflow: hidden; background: var(--card); margin-bottom: 8px; }
 .workedExampleHd { display: flex; align-items: center; justify-content: space-between; padding: 14px 32px; border-bottom: 1px solid var(--line); font: 500 10px/1 'IBM Plex Mono', monospace; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .workedExampleHd span { display: flex; align-items: center; gap: 6px; }
 .workedExampleDot { width: 5px; height: 5px; border-radius: 50%; background: var(--ok); }
