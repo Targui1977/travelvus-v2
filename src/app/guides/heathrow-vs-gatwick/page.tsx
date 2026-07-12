@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
+import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import MobileTOC from "@/components/guide/MobileTOC";
 import styles from "@/components/guide/guide.module.css";
@@ -28,21 +29,8 @@ function GuidePage() {
   return (
     <div style={{ background: "var(--paper)", minHeight: "100vh" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
-        {/* Header */}
-        <header style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "22px 48px", borderBottom: "1px solid var(--line)" }}>
-          <Link href="/" style={{ textDecoration: "none" }}>
-            <span style={{ position: "relative", display: "inline-block", paddingBottom: 9 }}>
-              <span style={{ font: "700 24px/1 Geist, sans-serif", letterSpacing: "-.04em", color: "var(--ink)" }}>Travelvus</span>
-              <span style={{ position: "absolute", left: 1, bottom: 0, height: 3, width: 62, background: "var(--copper)", borderRadius: 1 }} />
-              <span style={{ position: "absolute", bottom: -1, left: 68, width: 4, height: 4, background: "var(--ink)", borderRadius: 1 }} />
-            </span>
-          </Link>
-          <nav style={{ display: "flex", gap: 40, alignItems: "center" }}>
-            <Link href="/" style={{ font: "600 14px/1 Geist, sans-serif", color: "#3c4650", textDecoration: "none" }}>Compare</Link>
-            <Link href="/london-airports" style={{ font: "600 14px/1 Geist, sans-serif", color: "#3c4650", textDecoration: "none" }}>Airport Decisions</Link>
-            <Link href="/wego-flight" style={{ font: "600 14px/1 Geist, sans-serif", color: "#3c4650", textDecoration: "none" }}>Guides</Link>
-          </nav>
-        </header>
+        {/* Header — shared HomeHeader with hamburger + mobile nav */}
+        <HomeHeader />
 
         {/* Hero */}
         <section className={styles.guideHero}>
