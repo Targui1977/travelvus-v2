@@ -1,0 +1,426 @@
+/* ══════════════════════════════════════════════════════════════
+   TRAVELVUS V2 — CALCULATION CASCADE · FOUNDATION STYLES
+   Phase 88.1
+   All tokens from globals.css. Breakpoint: 900px.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Container ─────────────────────────────────────────────── */
+
+.container {
+  max-width: var(--container-compare);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  background: var(--paper);
+}
+
+/* ── Steps area ────────────────────────────────────────────── */
+
+.stepsArea {
+  padding: 28px 38px 24px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* ── Step list ─────────────────────────────────────────────── */
+
+.stepList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* ── Individual step ───────────────────────────────────────── */
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  position: relative;
+  min-height: 52px;
+  transition: opacity 0.3s ease-out;
+}
+
+.stepResolved {
+  opacity: 0.55;
+}
+
+.stepComputing {
+  opacity: 1;
+}
+
+/* ── Step indicator (dot/checkmark) ────────────────────────── */
+
+.stepIndicator {
+  flex: none;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stepDot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1;
+  transition: background 0.3s ease-out, transform 0.3s ease-out;
+}
+
+.stepDotPending {
+  background: transparent;
+  border: 1.5px solid var(--line-2);
+}
+
+.stepDotComputing {
+  background: var(--copper);
+  border: 1.5px solid var(--copper);
+  animation: stepPulse 1.2s ease-in-out infinite;
+}
+
+.stepDotResolved {
+  background: var(--navy);
+  border: 1.5px solid var(--navy);
+  color: var(--paper);
+  font-family: var(--mono);
+  font-size: 9px;
+  transform: scale(1);
+}
+
+@keyframes stepPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
+
+/* ── Step content ──────────────────────────────────────────── */
+
+.stepContent {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 1px;
+}
+
+.stepLabel {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+.stepResolved .stepLabel {
+  color: var(--muted);
+}
+
+.stepDetail {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--copper);
+}
+
+.stepValues {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.stepValue {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.stepResolved .stepValue {
+  color: var(--muted);
+}
+
+.stepValueSep {
+  color: var(--line-2);
+  font-size: 10px;
+}
+
+.stepEvidence {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 1.4;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
+/* ── Step connector line ───────────────────────────────────── */
+
+.stepConnector {
+  position: absolute;
+  left: 11px;
+  top: 38px;
+  bottom: 0;
+  width: 2px;
+  z-index: 0;
+}
+
+.stepConnectorLine {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--line);
+  transition: background 0.3s ease-out;
+}
+
+.stepConnectorLineActive {
+  background: var(--navy);
+}
+
+/* ── Skip control ──────────────────────────────────────────── */
+
+.skipContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.skipButton {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--copper);
+  background: none;
+  border: 1px solid rgba(184, 92, 56, 0.3);
+  border-radius: var(--radius-chip);
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.skipButton:hover {
+  background: rgba(184, 92, 56, 0.06);
+  border-color: var(--copper);
+}
+
+.skipButton:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+
+.skipHint {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+}
+
+/* ── Summary ribbon ────────────────────────────────────────── */
+
+.summaryRibbon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 38px;
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.summaryText {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.summaryWarning {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1;
+  color: var(--copper);
+}
+
+/* ── Verdict area ──────────────────────────────────────────── */
+
+.verdictArea {
+  /* The Verdict component provides its own navy background + padding */
+  outline: none;
+}
+
+.verdictArea:focus-visible {
+  outline: 2px solid var(--copper-lt);
+  outline-offset: -4px;
+}
+
+/* ── Explanation area ──────────────────────────────────────── */
+
+.explanationArea {
+  padding: 0;
+}
+
+/* ── Error state ───────────────────────────────────────────── */
+
+.errorState {
+  padding: 40px 38px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.errorMessage {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #a3402f;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.errorRetry {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--paper);
+  background: var(--navy);
+  border: none;
+  border-radius: var(--radius-button);
+  padding: 12px 24px;
+  cursor: pointer;
+}
+
+.errorRetry:hover {
+  background: var(--navy-2);
+}
+
+/* ── Mobile responsive ─────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .stepsArea {
+    padding: 20px 18px 18px;
+  }
+
+  .step {
+    gap: 10px;
+    padding: 12px 0;
+    min-height: 44px;
+  }
+
+  .stepLabel {
+    font-size: 13px;
+  }
+
+  .stepDetail {
+    font-size: 11px;
+  }
+
+  .stepValue {
+    font-size: 11px;
+  }
+
+  .skipContainer {
+    padding: 10px 18px;
+  }
+
+  .summaryRibbon {
+    padding: 10px 18px;
+  }
+
+  .errorState {
+    padding: 32px 18px;
+  }
+}
+
+@media (max-width: 720px) {
+  .stepsArea {
+    padding: 16px 14px 14px;
+  }
+
+  .step {
+    gap: 8px;
+    padding: 10px 0;
+    min-height: 40px;
+  }
+
+  .stepIndicator {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stepDot {
+    width: 16px;
+    height: 16px;
+    font-size: 8px;
+  }
+
+  .stepConnector {
+    left: 9px;
+    top: 30px;
+  }
+
+  .stepLabel {
+    font-size: 12px;
+  }
+
+  .stepValues {
+    gap: 6px;
+  }
+
+  .stepValue {
+    font-size: 10px;
+  }
+
+  .skipButton {
+    font-size: 11px;
+    padding: 6px 14px;
+  }
+
+  .summaryRibbon {
+    padding: 8px 14px;
+  }
+
+  .summaryText {
+    font-size: 9px;
+  }
+}
+
+/* ── Reduced motion ────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .stepDotComputing {
+    animation: none;
+    opacity: 1;
+  }
+
+  .step,
+  .stepDot,
+  .stepConnectorLine,
+  .stepLabel,
+  .stepValue {
+    transition: none;
+  }
+}
