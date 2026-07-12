@@ -1,7 +1,7 @@
 # TRAVELVUS V2 — PROYECTO HANDOFF
 
 **Fecha:** 2026-07-12
-**Último commit:** `dbba3dd`
+**Último commit:** `c5d9064`
 **Producción:** https://www.travelvus.com
 
 ---
@@ -78,7 +78,21 @@ Sin gradientes. Sin sombras decorativas. Sin green/red winner signals.
 - Blueprint corrections applied to `docs/PRODUCT-EXPERIENCE-BLUEPRINT.md`
 - No existing pages modified. No production behavior changed.
 
-**Siguiente fase: Phase 88.2** — Animation system: step transitions, pulse, checkmark, compression.
+**Phase 88.2 completada.** Visual prototype live on hidden preview route.
+
+**Phase 88.2 deliverables:**
+- Centralized timing config: `src/lib/experience-timing.ts` — natural rhythm (350-550ms/step)
+- Fixed state machine: repeated calc no longer jumps to verdict_visible
+- Enhanced CalculationExperience: compression animation, verdict entrance, accelerated repeated path
+- Visual prototype route: `/experience/calculation-cascade-preview` (noindex, not in sitemap)
+- Explanation preview: why winner won, decisive factor, flip assumption, assumptions
+- Mode selector: first calc (~3.8s) / repeated (~2.2s) / reduced motion (~0.1s)
+- CSS: active step warmth gradient, pulse glow, compression transitions, verdict rise
+- 22 new timing tests (166 total)
+
+**Preview URL:** https://www.travelvus.com/experience/calculation-cascade-preview
+
+**Siguiente fase: Phase 88.3** — Verdict Reveal polish + owner visual review.
 
 ---
 
