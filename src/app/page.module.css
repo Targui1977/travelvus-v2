@@ -982,6 +982,45 @@
   to { opacity: 1; }
 }
 
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animateIn,
+  .guideCard,
+  .storyCard,
+  .decisionRow,
+  .questionItem,
+  .engineCtaBtn,
+  .hamburger span {
+    transition: none;
+  }
+
+  .animateIn {
+    opacity: 1;
+    transform: none;
+  }
+
+  .engineFade,
+  .verdictFade {
+    animation: none;
+    opacity: 1;
+  }
+
+  .guideCard:hover,
+  .storyCard:hover {
+    transform: none;
+  }
+
+  .guideCard:hover .guideCardImg,
+  .storyCard:hover .storyImg {
+    transform: none;
+  }
+
+  .guideCard:hover .guideCardCta,
+  .decisionRow:hover .decisionCta {
+    transform: none;
+  }
+}
+
 /* ---- RESPONSIVE ---- */
 @media (max-width: 900px) {
   .header {
