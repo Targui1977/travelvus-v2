@@ -14,22 +14,20 @@ interface Props {
   stepLabels: string[];
 }
 
-/* ── Verdict stats adapter ────────────────────────────────── */
+/* ── Verdict stats — clear labels, real values ────────────── */
 
 function buildVerdictStats(result: CalculationResult) {
   const winnerName =
-    result.winner === "A"
-      ? result.optionA.name
-      : result.optionB.name;
+    result.winner === "A" ? result.optionA.name : result.optionB.name;
+  const winnerCost =
+    result.winner === "A" ? result.realCostA : result.realCostB;
 
   return {
-    verdictLine: `${winnerName} — wins.`,
+    verdictLine: `${winnerName} wins.`,
     stats: [
       {
         label: "Real trip cost",
-        value: String(
-          result.winner === "A" ? result.realCostA : result.realCostB
-        ),
+        value: String(winnerCost),
         unit: "€",
       },
       {
@@ -39,119 +37,112 @@ function buildVerdictStats(result: CalculationResult) {
         accent: true,
       },
       {
-        label: "Journey time",
-        value:
-          result.winner === "A"
-            ? `${result.savingsTimeMinutes} min faster`
-            : `${result.savingsTimeMinutes} min faster`,
+        label: "Time saved",
+        value: String(result.savingsTimeMinutes),
+        unit: "min",
       },
     ] as [any, any, any],
   };
 }
 
-/* ── Explanation content ──────────────────────────────────── */
+/* ── Explanation — narrative hierarchy ────────────────────── */
 
 function ExplanationPreview({ result }: { result: CalculationResult }) {
   const winnerName =
-    result.winner === "A"
-      ? result.optionA.name
-      : result.optionB.name;
+    result.winner === "A" ? result.optionA.name : result.optionB.name;
   const loserName =
-    result.winner === "A"
-      ? result.optionB.name
-      : result.optionA.name;
-
-  const decisiveFactor =
-    Math.abs(result.savingsEuro) >= 20
-      ? "cost"
-      : "time";
+    result.winner === "A" ? result.optionB.name : result.optionA.name;
+  const winnerCost =
+    result.winner === "A" ? result.realCostA : result.realCostB;
+  const loserCost =
+    result.winner === "A" ? result.realCostB : result.realCostA;
 
   // Which assumption could flip the result
+  const bagLineA = result.optionA.costLines[1];
   const flipAssumption =
-    result.winner === "B" && result.optionA.costLines[1]?.amount > 0
-      ? `Removing the checked bag from ${result.optionA.name} would save €${result.optionA.costLines[1].amount} — potentially changing the winner`
-      : result.winner === "A"
-      ? `If ${result.optionB.name}'s transfer were €${result.savingsEuro + 5} cheaper, the result could flip`
+    result.winner === "B" && bagLineA && bagLineA.amount > 0
+      ? `Removing the checked bag from ${result.optionA.name} would save €${bagLineA.amount}.`
       : undefined;
 
   return (
     <div>
-      <h2 className={styles.expTitle}>Why {winnerName} wins</h2>
+      {/* 1. Decisive reason — leads the explanation */}
+      <div className={styles.expLead}>
+        <span className={styles.expLeadKicker}>Why {winnerName} wins</span>
+        <p className={styles.expLeadText}>
+          {loserName}&rsquo;s ticket looks cheaper at €{result.optionA.visibleTicketPrice},
+          but the <b>real journey</b> tells a different story. Once baggage
+          and the airport transfer are added,{" "}
+          <b>
+            {winnerName} costs €{winnerCost} — €{result.savingsEuro} less
+          </b>{" "}
+          than {loserName}&rsquo;s €{loserCost} total. And it saves{" "}
+          {result.savingsTimeLabel} door-to-door.
+        </p>
+      </div>
 
-      <p className={styles.expWhy}>
-        {decisiveFactor === "cost" ? (
-          <>
-            <b>{loserName}&rsquo;s cheaper ticket</b> doesn&rsquo;t survive the
-            real journey. Once baggage and the airport transfer are counted,{" "}
-            <b>{winnerName} becomes the better deal by €{result.savingsEuro}</b>{" "}
-            — and saves {result.savingsTimeLabel} door-to-door.
-          </>
-        ) : (
-          <>
-            Both options are close on cost, but{" "}
-            <b>{winnerName} saves {result.savingsTimeLabel}</b> door-to-door.
-            When the money difference is this small, time decides.
-          </>
-        )}
-      </p>
-
-      <div className={styles.expGrid}>
-        <div className={styles.expCard}>
-          <span className={styles.expCardLabel}>Money saved</span>
-          <span className={styles.expCardValue}>
-            <span className="accent">€{result.savingsEuro}</span>
-          </span>
-          <span className={styles.expCardNote}>
-            Real cost: {result.optionA.name} €{result.realCostA} ·{" "}
-            {result.optionB.name} €{result.realCostB}
+      {/* 2. Money + Time evidence — two cards, clear units */}
+      <div className={styles.expEvidence}>
+        <div className={styles.expEvidenceCard}>
+          <span className={styles.expEvidenceLabel}>Real trip cost</span>
+          <div className={styles.expEvidenceRows}>
+            <div className={styles.expEvidenceRow}>
+              <span className={styles.expEvidenceWho}>{winnerName}</span>
+              <span className={styles.expEvidenceVal}>€{winnerCost}</span>
+            </div>
+            <div className={styles.expEvidenceRow}>
+              <span className={styles.expEvidenceWho}>{loserName}</span>
+              <span className={styles.expEvidenceValMuted}>€{loserCost}</span>
+            </div>
+          </div>
+          <span className={styles.expEvidenceNote}>
+            Ticket + baggage + seat + airport transfer
           </span>
         </div>
 
-        <div className={styles.expCard}>
-          <span className={styles.expCardLabel}>Journey time</span>
-          <span className={styles.expCardValue}>
-            {result.savingsTimeLabel}
-          </span>
-          <span className={styles.expCardNote}>
-            {result.optionA.name} {result.optionA.doorToDoorLabel} ·{" "}
-            {result.optionB.name} {result.optionB.doorToDoorLabel}
-          </span>
-        </div>
-
-        <div className={styles.expCard}>
-          <span className={styles.expCardLabel}>Decisive factor</span>
-          <span className={styles.expCardValue}>
-            {decisiveFactor === "cost" ? "Real cost" : "Journey time"}
-          </span>
-          <span className={styles.expCardNote}>
-            {decisiveFactor === "cost"
-              ? `The €${result.savingsEuro} gap outweighs the time difference`
-              : `${result.savingsTimeLabel} faster makes the difference`}
-          </span>
-        </div>
-
-        <div className={styles.expCard}>
-          <span className={styles.expCardLabel}>Confidence</span>
-          <span className={styles.expCardValue}>
-            {result.isSupported ? "Strong" : "Estimate"}
-          </span>
-          <span className={styles.expCardNote}>
-            {result.isSupported
-              ? "Verified TfL + National Rail data"
-              : "Limited transfer data for this pair"}
+        <div className={styles.expEvidenceCard}>
+          <span className={styles.expEvidenceLabel}>Door-to-door time</span>
+          <div className={styles.expEvidenceRows}>
+            <div className={styles.expEvidenceRow}>
+              <span className={styles.expEvidenceWho}>{winnerName}</span>
+              <span className={styles.expEvidenceVal}>
+                {result.winner === "A"
+                  ? result.optionA.doorToDoorLabel
+                  : result.optionB.doorToDoorLabel}
+              </span>
+            </div>
+            <div className={styles.expEvidenceRow}>
+              <span className={styles.expEvidenceWho}>{loserName}</span>
+              <span className={styles.expEvidenceValMuted}>
+                {result.winner === "A"
+                  ? result.optionB.doorToDoorLabel
+                  : result.optionA.doorToDoorLabel}
+              </span>
+            </div>
+          </div>
+          <span className={styles.expEvidenceNote}>
+            {winnerName} saves {result.savingsTimeLabel} · includes 90 min pre-flight buffer
           </span>
         </div>
       </div>
 
+      {/* 3. What could change the result */}
       {flipAssumption && (
         <div className={styles.expFlip}>
           <span className={styles.expFlipLabel}>What could change the result</span>
-          <p className={styles.expFlipText}>{flipAssumption}.</p>
+          <p className={styles.expFlipText}>
+            {flipAssumption} That would bring {result.optionA.name}&rsquo;s real cost
+            to €{result.realCostA - bagLineA!.amount}, potentially changing the
+            winner.
+          </p>
         </div>
       )}
 
-      <div className={styles.expAssumptions}>
-        <span className={styles.expAssumptionsTitle}>Assumptions</span>
+      {/* 4. Assumptions — collapsible */}
+      <details className={styles.expAssumptions}>
+        <summary className={styles.expAssumptionsSummary}>
+          <span>5 calculation assumptions</span>
+        </summary>
         <ul className={styles.expAssumptionsList}>
           {result.assumptions.map((a, i) => (
             <li key={i} className={styles.expAssumptionsItem}>
@@ -159,7 +150,7 @@ function ExplanationPreview({ result }: { result: CalculationResult }) {
             </li>
           ))}
         </ul>
-      </div>
+      </details>
 
       {result.warnings.length > 0 && (
         <div className={styles.expWarnings}>
@@ -183,73 +174,102 @@ export default function CascadePreviewClient({ result, stepLabels }: Props) {
 
   const verdictData = buildVerdictStats(result);
 
-  const handleRestart = useCallback((newMode: "first" | "repeated" | "reduced") => {
-    setMode(newMode);
-    setStarted(false);
-    setKey((k) => k + 1);
-  }, []);
-
-  const handleStart = useCallback(() => {
-    setStarted(true);
-  }, []);
+  const handleRestart = useCallback(
+    (newMode: "first" | "repeated" | "reduced") => {
+      setMode(newMode);
+      setStarted(false);
+      setKey((k) => k + 1);
+    },
+    []
+  );
 
   return (
-    <div style={{ background: "#F4F1EA", color: "#1E2A33", minHeight: "100vh" }}>
-      <div style={{ maxWidth: 1240, margin: "0 auto", background: "#F4F1EA" }}>
-        {/* ── Header ── */}
-        <HomeHeader />
+    <div style={{ background: "#E4E2DC", minHeight: "100vh" }}>
+      {/* ── Header ── */}
+      <HomeHeader />
 
-        {/* ── Prototype label ── */}
-        <div className={styles.protoLabel}>
-          <span className={styles.protoLabelDot} />
-          <span className={styles.protoLabelText}>
-            Product Experience Preview — Calculation Cascade Prototype
+      {/* ── Prototype label ── */}
+      <div className={styles.protoLabel}>
+        <span className={styles.protoLabelDot} />
+        <span className={styles.protoLabelText}>
+          Product Experience Preview
+        </span>
+        <span className={styles.protoLabelDot} />
+      </div>
+
+      {/* ═══ PREVIEW CONTROLS — visually separated QA panel ═══ */}
+      <div className={styles.qaPanel}>
+        <div className={styles.qaPanelInner}>
+          <span className={styles.qaPanelTitle}>Preview Controls</span>
+          <span className={styles.qaPanelScenario}>
+            Berlin &rarr; Stansted (€58) vs Berlin &rarr; Heathrow (€126)
           </span>
-          <span className={styles.protoLabelDot} />
-        </div>
 
-        {/* ── Scenario info ── */}
-        <div className={styles.scenarioInfo}>
-          <span className={styles.scenarioKicker}>Demo scenario</span>
-          <span className={styles.scenarioText}>
-            Berlin → Stansted (€58) vs Berlin → Heathrow (€126)
-          </span>
-        </div>
-
-        {/* ── Mode controls ── */}
-        {!started && (
-          <div className={styles.controls}>
-            <span className={styles.controlsLabel}>Select experience mode:</span>
-            <div className={styles.controlsRow}>
+          {!started ? (
+            <div className={styles.qaPanelModes}>
               <button
-                className={`${styles.controlBtn} ${mode === "first" ? styles.controlBtnActive : ""}`}
+                className={`${styles.qaModeBtn} ${
+                  mode === "first" ? styles.qaModeBtnActive : ""
+                }`}
                 onClick={() => handleRestart("first")}
               >
                 First calculation
-                <span className={styles.controlBtnHint}>~3.8s</span>
+                <span className={styles.qaModeBtnHint}>~3.6s</span>
               </button>
               <button
-                className={`${styles.controlBtn} ${mode === "repeated" ? styles.controlBtnActive : ""}`}
+                className={`${styles.qaModeBtn} ${
+                  mode === "repeated" ? styles.qaModeBtnActive : ""
+                }`}
                 onClick={() => handleRestart("repeated")}
               >
-                Repeated calc
-                <span className={styles.controlBtnHint}>~2.2s</span>
+                Repeated
+                <span className={styles.qaModeBtnHint}>~2.0s</span>
               </button>
               <button
-                className={`${styles.controlBtn} ${mode === "reduced" ? styles.controlBtnActive : ""}`}
+                className={`${styles.qaModeBtn} ${
+                  mode === "reduced" ? styles.qaModeBtnActive : ""
+                }`}
                 onClick={() => handleRestart("reduced")}
               >
                 Reduced motion
-                <span className={styles.controlBtnHint}>~0.1s</span>
+                <span className={styles.qaModeBtnHint}>~0.1s</span>
+              </button>
+              <button className={styles.qaStartBtn} onClick={() => setStarted(true)}>
+                Run cascade &rarr;
               </button>
             </div>
-            <button className={styles.startBtn} onClick={handleStart}>
-              Run Calculation Cascade →
-            </button>
-          </div>
-        )}
+          ) : (
+            <div className={styles.qaPanelModes}>
+              <span className={styles.qaRunningLabel}>
+                {mode === "first"
+                  ? "First calculation"
+                  : mode === "repeated"
+                  ? "Repeated"
+                  : "Reduced motion"}{" "}
+                running
+              </span>
+              <button
+                className={styles.qaRestartLink}
+                onClick={() => handleRestart(mode)}
+              >
+                Run again
+              </button>
+              <button
+                className={styles.qaBackLink}
+                onClick={() => {
+                  setStarted(false);
+                  setKey((k) => k + 1);
+                }}
+              >
+                Change mode
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
 
-        {/* ── Calculation Experience ── */}
+      {/* ═══ PRODUCT STAGE — the actual user-facing experience ═══ */}
+      <div className={styles.productStage}>
         {started && (
           <CalculationExperience
             key={key}
@@ -264,38 +284,26 @@ export default function CascadePreviewClient({ result, stepLabels }: Props) {
               />
             )}
             renderExplanation={() => <ExplanationPreview result={result} />}
-            onComplete={() => {
-              // Experience complete
-            }}
           />
         )}
 
-        {/* ── Restart ── */}
-        {started && (
-          <div className={styles.restartArea}>
-            <button
-              className={styles.restartBtn}
-              onClick={() => handleRestart(mode)}
-            >
-              Run again
-            </button>
-            <button
-              className={styles.restartBtnSecondary}
-              onClick={() => {
-                setStarted(false);
-                setKey((k) => k + 1);
-              }}
-            >
-              Back to mode selection
-            </button>
+        {!started && (
+          <div className={styles.stageEmpty}>
+            <span className={styles.stageEmptyMark}>&#9670;</span>
+            <p className={styles.stageEmptyText}>
+              Select a mode above and run the cascade to see the experience.
+            </p>
           </div>
         )}
-
-        {/* ── Footer ── */}
-        <footer className={styles.previewFooter}>
-          <span>Internal preview — not linked from public navigation</span>
-        </footer>
       </div>
+
+      {/* ── Footer ── */}
+      <footer className={styles.previewFooter}>
+        <span>
+          Internal preview &middot; not linked from public navigation
+          &middot; noindex
+        </span>
+      </footer>
     </div>
   );
 }

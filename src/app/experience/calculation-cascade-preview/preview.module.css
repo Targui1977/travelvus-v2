@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
    CALCULATION CASCADE PREVIEW — PAGE STYLES
-   Phase 88.2
+   Phase 88.2B — Visual Refinement
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Prototype label ──────────────────────────────────────── */
@@ -9,18 +9,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 7px 18px;
+  gap: 7px;
+  padding: 6px 18px;
   background: var(--navy);
-  border-bottom: 1px solid rgba(244, 241, 234, 0.1);
+  border-bottom: 1px solid rgba(244, 241, 234, 0.08);
 }
 
 .protoLabelDot {
-  width: 5px;
-  height: 5px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--copper-lt);
-  opacity: 0.6;
+  opacity: 0.5;
 }
 
 .protoLabelText {
@@ -30,48 +30,189 @@
   line-height: 1;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--copper-lt);
+  color: rgba(244, 241, 234, 0.7);
 }
 
-/* ── Scenario info ────────────────────────────────────────── */
+/* ── QA Panel — clearly separated from product experience ─── */
 
-.scenarioInfo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 38px;
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--line);
+.qaPanel {
+  background: #E9E5DB;
+  border-bottom: 1px solid #D8D2C4;
 }
 
-.scenarioKicker {
+.qaPanelInner {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 18px 38px;
+}
+
+.qaPanelTitle {
+  display: block;
   font-family: var(--mono);
   font-weight: 600;
   font-size: 9px;
   line-height: 1;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--copper);
+  color: #8A8276;
+  margin-bottom: 6px;
 }
 
-.scenarioText {
+.qaPanelScenario {
+  display: block;
   font-family: var(--sans);
   font-weight: 400;
   font-size: 13px;
   line-height: 1;
+  color: #6B6560;
+  margin-bottom: 14px;
+}
+
+.qaPanelModes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.qaModeBtn {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1;
+  color: #5C5650;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid #C5BFB4;
+  border-radius: 7px;
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.qaModeBtn:hover {
+  border-color: var(--copper);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.qaModeBtnActive {
+  border-color: var(--copper);
+  background: rgba(184, 92, 56, 0.07);
+  color: var(--copper);
+  font-weight: 600;
+}
+
+.qaModeBtnHint {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 10px;
+  color: #8A8276;
+}
+
+.qaStartBtn {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1;
+  color: var(--paper);
+  background: var(--navy);
+  border: none;
+  border-radius: 8px;
+  padding: 9px 20px;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.15s;
+}
+
+.qaStartBtn:hover {
+  background: var(--navy-2);
+}
+
+.qaRunningLabel {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
   color: var(--muted);
 }
 
-/* ── Controls ─────────────────────────────────────────────── */
-
-.controls {
-  padding: 32px 38px;
-  text-align: center;
-  max-width: 540px;
-  margin: 0 auto;
+.qaRestartLink {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--copper);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(184, 92, 56, 0.3);
+  padding: 0 0 1px;
+  cursor: pointer;
 }
 
-.controlsLabel {
+.qaRestartLink:hover {
+  border-bottom-color: var(--copper);
+}
+
+.qaBackLink {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(107, 112, 120, 0.3);
+  padding: 0 0 1px;
+  cursor: pointer;
+}
+
+/* ── Product Stage — the real user-facing experience ──────── */
+
+.productStage {
+  max-width: 880px;
+  margin: 24px auto 32px;
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow:
+    0 1px 2px rgba(30, 42, 51, 0.04),
+    0 4px 16px rgba(30, 42, 51, 0.06);
+  overflow: hidden;
+}
+
+.stageEmpty {
+  padding: 64px 38px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.stageEmptyMark {
+  font-size: 18px;
+  color: var(--line-2);
+}
+
+.stageEmptyText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  max-width: 360px;
+  margin: 0;
+}
+
+/* ── Explanation — narrative hierarchy ────────────────────── */
+
+/* 1. Decisive reason */
+.expLead {
+  margin-bottom: 22px;
+}
+
+.expLeadKicker {
   display: block;
   font-family: var(--mono);
   font-weight: 600;
@@ -80,113 +221,42 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 14px;
+  margin-bottom: 10px;
 }
 
-.controlsRow {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.controlBtn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-  padding: 14px 20px;
-  border: 1px solid var(--line-2);
-  border-radius: var(--radius-card);
-  background: var(--card);
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 13px;
-  line-height: 1;
-  color: var(--ink);
-  cursor: pointer;
-  transition: border-color 0.15s, background 0.15s;
-}
-
-.controlBtn:hover {
-  border-color: var(--copper);
-}
-
-.controlBtnActive {
-  border-color: var(--copper);
-  background: rgba(184, 92, 56, 0.05);
-}
-
-.controlBtnHint {
-  font-family: var(--mono);
-  font-weight: 400;
-  font-size: 10px;
-  line-height: 1;
-  color: var(--muted);
-}
-
-.startBtn {
-  display: inline-block;
-  background: var(--navy);
-  color: var(--paper);
-  border: none;
-  border-radius: var(--radius-button);
-  padding: 15px 32px;
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: 15px;
-  line-height: 1;
-  letter-spacing: -0.01em;
-  cursor: pointer;
-  transition: background 0.15s, transform 0.15s;
-}
-
-.startBtn:hover {
-  background: var(--navy-2);
-  transform: translateY(-1px);
-}
-
-/* ── Explanation ──────────────────────────────────────────── */
-
-.expTitle {
+.expLeadText {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: 22px;
-  line-height: 1.25;
-  color: var(--ink);
-  margin-bottom: 14px;
-}
-
-.expWhy {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 15px;
+  font-size: 17px;
   line-height: 1.55;
-  color: #4a5560;
-  margin-bottom: 20px;
-  max-width: 580px;
-}
-
-.expWhy b {
-  font-weight: 600;
   color: var(--ink);
+  max-width: 600px;
+  margin: 0;
 }
 
-.expGrid {
+.expLeadText b {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+/* 2. Evidence cards */
+.expEvidence {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
-.expCard {
+.expEvidenceCard {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   padding: 16px 18px;
 }
 
-.expCardLabel {
+.expEvidenceLabel {
+  display: block;
   font-family: var(--mono);
   font-weight: 600;
   font-size: 9px;
@@ -194,40 +264,63 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 6px;
-  display: block;
+  margin-bottom: 10px;
 }
 
-.expCardValue {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 1.15;
+.expEvidenceRows {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.expEvidenceRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.expEvidenceWho {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 1;
   color: var(--ink);
 }
 
-.expCardValue :global(.accent) {
-  color: var(--copper);
+.expEvidenceVal {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1;
+  color: var(--ink);
 }
 
-.expCardNote {
+.expEvidenceValMuted {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--grey);
+}
+
+.expEvidenceNote {
   font-family: var(--sans);
   font-weight: 400;
   font-size: 11px;
   line-height: 1.4;
   color: var(--muted);
-  margin-top: 4px;
+  display: block;
 }
 
-/* ── Flip assumption ─────────────────────────────────────── */
-
+/* 3. Flip assumption */
 .expFlip {
   border: 1px solid var(--line-2);
   border-left: 3px solid var(--copper);
   border-radius: 0 var(--radius-card) var(--radius-card) 0;
   background: var(--card);
   padding: 14px 18px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 
 .expFlipLabel {
@@ -238,7 +331,7 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--copper);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   display: block;
 }
 
@@ -251,31 +344,51 @@
   margin: 0;
 }
 
-/* ── Assumptions ──────────────────────────────────────────── */
-
+/* 4. Collapsible assumptions */
 .expAssumptions {
-  background: var(--paper-2);
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-bottom: 16px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 0;
 }
 
-.expAssumptionsTitle {
+.expAssumptionsSummary {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 1;
+  color: var(--muted);
+  padding: 12px 18px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.expAssumptionsSummary::before {
+  content: "+";
   font-family: var(--mono);
   font-weight: 600;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-  display: block;
+  font-size: 13px;
+  color: var(--copper);
+  width: 14px;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.expAssumptions[open] .expAssumptionsSummary::before {
+  content: "−";
+}
+
+.expAssumptionsSummary::-webkit-details-marker {
+  display: none;
 }
 
 .expAssumptionsList {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0 18px 14px 38px;
   display: flex;
   flex-direction: column;
   gap: 3px;
@@ -287,21 +400,11 @@
   font-size: 12px;
   line-height: 1.45;
   color: var(--muted);
-  padding-left: 14px;
-  position: relative;
 }
 
-.expAssumptionsItem::before {
-  content: "·";
-  position: absolute;
-  left: 4px;
-  color: var(--line-2);
-}
-
-/* ── Warnings ─────────────────────────────────────────────── */
-
+/* Warnings */
 .expWarnings {
-  margin-top: 8px;
+  margin-top: 14px;
 }
 
 .expWarningItem {
@@ -313,106 +416,66 @@
   margin: 0 0 4px;
 }
 
-/* ── Restart area ─────────────────────────────────────────── */
-
-.restartArea {
-  display: flex;
-  gap: 12px;
-  justify-content: center;
-  padding: 24px 38px 40px;
-  border-top: 1px solid var(--line);
-}
-
-.restartBtn {
-  font-family: var(--mono);
-  font-weight: 600;
-  font-size: 13px;
-  line-height: 1;
-  color: var(--paper);
-  background: var(--navy);
-  border: none;
-  border-radius: var(--radius-button);
-  padding: 12px 24px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
-
-.restartBtn:hover {
-  background: var(--navy-2);
-}
-
-.restartBtnSecondary {
-  font-family: var(--mono);
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1;
-  color: var(--muted);
-  background: none;
-  border: 1px solid var(--line-2);
-  border-radius: var(--radius-button);
-  padding: 12px 20px;
-  cursor: pointer;
-  transition: border-color 0.15s;
-}
-
-.restartBtnSecondary:hover {
-  border-color: var(--copper);
-}
-
 /* ── Footer ───────────────────────────────────────────────── */
 
 .previewFooter {
   padding: 16px 38px;
   text-align: center;
-  border-top: 1px solid var(--line);
   font-family: var(--mono);
   font-weight: 400;
   font-size: 10px;
   line-height: 1;
-  color: var(--muted);
+  color: #9A9588;
 }
 
 /* ── Mobile ───────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
-  .scenarioInfo {
-    padding: 10px 18px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 4px;
+  .qaPanelInner {
+    padding: 14px 18px;
   }
 
-  .controls {
-    padding: 24px 18px;
+  .qaPanelModes {
+    gap: 6px;
   }
 
-  .controlsRow {
-    flex-direction: column;
-    gap: 8px;
+  .qaModeBtn {
+    font-size: 11px;
+    padding: 7px 12px;
   }
 
-  .controlBtn {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 12px 16px;
+  .qaStartBtn {
+    margin-left: 0;
+    margin-top: 4px;
+    width: 100%;
+    text-align: center;
+    padding: 10px 20px;
   }
 
-  .expGrid {
+  .productStage {
+    margin: 12px 8px 20px;
+    border-radius: 10px;
+  }
+
+  .stageEmpty {
+    padding: 48px 18px;
+  }
+
+  .expLeadText {
+    font-size: 15px;
+  }
+
+  .expEvidence {
     grid-template-columns: 1fr;
     gap: 10px;
   }
 
-  .expTitle {
-    font-size: 20px;
+  .expEvidenceVal {
+    font-size: 18px;
   }
 
-  .expCardValue {
-    font-size: 20px;
-  }
-
-  .restartArea {
-    padding: 20px 18px 32px;
-    flex-direction: column;
+  .expEvidenceValMuted {
+    font-size: 16px;
   }
 }
 
@@ -421,37 +484,76 @@
     font-size: 8px;
   }
 
-  .scenarioInfo {
-    padding: 8px 14px;
+  .qaPanelInner {
+    padding: 12px 14px;
   }
 
-  .scenarioText {
+  .qaPanelScenario {
     font-size: 12px;
   }
 
-  .controls {
-    padding: 20px 14px;
+  .qaModeBtn {
+    font-size: 11px;
+    padding: 6px 10px;
+    flex: 1;
   }
 
-  .startBtn {
-    width: 100%;
+  .qaModeBtnHint {
+    display: none;
   }
 
-  .expTitle {
-    font-size: 18px;
+  .productStage {
+    margin: 8px 4px 16px;
+    border-radius: 8px;
   }
 
-  .expWhy {
+  .stageEmpty {
+    padding: 40px 14px;
+  }
+
+  .expLeadKicker {
+    font-size: 9px;
+  }
+
+  .expLeadText {
     font-size: 14px;
   }
 
-  .expCardValue {
-    font-size: 18px;
+  .expLeadText b {
+    font-size: 13px;
   }
 
-  .restartBtn,
-  .restartBtnSecondary {
-    width: 100%;
-    text-align: center;
+  .expEvidenceVal {
+    font-size: 16px;
+  }
+
+  .expEvidenceValMuted {
+    font-size: 15px;
+  }
+
+  .expAssumptionsSummary {
+    font-size: 10px;
+    padding: 10px 14px;
+  }
+
+  .expAssumptionsList {
+    padding: 0 14px 12px 32px;
+  }
+
+  .expAssumptionsItem {
+    font-size: 11px;
+  }
+
+  .previewFooter {
+    padding: 14px;
+    font-size: 9px;
+  }
+}
+
+/* ── Wide desktop ─────────────────────────────────────────── */
+
+@media (min-width: 1366px) {
+  .productStage {
+    max-width: 880px;
   }
 }

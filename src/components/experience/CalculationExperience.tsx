@@ -287,16 +287,20 @@ export default function CalculationExperience({
         </div>
       )}
 
-      {/* ── Steps summary ribbon ── */}
+      {/* ── Completion bridge ── */}
       {isCompressed && (
         <div
-          className={`${styles.summaryRibbon} ${
-            compressing ? styles.summaryRibbonEnter : ""
+          className={`${styles.completionBridge} ${
+            compressing ? styles.completionBridgeEnter : ""
           }`}
         >
-          <span className={styles.summaryText}>
-            7 journey factors checked
-          </span>
+          <span className={styles.completionMark} aria-hidden="true">✓</span>
+          <div className={styles.completionTextGroup}>
+            <span className={styles.completionPrimary}>Calculation complete</span>
+            <span className={styles.completionSecondary}>
+              7 journey factors checked
+            </span>
+          </div>
           {result.warnings.length > 0 && (
             <span className={styles.summaryWarning}>
               {result.warnings.length} note
@@ -304,12 +308,12 @@ export default function CalculationExperience({
             </span>
           )}
           <button
-            className={styles.summaryExpand}
+            className={styles.completionExpand}
             type="button"
             aria-label="View calculation steps"
             onClick={() => setCompressing(false)}
           >
-            View steps
+            View calculation steps
           </button>
         </div>
       )}

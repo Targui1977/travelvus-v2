@@ -1,14 +1,12 @@
 /* ══════════════════════════════════════════════════════════════
-   TRAVELVUS V2 — CALCULATION CASCADE · VISUAL PROTOTYPE
-   Phase 88.2
+   TRAVELVUS V2 — CALCULATION CASCADE · REFINED
+   Phase 88.2B
    All tokens from globals.css. Breakpoint: 900px.
    ══════════════════════════════════════════════════════════════ */
 
 /* ── Container ─────────────────────────────────────────────── */
 
 .container {
-  max-width: var(--container-compare);
-  margin: 0 auto;
   width: 100%;
   position: relative;
   background: var(--paper);
@@ -17,10 +15,10 @@
 /* ── Steps area ────────────────────────────────────────────── */
 
 .stepsArea {
-  padding: 28px 38px 24px;
-  max-width: 680px;
+  padding: 40px 48px 32px;
+  max-width: 640px;
   margin: 0 auto;
-  transition: max-height 0.4s ease-out, opacity 0.4s ease-out, padding 0.4s ease-out;
+  transition: max-height 0.45s ease-out, opacity 0.4s ease-out, padding 0.45s ease-out;
   overflow: hidden;
 }
 
@@ -45,36 +43,39 @@
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  padding: 14px 0;
+  padding: 13px 0;
   position: relative;
-  min-height: 52px;
-  transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+  min-height: 50px;
+  transition: opacity 0.35s ease-out;
 }
 
 .stepResolved {
-  opacity: 0.45;
+  opacity: 0.35;
 }
 
 .stepComputing {
   opacity: 1;
-  /* Active step has subtle warmth */
   background: linear-gradient(
     90deg,
-    rgba(184, 92, 56, 0.04) 0%,
-    transparent 100%
+    rgba(184, 92, 56, 0.035) 0%,
+    transparent 70%
   );
-  margin: 0 -12px;
-  padding-left: 12px;
-  padding-right: 12px;
+  margin: 0 -14px;
+  padding-left: 14px;
+  padding-right: 14px;
   border-radius: 6px;
 }
 
-/* ── Step indicator (dot/checkmark) ────────────────────────── */
+.stepPending {
+  opacity: 0.28;
+}
+
+/* ── Step indicator ────────────────────────────────────────── */
 
 .stepIndicator {
   flex: none;
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,10 +87,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 600;
   line-height: 1;
   transition: background 0.3s ease-out, transform 0.3s ease-out, box-shadow 0.3s ease-out;
@@ -103,8 +104,8 @@
 .stepDotComputing {
   background: var(--copper);
   border: 1.5px solid var(--copper);
-  box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.12);
-  animation: stepPulse 1.4s ease-in-out infinite;
+  box-shadow: 0 0 0 3px rgba(184, 92, 56, 0.10);
+  animation: stepPulse 1.5s ease-in-out infinite;
 }
 
 .stepDotResolved {
@@ -112,12 +113,12 @@
   border: 1.5px solid var(--navy);
   color: var(--paper);
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 8px;
 }
 
 @keyframes stepPulse {
-  0%, 100% { opacity: 0.7; transform: scale(1); box-shadow: 0 0 0 2px rgba(184, 92, 56, 0.08); }
-  50% { opacity: 1; transform: scale(1.06); box-shadow: 0 0 0 5px rgba(184, 92, 56, 0.15); }
+  0%, 100% { opacity: 0.65; transform: scale(1); box-shadow: 0 0 0 2px rgba(184, 92, 56, 0.06); }
+  50% { opacity: 1; transform: scale(1.08); box-shadow: 0 0 0 5px rgba(184, 92, 56, 0.14); }
 }
 
 /* ── Step content ──────────────────────────────────────────── */
@@ -127,7 +128,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 2px;
   padding-top: 1px;
 }
 
@@ -144,7 +145,8 @@
   font-weight: 600;
 }
 
-.stepResolved .stepLabel {
+.stepResolved .stepLabel,
+.stepPending .stepLabel {
   color: var(--muted);
 }
 
@@ -173,7 +175,8 @@
   transition: color 0.3s ease-out;
 }
 
-.stepResolved .stepValue {
+.stepResolved .stepValue,
+.stepPending .stepValue {
   color: var(--muted);
 }
 
@@ -195,10 +198,10 @@
 
 .stepConnector {
   position: absolute;
-  left: 11px;
-  top: 38px;
+  left: 10px;
+  top: 36px;
   bottom: 0;
-  width: 2px;
+  width: 1.5px;
   z-index: 0;
 }
 
@@ -221,7 +224,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
-  padding: 10px 38px;
+  padding: 8px 38px;
   border-bottom: 1px solid var(--line);
   background: var(--card);
 }
@@ -229,19 +232,19 @@
 .skipButton {
   font-family: var(--mono);
   font-weight: 500;
-  font-size: 11px;
+  font-size: 10px;
   line-height: 1;
   color: var(--copper);
   background: none;
-  border: 1px solid rgba(184, 92, 56, 0.25);
+  border: 1px solid rgba(184, 92, 56, 0.2);
   border-radius: var(--radius-chip);
-  padding: 6px 14px;
+  padding: 5px 12px;
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
 }
 
 .skipButton:hover {
-  background: rgba(184, 92, 56, 0.06);
+  background: rgba(184, 92, 56, 0.05);
   border-color: var(--copper);
 }
 
@@ -258,45 +261,66 @@
   color: var(--muted);
 }
 
-/* ── Summary ribbon ────────────────────────────────────────── */
+/* ── Completion bridge ─────────────────────────────────────── */
 
-.summaryRibbon {
+.completionBridge {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 38px;
-  background: var(--paper-2);
+  justify-content: center;
+  gap: 14px;
+  padding: 24px 38px 20px;
   border-bottom: 1px solid var(--line);
   opacity: 0;
-  transform: translateY(-8px);
-  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+  transform: translateY(-6px);
+  transition: opacity 0.5s ease-out, transform 0.45s ease-out;
 }
 
-.summaryRibbonEnter {
+.completionBridgeEnter {
   opacity: 1;
   transform: translateY(0);
 }
 
-.summaryText {
+.completionMark {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  line-height: 1;
+  flex: none;
+}
+
+.completionTextGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.completionPrimary {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.completionSecondary {
   font-family: var(--mono);
   font-weight: 500;
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-.summaryWarning {
-  font-family: var(--mono);
-  font-weight: 500;
-  font-size: 10px;
-  line-height: 1;
-  color: var(--copper);
-}
-
-.summaryExpand {
+.completionExpand {
   font-family: var(--sans);
   font-weight: 500;
   font-size: 11px;
@@ -304,13 +328,13 @@
   color: var(--copper);
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(184, 92, 56, 0.3);
+  border-bottom: 1px solid rgba(184, 92, 56, 0.25);
   padding: 0 0 1px;
   cursor: pointer;
   margin-left: auto;
 }
 
-.summaryExpand:hover {
+.completionExpand:hover {
   border-bottom-color: var(--copper);
 }
 
@@ -319,13 +343,13 @@
 .verdictArea {
   outline: none;
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.33, 0, 0.67, 1);
+  transform: translateY(20px);
+  transition: opacity 0.7s ease-out, transform 0.65s cubic-bezier(0.33, 0, 0.67, 1);
 }
 
 .verdictEntering {
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(20px);
 }
 
 .verdictVisible {
@@ -341,164 +365,8 @@
 /* ── Explanation area ──────────────────────────────────────── */
 
 .explanationArea {
-  padding: 30px 38px;
-  max-width: 680px;
-  margin: 0 auto;
-}
-
-.explanationTitle {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.25;
-  color: var(--ink);
-  margin-bottom: 18px;
-}
-
-.explanationWhy {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.55;
-  color: #4a5560;
-  margin-bottom: 16px;
-}
-
-.explanationWhy b {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.explanationGrid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-bottom: 22px;
-}
-
-.explanationCard {
-  background: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-card);
-  padding: 16px 18px;
-}
-
-.explanationCardLabel {
-  font-family: var(--mono);
-  font-weight: 600;
-  font-size: 9px;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 6px;
-  display: block;
-}
-
-.explanationCardValue {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 1.15;
-  color: var(--ink);
-}
-
-.explanationCardValue .accent {
-  color: var(--copper);
-}
-
-.explanationCardNote {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.4;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.explanationAssumptions {
-  background: var(--paper-2);
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin-top: 20px;
-}
-
-.explanationAssumptionsTitle {
-  font-family: var(--mono);
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 8px;
-}
-
-.explanationAssumptionsList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.explanationAssumptionsItem {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 1.45;
-  color: var(--muted);
-  padding-left: 14px;
-  position: relative;
-}
-
-.explanationAssumptionsItem::before {
-  content: "·";
-  position: absolute;
-  left: 4px;
-  color: var(--line-2);
-}
-
-/* ── Unsupported comparison state ─────────────────────────── */
-
-.unsupportedState {
-  padding: 40px 38px;
-  text-align: center;
-}
-
-.unsupportedIcon {
-  font-size: 32px;
-  margin-bottom: 16px;
-  display: block;
-}
-
-.unsupportedTitle {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 1.25;
-  color: var(--ink);
-  margin-bottom: 10px;
-}
-
-.unsupportedText {
-  font-family: var(--sans);
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 1.55;
-  color: #4a5560;
-  max-width: 480px;
-  margin: 0 auto 8px;
-}
-
-.unsupportedNote {
-  font-family: var(--mono);
-  font-weight: 500;
-  font-size: 11px;
-  line-height: 1.4;
-  color: var(--muted);
-  max-width: 420px;
+  padding: 32px 48px 40px;
+  max-width: 640px;
   margin: 0 auto;
 }
 
@@ -540,47 +408,53 @@
   background: var(--navy-2);
 }
 
-/* ── Prototype label ───────────────────────────────────────── */
+/* ── Unsupported state ─────────────────────────────────────── */
 
-.prototypeLabel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 6px 18px;
-  background: var(--navy);
-  border-bottom: 1px solid rgba(244, 241, 234, 0.1);
+.unsupportedState {
+  padding: 40px 38px;
+  text-align: center;
 }
 
-.prototypeLabelText {
+.unsupportedTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin-bottom: 10px;
+}
+
+.unsupportedText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4a5560;
+  max-width: 480px;
+  margin: 0 auto 8px;
+}
+
+.unsupportedNote {
   font-family: var(--mono);
   font-weight: 500;
-  font-size: 9px;
-  line-height: 1;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--copper-lt);
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--muted);
+  max-width: 420px;
+  margin: 0 auto;
 }
 
-.prototypeLabelDot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--copper-lt);
-  opacity: 0.7;
-}
-
-/* ── Mobile responsive ─────────────────────────────────────── */
+/* ── Mobile ────────────────────────────────────────────────── */
 
 @media (max-width: 900px) {
   .stepsArea {
-    padding: 20px 18px 18px;
+    padding: 28px 22px 24px;
   }
 
   .step {
     gap: 10px;
-    padding: 12px 0;
-    min-height: 44px;
+    padding: 11px 0;
+    min-height: 42px;
   }
 
   .stepComputing {
@@ -602,52 +476,32 @@
   }
 
   .skipContainer {
-    padding: 8px 18px;
+    padding: 7px 18px;
   }
 
-  .summaryRibbon {
-    padding: 10px 18px;
-  }
-
-  .explanationArea {
-    padding: 24px 18px;
-  }
-
-  .explanationGrid {
-    grid-template-columns: 1fr;
+  .completionBridge {
+    padding: 20px 22px 16px;
     gap: 10px;
   }
 
-  .explanationTitle {
-    font-size: 20px;
+  .completionPrimary {
+    font-size: 13px;
   }
 
-  .explanationCardValue {
-    font-size: 20px;
-  }
-
-  .errorState {
-    padding: 32px 18px;
-  }
-
-  .unsupportedState {
-    padding: 32px 18px;
-  }
-
-  .prototypeLabel {
-    padding: 5px 14px;
+  .explanationArea {
+    padding: 24px 22px 32px;
   }
 }
 
 @media (max-width: 720px) {
   .stepsArea {
-    padding: 16px 14px 14px;
+    padding: 22px 14px 18px;
   }
 
   .step {
     gap: 8px;
     padding: 10px 0;
-    min-height: 40px;
+    min-height: 38px;
   }
 
   .stepComputing {
@@ -657,19 +511,19 @@
   }
 
   .stepIndicator {
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
   }
 
   .stepDot {
-    width: 16px;
-    height: 16px;
-    font-size: 8px;
+    width: 15px;
+    height: 15px;
+    font-size: 7px;
   }
 
   .stepConnector {
-    left: 9px;
-    top: 30px;
+    left: 8px;
+    top: 28px;
   }
 
   .stepLabel {
@@ -677,7 +531,7 @@
   }
 
   .stepValues {
-    gap: 6px;
+    gap: 5px;
   }
 
   .stepValue {
@@ -685,40 +539,38 @@
   }
 
   .skipButton {
-    font-size: 10px;
-    padding: 5px 12px;
+    font-size: 9px;
+    padding: 4px 10px;
   }
 
   .skipHint {
     font-size: 9px;
   }
 
-  .summaryRibbon {
-    padding: 8px 14px;
+  .completionBridge {
+    padding: 16px 14px 14px;
+    gap: 8px;
+    flex-wrap: wrap;
   }
 
-  .summaryText {
-    font-size: 9px;
+  .completionPrimary {
+    font-size: 12px;
   }
 
-  .summaryExpand {
+  .completionSecondary {
+    font-size: 8px;
+  }
+
+  .completionExpand {
     font-size: 10px;
+    margin-left: 0;
+    width: 100%;
+    text-align: left;
+    padding-top: 4px;
   }
 
   .explanationArea {
-    padding: 20px 14px;
-  }
-
-  .explanationTitle {
-    font-size: 18px;
-  }
-
-  .explanationWhy {
-    font-size: 14px;
-  }
-
-  .explanationCardValue {
-    font-size: 18px;
+    padding: 20px 14px 28px;
   }
 }
 
@@ -736,7 +588,7 @@
   .stepLabel,
   .stepValue,
   .stepsArea,
-  .summaryRibbon,
+  .completionBridge,
   .verdictArea {
     transition: none;
   }
@@ -747,7 +599,7 @@
     transform: none;
   }
 
-  .summaryRibbon {
+  .completionBridge {
     opacity: 1;
     transform: none;
   }
@@ -755,7 +607,7 @@
   .stepsAreaCompressing {
     max-height: none;
     opacity: 1;
-    padding: 16px 14px 14px;
+    padding: 22px 14px 18px;
   }
 }
 
@@ -763,10 +615,10 @@
 
 @media (min-width: 1366px) {
   .stepsArea {
-    max-width: 720px;
+    max-width: 640px;
   }
 
   .explanationArea {
-    max-width: 720px;
+    max-width: 640px;
   }
 }
