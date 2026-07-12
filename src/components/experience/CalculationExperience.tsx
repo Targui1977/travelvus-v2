@@ -142,31 +142,37 @@ export default function CalculationExperience({
     };
   }, [state.phase, state.currentStepIndex, timing]);
 
-  /* ── Step compression → preparing verdict → verdict ready ─ */
+  /* ── Quiet anticipation → compression → verdict ready ────── */
 
   useEffect(() => {
     if (state.phase !== "preparing_verdict") return;
 
-    // Start compression animation
-    setCompressing(true);
+    const quietMs = timing?.quietPauseMs ?? 400;
+    const compressionMs = timing?.stepCompressionMs ?? 400;
+    const pauseMs = timing?.preVerdictPauseMs ?? 450;
 
-    const compressionMs = timing?.stepCompressionMs ?? 0;
-    const pauseMs = timing?.preVerdictPauseMs ?? 500;
-
+    // Phase 1: Quiet pause — no movement, only anticipation
     timerRef.current = setTimeout(() => {
-      setVerdictEntering(true);
+      // Phase 2: Start compression animation
+      setCompressing(true);
 
       timerRef.current = setTimeout(() => {
-        dispatch({
-          type: "VERDICT_READY",
-          resultCalculatedAt: result.calculatedAt,
-        });
-        if (onComplete && !completeCalledRef.current) {
-          completeCalledRef.current = true;
-          onComplete();
-        }
-      }, pauseMs);
-    }, compressionMs);
+        // Phase 3: Verdict entrance begins
+        setVerdictEntering(true);
+
+        timerRef.current = setTimeout(() => {
+          // Phase 4: Verdict fully visible
+          dispatch({
+            type: "VERDICT_READY",
+            resultCalculatedAt: result.calculatedAt,
+          });
+          if (onComplete && !completeCalledRef.current) {
+            completeCalledRef.current = true;
+            onComplete();
+          }
+        }, pauseMs);
+      }, compressionMs);
+    }, quietMs);
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);

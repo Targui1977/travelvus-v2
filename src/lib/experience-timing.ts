@@ -19,7 +19,9 @@ export interface StepTiming {
 export interface CascadeTiming {
   /** Per-step computing durations, indexed by STEP_IDS */
   steps: Record<string, number>;
-  /** Pause between last step resolving and verdict reveal (ms) */
+  /** Quiet pause after step 7 before compression begins (ms). No movement. Anticipation only. */
+  quietPauseMs: number;
+  /** Pause between compression completing and verdict reveal (ms) */
   preVerdictPauseMs: number;
   /** Duration of the step-to-summary compression animation (ms) */
   stepCompressionMs: number;
@@ -50,7 +52,8 @@ const FIRST_RUN_STEPS: Record<string, number> = {
 
 export const FIRST_RUN: CascadeTiming = {
   steps: FIRST_RUN_STEPS,
-  preVerdictPauseMs: 500,
+  quietPauseMs: 400,
+  preVerdictPauseMs: 450,
   stepCompressionMs: 400,
   totalTarget: { min: 3400, max: 4200 },
 };
@@ -73,7 +76,8 @@ const REPEATED_STEPS: Record<string, number> = {
 
 export const REPEATED: CascadeTiming = {
   steps: REPEATED_STEPS,
-  preVerdictPauseMs: 300,
+  quietPauseMs: 200,
+  preVerdictPauseMs: 250,
   stepCompressionMs: 250,
   totalTarget: { min: 1800, max: 2600 },
 };

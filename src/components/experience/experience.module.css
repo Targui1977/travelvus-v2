@@ -50,7 +50,7 @@
 }
 
 .stepResolved {
-  opacity: 0.35;
+  opacity: 0.65;
 }
 
 .stepComputing {
@@ -343,13 +343,15 @@
 .verdictArea {
   outline: none;
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.7s ease-out, transform 0.65s cubic-bezier(0.33, 0, 0.67, 1);
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s cubic-bezier(0.33, 0, 0.67, 1);
+  /* Add vertical breathing room inside the verdict card */
+  padding: 8px 0;
 }
 
 .verdictEntering {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(24px);
 }
 
 .verdictVisible {

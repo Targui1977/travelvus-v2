@@ -22,6 +22,10 @@ function buildVerdictStats(result: CalculationResult) {
   const winnerCost =
     result.winner === "A" ? result.realCostA : result.realCostB;
 
+  // Human-readable time: 175 min → "2h 55m"
+  const hours = Math.floor(result.savingsTimeMinutes / 60);
+  const mins = result.savingsTimeMinutes % 60;
+
   return {
     verdictLine: `${winnerName} wins.`,
     stats: [
@@ -38,8 +42,8 @@ function buildVerdictStats(result: CalculationResult) {
       },
       {
         label: "Time saved",
-        value: String(result.savingsTimeMinutes),
-        unit: "min",
+        value: String(hours),
+        unit: `h ${mins}m`,
       },
     ] as [any, any, any],
   };
