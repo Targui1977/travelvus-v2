@@ -7,8 +7,8 @@ import MobileTOC from "@/components/guide/MobileTOC";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
-  title: "The Real Cost of a Flight: How to Compare Two Flights Properly | Travelvus",
-  description: "The ticket price is not the trip cost. Learn how to compare the real cost of two flights — ticket, baggage, airport transfers, and hidden expenses.",
+  title: "How to Compare Two Flights Properly: The Real Cost of a Flight | Travelvus",
+  description: "The ticket price is not the trip cost. Learn how to compare the real cost of two flights — ticket, baggage, airport transfers, schedule costs, and time.",
   alternates: { canonical: "/guides/real-cost-of-a-flight" },
 };
 
@@ -34,8 +34,8 @@ export default function RealCostGuide() {
 
         <section className={styles.guideHero}>
           <span className={styles.guideHeroKicker}>Travel Philosophy</span>
-          <h1 className={styles.guideHeroH1}>The Real Cost of a Flight: How to Compare Two Flights Properly</h1>
-          <p className={styles.guideHeroSub}>The ticket price shows one number. The real trip costs much more. Here is how to compare what actually matters.</p>
+          <h1 className={styles.guideHeroH1}>How to compare two flights properly</h1>
+          <p className={styles.guideHeroSub}>The ticket price shows one number. The real trip costs much more. Here is the framework that reveals which flight actually costs less.</p>
           <div className={styles.guideHeroMeta}>
             <span>9 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
@@ -59,8 +59,7 @@ export default function RealCostGuide() {
             </div>
 
             <h2 id="section-0">Why the ticket price lies</h2>
-            <p>You find two flights. One costs €58. The other costs €126. The choice seems obvious. Book the cheaper one. Save €68. But the ticket price is only the first number in a much longer equation. The €58 flight might land at an airport 70 kilometres from your destination. It might not include a checked bag. It might arrive at midnight, forcing you into an expensive taxi or an extra hotel night. The €126 flight might include baggage, land at a closer airport with a fast train connection, and arrive in time for dinner.</p>
-            <p>When you add up the total cost of getting from your front door to your final destination, the cheapest ticket rarely produces the cheapest trip. This guide teaches you exactly how to compare two flights properly — so you never overpay for the illusion of a bargain.</p>
+            <p>You find two flights. One costs €58. The other costs €126. The choice seems obvious — book the cheaper one and save €68. But the €58 flight lands at an airport 70 kilometres from your destination. It charges €42 for a checked bag. It arrives at midnight, forcing an expensive taxi or an extra hotel night. The €126 flight includes baggage, lands at a closer airport with a fast train connection, and arrives in time for dinner. When you add up the total cost from your front door to your final destination, the cheapest ticket rarely produces the cheapest trip.</p>
 
             <div className={styles.warningBox}>
               <span className={styles.warningBoxLabel}>Important</span>
@@ -100,9 +99,21 @@ export default function RealCostGuide() {
             <p style={{ marginTop: 20 }}>Apply this formula to both flight options. Measure every cost the same way for both. Then compare the totals. The winner is the option with the lower total real cost — not the lower ticket price.</p>
             <p>If the margin between the two totals is very small — less than €10 — then non-monetary factors like arrival time, airline reliability, and personal convenience should guide your decision. Travelvus calls this the personal handoff.</p>
 
+            <div className={styles.workedExample}>
+              <div className={styles.workedExampleHd}><span style={{ color: "var(--copper)" }}>Travelvus Calculation</span></div>
+              <div style={{ padding: "28px 32px", display: "flex", flexDirection: "column", gap: 8 }}>
+                {["Ticket price","+ Checked baggage fees","+ Seat selection cost","+ Departure airport transfer","+ Arrival airport transfer","+ Parking (if driving)","+ Schedule-related costs (late arrival hotel, early departure taxi)","+ Connection costs (meals, lounge, risk buffer)","+ Time impact (personal valuation)","= Real Trip Cost"].map((line, i) => (
+                  <div key={i} style={{ display: "flex", justifyContent: "space-between", padding: i === 9 ? "10px 0 0" : i === 0 ? "0" : "6px 0", borderTop: i === 9 ? "1.5px solid var(--line-3)" : "none", font: i === 9 ? "600 15px/1 Geist, sans-serif" : "400 14px/1.5 Geist, sans-serif", color: i === 9 ? "var(--ink)" : "var(--muted)" }}><span>{line}</span></div>
+                ))}
+                <p style={{ font: "400 13px/1.5 Geist, sans-serif", color: "var(--muted)", margin: "8px 0 0" }}>Apply this to both flights. Measure every cost the same way. The lower real cost wins.</p>
+              </div>
+            </div>
+
             <h2 id="section-3">Worked example: two flights compared</h2>
-            <p><em>Illustrative example. Prices are representative, not live market data.</em></p>
-            <p>A traveller is flying from Barcelona to London. They find two flights on the same date. Here is the complete comparison:</p>
+            <div className={styles.warningBox}>
+              <span className={styles.warningBoxLabel}>Illustrative example</span>
+              <p className={styles.warningBoxBody}>The prices below are hypothetical and intended to demonstrate the comparison method. They are not live fares, current schedules, or real-time airport transfer prices. Replace these values with your own journey data when comparing real flights.</p>
+            </div>
             <div className={styles.workedExample}>
               <div className={styles.workedExampleHd}><span>Option A</span><span>vs</span><span>Option B</span></div>
               <div className={styles.workedExampleHd}><span style={{ color: "var(--muted)" }}>Illustrative example</span><span style={{ display: "flex", alignItems: "center", gap: 6 }}><span className={styles.workedExampleDot} />Calculated now</span></div>
