@@ -1,7 +1,7 @@
 # TRAVELVUS V2 — PROYECTO HANDOFF
 
 **Fecha:** 2026-07-12
-**Último commit:** `c7526ce`
+**Último commit:** `9d215b1`
 **Producción:** https://www.travelvus.com
 
 ---
@@ -106,7 +106,19 @@ Sin gradientes. Sin sombras decorativas. Sin green/red winner signals.
 
 **Preview URL:** https://www.travelvus.com/experience/calculation-cascade-preview
 
-**Siguiente fase:** Owner visual review of refined prototype.
+**Phase 88.3 completada.** Calculation Cascade integrated into real product flow.
+
+**Phase 88.3 changes:**
+- Result page now plays Calculation Cascade on first visit
+- `page.tsx` builds CalculationResult from SSR data (calculation runs once)
+- `ResultClient` two-phase: cascade → full result (edit/Verdict Changed preserved)
+- QuickCompare button: "Reveal the real winner"
+- Prototype route removed (`/experience/calculation-cascade-preview`)
+- All reusable components preserved in `src/components/experience/`
+
+**Flow:** Home → fill QuickCompare → click "Reveal the real winner" → /result → cascade plays → verdict reveals → full result below → edit/share/continue
+
+**Siguiente fase:** Owner testing + Phase 88.8 (Polish + QA).
 
 ---
 
