@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { QuickCompare } from "@/components/compare";
+import HomeHeader from "@/components/ui/HomeHeader";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import Link from "next/link";
 import styles from "./page.module.css";
 
@@ -16,19 +18,7 @@ export default function HomePage() {
       <div style={{ maxWidth: 1240, margin: "0 auto", background: "#F4F1EA" }}>
 
         {/* ═══ HEADER ═══ */}
-        <header className={styles.header}>
-          <span className={styles.headerBrand}>
-            <span className={styles.headerWordmark}>Travelvus</span>
-            <span className={styles.headerLine} />
-            <span className={styles.headerDot} />
-          </span>
-          <nav className={styles.headerNav}>
-            <Link href="/">Compare</Link>
-            <Link href="/london-airports">Airport Decisions</Link>
-            <Link href="/wego-flight">Guides</Link>
-            <Link href="/#compare" className={styles.headerCta}>Open Engine →</Link>
-          </nav>
-        </header>
+        <HomeHeader />
 
         {/* ═══ HERO ═══ */}
         <section className={styles.hero}>
@@ -40,7 +30,7 @@ export default function HomePage() {
         </div>
 
         {/* ═══ COMPARISON ENGINE (static demo) ═══ */}
-        <section className={styles.engineWrap}>
+        <section className={`${styles.engineWrap} ${styles.engineFade}`}>
           <div className={styles.engine}>
             <div className={styles.engineHd}>
               <span>Verified transfer data</span>
@@ -87,7 +77,7 @@ export default function HomePage() {
             </div>
 
             {/* Verdict */}
-            <div className={styles.verdict}>
+            <div className={`${styles.verdict} ${styles.verdictFade}`}>
               <div className={styles.verdictHd}>
                 <span className={styles.verdictKicker}>Travelvus verdict</span>
                 <span className={styles.verdictSig}>
@@ -154,11 +144,15 @@ export default function HomePage() {
         </section>
 
         {/* ═══ REAL COMPARISON STORIES ═══ */}
+        <ScrollReveal>
         <section className={styles.storiesSection}>
           <h2 className={styles.storiesH2}>Real comparison stories</h2>
           <div className={styles.storiesGrid}>
             <Link href="/compare/heathrow-vs-gatwick/" className={styles.storyCard}>
-              <img src="/home/canary-wharf-dlr.webp" alt="DLR platform near Canary Wharf in London" className={styles.storyImg} />
+              <div className={styles.storyImgWrap}>
+                <img src="/home/canary-wharf-dlr.webp" alt="DLR platform near Canary Wharf in London" className={styles.storyImg} />
+                <div className={styles.storyImgOverlay} />
+              </div>
               <div className={styles.storyBody}>
                 <span className={styles.storyKicker}>Heathrow vs Gatwick · Canary Wharf</span>
                 <div className={`${styles.storyNumber} ${styles.storyNumberDark}`}>€37</div>
@@ -166,7 +160,10 @@ export default function HomePage() {
               </div>
             </Link>
             <Link href="/compare/heathrow-vs-gatwick/" className={styles.storyCard}>
-              <img src="/home/paddington-station.webp" alt="Interior of London Paddington railway station" className={styles.storyImg} />
+              <div className={styles.storyImgWrap}>
+                <img src="/home/paddington-station.webp" alt="Interior of London Paddington railway station" className={styles.storyImg} />
+                <div className={styles.storyImgOverlay} />
+              </div>
               <div className={styles.storyBody}>
                 <span className={styles.storyKicker}>Heathrow vs Gatwick · Paddington</span>
                 <div className={`${styles.storyNumber} ${styles.storyNumberCopper}`}>€1</div>
@@ -175,8 +172,10 @@ export default function HomePage() {
             </Link>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* ═══ POPULAR AIRPORT DECISIONS ═══ */}
+        <ScrollReveal stagger={1}>
         <section className={styles.decisionsSection}>
           <h2 className={styles.decisionsH2}>Popular airport decisions</h2>
           <Link href="/compare/heathrow-vs-gatwick/" className={styles.decisionRow}>
@@ -195,8 +194,10 @@ export default function HomePage() {
             <span className={styles.decisionCta}>Compare →</span>
           </Link>
         </section>
+        </ScrollReveal>
 
         {/* ═══ TRAVEL QUESTIONS ═══ */}
+        <ScrollReveal stagger={2}>
         <section className={styles.questionsSection}>
           <h2 className={styles.questionsH2}>Travel questions</h2>
           <div className={styles.questionsGrid}>
@@ -212,31 +213,37 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* ═══ FEATURED GUIDES ═══ */}
+        <ScrollReveal stagger={1}>
         <section className={styles.guidesSection}>
           <h2 className={styles.guidesH2}>Featured guides</h2>
           <div className={styles.guidesGrid}>
-            <div>
+            <Link href="/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system" className={styles.guideCard}>
               <img src="/home/heathrow-express.webp" alt="Heathrow Express train at a station platform" className={styles.guideCardImg} />
-              <div className={styles.guideCardTitle}>Heathrow to central London</div>
-              <p className={styles.guideCardText}>Every route and price, and when the Express is worth it.</p>
-              <Link href="/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system" className={styles.guideCardCta}>Read guide →</Link>
-            </div>
-            <div>
-              <img src="/home/airport-check-in-baggage.webp" alt="Airport check-in counters with passenger baggage" className={styles.guideCardImg} />
-              <div className={styles.guideCardTitle}>Baggage fees, compared honestly</div>
-              <p className={styles.guideCardText}>Where the &ldquo;cheap&rdquo; airlines make it back — and how to avoid it.</p>
-              <Link href="/tsa-precheck-cost" className={styles.guideCardCta}>Read guide →</Link>
-            </div>
-            <div>
-              <img src="/home/family-airport-travel.webp" alt="Family travelling through an airport with luggage" className={styles.guideCardImg} />
-              <div className={styles.guideCardTitle}>Travelling as a group of four</div>
-              <p className={styles.guideCardText}>How group size changes the math without changing the winner.</p>
-              <Link href="/kayak-flights" className={styles.guideCardCta}>Read guide →</Link>
-            </div>
+              <span className={styles.guideCardLabel}>London Transport</span>
+              <div className={styles.guideCardTitle}>Oyster Card London: The Complete Guide</div>
+              <p className={styles.guideCardText}>How Oyster, contactless and airport payment rules actually work for visitors.</p>
+              <span className={styles.guideCardCta}>Read guide →</span>
+            </Link>
+            <Link href="/tsa-precheck-cost" className={styles.guideCard}>
+              <img src="/legacy/tsa-precheck-cost/tsa-precheck-cost.webp" alt="TSA PreCheck enrollment and security screening" className={styles.guideCardImg} />
+              <span className={styles.guideCardLabel}>Airport Security</span>
+              <div className={styles.guideCardTitle}>TSA PreCheck: Cost, Benefits &amp; Enrollment</div>
+              <p className={styles.guideCardText}>How to skip airport security lines. Pricing, renewal, and whether it&rsquo;s worth it.</p>
+              <span className={styles.guideCardCta}>Read guide →</span>
+            </Link>
+            <Link href="/kayak-flights" className={styles.guideCard}>
+              <img src="/legacy/kayak-flights/kayak-travel.webp" alt="Kayak flight search and booking platform" className={styles.guideCardImg} />
+              <span className={styles.guideCardLabel}>Flight Search</span>
+              <div className={styles.guideCardTitle}>Find Affordable Kayak Flights</div>
+              <p className={styles.guideCardText}>Compare prices across 400+ airlines. Deals, alerts, and booking tips.</p>
+              <span className={styles.guideCardCta}>Read guide →</span>
+            </Link>
           </div>
         </section>
+        </ScrollReveal>
 
         {/* ═══ METHODOLOGY ═══ */}
         <section className={styles.methodSection}>

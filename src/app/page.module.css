@@ -1,12 +1,26 @@
 /* Home V6 — Design ZIP implementation */
+/* Interaction System: 200ms ease-out, copper accent, unified shadows */
+
+/* ---- Global Interactions ---- */
+.guideCard, .decisionRow, .storyCard, .questionItem, .engineCtaBtn, .headerCta, .headerNav a, .footerColLinks a,
+.guideCardCta, .questionCta, .methodCta, .decisionCta {
+  cursor: pointer;
+  transition: all 200ms ease-out;
+}
+
+/* ---- Shadow System ---- */
+/* shadow-sm: buttons on press, subtle depth */
+/* shadow-md: cards on hover (4-8px blur, 0.10 alpha) */
+/* shadow-lg: only engine card (0 2px 6px rgba(30,42,51,.06)) */
 
 /* ---- Header ---- */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 26px 48px;
+  padding: 22px 48px;
   border-bottom: 1px solid var(--line);
+  position: relative;
 }
 
 .headerBrand {
@@ -44,22 +58,32 @@
 .headerNav {
   display: flex;
   align-items: center;
-  gap: 44px;
+  gap: 40px;
 }
 
-.headerNav a {
-  font: 500 13px/1 'Geist', sans-serif;
-  letter-spacing: 0.01em;
-  color: #4a5560;
-  padding-bottom: 4px;
-  border-bottom: 1px solid transparent;
-  transition: color .2s ease, border-color .2s ease;
+.headerBrandLink {
   text-decoration: none;
 }
 
-.headerNav a:hover {
+.headerNavLink {
+  font: 600 14px/1 'Geist', sans-serif;
+  letter-spacing: 0.01em;
+  color: #3c4650;
+  padding: 7px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: color 200ms ease-out, background 200ms ease-out;
+  position: relative;
+}
+
+.headerNavLink:hover {
+  color: var(--copper);
+  background: rgba(184,92,56,.06);
+}
+
+.headerNavLinkActive {
+  background: rgba(184,92,56,.10);
   color: var(--ink);
-  border-bottom: 1px solid #D8CDB9;
 }
 
 .headerCta {
@@ -74,6 +98,99 @@
 
 .headerCta:hover {
   color: #8f4327;
+}
+
+/* ---- Hamburger ---- */
+.hamburger {
+  display: none;
+  background: var(--card);
+  border: 1px solid var(--line-2);
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 200;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.hamburger:hover {
+  background: var(--paper-2);
+  border-color: var(--copper);
+}
+
+.hamburger:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 2px;
+}
+
+.hamburger span {
+  display: block;
+  width: 20px;
+  height: 2.5px;
+  background: var(--navy);
+  border-radius: 1px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.hamburgerOpen span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburgerOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburgerOpen span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav overlay */
+.mobileNav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 12px 24px 20px;
+  flex-direction: column;
+  gap: 0;
+  z-index: 99;
+  box-shadow: 0 8px 24px rgba(30,42,51,.12);
+  outline: none;
+}
+
+.mobileNavOpen {
+  display: flex;
+}
+
+.mobileNavLink {
+  font: 500 16px/1 'Geist', sans-serif;
+  color: #3c4650;
+  text-decoration: none;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 200ms ease-out;
+}
+
+.mobileNavLink:last-child {
+  border-bottom: none;
+}
+
+.mobileNavLink:hover,
+.mobileNavLink:focus-visible {
+  color: var(--copper);
+  outline: none;
+}
+
+.mobileNavLinkActive {
+  color: var(--copper);
+  font-weight: 600;
 }
 
 /* ---- Hero ---- */
@@ -331,13 +448,15 @@
   font: 600 15px/1 'Geist', sans-serif;
   letter-spacing: 0.01em;
   text-decoration: none;
-  box-shadow: 0 2px 8px rgba(30,42,51,.18);
-  transition: background .2s ease;
+  box-shadow: 0 2px 8px rgba(30,42,51,.15);
+  transition: all 200ms ease-out;
 }
 
 .engineCtaBtn:hover {
   background: var(--copper);
   color: var(--paper);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(184,92,56,.25);
 }
 
 .engineTrust {
@@ -438,7 +557,7 @@
 
 /* ---- STORIES ---- */
 .storiesSection {
-  padding: 80px 48px;
+  padding: 88px 48px;
   border-top: 1px solid var(--line);
   background: var(--card);
 }
@@ -446,31 +565,58 @@
 .storiesH2 {
   font: 400 33px/1.2 'Instrument Serif', Georgia, serif;
   color: var(--ink);
-  margin: 0 0 52px;
+  margin: 0 0 56px;
 }
 
 .storiesGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  gap: 36px;
 }
 
 .storyCard {
   border: 1px solid #D8CDB9;
-  border-radius: 16px;
+  border-radius: 18px;
   background: var(--paper);
+  overflow: hidden;
+  text-decoration: none;
+  transition: all 300ms ease-out;
+  cursor: pointer;
+}
+
+.storyCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(30,42,51,.12);
+  border-color: var(--copper);
+}
+
+.storyImgWrap {
+  position: relative;
+  height: 260px;
   overflow: hidden;
 }
 
 .storyImg {
-  height: 260px;
   width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 500ms ease-out;
+}
+
+.storyCard:hover .storyImg {
+  transform: scale(1.04);
+}
+
+.storyImgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 60%, rgba(30,42,51,.06));
+  pointer-events: none;
 }
 
 .storyBody {
-  padding: 34px 34px 36px;
+  padding: 38px 36px 40px;
 }
 
 .storyKicker {
@@ -478,13 +624,14 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #9aa4ac;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
   display: block;
 }
 
 .storyNumber {
-  font: 400 68px/1 'Instrument Serif', Georgia, serif;
-  margin-bottom: 16px;
+  font: 400 72px/1 'Instrument Serif', Georgia, serif;
+  margin-bottom: 14px;
+  letter-spacing: -0.01em;
 }
 
 .storyNumberDark {
@@ -496,7 +643,7 @@
 }
 
 .storyText {
-  font: 400 15px/1.55 'Geist', sans-serif;
+  font: 400 16px/1.6 'Geist', sans-serif;
   color: var(--muted);
   margin: 0;
 }
@@ -518,9 +665,14 @@
   grid-template-columns: 260px 1fr auto;
   align-items: center;
   gap: 32px;
-  padding: 26px 0;
+  padding: 28px 0;
   border-top: 1px solid #D8CDB9;
   text-decoration: none;
+  transition: background .15s ease;
+}
+
+.decisionRow:hover {
+  background: rgba(184,92,56,.03);
 }
 
 .decisionRow:last-child {
@@ -528,8 +680,13 @@
 }
 
 .decisionPair {
-  font: 600 20px/1.2 'Geist', sans-serif;
+  font: 700 20px/1.2 'Geist', sans-serif;
   color: var(--ink);
+  transition: color .15s ease;
+}
+
+.decisionRow:hover .decisionPair {
+  color: var(--copper);
 }
 
 .decisionText {
@@ -542,6 +699,11 @@
   font: 600 14px/1 'Geist', sans-serif;
   color: var(--copper);
   white-space: nowrap;
+  transition: transform .2s ease;
+}
+
+.decisionRow:hover .decisionCta {
+  transform: translateX(3px);
 }
 
 /* ---- TRAVEL QUESTIONS ---- */
@@ -569,9 +731,14 @@
 }
 
 .questionTitle {
-  font: 400 24px/1.35 'Instrument Serif', Georgia, serif;
+  font: 600 26px/1.3 'Instrument Serif', Georgia, serif;
   color: var(--ink);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
+  transition: color .15s ease;
+}
+
+.questionItem:hover .questionTitle {
+  color: var(--copper);
 }
 
 .questionText {
@@ -592,51 +759,83 @@
 
 /* ---- GUIDES ---- */
 .guidesSection {
-  padding: 80px 48px;
+  padding: 88px 48px;
   border-top: 1px solid var(--line);
 }
 
 .guidesH2 {
   font: 400 33px/1.2 'Instrument Serif', Georgia, serif;
   color: var(--ink);
-  margin: 0 0 46px;
+  margin: 0 0 48px;
 }
 
 .guidesGrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 28px;
+  gap: 30px;
+}
+
+.guideCard {
+  display: block;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 300ms ease-out;
+}
+
+.guideCard:hover {
+  transform: translateY(-3px);
 }
 
 .guideCardImg {
-  height: 200px;
+  height: 220px;
   width: 100%;
   object-fit: cover;
-  border-radius: 12px;
-  margin-bottom: 20px;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  display: block;
+  transition: transform 500ms ease-out;
+}
+
+.guideCard:hover .guideCardImg {
+  transform: scale(1.03);
+}
+
+.guideCardLabel {
+  font: 500 10px/1 'IBM Plex Mono', monospace;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 8px;
   display: block;
 }
 
 .guideCardTitle {
-  font: 600 17px/1.3 'Geist', sans-serif;
+  font: 600 18px/1.3 'Geist', sans-serif;
   color: var(--ink);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  transition: color 200ms ease-out;
+}
+
+.guideCard:hover .guideCardTitle {
+  color: var(--copper);
 }
 
 .guideCardText {
-  font: 400 14px/1.5 'Geist', sans-serif;
+  font: 400 14px/1.55 'Geist', sans-serif;
   color: var(--muted);
-  margin: 0 0 12px;
+  margin: 0 0 10px;
 }
 
 .guideCardCta {
   font: 600 13px/1 'Geist', sans-serif;
   color: var(--copper);
   text-decoration: none;
+  transition: transform 200ms ease-out;
+  display: inline-block;
 }
 
-.guideCardCta:hover {
-  text-decoration: underline;
+.guideCard:hover .guideCardCta {
+  transform: translateX(4px);
 }
 
 /* ---- METHODOLOGY ---- */
@@ -718,6 +917,7 @@
 .footerColLinks a {
   color: #4a5560;
   text-decoration: none;
+  transition: color 200ms ease-out;
 }
 
 .footerColLinks a:hover {
@@ -748,16 +948,53 @@
   color: #9aa4ac;
 }
 
+/* ---- Scroll Animations ---- */
+.animateIn {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 450ms ease-out, transform 450ms ease-out;
+}
+
+.animateIn.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger1 { transition-delay: 0ms; }
+.stagger2 { transition-delay: 80ms; }
+.stagger3 { transition-delay: 160ms; }
+
+.engineFade {
+  opacity: 0;
+  animation: engineFadeIn 500ms ease-out 100ms forwards;
+}
+
+@keyframes engineFadeIn {
+  to { opacity: 1; }
+}
+
+.verdictFade {
+  opacity: 0;
+  animation: verdictFadeIn 500ms ease-out 400ms forwards;
+}
+
+@keyframes verdictFadeIn {
+  to { opacity: 1; }
+}
+
 /* ---- RESPONSIVE ---- */
-@media (max-width: 720px) {
+@media (max-width: 900px) {
   .header {
     padding: 18px 18px;
   }
   .headerNav {
     display: none;
   }
+  .hamburger {
+    display: flex;
+  }
   .hero {
-    padding: 28px 18px 12px;
+    padding: 24px 18px 10px;
   }
   .heroH1 {
     font-size: 30px;
