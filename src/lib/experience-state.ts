@@ -6,6 +6,8 @@
  * No React, no side effects, pure reducer pattern.
  *
  * Phase 88.1 — Foundation.
+ * Phase 88.2 — Fixed: repeated calc no longer jumps to verdict_visible.
+ *             Timing is controlled by the component layer, not the reducer.
  */
 
 /* ── States ───────────────────────────────────────────────── */
@@ -116,7 +118,7 @@ export function experienceReducer(
         // Prevent double-submit: ignore SUBMIT unless idle
         return state;
       }
-      // Reduced motion: skip straight to verdict_visible
+      // Reduced motion: skip straight to verdict_visible (no animation)
       if (action.reducedMotion) {
         return {
           ...state,
@@ -129,25 +131,15 @@ export function experienceReducer(
           startedAt: Date.now(),
         };
       }
-      // Repeated calculation: accelerated path — skip to verdict
-      if (action.isRepeated) {
-        return {
-          ...state,
-          phase: "verdict_visible",
-          currentStepIndex: STEP_IDS.length,
-          steps: state.steps.map((s) => ({ ...s, status: "resolved" as const })),
-          isRepeated: true,
-          reducedMotion: false,
-          errorMessage: null,
-          startedAt: Date.now(),
-        };
-      }
+      // All other submissions (first-run + repeated): go through the full cascade.
+      // Timing (normal vs accelerated) is controlled by the component layer,
+      // not by the reducer. The reducer is timing-agnostic.
       return {
         ...state,
         phase: "validating",
         currentStepIndex: 0,
         steps: state.steps.map((s) => ({ ...s, status: "pending" as const })),
-        isRepeated: false,
+        isRepeated: action.isRepeated,
         reducedMotion: false,
         errorMessage: null,
         startedAt: Date.now(),

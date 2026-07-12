@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducer, useCallback, useRef, useEffect } from "react";
+import { useReducer, useCallback, useRef, useEffect, useState } from "react";
 import type { CalculationResult } from "@/lib/calculation-contract";
 import {
   initialExperienceState,
@@ -10,6 +10,12 @@ import {
   canSkip,
   isVerdictVisible,
 } from "@/lib/experience-state";
+import {
+  FIRST_RUN,
+  REPEATED,
+  REDUCED_MOTION,
+  getStepDurationByIndex,
+} from "@/lib/experience-timing";
 import CalculationStepList from "./CalculationStepList";
 import SkipToVerdict from "./SkipToVerdict";
 import ExperienceStatus from "./ExperienceStatus";
@@ -36,16 +42,6 @@ export interface CalculationExperienceProps {
   renderExplanation: () => React.ReactNode;
 }
 
-/* ── Step timing ──────────────────────────────────────────── */
-
-/** Duration each step stays in "computing" state (ms) */
-const STEP_COMPUTING_DURATION = 500;
-
-/** Duration between step completion and next step (ms) */
-const STEP_GAP_DURATION = 150;
-
-/** Total per step: 650ms. For 7 steps: ~4.55s */
-
 /* ── Component ────────────────────────────────────────────── */
 
 export default function CalculationExperience({
@@ -63,9 +59,17 @@ export default function CalculationExperience({
     initialExperienceState()
   );
 
+  // Select timing based on mode
+  const timing = reducedMotion ? null : isRepeated ? REPEATED : FIRST_RUN;
+
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const hasStartedRef = useRef(false);
   const completeCalledRef = useRef(false);
+
+  // Phase tracking for CSS transitions
+  const [compressing, setCompressing] = useState(false);
+  const [verdictEntering, setVerdictEntering] = useState(false);
+  const prevPhaseRef = useRef(state.phase);
 
   /* ── Start the experience ──────────────────────────────── */
 
@@ -75,44 +79,49 @@ export default function CalculationExperience({
 
     dispatch({ type: "SUBMIT", isRepeated, reducedMotion });
 
-    // If reduced motion or repeated: skip directly to verdict
-    if (reducedMotion || isRepeated) {
+    // Reduced motion: show verdict nearly instantly
+    if (reducedMotion) {
       const tid = setTimeout(() => {
-        dispatch({ type: "VERDICT_READY", resultCalculatedAt: result.calculatedAt });
+        dispatch({
+          type: "VERDICT_READY",
+          resultCalculatedAt: result.calculatedAt,
+        });
         if (onComplete && !completeCalledRef.current) {
           completeCalledRef.current = true;
           onComplete();
         }
-      }, 100);
+      }, REDUCED_MOTION.verdictDelayMs);
       return () => clearTimeout(tid);
     }
 
-    // Start normal cascade: validation passes immediately
+    // Normal/repeated: validation passes immediately, cascade begins
     dispatch({ type: "VALIDATION_PASSED" });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  /* ── Step cascade timer ─────────────────────────────────── */
+  /* ── Step cascade timer with natural rhythm ─────────────── */
 
   useEffect(() => {
-    // Only run the cascade during active calculation phases
     if (!isExperienceActive(state.phase)) return;
+    if (!timing) return; // reduced motion — no cascade
 
     // Start the first step timer
     if (state.phase === "calculating" && state.currentStepIndex === 0) {
+      const duration = getStepDurationByIndex(0, timing);
       timerRef.current = setTimeout(() => {
         dispatch({ type: "NEXT_STEP" });
-      }, STEP_COMPUTING_DURATION);
+      }, duration);
     }
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [state.phase, state.currentStepIndex]);
+  }, [state.phase, state.currentStepIndex, timing]);
 
   /* ── Continue cascade after each step resolves ──────────── */
 
   useEffect(() => {
     if (state.phase !== "revealing_steps") return;
+    if (!timing) return;
 
     const idx = state.currentStepIndex;
 
@@ -122,34 +131,47 @@ export default function CalculationExperience({
       return;
     }
 
-    // Schedule the next step
+    // Schedule the next step with its specific duration
+    const duration = getStepDurationByIndex(idx, timing);
     timerRef.current = setTimeout(() => {
       dispatch({ type: "NEXT_STEP" });
-    }, STEP_COMPUTING_DURATION);
+    }, duration);
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [state.phase, state.currentStepIndex]);
+  }, [state.phase, state.currentStepIndex, timing]);
 
-  /* ── Preparing verdict → verdict ready ──────────────────── */
+  /* ── Step compression → preparing verdict → verdict ready ─ */
 
   useEffect(() => {
     if (state.phase !== "preparing_verdict") return;
 
-    // Brief anticipation pause, then reveal
+    // Start compression animation
+    setCompressing(true);
+
+    const compressionMs = timing?.stepCompressionMs ?? 0;
+    const pauseMs = timing?.preVerdictPauseMs ?? 500;
+
     timerRef.current = setTimeout(() => {
-      dispatch({ type: "VERDICT_READY", resultCalculatedAt: result.calculatedAt });
-      if (onComplete && !completeCalledRef.current) {
-        completeCalledRef.current = true;
-        onComplete();
-      }
-    }, 800);
+      setVerdictEntering(true);
+
+      timerRef.current = setTimeout(() => {
+        dispatch({
+          type: "VERDICT_READY",
+          resultCalculatedAt: result.calculatedAt,
+        });
+        if (onComplete && !completeCalledRef.current) {
+          completeCalledRef.current = true;
+          onComplete();
+        }
+      }, pauseMs);
+    }, compressionMs);
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [state.phase, result.calculatedAt]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [state.phase, result.calculatedAt, timing]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /* ── Cleanup on unmount ─────────────────────────────────── */
 
@@ -165,18 +187,23 @@ export default function CalculationExperience({
     if (!canSkip(state.phase)) return;
 
     if (timerRef.current) clearTimeout(timerRef.current);
+    setCompressing(true);
 
     dispatch({ type: "SKIP" });
 
-    // After skip animation, show verdict
+    // After brief compression, show verdict
     setTimeout(() => {
-      dispatch({ type: "VERDICT_READY", resultCalculatedAt: result.calculatedAt });
+      setVerdictEntering(true);
+      dispatch({
+        type: "VERDICT_READY",
+        resultCalculatedAt: result.calculatedAt,
+      });
       onSkipProp?.();
       if (onComplete && !completeCalledRef.current) {
         completeCalledRef.current = true;
         onComplete();
       }
-    }, 300);
+    }, 250);
   }, [state.phase, result.calculatedAt, onSkipProp, onComplete]);
 
   /* ── Focus verdict headline ─────────────────────────────── */
@@ -193,17 +220,18 @@ export default function CalculationExperience({
   const showSteps =
     state.phase === "calculating" ||
     state.phase === "revealing_steps" ||
-    state.phase === "preparing_verdict";
+    state.phase === "preparing_verdict" ||
+    state.phase === "skipped";
   const showVerdict = isVerdictVisible(state.phase);
   const showExplanation =
     state.phase === "explanation_visible" || state.phase === "skipped";
-  const showSummary =
+  const isCompressed =
     state.phase === "preparing_verdict" ||
-    state.phase === "verdict_visible" ||
-    state.phase === "explanation_visible" ||
-    state.phase === "skipped";
+    state.phase === "skipped" ||
+    showVerdict;
+  const isVerdictEntering = verdictEntering || showVerdict;
 
-  // Guard: if still idle or validating, show minimal loading state
+  // Guard: idle or validating
   if (state.phase === "idle" || state.phase === "validating") {
     return (
       <div className={styles.container}>
@@ -217,7 +245,7 @@ export default function CalculationExperience({
     );
   }
 
-  // Guard: error state
+  // Guard: error
   if (state.phase === "error") {
     return (
       <div className={styles.container}>
@@ -250,33 +278,53 @@ export default function CalculationExperience({
 
       {/* ── Calculation steps ── */}
       {showSteps && (
-        <div className={styles.stepsArea}>
+        <div
+          className={`${styles.stepsArea} ${
+            compressing ? styles.stepsAreaCompressing : ""
+          }`}
+        >
           <CalculationStepList stages={result.stages} stepStates={state.steps} />
         </div>
       )}
 
       {/* ── Steps summary ribbon ── */}
-      {showSummary && (
-        <div className={styles.summaryRibbon}>
+      {isCompressed && (
+        <div
+          className={`${styles.summaryRibbon} ${
+            compressing ? styles.summaryRibbonEnter : ""
+          }`}
+        >
           <span className={styles.summaryText}>
-            {result.stages.filter(
-              (_, i) => state.steps[i]?.status === "resolved"
-            ).length}{" "}
-            of {result.stages.length} factors checked
+            7 journey factors checked
           </span>
           {result.warnings.length > 0 && (
             <span className={styles.summaryWarning}>
-              {result.warnings.length} note{result.warnings.length > 1 ? "s" : ""}
+              {result.warnings.length} note
+              {result.warnings.length > 1 ? "s" : ""}
             </span>
           )}
+          <button
+            className={styles.summaryExpand}
+            type="button"
+            aria-label="View calculation steps"
+            onClick={() => setCompressing(false)}
+          >
+            View steps
+          </button>
         </div>
       )}
 
       {/* ── Verdict ── */}
-      {showVerdict && (
+      {isVerdictEntering && (
         <div
           ref={verdictRef}
-          className={styles.verdictArea}
+          className={`${styles.verdictArea} ${
+            verdictEntering && !showVerdict
+              ? styles.verdictEntering
+              : showVerdict
+              ? styles.verdictVisible
+              : ""
+          }`}
           tabIndex={-1}
           aria-label="Travelvus Verdict"
         >

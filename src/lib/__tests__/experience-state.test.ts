@@ -74,17 +74,19 @@ describe("state transitions", () => {
     }
   });
 
-  it("idle → verdict_visible on SUBMIT with repeated calculation", () => {
+  it("idle → validating on SUBMIT with repeated calculation (no instant jump)", () => {
+    // Phase 88.2 fix: repeated calc goes through full cascade, not instant verdict.
+    // Timing is controlled by the component layer, not the reducer.
     const s = experienceReducer(initialExperienceState(), {
       type: "SUBMIT",
       isRepeated: true,
       reducedMotion: false,
     });
-    expect(s.phase).toBe("verdict_visible");
+    expect(s.phase).toBe("validating");
     expect(s.isRepeated).toBe(true);
-    // All steps resolved immediately
+    // All steps still pending — cascade will run (accelerated by component timing)
     for (const step of s.steps) {
-      expect(step.status).toBe("resolved");
+      expect(step.status).toBe("pending");
     }
   });
 
@@ -389,26 +391,37 @@ describe("reduced motion path", () => {
 /* ── Repeated calculation path ──────────────────────────────── */
 
 describe("repeated calculation path", () => {
-  it("all steps resolved immediately on repeated calculation", () => {
+  it("repeated calculation goes through validating (not instant verdict)", () => {
+    // Phase 88.2: repeated calc uses accelerated timing but still goes through
+    // the full cascade. The reducer is timing-agnostic.
     const s = experienceReducer(initialExperienceState(), {
       type: "SUBMIT",
       isRepeated: true,
       reducedMotion: false,
     });
-    expect(s.phase).toBe("verdict_visible");
+    expect(s.phase).toBe("validating");
     expect(s.isRepeated).toBe(true);
+  });
+
+  it("repeated calculation steps start as pending", () => {
+    const s = experienceReducer(initialExperienceState(), {
+      type: "SUBMIT",
+      isRepeated: true,
+      reducedMotion: false,
+    });
     for (const step of s.steps) {
-      expect(step.status).toBe("resolved");
+      expect(step.status).toBe("pending");
     }
   });
 
-  it("no staged animation on repeated calculation", () => {
-    const s = experienceReducer(initialExperienceState(), {
+  it("repeated calculation transitions through calculating after validation", () => {
+    const s1 = experienceReducer(initialExperienceState(), {
       type: "SUBMIT",
       isRepeated: true,
       reducedMotion: false,
     });
-    expect(s.phase).not.toBe("calculating");
-    expect(s.phase).not.toBe("revealing_steps");
+    const s2 = experienceReducer(s1, { type: "VALIDATION_PASSED" });
+    expect(s2.phase).toBe("calculating");
+    expect(s2.isRepeated).toBe(true);
   });
 });
