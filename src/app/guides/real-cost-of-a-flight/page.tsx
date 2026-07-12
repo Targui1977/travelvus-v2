@@ -99,10 +99,10 @@ export default function RealCostGuide() {
             <p style={{ marginTop: 20 }}>Apply this formula to both flight options. Measure every cost the same way for both. Then compare the totals. The winner is the option with the lower total real cost — not the lower ticket price.</p>
             <p>If the margin between the two totals is very small — less than €10 — then non-monetary factors like arrival time, airline reliability, and personal convenience should guide your decision. Travelvus calls this the personal handoff.</p>
 
-            <div className={styles.tipBox}>
-              <span className={styles.tipBoxLabel}>Travelvus Calculation</span>
-              <p className={styles.tipBoxBody} style={{ font: "500 14px/1.6 Geist, sans-serif", color: "var(--ink)" }}><strong>Real Trip Cost</strong> = Ticket + Baggage + Seat Selection + Departure Transfer + Arrival Transfer + Schedule Costs + Time Value</p>
-              <p className={styles.tipBoxBody} style={{ marginTop: 6 }}>Apply this to both flights. Measure every cost the same way. The lower real cost wins.</p>
+            <div className={styles.insightNode} style={{ borderRadius: 14, padding: "24px 28px" }}>
+              <span className={styles.insightNodeLabel}>Travelvus Calculation</span>
+              <p className={styles.insightNodeBody} style={{ fontSize: 16, lineHeight: 1.5 }}><strong>Real Trip Cost</strong> = Ticket + Baggage + Seat Selection + Departure Transfer + Arrival Transfer + Schedule Costs + Time Value</p>
+              <p style={{ font: "400 13px/1.5 Geist, sans-serif", color: "var(--pmuted)", margin: "10px 0 0" }}>Apply this to both flights. Measure every cost the same way. The lower real cost wins.</p>
             </div>
 
             <h2 id="section-3">Worked example: two flights compared</h2>
