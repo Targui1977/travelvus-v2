@@ -1,7 +1,7 @@
 # TRAVELVUS V2 — PROYECTO HANDOFF
 
 **Fecha:** 2026-07-12
-**Último commit:** `c5d9064`
+**Último commit:** `c7526ce`
 **Producción:** https://www.travelvus.com
 
 ---
@@ -92,7 +92,21 @@ Sin gradientes. Sin sombras decorativas. Sin green/red winner signals.
 
 **Preview URL:** https://www.travelvus.com/experience/calculation-cascade-preview
 
-**Siguiente fase: Phase 88.3** — Verdict Reveal polish + owner visual review.
+**Phase 88.2B completada.** Visual refinement based on owner review.
+
+**Phase 88.2B changes:**
+- Product stage: 880px card container with deliberate proportions
+- QA panel: visually separated "Preview Controls" with warm-grey background
+- Cascade hierarchy: active step prominent, completed 35%, upcoming 28%
+- Completion bridge: ✓ + "Calculation complete" + "7 journey factors checked"
+- Verdict copy: "Heathrow wins." (removed em-dash), "Time saved" label
+- Explanation: narrative hierarchy (decisive reason → evidence → flip → assumptions)
+- Desktop: substantial feel, no floating mobile column
+- Mobile: compact, no overflow
+
+**Preview URL:** https://www.travelvus.com/experience/calculation-cascade-preview
+
+**Siguiente fase:** Owner visual review of refined prototype.
 
 ---
 
