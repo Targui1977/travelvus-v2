@@ -1,49 +1,65 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "Costco Vacation Deals",
+    description: "Uncover the best travel packages and discounts through Costco.",
+    href: "/costco-vacation",
+    label: "Related Guide",
+  },
+  {
+    title: "WeGo Flight Guide",
+    description: "Compare over 800 European flight providers and save up to 30%.",
+    href: "/wego-flight",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Discover the Benefits of Expedia TAAP: Boost Your Travel Agency's Success",
   description:
     "Expedia TAAP gives travel agencies access to global travel supply, competitive commissions, and a powerful booking platform. Learn how the program works.",
   alternates: { canonical: "/expedia-taap" },
-};
-
-export default function ExpediaTaapPage() {
+};export default function ExpediataapPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Travel Industry Guide"
+      title="Discover the Benefits of Expedia TAAP: Boost Your Travel Agency&rsquo;s Success"
+      subtitle="How Expedia's Travel Agent Affiliate Programme works — commission rates, booking tools, and benefits for travel professionals."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/expedia-taap/expedia-taap-1024x576.jpg"
+      heroImageAlt="expedia taap"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "Expedia TAAP gives travel agents access to Expedia's full inventory.",
+        "Agents earn commission on flights, hotels, packages and activities.",
+        "The platform includes agent-only rates and promotional fares.",
+        "Booking tools and reporting dashboards support agency operations."
+      ]}
+      tocItems={[
+        { id: "what-is-expedia-taap", title: "What is Expedia TAAP?" },
+        { id: "benefits-of-the-taap-program", title: "Benefits of the TAAP Program" },
+        { id: "how-expedia-taap-booking-platform-can-help", title: "How Expedia TAAP&rsquo;s Booking Platform Can Help Travel Agencies" },
+        { id: "next-status-upgrade-your-agency-category", title: "Next Status: Upgrade Your Agency&rsquo;s Category" },
+        { id: "the-expedia-taap-audience", title: "The Expedia TAAP Audience" },
+        { id: "about-expedia-taap", title: "About Expedia TAAP" },
+        { id: "commissionable-products", title: "Commissionable Products" },
+        { id: "global-travel-supply-and-impressive-rates", title: "Global Travel Supply and Impressive Rates" }
+      ]}
+      ctaText="Booking for a client? Compare the real journey cost before confirming."
+      ctaLink="/#compare"
+      ctaHint="The cheapest fare on Expedia may not be the cheapest complete journey."
+      methodologyText="Travelvus calculates complete journey costs. Whether you book through Expedia TAAP or directly, baggage, transfers and time determine the real cost."
+      trustNote="Expedia TAAP commission rates and availability vary by market. Verify current terms."
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Discover the Benefits of Expedia TAAP: Boost Your Travel Agency&rsquo;s Success</h1>
-
-        <img src="/legacy/expedia-taap/expedia-taap-1024x576.jpg" alt="expedia taap" />
-
-        {/* Table of Contents */}
-        <ol className={styles.toc}>
-          <li><a href="#what-is-expedia-taap">What is Expedia TAAP?</a></li>
-          <li><a href="#benefits-of-the-taap-program">Benefits of the TAAP Program</a></li>
-          <li><a href="#how-expedia-taap-booking-platform-can-help">How Expedia TAAP&rsquo;s Booking Platform Can Help Travel Agencies</a></li>
-          <li><a href="#next-status-upgrade-your-agency-category">Next Status: Upgrade Your Agency&rsquo;s Category</a></li>
-          <li><a href="#the-expedia-taap-audience">The Expedia TAAP Audience</a></li>
-          <li><a href="#about-expedia-taap">About Expedia TAAP</a></li>
-          <li><a href="#commissionable-products">Commissionable Products</a></li>
-          <li><a href="#global-travel-supply-and-impressive-rates">Global Travel Supply and Impressive Rates</a></li>
-        </ol>
-
-        {/* Introductory paragraphs */}
+<img src="/legacy/expedia-taap/expedia-taap-1024x576.jpg" alt="expedia taap" />
+{/* Introductory paragraphs */}
         <p>Are you a travel agency looking to boost your success? Look no further than <strong><a href="https://www.expedia.com/taap-registration" rel="noopener noreferrer" target="_blank">Expedia TAAP</a></strong>! In this article, we will explore the numerous advantages of using Expedia TAAP to take your agency to new heights. From access to a global travel supply and impressive rates to a user-friendly booking platform, Expedia TAAP has everything you need <strong>to increase your bookings</strong> and create exceptional experiences for your travelers. Join us as we dive into the world of Expedia TAAP and discover how it can revolutionize your travel agency&rsquo;s success.</p>
 
         <h2 id="what-is-expedia-taap">What is Expedia TAAP?</h2>
@@ -111,17 +127,7 @@ export default function ExpediaTaapPage() {
         <p>When it comes to providing comprehensive travel supply and competitive pricing, Expedia TAAP is an ideal partner for your agency. With access to millions of properties worldwide, agencies craft perfect trips for customers. Partnering with TAAP means offering impressive rates, helping you stand out in the travel industry. By using the global supply and rates, you can confidently meet the needs of your customers.</p>
 
         <p>Partnering grants access to a <strong>vast selection of travel options</strong>, from hotels to car rentals to activities and attractions. This provides the necessary flexibility to create the perfect trip for each of your customers. TAAP is committed to offering competitive rates, allowing you to provide your customers with the best value for their money. With Expedia TAAP, you can confidently offer your travelers a comprehensive selection of travel options and impressive rates, resulting in increased bookings and revenue.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

@@ -1,43 +1,62 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "Rome Attractions Guide",
+    description: "The 10 must-see attractions in Rome with practical tips.",
+    href: "/top-rated-tourists-attractions-in-rome",
+    label: "Related Guide",
+  },
+  {
+    title: "Oyster Card London Guide",
+    description: "Navigate London's transport system with the Oyster Card.",
+    href: "/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Ultimate Guide to Interrailing: Explore Europe by Train with Ease",
   description:
     "Discover the ultimate guide to interrailing: types of passes, planning tips, regions to explore, apps and resources, packing advice, and more.",
   alternates: { canonical: "/ultimate-guide-to-interrailing-explore-europe-by-train-with-ease" },
-};
-
-export default function InterrailingPage() {
+};export default function UltimateguidetointerrailingexploreeuropebytrainwitheasePage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" /><span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Rail Travel Guide"
+      title="Ultimate Guide to Interrailing: Explore Europe by Train with Ease"
+      subtitle="How Interrail passes work, which pass to choose, and how to plan a multi-country European rail adventure."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "Interrail passes cover train travel across 33 European countries.",
+        "Choose between continuous passes and flexible day passes.",
+        "High-speed and night trains often require seat reservations.",
+        "A well-planned route saves both money and travel time."
+      ]}
+      tocItems={[
+        { id: "what-is-interrailing", title: "What is Interrailing?" },
+        { id: "types-of-passes", title: "Types of Interrail Passes" },
+        { id: "planning", title: "Planning Your Interrail Trip" },
+        { id: "different-regions", title: "Exploring Different Regions" },
+        { id: "apps-and-resources", title: "Apps and Resources for Interrailing" },
+        { id: "tips-and-tricks", title: "Tips and Tricks for a Smooth Journey" },
+        { id: "packing", title: "Packing for Interrailing" },
+        { id: "conclusion", title: "Conclusion" }
+      ]}
+      ctaText="Planning a European rail trip? Compare total journey time and cost."
+      ctaLink="/#compare"
+      ctaHint="Trains vs flights — the real time and cost comparison often surprises travellers."
+      methodologyText="Travelvus compares complete journeys — whether by train or plane. Door-to-door time, transfers and total cost reveal which option really wins."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Ultimate Guide to Interrailing: Explore Europe by Train with Ease</h1>
-
-        <ol className={styles.toc}>
-          <li><a href="#what-is-interrailing">What is Interrailing?</a></li>
-          <li><a href="#types-of-passes">Types of Interrail Passes</a></li>
-          <li><a href="#planning">Planning Your Interrail Trip</a></li>
-          <li><a href="#different-regions">Exploring Different Regions</a></li>
-          <li><a href="#apps-and-resources">Apps and Resources for Interrailing</a></li>
-          <li><a href="#tips-and-tricks">Tips and Tricks for a Smooth Journey</a></li>
-          <li><a href="#packing">Packing for Interrailing</a></li>
-          <li><a href="#conclusion">Conclusion</a></li>
-        </ol>
-
-        <p>Interrailing is one of the most exciting and flexible ways to explore Europe. With a single pass, you can hop on and off trains across dozens of countries, discovering everything from bustling capitals to remote villages. Whether you are a student on a summer adventure, a gap-year traveler, or simply someone who loves the romance of train travel, interrailing offers an unforgettable experience. The freedom to change your plans at a moment&rsquo;s notice is what sets interrailing apart from any other form of travel.</p>
+<p>Interrailing is one of the most exciting and flexible ways to explore Europe. With a single pass, you can hop on and off trains across dozens of countries, discovering everything from bustling capitals to remote villages. Whether you are a student on a summer adventure, a gap-year traveler, or simply someone who loves the romance of train travel, interrailing offers an unforgettable experience. The freedom to change your plans at a moment&rsquo;s notice is what sets interrailing apart from any other form of travel.</p>
 
         <p>Europe&rsquo;s extensive rail network connects nearly every corner of the continent, making it easy to travel between countries without the hassle of airports and security lines. Trains take you directly from city center to city center, often with stunning scenery along the way. From the snow-capped Alps to the sun-drenched Mediterranean coast, the views from a train window are part of the adventure. Interrailing is not just about getting from point A to point B; it is about the journey itself.</p>
 
@@ -95,12 +114,7 @@ export default function InterrailingPage() {
         <p>Interrailing is an incredible way to see Europe. The freedom, flexibility, and sense of adventure are unmatched by any other form of travel. With the right pass, a rough plan, and an open mind, you can explore the continent at your own pace and create memories that will last a lifetime. Whether you are traveling solo, with friends, or as a couple, the open rails of Europe are waiting for you.</p>
 
         <p>So grab your pass, pack your bag, and board the train. Your European adventure starts the moment you leave the station behind.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/methodology">Methodology</Link><Link href="/london-airports">London Airports</Link></div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

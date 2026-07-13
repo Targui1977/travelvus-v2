@@ -1,49 +1,65 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "TSA PreCheck Guide",
+    description: "Everything about TSA PreCheck enrollment, pricing and benefits.",
+    href: "/tsa-precheck-cost",
+    label: "Related Guide",
+  },
+  {
+    title: "Global Entry Guide",
+    description: "Unlock global travel efficiency with expedited customs screening.",
+    href: "/unlock-global-travel-efficiency-with-global-entry-your-ultimate-guide",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Streamline Your Travel with Defense Travel System: The Ultimate Guide",
   description:
     "Learn how the Defense Travel System (DTS) streamlines official travel for Department of Defense personnel. Booking, vouchers, authorizations, and local rules explained.",
   alternates: { canonical: "/defense-travel-system" },
-};
-
-export default function DefenseTravelSystemPage() {
+};export default function DefensetravelsystemPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Government Travel Guide"
+      title="Streamline Your Travel with Defense Travel System: The Ultimate Guide"
+      subtitle="How the Defense Travel System works for US military personnel — booking, authorizations, vouchers and reimbursement."
+      readingTime="5 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/defense-travel-system/defense-travel-system-1024x935.jpeg"
+      heroImageAlt="defense travel system"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "DTS is the official travel booking system for US Department of Defense personnel.",
+        "All official travel must be authorised through DTS before booking.",
+        "The system handles flights, lodging and rental cars in one platform.",
+        "Vouchers and reimbursements are processed through DTS after travel."
+      ]}
+      tocItems={[
+        { id: "what-is-dts", title: "What is DTS?" },
+        { id: "features", title: "Features" },
+        { id: "log-in", title: "Log In" },
+        { id: "booking", title: "Booking" },
+        { id: "gathering-info", title: "Gathering Info" },
+        { id: "updating-profile", title: "Updating Profile" },
+        { id: "trip-processing", title: "Trip Processing" },
+        { id: "local-rules", title: "Local Rules" }
+      ]}
+      ctaText="Travelling on orders? Still compare the real journey before you go."
+      ctaLink="/#compare"
+      ctaHint="Even government-rate travel has hidden time and transfer costs."
+      methodologyText="Travelvus compares complete journeys regardless of how you booked. Government travel rates may save money but the airport, transfer and total time still matter."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Streamline Your Travel with Defense Travel System: The Ultimate Guide</h1>
-
-        <img src="/legacy/defense-travel-system/defense-travel-system-1024x935.jpeg" alt="defense travel system" />
-
-        {/* Table of Contents */}
-        <ol className={styles.toc}>
-          <li><a href="#what-is-dts">What is DTS?</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#log-in">Log In</a></li>
-          <li><a href="#booking">Booking</a></li>
-          <li><a href="#gathering-info">Gathering Info</a></li>
-          <li><a href="#updating-profile">Updating Profile</a></li>
-          <li><a href="#trip-processing">Trip Processing</a></li>
-          <li><a href="#local-rules">Local Rules</a></li>
-        </ol>
-
-        {/* Introductory paragraphs */}
+<img src="/legacy/defense-travel-system/defense-travel-system-1024x935.jpeg" alt="defense travel system" />
+{/* Introductory paragraphs */}
         <p>Managing official travel for the Department of Defense can be a complex and time-consuming task. Fortunately, the <strong><a href="https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view/" rel="noopener noreferrer" target="_blank">Defense Travel System (DTS)</a></strong> provides a streamlined and efficient solution for all your travel needs. In this comprehensive guide, we will walk you through everything you need to know about DTS, from its core features to the step-by-step process of booking and managing your trips.</p>
 
         <p>Whether you are a seasoned traveler or new to the system, this guide will help you navigate DTS with confidence and ease.</p>
@@ -181,17 +197,7 @@ export default function DefenseTravelSystemPage() {
         <p>Periodic training sessions and briefings are often offered by the local DTA to ensure that all travelers understand the current policies and system updates.</p>
 
         <p>By staying informed about local rules and incorporating them into your DTS workflow, you can ensure a compliant and hassle-free travel experience every time.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

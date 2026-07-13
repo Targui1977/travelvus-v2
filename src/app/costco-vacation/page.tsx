@@ -1,43 +1,68 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "Expedia TAAP Guide",
+    description: "Boost your travel agency with Expedia's agent platform.",
+    href: "/expedia-taap",
+    label: "Related Guide",
+  },
+  {
+    title: "AAA Travel Guide",
+    description: "Explore AAA Travel's exclusive member discounts and deals.",
+    href: "/aaa-travel",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Unforgettable Costco Vacation Deals: Uncover the Best Travel Packages and Discounts",
   description:
     "Discover Costco vacation deals with exclusive packages on flights, hotels, Caribbean resorts, European tours, all-inclusive resorts, and more. Book your dream trip today.",
   alternates: { canonical: "/costco-vacation" },
-};
-
-export default function CostcoVacationPage() {
+};export default function CostcovacationPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand"><span className="app-header-wordmark">Travelvus</span><span className="app-header-line" /><span className="app-header-dot" /></span>
-        <nav className="app-header-nav mobile:hidden"><span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link></nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Travel Deals Guide"
+      title="Unforgettable Costco Vacation Deals: Uncover the Best Travel Packages and Discounts"
+      subtitle="How Costco Travel works, what packages are available, and whether membership travel deals genuinely save you money."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/costco-vacation/costco-vacation-1024x683.jpg"
+      heroImageAlt="Costco Vacation"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "Costco Travel offers members exclusive vacation packages and cruise deals.",
+        "Membership is required to access Costco Travel pricing.",
+        "Rental car discounts through Costco often beat public rates.",
+        "Package deals bundle flights, hotels and car rentals at competitive prices."
+      ]}
+      tocItems={[
+        { id: "low-cost-flights", title: "Low-Cost Flights" },
+        { id: "easy-secure-booking", title: "Easy Secure Booking" },
+        { id: "instant-confirmation", title: "Instant Confirmation" },
+        { id: "vacation-packages", title: "Vacation Packages" },
+        { id: "caribbean-resorts", title: "Caribbean Resorts" },
+        { id: "european-tours", title: "European Tours" },
+        { id: "all-inclusive", title: "All-Inclusive" },
+        { id: "guanacaste-costa-rica", title: "Guanacaste Costa Rica" },
+        { id: "jw-marriott", title: "JW Marriott" },
+        { id: "activities-amenities", title: "Activities Amenities" },
+        { id: "filtering-options", title: "Filtering Options" }
+      ]}
+      ctaText="Found a Costco Travel deal? Compare the real journey cost before you book."
+      ctaLink="/#compare"
+      ctaHint="A cheap package price doesn't always mean the best journey value."
+      methodologyText="Travelvus adds baggage, transfers and door-to-door time to any fare. Even Costco package deals deserve a real-cost comparison before booking."
+      trustNote="Costco Travel pricing requires active membership. Deals change frequently."
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Unforgettable Costco Vacation Deals: Uncover the Best Travel Packages and Discounts</h1>
-
-        <img src="/legacy/costco-vacation/costco-vacation-1024x683.jpg" alt="Costco Vacation" />
-
-        <ol className={styles.toc}>
-          <li><a href="#low-cost-flights">Low-Cost Flights</a></li>
-          <li><a href="#easy-secure-booking">Easy Secure Booking</a></li>
-          <li><a href="#instant-confirmation">Instant Confirmation</a></li>
-          <li><a href="#vacation-packages">Vacation Packages</a></li>
-          <li><a href="#caribbean-resorts">Caribbean Resorts</a></li>
-          <li><a href="#european-tours">European Tours</a></li>
-          <li><a href="#all-inclusive">All-Inclusive</a></li>
-          <li><a href="#guanacaste-costa-rica">Guanacaste Costa Rica</a></li>
-          <li><a href="#jw-marriott">JW Marriott</a></li>
-          <li><a href="#activities-amenities">Activities Amenities</a></li>
-          <li><a href="#filtering-options">Filtering Options</a></li>
-        </ol>
-
-        <p>Discover the Best Vacation Packages and Discounts at <strong><a href="https://www.costcotravel.com/" rel="noopener noreferrer" target="_blank">Costco</a></strong> for an Unforgettable Trip! Are you dreaming of an unforgettable vacation? Look no further than Costco for <strong>the best vacation packages</strong> and discounts. With <strong>low-cost flights and hotels</strong>, easy and secure online booking, and instant confirmation, Costco makes planning your dream getaway a breeze. Whether you are looking for a relaxing beach vacation, an exciting European tour, or an all-inclusive resort experience with endless activities and amenities, Costco has you covered. From exclusive deals on Caribbean resorts to all-inclusive packages in Guanacaste, Costa Rica, there is something for every traveler. You can also filter by location desirability, hotel options, and package costs to find the perfect vacation. Discover the <strong>top 20 Costco vacation packages</strong> ranked for their incredible value. So why wait? Book your dream vacation with Costco today and start making memories that will last a lifetime.</p>
+<img src="/legacy/costco-vacation/costco-vacation-1024x683.jpg" alt="Costco Vacation" />
+<p>Discover the Best Vacation Packages and Discounts at <strong><a href="https://www.costcotravel.com/" rel="noopener noreferrer" target="_blank">Costco</a></strong> for an Unforgettable Trip! Are you dreaming of an unforgettable vacation? Look no further than Costco for <strong>the best vacation packages</strong> and discounts. With <strong>low-cost flights and hotels</strong>, easy and secure online booking, and instant confirmation, Costco makes planning your dream getaway a breeze. Whether you are looking for a relaxing beach vacation, an exciting European tour, or an all-inclusive resort experience with endless activities and amenities, Costco has you covered. From exclusive deals on Caribbean resorts to all-inclusive packages in Guanacaste, Costa Rica, there is something for every traveler. You can also filter by location desirability, hotel options, and package costs to find the perfect vacation. Discover the <strong>top 20 Costco vacation packages</strong> ranked for their incredible value. So why wait? Book your dream vacation with Costco today and start making memories that will last a lifetime.</p>
 
         <h2 id="low-cost-flights">Low-Cost Flights</h2>
 
@@ -152,12 +177,7 @@ export default function CostcoVacationPage() {
         <p>The hotel filter allows you to refine your search to specific types of accommodations, such as all-inclusive resorts or oceanfront lodgings. You can compare amenities, ratings, and prices to find the perfect property for your needs. The cost filter lets you set a budget and view packages within your desired price range.</p>
 
         <p>Costco ensures a seamless and remarkable experience from booking to return. These filtering options make it simple and easy to plan the perfect vacation. With Costco's intuitive search tools, finding your dream vacation is just a few clicks away. Explore the best packages and discounts at Costco today.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/methodology">Methodology</Link><Link href="/london-airports">London Airports</Link></div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

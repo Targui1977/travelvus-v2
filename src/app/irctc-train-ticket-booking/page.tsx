@@ -1,45 +1,61 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "VRL Bus Booking Guide",
+    description: "Book bus tickets online with VRL's convenient platform.",
+    href: "/vrl-bus-booking",
+    label: "Related Guide",
+  },
+  {
+    title: "WeGo Flight Guide",
+    description: "Compare over 800 European flight providers.",
+    href: "/wego-flight",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "IRCTC Train Ticket Booking Made Easy: Book Your Tickets Online Today!",
   description:
     "Book IRCTC train tickets online with ease. Learn how to use the IRCTC website, check PNR status, book Tatkal tickets, and enjoy a seamless railway booking experience in India.",
   alternates: { canonical: "/irctc-train-ticket-booking" },
-};
-
-export default function IrctcTrainTicketBookingPage() {
+};export default function IrctctrainticketbookingPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Transport Booking Guide"
+      title="IRCTC Train Ticket Booking Made Easy: Book Your Tickets Online Today!"
+      subtitle="How to book train tickets through IRCTC — registration, Tatkal bookings, waiting lists and online payment for Indian Railways."
+      readingTime="5 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/irctc-train-ticket-booking/irctc-train-ticket-booking-1024x576.jpeg"
+      heroImageAlt="irctc train ticket booking"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "IRCTC is the official online booking platform for Indian Railways.",
+        "Tatkal tickets open one day before travel for last-minute bookings.",
+        "Waiting list tickets are confirmed based on cancellations.",
+        "Online payment supports UPI, cards and net banking."
+      ]}
+      tocItems={[
+        { id: "advent-of-irctc", title: "Advent of IRCTC" },
+        { id: "why-choose-irctc", title: "Why Choose IRCTC?" },
+        { id: "how-to-book", title: "How to Book" },
+        { id: "need-assistance", title: "Need Assistance?" }
+      ]}
+      ctaText="Planning an Indian rail journey? Compare total travel time and cost."
+      ctaLink="/#compare"
+      ctaHint="Train class, connections and transfer time affect the real journey."
+      methodologyText="Travelvus helps you compare complete journeys — whether by train or plane. Door-to-door time and cost often tell a different story than the ticket price."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>IRCTC Train Ticket Booking Made Easy: Book Your Tickets Online Today!</h1>
-
-        <img src="/legacy/irctc-train-ticket-booking/irctc-train-ticket-booking-1024x576.jpeg" alt="irctc train ticket booking" />
-
-        {/* Table of Contents */}
-        <ol className={styles.toc}>
-          <li><a href="#advent-of-irctc">Advent of IRCTC</a></li>
-          <li><a href="#why-choose-irctc">Why Choose IRCTC?</a></li>
-          <li><a href="#how-to-book">How to Book</a></li>
-          <li><a href="#need-assistance">Need Assistance?</a></li>
-        </ol>
-
-        {/* Introductory paragraphs */}
+<img src="/legacy/irctc-train-ticket-booking/irctc-train-ticket-booking-1024x576.jpeg" alt="irctc train ticket booking" />
+{/* Introductory paragraphs */}
         <p>Are you tired of standing in long queues at railway stations to book your train tickets? Look no further, because <strong>IRCTC</strong> is here to transform your booking experience. The <strong>Indian Railways Catering and Tourism Corporation Limited</strong>, commonly known as IRCTC, <strong>was established in 1999</strong> to manage the catering, tourism, and online ticketing operations of Indian Railways. Today, it stands as one of the most visited websites in India, handling millions of ticket bookings every day.</p>
 
         <p>Booking train tickets in India has never been easier. With the IRCTC online portal, you can book your tickets from the comfort of your home, office, or even on the go using your mobile phone. The platform is designed to be <strong>intuitive</strong> and user-friendly, ensuring that even first-time users can navigate the booking process with confidence. Whether you are planning a long-distance journey or a short commute, IRCTC has you covered.</p>
@@ -180,17 +196,6 @@ export default function IrctcTrainTicketBookingPage() {
 
         <p>We hope this comprehensive guide to IRCTC train ticket booking has been helpful. Whether you are a seasoned traveler or booking your first train ticket online, IRCTC offers the tools and support you need for a successful journey. Book your tickets today and experience the convenience of online train ticket booking with IRCTC.</p>
 
-      </article>
-
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

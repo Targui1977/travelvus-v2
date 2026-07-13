@@ -1,47 +1,63 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "MTA Trip Planner Guide",
+    description: "Navigate NYC's transit system with the MTA trip planner.",
+    href: "/mta-trip-planner",
+    label: "Related Guide",
+  },
+  {
+    title: "TriMet Trip Planner",
+    description: "Plan your journey across Portland's transit network.",
+    href: "/trimet-trip-planner",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Bart Trip Planner: Your Ultimate Guide to Seamless Travel in the Bay Area",
   description:
     "Plan your Bay Area trips with the BART Trip Planner. Real-time updates, estimated travel times, multi-modal connections, and eco-friendly travel options explained.",
   alternates: { canonical: "/bart-trip-planner" },
-};
-
-export default function BartTripPlannerPage() {
+};export default function BarttripplannerPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Transit Guide"
+      title="Bart Trip Planner: Your Ultimate Guide to Seamless Travel in the Bay Area"
+      subtitle="Navigate the Bay Area Rapid Transit system — routes, fares, schedules and tips for seamless travel across San Francisco and the East Bay."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/bart-trip-planner/bart-trip-planner-1024x768.webp"
+      heroImageAlt="bart trip planner"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "BART connects San Francisco, Oakland, Berkeley and Bay Area suburbs.",
+        "Fares are distance-based; Clipper card offers the best value.",
+        "Trains run from early morning until midnight on most lines.",
+        "BART connects directly to SFO and OAK airports."
+      ]}
+      tocItems={[
+        { id: "what-is-bart", title: "What is BART?" },
+        { id: "benefits", title: "Benefits" },
+        { id: "how-to-use", title: "How to Use" },
+        { id: "multi-modal", title: "Multi-Modal" },
+        { id: "where-to-find", title: "Where to Find" },
+        { id: "apps", title: "Apps" }
+      ]}
+      ctaText="Flying into the Bay Area? Compare airport transfer costs before you land."
+      ctaLink="/london-airports"
+      ctaHint="SFO and OAK have different BART connections and costs."
+      methodologyText="Travelvus calculates complete journey costs including airport transfers. Your choice of airport and transit connection can change the real trip cost significantly."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Bart Trip Planner: Your Ultimate Guide to Seamless Travel in the Bay Area</h1>
-
-        <img src="/legacy/bart-trip-planner/bart-trip-planner-1024x768.webp" alt="bart trip planner" />
-
-        {/* Table of Contents */}
-        <ol className={styles.toc}>
-          <li><a href="#what-is-bart">What is BART?</a></li>
-          <li><a href="#benefits">Benefits</a></li>
-          <li><a href="#how-to-use">How to Use</a></li>
-          <li><a href="#multi-modal">Multi-Modal</a></li>
-          <li><a href="#where-to-find">Where to Find</a></li>
-          <li><a href="#apps">Apps</a></li>
-        </ol>
-
-        {/* Introductory paragraphs */}
+<img src="/legacy/bart-trip-planner/bart-trip-planner-1024x768.webp" alt="bart trip planner" />
+{/* Introductory paragraphs */}
         <p>Navigating the San Francisco Bay Area can be a challenge, but with the <strong><a href="https://www.bart.gov/planner" rel="noopener noreferrer" target="_blank">Bart Trip Planner</a></strong>, getting around has never been easier. This powerful tool helps you plan your journey from start to finish, providing <strong>estimated travel times</strong>, route options, and real-time updates to ensure a smooth and efficient trip.</p>
 
         <p>Whether you are a daily commuter or a first-time visitor, the Bart Trip Planner is your go-to resource for all your Bay Area transit needs.</p>
@@ -137,17 +153,7 @@ export default function BartTripPlannerPage() {
         <p>Many third-party apps such as Transit, Citymapper, and Google Maps also integrate BART trip planning. These apps often combine BART with other transit modes and real-time ride-hailing options.</p>
 
         <p>Regardless of which app you choose, having a BART trip planning tool on your phone means you always have the power to navigate the Bay Area at your fingertips.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

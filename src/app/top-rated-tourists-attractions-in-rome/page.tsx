@@ -1,51 +1,67 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "Interrailing Europe Guide",
+    description: "Explore Europe by train with the ultimate interrailing guide.",
+    href: "/ultimate-guide-to-interrailing-explore-europe-by-train-with-ease",
+    label: "Related Guide",
+  },
+  {
+    title: "Global Entry Guide",
+    description: "Speed through US customs with Global Entry.",
+    href: "/unlock-global-travel-efficiency-with-global-entry-your-ultimate-guide",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "10 Top-Rated Tourist Attractions in Rome",
   description:
     "Discover Rome's top attractions: the Colosseum, Vatican City, Trevi Fountain, Pantheon, Roman Forum, and more. Plan your visit to the Eternal City.",
   alternates: { canonical: "/top-rated-tourists-attractions-in-rome" },
-};
-
-export default function RomeAttractionsPage() {
+};export default function TopratedtouristsattractionsinromePage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Destination Guide"
+      title="10 Top-Rated Tourist Attractions in Rome"
+      subtitle="The 10 must-see attractions in Rome — from the Colosseum to the Vatican, with practical tips for visiting each one."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/top-rated-tourists-attractions-in-rome/colleseium.png"
+      heroImageAlt="The Colosseum in Rome"
+      summaryTitle="The quick answer"
+      summaryPoints={[
+        "The Colosseum, Roman Forum and Vatican Museums top the must-see list.",
+        "Book skip-the-line tickets in advance for major attractions.",
+        "Many sites are walkable from the historic centre.",
+        "The Roma Pass covers public transport and offers attraction discounts."
+      ]}
+      tocItems={[
+        { id: "villa-borghese", title: "1. Villa Borghese Gallery and Gardens" },
+        { id: "vatican-city", title: "2. Vatican City" },
+        { id: "the-pantheon", title: "3. The Pantheon" },
+        { id: "roman-forum", title: "4. Roman Forum" },
+        { id: "trevi-fountain", title: "5. Trevi Fountain" },
+        { id: "vittorio-emanuele-ii", title: "6. Vittorio Emanuele II Monument" },
+        { id: "centro-storico", title: "7. Centro Storico &amp; the Spanish Steps" },
+        { id: "santa-maria-maggiore", title: "8. Santa Maria Maggiore" },
+        { id: "piazza-navona", title: "9. Piazza Navona" },
+        { id: "the-colosseum", title: "10. The Colosseum and the Arch of Constantine" }
+      ]}
+      ctaText="Flying to Rome? Compare the real journey cost before you book."
+      ctaLink="/#compare"
+      ctaHint="Fiumicino and Ciampino airports have very different transfer costs."
+      methodologyText="Travelvus compares complete journeys — ticket, baggage, airport transfers and time. Your choice of Rome airport changes the real trip cost by €30 or more."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>10 Top-Rated Tourist Attractions in Rome</h1>
-
-        <img src="/legacy/top-rated-tourists-attractions-in-rome/colleseium.png" alt="The Colosseum in Rome" />
-
-        {/* Table of Contents */}
-        <ol className={styles.toc}>
-          <li><a href="#villa-borghese">Villa Borghese Gallery and Gardens</a></li>
-          <li><a href="#vatican-city">Vatican City</a></li>
-          <li><a href="#the-pantheon">The Pantheon</a></li>
-          <li><a href="#roman-forum">Roman Forum</a></li>
-          <li><a href="#trevi-fountain">Trevi Fountain</a></li>
-          <li><a href="#vittorio-emanuele-ii">Vittorio Emanuele II Monument</a></li>
-          <li><a href="#centro-storico">Centro Storico &amp; the Spanish Steps</a></li>
-          <li><a href="#santa-maria-maggiore">Santa Maria Maggiore</a></li>
-          <li><a href="#piazza-navona">Piazza Navona</a></li>
-          <li><a href="#the-colosseum">The Colosseum and the Arch of Constantine</a></li>
-        </ol>
-
-        {/* Lead paragraphs */}
+<img src="/legacy/top-rated-tourists-attractions-in-rome/colleseium.png" alt="The Colosseum in Rome" />
+{/* Lead paragraphs */}
         <p>With a wealth of antiquities and Christian symbols, selecting the first spot to explore in this city can be overwhelming. Of course, personal preferences decide what to explore, but there are certain must-visit locations that stand for Italy and rank as world-class landmarks, which include the Colosseum and Pantheon.</p>
 
         <p>It&rsquo;s advisable to mix up your programmes so that you don&rsquo;t visit several consecutive ancient sites or churches. Make sure to add some top tourist sites such as the Spanish Steps and the iconic Trevi Fountain to your itinerary.</p>
@@ -163,17 +179,7 @@ export default function RomeAttractionsPage() {
         <p>Construction on the Colosseum began in AD 72 under Vespasian. After his son Titus expanded it with an additional story, it was inaugurated in AD 80 with a magnificent series of games. Large enough to accommodate theatrical performances, festivals, circuses, and games, the Colosseum hosted members of the Imperial Court and high-ranking officials on the lowest level, aristocratic Roman families on the second level, and the general population on the third and fourth.</p>
 
         <p>Adjacent to the Colosseum is the well-known Arch of Constantine, a triumphal arch erected by the Senate to honor the emperor for his triumph in the battle of the Milvian Bridge in 312, and as &lsquo;liberator of the city and bringer of peace.&rsquo; Long lines are common, but visitors can save time by taking the Skip the Line: Ancient Rome and Colosseum Half-Day Walking Tour, which also includes the informative guidance of a knowledgeable guide.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

@@ -1,46 +1,62 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "BART Trip Planner Guide",
+    description: "Navigate the Bay Area with BART's transit system.",
+    href: "/bart-trip-planner",
+    label: "Related Guide",
+  },
+  {
+    title: "TriMet Trip Planner",
+    description: "Plan your journey across Portland's transit network.",
+    href: "/trimet-trip-planner",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Ultimate Guide to MTA Trip Planner: Your Go-To Resource for Seamless Travel",
   description:
     "Master the MTA Trip Planner with our comprehensive guide. Learn how to navigate New York City subway, bus, and train routes using real-time updates and trip planning tools.",
   alternates: { canonical: "/mta-trip-planner" },
-};
-
-export default function MtaTripPlannerPage() {
+};export default function MtatripplannerPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Transit Guide"
+      title="Ultimate Guide to MTA Trip Planner: Your Go-To Resource for Seamless Travel"
+      subtitle="Navigate New York City's subway, bus and rail network with the MTA trip planner — routes, fares and real-time service updates."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/mta-trip-planner/mta-trip-planner-1024x512.webp"
+      heroImageAlt="MTA Trip Planner"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "The MTA trip planner covers subway, bus, LIRR and Metro-North.",
+        "OMNY contactless payment works across all subway and bus routes.",
+        "Real-time service updates help you avoid delays and reroutes.",
+        "The flat subway fare makes NYC one of the most predictable transit systems."
+      ]}
+      tocItems={[
+        { id: "what-is-mta", title: "What is MTA Trip Planner?" },
+        { id: "understanding-map-schedule", title: "Understanding the MTA Map and Schedule" },
+        { id: "using-effectively", title: "Using the MTA Trip Planner Effectively" },
+        { id: "optimizing-for-commuters", title: "Optimizing the MTA Trip Planner for Commuters" },
+        { id: "advantages", title: "Advantages of Using the MTA Trip Planner" }
+      ]}
+      ctaText="Flying into NYC? Compare airport transfer costs before you land."
+      ctaLink="/london-airports"
+      ctaHint="JFK, LaGuardia and Newark have very different transit connections."
+      methodologyText="Travelvus calculates complete journey costs including airport transfers. The airport you choose and how you get to the city changes the real trip cost."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Ultimate Guide to MTA Trip Planner: Your Go-To Resource for Seamless Travel</h1>
-
-        <img src="/legacy/mta-trip-planner/mta-trip-planner-1024x512.webp" alt="MTA Trip Planner" />
-
-        {/* Table of Contents */}
-        <ol className={styles.toc}>
-          <li><a href="#what-is-mta">What is MTA Trip Planner?</a></li>
-          <li><a href="#understanding-map-schedule">Understanding the MTA Map and Schedule</a></li>
-          <li><a href="#using-effectively">Using the MTA Trip Planner Effectively</a></li>
-          <li><a href="#optimizing-for-commuters">Optimizing the MTA Trip Planner for Commuters</a></li>
-          <li><a href="#advantages">Advantages of Using the MTA Trip Planner</a></li>
-        </ol>
-
-        {/* Introductory paragraphs */}
+<img src="/legacy/mta-trip-planner/mta-trip-planner-1024x512.webp" alt="MTA Trip Planner" />
+{/* Introductory paragraphs */}
         <p>Navigating the bustling streets of <strong>New York City</strong> can be a challenge, but with the <strong><a href="https://new.mta.info/tripplanner/results" rel="noopener noreferrer" target="_blank">MTA Trip Planner</a></strong>, your journey becomes seamless and stress-free. Whether you are a daily commuter or a first-time visitor, this powerful tool helps you <strong>explore new places</strong> with confidence, offering real-time directions across <strong>subway bus and train routes</strong> throughout the five boroughs and beyond.</p>
 
         <p>The MTA Trip Planner is designed to simplify your travel experience by providing accurate, up-to-date information on the entire Metropolitan Transportation Authority network. From the iconic subway system to buses, commuter rails, and paratransit services, this comprehensive planning tool puts the power of New York City transit right in your hands. With its user-friendly interface and <strong>real-time updates</strong>, you can plan your journey from start to finish with just a few clicks or taps.</p>
@@ -127,17 +143,6 @@ export default function MtaTripPlannerPage() {
 
         <p>In conclusion, the MTA Trip Planner is an essential tool for anyone traveling within New York City and the surrounding region. Its comprehensive features, real-time capabilities, user-friendly interface, and commitment to accessibility make it the gold standard for transit trip planning. Whether you are a daily commuter optimizing your routine, a visitor exploring the city for the first time, or a resident looking to reduce your carbon footprint, the MTA Trip Planner has something to offer. Start using it today and experience the difference that smart, informed trip planning can make in your travel experience.</p>
 
-      </article>
-
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

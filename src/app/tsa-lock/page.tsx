@@ -1,39 +1,60 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "TSA PreCheck Guide",
+    description: "Everything about TSA PreCheck enrollment, pricing and benefits.",
+    href: "/tsa-precheck-cost",
+    label: "Related Guide",
+  },
+  {
+    title: "Global Entry Guide",
+    description: "Unlock global travel efficiency with expedited customs screening.",
+    href: "/unlock-global-travel-efficiency-with-global-entry-your-ultimate-guide",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Ultimate Guide to TSA Locks: Keep Your Luggage Secure During Travel",
   description:
     "Learn everything about TSA-approved locks: how they work, how to install and reset them, and tips for keeping your luggage secure while traveling.",
   alternates: { canonical: "/tsa-lock" },
-};
-
-export default function TsaLockPage() {
+};export default function TsalockPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" /><span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Travel Gear Guide"
+      title="Ultimate Guide to TSA Locks: Keep Your Luggage Secure During Travel"
+      subtitle="Everything about TSA-approved luggage locks — how they work, which ones to buy, and why they matter for US air travel."
+      readingTime="3 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/tsa-lock/tsa-lock.jpg"
+      heroImageAlt="tsa lock"
+      summaryTitle="The quick answer"
+      summaryPoints={[
+        "TSA-approved locks allow security officers to open your bag without cutting the lock.",
+        "Look for the red diamond logo to confirm a lock is TSA-recognised.",
+        "TSA locks are recommended for checked baggage on US flights.",
+        "Combination and keyed versions are available from multiple brands."
+      ]}
+      tocItems={[
+        { id: "what-are-tsa-approved-locks", title: "What Are TSA-Approved Locks?" },
+        { id: "how-to-install", title: "How to Install and Use TSA Locks" },
+        { id: "additional-tips", title: "Additional Tips for Luggage Security" }
+      ]}
+      ctaText="Packing for a US trip? Make sure you're comparing the full journey cost."
+      ctaLink="/#compare"
+      ctaHint="Baggage fees, airport transfers and time all affect your real trip cost."
+      methodologyText="Travelvus calculates complete journey costs. Your baggage choices — checked or carry-on — affect both the fare and the door-to-door experience."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Ultimate Guide to TSA Locks: Keep Your Luggage Secure During Travel</h1>
-        <img src="/legacy/tsa-lock/tsa-lock.jpg" alt="tsa lock" />
-
-        <ol className={styles.toc}>
-          <li><a href="#what-are-tsa-approved-locks">What Are TSA-Approved Locks?</a></li>
-          <li><a href="#how-to-install">How to Install and Use TSA Locks</a></li>
-          <li><a href="#additional-tips">Additional Tips for Luggage Security</a></li>
-        </ol>
-
-        <p>When you travel, the last thing you want to worry about is the security of your belongings. Your luggage contains everything from clothing to valuable electronics, and keeping it safe is a top priority. That is where <strong>TSA locks</strong> come into play. These specially designed locks allow you to secure your suitcase while still giving airport security personnel the ability to inspect your bag if necessary. It is a simple yet effective solution that balances your need for security with the TSA&rsquo;s requirement to screen luggage.</p>
+<img src="/legacy/tsa-lock/tsa-lock.jpg" alt="tsa lock" />
+<p>When you travel, the last thing you want to worry about is the security of your belongings. Your luggage contains everything from clothing to valuable electronics, and keeping it safe is a top priority. That is where <strong>TSA locks</strong> come into play. These specially designed locks allow you to secure your suitcase while still giving airport security personnel the ability to inspect your bag if necessary. It is a simple yet effective solution that balances your need for security with the TSA&rsquo;s requirement to screen luggage.</p>
 
         <p>Understanding how these locks work and why they matter can save you from the frustration of a cut lock or a damaged zipper. When TSA agents need to inspect a bag that is locked with a non-approved lock, they will cut it off to gain access. This can ruin your lock and potentially damage your luggage. With a TSA-approved lock, agents can open and relock your bag using a universal key, leaving your belongings secure and your lock intact.</p>
 
@@ -94,12 +115,7 @@ export default function TsaLockPage() {
         <p>Finally, consider travel insurance that covers lost, stolen, or damaged luggage. Many policies offer coverage for personal belongings and provide reimbursement for essentials if your bag is delayed. Combined with a quality TSA lock and smart packing habits, travel insurance gives you comprehensive protection for your belongings. It is one more layer of security that allows you to travel with confidence, knowing that you are covered no matter what happens.</p>
 
         <p>By following these tips and using a TSA-approved lock, you can significantly reduce the risk of theft and damage to your luggage. Travel should be about exploration and discovery, not worrying about the safety of your belongings. With the right preparation, you can focus on what truly matters: enjoying your journey and creating unforgettable memories.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/methodology">Methodology</Link><Link href="/london-airports">London Airports</Link></div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

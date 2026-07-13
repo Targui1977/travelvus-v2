@@ -1,48 +1,64 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "BART Trip Planner Guide",
+    description: "Navigate the Bay Area with BART's transit system.",
+    href: "/bart-trip-planner",
+    label: "Related Guide",
+  },
+  {
+    title: "MTA Trip Planner Guide",
+    description: "Navigate NYC's transit system with the MTA trip planner.",
+    href: "/mta-trip-planner",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Effortless Journey Planning with Trimet Trip Planner: Your Ultimate Guide",
   description:
     "Plan your Portland transit trips with the Trimet Trip Planner. Step-by-step itineraries, real-time arrival tracking, saved routes, and service alerts.",
   alternates: { canonical: "/trimet-trip-planner" },
-};
-
-export default function TrimetTripPlannerPage() {
+};export default function TrimettripplannerPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Transit Guide"
+      title="Effortless Journey Planning with Trimet Trip Planner: Your Ultimate Guide"
+      subtitle="Plan your journey across Portland with TriMet — MAX light rail, buses, WES commuter rail and the Portland Streetcar."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/trimet-trip-planner/trimet-trip-planner-1-1024x683.jpg"
+      heroImageAlt="trimet trip planner"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "TriMet operates MAX light rail, buses and WES commuter rail in the Portland area.",
+        "The Hop Fastpass card works across all TriMet services.",
+        "MAX Red Line connects directly to Portland International Airport (PDX).",
+        "Real-time arrival tracking is available through the TriMet app."
+      ]}
+      tocItems={[
+        { id: "overview-of-the-trimet-trip-planner", title: "Overview of the Trimet Trip Planner" },
+        { id: "using-the-trip-planner-to-plan-a-trip", title: "Using the Trip Planner to Plan a Trip" },
+        { id: "tips-and-tricks", title: "Tips and Tricks for Making the Most of Trimet Trip Planner" },
+        { id: "features-of-the-trip-planner", title: "Features of the Trip Planner" },
+        { id: "real-time-arrival-information", title: "Real-Time Arrival Information" },
+        { id: "saving-your-favorites", title: "Saving Your Favorites" },
+        { id: "subscribing-to-service-alerts", title: "Subscribing to Service Alerts" }
+      ]}
+      ctaText="Flying into Portland? Compare airport transfer costs before you land."
+      ctaLink="/london-airports"
+      ctaHint="PDX is directly served by MAX Red Line light rail."
+      methodologyText="Travelvus calculates complete journey costs including airport transfers. Even a well-connected airport like PDX has costs and time that affect the total trip value."
+      trustNote=""
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Effortless Journey Planning with Trimet Trip Planner: Your Ultimate Guide</h1>
-
-        <img src="/legacy/trimet-trip-planner/trimet-trip-planner-1-1024x683.jpg" alt="trimet trip planner" />
-
-        {/* Table of Contents */}
-        <ol className={styles.toc}>
-          <li><a href="#overview-of-the-trimet-trip-planner">Overview of the Trimet Trip Planner</a></li>
-          <li><a href="#using-the-trip-planner-to-plan-a-trip">Using the Trip Planner to Plan a Trip</a></li>
-          <li><a href="#tips-and-tricks">Tips and Tricks for Making the Most of Trimet Trip Planner</a></li>
-          <li><a href="#features-of-the-trip-planner">Features of the Trip Planner</a></li>
-          <li><a href="#real-time-arrival-information">Real-Time Arrival Information</a></li>
-          <li><a href="#saving-your-favorites">Saving Your Favorites</a></li>
-          <li><a href="#subscribing-to-service-alerts">Subscribing to Service Alerts</a></li>
-        </ol>
-
-        {/* Introductory section */}
+<img src="/legacy/trimet-trip-planner/trimet-trip-planner-1-1024x683.jpg" alt="trimet trip planner" />
+{/* Introductory section */}
         <p>Planning Your Journey with <strong><a href="https://trimet.org/home/planner" rel="noopener noreferrer" target="_blank">Trimet Trip Planner</a></strong> is Easy and Hassle-Free.</p>
 
         <p>Are you tired of the stress and uncertainty that comes with navigating public transportation? Look no further than Trimet Trip Planner, the best tool for planning your trips with ease.</p>
@@ -192,17 +208,7 @@ export default function TrimetTripPlannerPage() {
         <p>By subscribing to Service Alerts, you can stay up to date with the latest information about your preferred routes and stops.</p>
 
         <p>Whether you are a daily commuter or an occasional traveler, taking advantage of this feature can make your journey in Portland as seamless as possible.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

@@ -1,45 +1,64 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "TSA PreCheck Guide",
+    description: "Everything about TSA PreCheck enrollment, pricing and benefits.",
+    href: "/tsa-precheck-cost",
+    label: "Related Guide",
+  },
+  {
+    title: "TSA Lock Guide",
+    description: "Everything about TSA-approved luggage locks for secure travel.",
+    href: "/tsa-lock",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Unlock Global Travel Efficiency with Global Entry: Your Ultimate Guide",
   description:
     "Discover everything about Global Entry: benefits, application fee, membership duration, expedited clearance, and how it transforms international travel.",
   alternates: { canonical: "/unlock-global-travel-efficiency-with-global-entry-your-ultimate-guide" },
-};
-
-export default function GlobalEntryPage() {
+};export default function UnlockglobaltravelefficiencywithglobalentryyourultimateguidePage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" /><span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
+    <LegacyArticleLayout
+      category="Airport Security Guide"
+      title="Unlock Global Travel Efficiency with Global Entry: Your Ultimate Guide"
+      subtitle="How Global Entry works, who qualifies, the application process, and whether it is worth the cost for international travellers."
+      readingTime="3 min"
+      lastReviewed="Jul 2026"
+      summaryTitle="The quick answer"
+      summaryPoints={[
+        "Global Entry provides expedited US customs screening for pre-approved travellers.",
+        "The programme costs $100 for a 5-year membership.",
+        "TSA PreCheck is included with Global Entry membership.",
+        "Applications require an in-person interview at an enrollment centre."
+      ]}
+      tocItems={[
+        { id: "what-is-global-entry", title: "What is Global Entry?" },
+        { id: "benefits", title: "Benefits of Global Entry" },
+        { id: "application-fee", title: "Global Entry Application Fee" },
+        { id: "membership-duration", title: "Global Entry Membership Duration" },
+        { id: "expedited-clearance", title: "Expedited Clearance at Airports" },
+        { id: "bypassing-immigration", title: "Bypassing Immigration Lines" },
+        { id: "where-available", title: "Where Global Entry Is Available" },
+        { id: "prescreening", title: "Prescreening and Security" },
+        { id: "skipping-security", title: "Skipping Security with Global Entry" },
+        { id: "conclusion", title: "Conclusion" }
+      ]}
+      ctaText="Flying internationally? Compare the real journey cost before you book."
+      ctaLink="/#compare"
+      ctaHint="Customs wait time is just one part of the door-to-door journey."
+      methodologyText="Travelvus calculates complete journey costs — ticket, baggage, transfers and time. Global Entry saves time at customs but does not change the airport transfer cost."
+      trustNote="Global Entry fees and requirements sourced from cbp.gov. Verify current pricing and eligibility before applying."
+      related={related}
+    >
 
-      <article className={styles.article}>
-        <h1>Unlock Global Travel Efficiency with Global Entry: Your Ultimate Guide</h1>
-
-        <ol className={styles.toc}>
-          <li><a href="#what-is-global-entry">What is Global Entry?</a></li>
-          <li><a href="#benefits">Benefits of Global Entry</a></li>
-          <li><a href="#application-fee">Global Entry Application Fee</a></li>
-          <li><a href="#membership-duration">Global Entry Membership Duration</a></li>
-          <li><a href="#expedited-clearance">Expedited Clearance at Airports</a></li>
-          <li><a href="#bypassing-immigration">Bypassing Immigration Lines</a></li>
-          <li><a href="#where-available">Where Global Entry Is Available</a></li>
-          <li><a href="#prescreening">Prescreening and Security</a></li>
-          <li><a href="#skipping-security">Skipping Security with Global Entry</a></li>
-          <li><a href="#conclusion">Conclusion</a></li>
-        </ol>
-
-        <p>International travel can be both exciting and stressful. Between long flights, unfamiliar airports, and the ever-present challenge of navigating customs and immigration, the journey can sometimes feel like a test of patience. Fortunately, there is a solution that simplifies the entire experience: Global Entry. <strong>This cutting-edge system</strong> is designed to expedite the entry process for pre-approved, low-risk travelers arriving in the United States, making your arrival smoother and faster than ever before.</p>
+<p>International travel can be both exciting and stressful. Between long flights, unfamiliar airports, and the ever-present challenge of navigating customs and immigration, the journey can sometimes feel like a test of patience. Fortunately, there is a solution that simplifies the entire experience: Global Entry. <strong>This cutting-edge system</strong> is designed to expedite the entry process for pre-approved, low-risk travelers arriving in the United States, making your arrival smoother and faster than ever before.</p>
 
         <p>Global Entry is more than just a convenience; it is a game-changer for frequent flyers. By enrolling in the program, you gain access to automated kiosks at major international airports, allowing you to bypass long lines and complete your customs declaration digitally. The result is a significantly shorter wait time and a more relaxed arrival experience. Whether you travel for business or pleasure, the benefits are hard to ignore.</p>
 
@@ -104,12 +123,7 @@ export default function GlobalEntryPage() {
         <p>Global Entry is an invaluable tool for anyone who travels internationally. The combination of expedited customs clearance, TSA PreCheck eligibility, and a reasonable five-year membership fee makes it one of the best investments a traveler can make. Whether you are a frequent business traveler or a vacationer who flies overseas once or twice a year, the time and stress savings are significant.</p>
 
         <p>If you have not yet applied for Global Entry, now is the time to consider it. The application process is straightforward, and the benefits begin as soon as you are approved. With Global Entry, you can unlock a new level of travel efficiency and arrive at your destination relaxed and ready to go. Stop waiting in long lines and start enjoying the journey from the moment you land.</p>
-      </article>
 
-      <footer className="home-footer">
-        <div className="home-footer-links"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/methodology">Methodology</Link><Link href="/london-airports">London Airports</Link></div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }
