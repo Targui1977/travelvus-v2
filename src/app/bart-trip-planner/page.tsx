@@ -55,8 +55,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/bart-trip-planner/bart-trip-planner-1024x768.webp" alt="bart trip planner" />
 {/* Introductory paragraphs */}
         <p>Navigating the San Francisco Bay Area can be a challenge, but with the <strong><a href="https://www.bart.gov/planner" rel="noopener noreferrer" target="_blank">Bart Trip Planner</a></strong>, getting around has never been easier. This powerful tool helps you plan your journey from start to finish, providing <strong>estimated travel times</strong>, route options, and real-time updates to ensure a smooth and efficient trip.</p>
 

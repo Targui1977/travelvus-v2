@@ -56,8 +56,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/trimet-trip-planner/trimet-trip-planner-1-1024x683.jpg" alt="trimet trip planner" />
 {/* Introductory section */}
         <p>Planning Your Journey with <strong><a href="https://trimet.org/home/planner" rel="noopener noreferrer" target="_blank">Trimet Trip Planner</a></strong> is Easy and Hassle-Free.</p>
 

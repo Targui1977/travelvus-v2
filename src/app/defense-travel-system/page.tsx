@@ -57,8 +57,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/defense-travel-system/defense-travel-system-1024x935.jpeg" alt="defense travel system" />
 {/* Introductory paragraphs */}
         <p>Managing official travel for the Department of Defense can be a complex and time-consuming task. Fortunately, the <strong><a href="https://dtsproweb.defensetravel.osd.mil/dts-app/pubsite/all/view/" rel="noopener noreferrer" target="_blank">Defense Travel System (DTS)</a></strong> provides a streamlined and efficient solution for all your travel needs. In this comprehensive guide, we will walk you through everything you need to know about DTS, from its core features to the step-by-step process of booking and managing your trips.</p>
 

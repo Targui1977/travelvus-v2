@@ -57,8 +57,6 @@ export const metadata: Metadata = {
       trustNote="Expedia TAAP commission rates and availability vary by market. Verify current terms."
       related={related}
     >
-
-<img src="/legacy/expedia-taap/expedia-taap-1024x576.jpg" alt="expedia taap" />
 {/* Introductory paragraphs */}
         <p>Are you a travel agency looking to boost your success? Look no further than <strong><a href="https://www.expedia.com/taap-registration" rel="noopener noreferrer" target="_blank">Expedia TAAP</a></strong>! In this article, we will explore the numerous advantages of using Expedia TAAP to take your agency to new heights. From access to a global travel supply and impressive rates to a user-friendly booking platform, Expedia TAAP has everything you need <strong>to increase your bookings</strong> and create exceptional experiences for your travelers. Join us as we dive into the world of Expedia TAAP and discover how it can revolutionize your travel agency&rsquo;s success.</p>
 

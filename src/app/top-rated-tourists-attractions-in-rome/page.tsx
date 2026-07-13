@@ -59,8 +59,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/top-rated-tourists-attractions-in-rome/colleseium.png" alt="The Colosseum in Rome" />
 {/* Lead paragraphs */}
         <p>With a wealth of antiquities and Christian symbols, selecting the first spot to explore in this city can be overwhelming. Of course, personal preferences decide what to explore, but there are certain must-visit locations that stand for Italy and rank as world-class landmarks, which include the Colosseum and Pantheon.</p>
 
@@ -171,10 +169,7 @@ export const metadata: Metadata = {
         <p>San Luigi dei Francesi, located between the Piazza and the Pantheon, showcases three significant late 16th-century Caravaggio paintings.</p>
 
         <h2 id="the-colosseum">10. The Colosseum and the Arch of Constantine</h2>
-
-        <img src="/legacy/top-rated-tourists-attractions-in-rome/colleseium.png" alt="The Colosseum" />
-
-        <p>Similar to how the Eiffel Tower represents Paris, the Flavian Amphitheatre&rsquo;s silhouette is synonymous with Rome. This remarkable structure, which is the largest of its kind from ancient Roman times, still serves as a template for sports arenas. In fact, modern football stadiums often derive their design from the oval Roman blueprint.</p>
+<p>Similar to how the Eiffel Tower represents Paris, the Flavian Amphitheatre&rsquo;s silhouette is synonymous with Rome. This remarkable structure, which is the largest of its kind from ancient Roman times, still serves as a template for sports arenas. In fact, modern football stadiums often derive their design from the oval Roman blueprint.</p>
 
         <p>Construction on the Colosseum began in AD 72 under Vespasian. After his son Titus expanded it with an additional story, it was inaugurated in AD 80 with a magnificent series of games. Large enough to accommodate theatrical performances, festivals, circuses, and games, the Colosseum hosted members of the Imperial Court and high-ranking officials on the lowest level, aristocratic Roman families on the second level, and the general population on the third and fourth.</p>
 

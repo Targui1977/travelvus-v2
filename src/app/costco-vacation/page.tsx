@@ -60,8 +60,6 @@ export const metadata: Metadata = {
       trustNote="Costco Travel pricing requires active membership. Deals change frequently."
       related={related}
     >
-
-<img src="/legacy/costco-vacation/costco-vacation-1024x683.jpg" alt="Costco Vacation" />
 <p>Discover the Best Vacation Packages and Discounts at <strong><a href="https://www.costcotravel.com/" rel="noopener noreferrer" target="_blank">Costco</a></strong> for an Unforgettable Trip! Are you dreaming of an unforgettable vacation? Look no further than Costco for <strong>the best vacation packages</strong> and discounts. With <strong>low-cost flights and hotels</strong>, easy and secure online booking, and instant confirmation, Costco makes planning your dream getaway a breeze. Whether you are looking for a relaxing beach vacation, an exciting European tour, or an all-inclusive resort experience with endless activities and amenities, Costco has you covered. From exclusive deals on Caribbean resorts to all-inclusive packages in Guanacaste, Costa Rica, there is something for every traveler. You can also filter by location desirability, hotel options, and package costs to find the perfect vacation. Discover the <strong>top 20 Costco vacation packages</strong> ranked for their incredible value. So why wait? Book your dream vacation with Costco today and start making memories that will last a lifetime.</p>
 
         <h2 id="low-cost-flights">Low-Cost Flights</h2>

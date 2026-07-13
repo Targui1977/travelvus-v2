@@ -58,8 +58,6 @@ export const metadata: Metadata = {
       trustNote="AAA membership benefits and discounts vary by region. Verify current offers before booking."
       related={related}
     >
-
-<img src="/legacy/aaa-travel/aaa-travel.jpg" alt="AAA Travel" />
 <p>Discover the World with <strong>AAA Travel</strong>: Find Special Offers and Unforgettable Experiences.</p>
 
         <p>Are you ready to embark on a journey to breathtaking destinations and create lifelong memories? Look no further than AAA Travel, the premier travel service that offers exclusive deals, exceptional service, and unforgettable adventures. With their expertise and commitment to excellence, AAA Travel has been helping travelers explore the world for decades.</p>

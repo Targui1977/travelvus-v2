@@ -53,8 +53,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/irctc-train-ticket-booking/irctc-train-ticket-booking-1024x576.jpeg" alt="irctc train ticket booking" />
 {/* Introductory paragraphs */}
         <p>Are you tired of standing in long queues at railway stations to book your train tickets? Look no further, because <strong>IRCTC</strong> is here to transform your booking experience. The <strong>Indian Railways Catering and Tourism Corporation Limited</strong>, commonly known as IRCTC, <strong>was established in 1999</strong> to manage the catering, tourism, and online ticketing operations of Indian Railways. Today, it stands as one of the most visited websites in India, handling millions of ticket bookings every day.</p>
 

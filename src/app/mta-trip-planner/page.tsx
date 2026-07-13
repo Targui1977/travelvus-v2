@@ -54,8 +54,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/mta-trip-planner/mta-trip-planner-1024x512.webp" alt="MTA Trip Planner" />
 {/* Introductory paragraphs */}
         <p>Navigating the bustling streets of <strong>New York City</strong> can be a challenge, but with the <strong><a href="https://new.mta.info/tripplanner/results" rel="noopener noreferrer" target="_blank">MTA Trip Planner</a></strong>, your journey becomes seamless and stress-free. Whether you are a daily commuter or a first-time visitor, this powerful tool helps you <strong>explore new places</strong> with confidence, offering real-time directions across <strong>subway bus and train routes</strong> throughout the five boroughs and beyond.</p>
 

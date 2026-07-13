@@ -19,6 +19,7 @@
 - [ ] Import `MobileTOC` — never create static TOC toggle
 - [ ] Use CSS custom properties from `globals.css`
 - [ ] Use route-local CSS Module for page-specific styles
+- [ ] Hero image source does NOT appear again inside the same article body
 - [ ] One `<h1>` per page
 - [ ] Semantic heading order
 - [ ] All images local to `public/`

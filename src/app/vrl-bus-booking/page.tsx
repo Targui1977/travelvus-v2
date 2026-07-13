@@ -57,8 +57,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/vrl-bus-booking/vrl-bus-booking-1024x576.png" alt="vrl bus booking" />
 {/* Introductory paragraphs */}
         <p>Looking for a convenient and hassle-free way to book bus tickets? Look no further than <strong><a href="https://www.redbus.in/travels/vrl-travels" rel="noopener noreferrer" target="_blank">VRL Bus Booking Services</a></strong>. With their user-friendly online platform, you can easily book bus tickets from the comfort of your own home. Whether you&rsquo;re planning a trip within your city or across the world, VRL Bus Booking Services has got you covered. Say goodbye to long queues and last-minute ticket hunting, and say hello to the convenience of <strong>online bus ticket booking</strong>. Experience the ease and efficiency of VRL Bus Booking Services and explore the world at your own pace.</p>
 

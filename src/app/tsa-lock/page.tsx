@@ -52,8 +52,6 @@ export const metadata: Metadata = {
       trustNote=""
       related={related}
     >
-
-<img src="/legacy/tsa-lock/tsa-lock.jpg" alt="tsa lock" />
 <p>When you travel, the last thing you want to worry about is the security of your belongings. Your luggage contains everything from clothing to valuable electronics, and keeping it safe is a top priority. That is where <strong>TSA locks</strong> come into play. These specially designed locks allow you to secure your suitcase while still giving airport security personnel the ability to inspect your bag if necessary. It is a simple yet effective solution that balances your need for security with the TSA&rsquo;s requirement to screen luggage.</p>
 
         <p>Understanding how these locks work and why they matter can save you from the frustration of a cut lock or a damaged zipper. When TSA agents need to inspect a bag that is locked with a non-approved lock, they will cut it off to gain access. This can ruin your lock and potentially damage your luggage. With a TSA-approved lock, agents can open and relock your bag using a universal key, leaving your belongings secure and your lock intact.</p>
