@@ -203,8 +203,8 @@ export default function BerlinToLondonPage() {
             {DATA.realCostBreakdown.map((row, i) => (
               <div key={i} className={styles.costRow}>
                 <span className={styles.costLabel}>{row.label}{row.note && <span style={{ display: "block", fontFamily: "var(--sans)", fontWeight: 400, fontSize: 11, color: "var(--muted)", marginTop: 1 }}>{row.note}</span>}</span>
-                <span className={`${styles.costVal} ${row.winner === "a" ? styles.costBetter : ""}`}>{row.a}</span>
-                <span className={`${styles.costVal} ${row.winner === "b" ? styles.costBetter : ""}`}>{row.b}</span>
+                <span className={`${styles.costVal} ${(row.winner as string) === "a" ? styles.costBetter : ""}`}>{row.a}</span>
+                <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
             <div className={styles.costTotal}><span>Estimated total</span><span>~€161</span><span className={styles.costBetter}>~€135</span></div>

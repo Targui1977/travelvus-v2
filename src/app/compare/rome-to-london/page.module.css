@@ -1,0 +1,907 @@
+/* ══════════════════════════════════════════════════════════════
+   TRAVELVUS V2 — DECISION PAGE MASTER 2.0
+   Premium decision product template. All tokens from globals.css.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Prototype label ──────────────────────────────────────── */
+
+.protoLabel {
+  padding: 5px 0;
+  text-align: center;
+  background: var(--navy);
+}
+
+.protoLabelText {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper-lt);
+}
+
+/* ── Page shell ───────────────────────────────────────────── */
+
+.page {
+  max-width: 880px;
+  margin: 24px auto 0;
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(30,42,51,.04), 0 4px 16px rgba(30,42,51,.06);
+  overflow: hidden;
+}
+
+/* ── 1. DECISION HERO ─────────────────────────────────────── */
+
+.hero {
+  padding: 40px 48px 0;
+}
+
+.heroKicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.heroQuestion {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 34px;
+  line-height: 1.18;
+  color: var(--ink);
+  margin: 0 0 20px;
+}
+
+.heroAnswer {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.heroAnswerLabel {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--navy);
+  padding: 3px 8px;
+  border-radius: 4px;
+  flex: none;
+}
+
+.heroAnswerText {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+}
+
+.confidenceTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.confidenceDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ok);
+  flex: none;
+}
+
+/* ── 2. VERDICT ───────────────────────────────────────────── */
+
+.verdictSection {
+  /* TravelvusVerdict provides its own navy background */
+}
+
+/* ── SECTION SHARED ───────────────────────────────────────── */
+
+.section {
+  padding: 36px 48px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.25;
+  color: var(--ink);
+  margin: 0 0 6px;
+}
+
+.sectionSub {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 0 0 20px;
+}
+
+/* ── 3. AT A GLANCE ───────────────────────────────────────── */
+
+.glanceHeader {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px 150px;
+  gap: 12px;
+  padding: 0 0 8px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.glanceColLabel {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+}
+
+.glanceRow {
+  display: grid;
+  grid-template-columns: 1fr 100px 100px 150px;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.glanceRowFinal {
+  border-bottom: none;
+  padding-top: 16px;
+}
+
+.glanceFactor {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.glanceRowFinal .glanceFactor {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.glanceVal {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.glanceRowFinal .glanceVal {
+  display: none;
+}
+
+.glanceWinner {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 15px;
+  text-align: right;
+  color: var(--ink);
+}
+
+.glanceWinnerB {
+  color: var(--navy);
+}
+
+/* ── 4. WHY THIS WINS ─────────────────────────────────────── */
+
+.whyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.whyCard {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 16px;
+}
+
+.whyCardNum {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--copper);
+  flex: none;
+  padding-top: 1px;
+}
+
+.whyCardText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3c4650;
+  margin: 0;
+}
+
+/* ── 5. WHEN OTHER IS BETTER ──────────────────────────────── */
+
+.altSection {
+  background: var(--paper-2);
+}
+
+.altGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.altCard {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.altCardDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--copper);
+  flex: none;
+  margin-top: 7px;
+}
+
+.altCardText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #3c4650;
+  margin: 0;
+}
+
+/* ── 6. REAL COST BREAKDOWN ───────────────────────────────── */
+
+.costHeader {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  gap: 12px;
+  padding: 0 0 8px;
+  margin: 16px 0 4px;
+  border-bottom: 1px solid var(--line-2);
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.costHeader span:not(:first-child) {
+  text-align: center;
+}
+
+.costRow {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.costLabel {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.costVal {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.costBetter {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.costTotal {
+  display: grid;
+  grid-template-columns: 1fr 120px 120px;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 0 0;
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.costTotal span:not(:first-child) {
+  text-align: center;
+}
+
+/* ── 7. JOURNEY TIMELINE ──────────────────────────────────── */
+
+.timeline {
+  margin-top: 18px;
+}
+
+.timelineStage {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  gap: 20px;
+}
+
+.timelineStageFinal {
+  border-bottom: none;
+  padding-top: 20px;
+}
+
+.timelineLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timelineDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex: none;
+}
+
+.timelineLabel {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.timelineRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+}
+
+.timelineVal {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--muted);
+  min-width: 200px;
+}
+
+.timelineStageFinal .timelineVal {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.timelineSep {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--line-2);
+}
+
+/* ── 8. DECISION SCENARIOS ────────────────────────────────── */
+
+.scenarioGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.scenarioCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scenarioWho {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.scenarioChoice {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--copper);
+}
+
+.scenarioWhy {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+/* ── 9. COMMON MISTAKES ───────────────────────────────────── */
+
+.mistakeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.mistakeCard {
+  background: #fdf6f0;
+  border: 1px solid rgba(184, 92, 56, 0.12);
+  border-radius: 9px;
+  padding: 14px 16px;
+}
+
+.mistakeLabel {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.mistakeFix {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* ── 11. CTA ──────────────────────────────────────────────── */
+
+.ctaSection {
+  padding: 0 48px 36px;
+}
+
+.ctaCard {
+  background: var(--navy);
+  border-radius: 10px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ctaKicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper-lt);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ctaTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.25;
+  color: var(--paper);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ctaSub {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--pmuted);
+  margin: 0;
+}
+
+.ctaBtn {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--paper);
+  background: var(--copper);
+  border-radius: 8px;
+  padding: 12px 22px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+}
+
+.ctaBtn:hover {
+  background: #a04a2b;
+}
+
+/* ── 12. CONTINUE YOUR DECISION ───────────────────────────── */
+
+.continueGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.continueCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 18px 20px;
+  text-decoration: none;
+  transition: border-color .2s;
+}
+
+.continueCard:hover {
+  border-color: var(--copper);
+}
+
+.continueKicker {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.continueTitle {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.continueDesc {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.continueLink {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--copper);
+  margin-top: 4px;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+
+.footer {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 28px 48px 32px;
+}
+
+.footerInner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 28px;
+}
+
+.footerBrand {
+  font: 700 18px/1 Geist, sans-serif;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.footerBrandText {
+  font: 400 13px/1.5 Geist, sans-serif;
+  color: var(--muted);
+  margin: 12px 0 0;
+  max-width: 220px;
+}
+
+.footerColTitle {
+  font: 600 10px/1 IBM Plex Mono, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerLinks a {
+  font: 400 14px/1 Geist, sans-serif;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footerLinks a:hover {
+  color: var(--copper);
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font: italic 400 14px/1 Instrument Serif, serif;
+  color: var(--muted);
+}
+
+.footerBottom span:last-child {
+  font: 400 11px/1 IBM Plex Mono, monospace;
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                  */
+/* ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .page {
+    margin: 12px 8px 0;
+    border-radius: 10px;
+  }
+
+  .hero {
+    padding: 28px 24px 0;
+  }
+
+  .heroQuestion {
+    font-size: 26px;
+  }
+
+  .heroAnswerText {
+    font-size: 17px;
+  }
+
+  .section {
+    padding: 28px 24px;
+  }
+
+  .whyGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .glanceHeader,
+  .glanceRow {
+    grid-template-columns: 1fr 80px 80px 120px;
+    gap: 8px;
+  }
+
+  .glanceVal {
+    font-size: 12px;
+  }
+
+  .glanceWinner {
+    font-size: 14px;
+  }
+
+  .scenarioGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .costHeader,
+  .costRow,
+  .costTotal {
+    grid-template-columns: 1fr 90px 90px;
+    gap: 8px;
+  }
+
+  .costVal {
+    font-size: 12px;
+  }
+
+  .continueGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ctaCard {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ctaSection {
+    padding: 0 24px 28px;
+  }
+
+  .mistakeGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .timelineVal {
+    min-width: 140px;
+    font-size: 12px;
+  }
+
+  .footer {
+    padding: 24px 24px 28px;
+  }
+
+  .footerInner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    margin: 8px 4px 0;
+    border-radius: 8px;
+  }
+
+  .hero {
+    padding: 22px 16px 0;
+  }
+
+  .heroQuestion {
+    font-size: 22px;
+  }
+
+  .heroAnswer {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .heroAnswerLabel {
+    align-self: flex-start;
+  }
+
+  .heroAnswerText {
+    font-size: 16px;
+  }
+
+  .heroMeta {
+    font-size: 9px;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .section {
+    padding: 22px 16px;
+  }
+
+  .sectionTitle {
+    font-size: 20px;
+  }
+
+  .whyGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .glanceHeader,
+  .glanceRow {
+    grid-template-columns: 1fr 65px 65px 90px;
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .glanceVal {
+    font-size: 11px;
+  }
+
+  .glanceWinner {
+    font-size: 13px;
+  }
+
+  .altGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .scenarioGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .costHeader,
+  .costRow,
+  .costTotal {
+    grid-template-columns: 1fr 70px 70px;
+    gap: 6px;
+    font-size: 11px;
+  }
+
+  .costVal {
+    font-size: 11px;
+  }
+
+  .costLabel {
+    font-size: 13px;
+  }
+
+  .continueGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaSection {
+    padding: 0 16px 22px;
+  }
+
+  .ctaBtn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .timelineStage {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .timelineRight {
+    padding-left: 20px;
+  }
+
+  .timelineVal {
+    min-width: auto;
+  }
+
+  .footer {
+    padding: 20px 16px 24px;
+  }
+
+  .footerInner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .footerBottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+}
