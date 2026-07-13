@@ -58,6 +58,7 @@ export default function PointsGuyPage() {
       related={related}
     >
 {/* Introduction */}
+        
         <p>Welcome to the world of travel hacking, where savvy travelers turn everyday spending into extraordinary adventures. If you have ever dreamed of flying first class to exotic destinations, staying in luxury hotels for a fraction of the cost, or simply making your hard-earned money go further when you travel, you have come to the right place. This comprehensive guide will teach you everything you need to know about becoming a true <strong>Points Guy</strong> and mastering the art of travel hacking.</p>
 
         <p>The concept of travel hacking has exploded in popularity over the past decade, and for good reason. With the right strategies, anyone can <strong>take advantage of the sign-up bonuses</strong> offered by credit card companies, earn points through everyday purchases, and redeem those points for incredible travel experiences. Whether you are a complete beginner or someone who has dabbled in points collecting, this guide will help you take your skills to the next level.</p>
@@ -156,7 +157,9 @@ export default function PointsGuyPage() {
 
         <p>Co-branded credit cards are another important element of loyalty programs. These are cards issued in partnership between a bank and a specific airline or hotel chain. Examples include the Delta SkyMiles American Express, the United Explorer Card, and the Marriott Bonvoy Boundless Card. These cards offer enhanced earning on purchases with the partner brand.</p>
 
-        <p>When selecting which <strong>loyalty programs</strong> to focus on, consider where you live and which airlines serve your home airport. If you live in a hub city for a particular airline, it makes sense to concentrate your earning in that airline&rsquo;s program. Similarly, if you frequently visit a specific hotel brand, prioritize that program.</p>
+        <p>When selecting which <strong>loyalty programs</strong> to focus on, consider where you live and which airlines serve your home airport. If you live in a hub city for a particular airline, it makes sense to concentrate your earning in that airline&rsquo;s program.</p>
+
+        <p>Similarly, if you frequently visit a specific hotel brand, prioritize that program.</p>
 
         <p>Do not spread yourself too thin across too many programs. It is better to have a meaningful balance in two or three programs than small balances in a dozen. Many Points Guys focus on one or two transferable points currencies and one or two airline programs to keep things manageable.</p>
 
@@ -253,7 +256,9 @@ export default function PointsGuyPage() {
 
         <p>Building a card portfolio tailored to your spending patterns is essential. If you spend heavily on dining, make sure you have a card that earns bonus points on restaurant purchases. If you commute daily, a card with bonus points on transit or gas will serve you well. Analyze your spending and choose cards that match your lifestyle.</p>
 
-        <p>Sign-up bonuses are the single fastest way to accumulate a large points balance. A single sign-up bonus can equal months or even years of everyday spending. Strategic Points Guys plan their credit card applications around the best available offers, often targeting bonuses worth $500 to $1,000 or more.</p>
+        <p>Sign-up bonuses are the single fastest way to accumulate a large points balance. A single sign-up bonus can equal months or even years of everyday spending.</p>
+
+        <p>Strategic Points Guys plan their credit card applications around the best available offers, often targeting bonuses worth $500 to $1,000 or more.</p>
 
         <p>However, you must be mindful of the <strong>5/24 rule</strong> and other issuer restrictions. Chase, for example, will automatically deny any new card application if you have opened five or more personal credit cards across all banks in the past 24 months. Knowing these rules helps you prioritize which cards to apply for.</p>
 
