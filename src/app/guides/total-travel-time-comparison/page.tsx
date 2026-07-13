@@ -111,6 +111,15 @@ const FAQ_ITEMS = [
 /* ── Door-to-door diagram ─────────────────────────────────── */
 
 function JourneyDiagram() {
+  const stages = [
+    "Home-to-airport",
+    "Pre-flight time",
+    "Flight duration",
+    "Connection / baggage",
+    "Arrival transfer",
+    "Destination",
+  ];
+
   return (
     <div className={styles.insightNode}>
       <span className={styles.insightNodeLabel}>
@@ -120,65 +129,79 @@ function JourneyDiagram() {
         style={{
           display: "flex",
           alignItems: "center",
-          gap: 0,
-          marginTop: 16,
-          marginBottom: 8,
           flexWrap: "wrap",
-          fontFamily: "var(--mono)",
-          fontSize: 10,
-          fontWeight: 500,
-          lineHeight: 1,
-          color: "var(--muted)",
+          marginTop: 16,
+          marginBottom: 12,
+          gap: 0,
         }}
       >
-        {[
-          ["🏠", "Home"],
-          ["→", "Departure\ntransfer"],
-          ["✈", "Pre-flight\ntime"],
-          ["→", "Flight\nduration"],
-          ["→", "Baggage &\nconnections"],
-          ["→", "Arrival\ntransfer"],
-          ["📍", "Final\ndestination"],
-        ].map(([icon, label], i) => (
-          <div
-            key={i}
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: 4,
-              padding: "6px 8px",
-              background:
-                i === 3
-                  ? "rgba(184,92,56,0.08)"
-                  : i % 2 === 0
-                  ? "var(--card)"
-                  : "transparent",
-              borderRadius: 6,
-              border: i === 3 ? "1px solid rgba(184,92,56,0.2)" : "none",
-              minWidth: i % 2 === 0 ? 64 : 24,
-              textAlign: "center",
-            }}
-          >
-            <span style={{ fontSize: i % 2 === 0 ? 18 : 10 }}>{icon}</span>
-            <span
+        {stages.map((label, i) => (
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 0 }}>
+            <div
               style={{
-                whiteSpace: "pre-line",
+                padding: "8px 14px",
+                background:
+                  i === 2
+                    ? "rgba(184,92,56,0.07)"
+                    : "transparent",
+                borderRadius: 5,
+                border:
+                  i === 2
+                    ? "1px solid rgba(184,92,56,0.18)"
+                    : "1px solid transparent",
                 textAlign: "center",
-                letterSpacing: "0.04em",
               }}
             >
-              {label}
-            </span>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--mono)",
+                  fontWeight: 500,
+                  fontSize: 9,
+                  lineHeight: 1,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: i === 2 ? "var(--copper)" : "var(--muted)",
+                  marginBottom: 4,
+                }}
+              >
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <span
+                style={{
+                  display: "block",
+                  fontFamily: "var(--sans)",
+                  fontWeight: i === 2 ? 600 : 400,
+                  fontSize: 11,
+                  lineHeight: 1.3,
+                  color: i === 2 ? "var(--ink)" : "var(--muted)",
+                }}
+              >
+                {label}
+              </span>
+            </div>
+            {i < stages.length - 1 && (
+              <span
+                style={{
+                  fontFamily: "var(--mono)",
+                  fontSize: 10,
+                  color: "var(--line-2)",
+                  padding: "0 2px",
+                  flex: "none",
+                }}
+                aria-hidden="true"
+              >
+                →
+              </span>
+            )}
           </div>
         ))}
       </div>
       <p
         className={styles.insightNodeBody}
-        style={{ marginTop: 12, fontSize: 13 }}
+        style={{ marginTop: 8, fontSize: 13 }}
       >
-        The flight itself is just the third of seven segments. The other six
-        determine whether a shorter flight actually produces a faster journey.
+        Flight duration is only one segment of the total door-to-door journey.
       </p>
     </div>
   );
@@ -465,24 +488,24 @@ export default function TotalTravelTimeGuide() {
             {/* ═══ 8. DECISION PAIR ═══ */}
             <h2 id="section-7">When the shorter flight wins vs when it loses</h2>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14, marginBottom: 24 }}>
-              <div className={styles.tipBox}>
-                <span className={styles.tipBoxLabel}>When the shorter flight wins</span>
-                <ul style={{ fontFamily: "var(--sans)", fontSize: 14, lineHeight: 1.6, color: "#3c4650", margin: "12px 0 0", paddingLeft: 18 }}>
-                  <li>Airports are similarly distant from you</li>
-                  <li>Pre-flight requirements are the same</li>
-                  <li>No connection or terminal change needed</li>
-                  <li>Destination transfers are equivalent</li>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24, marginBottom: 20 }}>
+              <div>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 600, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 12 }}>When the shorter flight wins</span>
+                <ul style={{ fontFamily: "var(--sans)", fontSize: 14, lineHeight: 1.65, color: "#3c4650", margin: 0, paddingLeft: 18 }}>
+                  <li style={{ marginBottom: 6 }}>Airports are similarly distant from you</li>
+                  <li style={{ marginBottom: 6 }}>Pre-flight requirements are the same</li>
+                  <li style={{ marginBottom: 6 }}>No connection or terminal change needed</li>
+                  <li style={{ marginBottom: 6 }}>Destination transfers are equivalent</li>
                   <li>Arrival time is usable — transport still running</li>
                 </ul>
               </div>
-              <div className={styles.warningBox}>
-                <span className={styles.warningBoxLabel}>When the longer flight is better</span>
-                <ul style={{ fontFamily: "var(--sans)", fontSize: 14, lineHeight: 1.6, color: "#3c4650", margin: "12px 0 0", paddingLeft: 18 }}>
-                  <li>Closer airport with fast, frequent transport</li>
-                  <li>No overnight hotel needed before an early departure</li>
-                  <li>Direct rail connection from arrival airport</li>
-                  <li>Better arrival time — daytime, transport running</li>
+              <div>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 600, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 12 }}>When the longer flight is better</span>
+                <ul style={{ fontFamily: "var(--sans)", fontSize: 14, lineHeight: 1.65, color: "#3c4650", margin: 0, paddingLeft: 18 }}>
+                  <li style={{ marginBottom: 6 }}>Closer airport with fast, frequent transport</li>
+                  <li style={{ marginBottom: 6 }}>No overnight hotel needed before an early departure</li>
+                  <li style={{ marginBottom: 6 }}>Direct rail connection from arrival airport</li>
+                  <li style={{ marginBottom: 6 }}>Better arrival time — daytime, transport running</li>
                   <li>Lower connection risk and simpler baggage journey</li>
                 </ul>
               </div>
@@ -495,16 +518,16 @@ export default function TotalTravelTimeGuide() {
 
             {/* ═══ 9. QUICK CHECKLIST ═══ */}
             <h2 id="section-8">Quick checklist</h2>
-            <p>Before choosing, run these seven questions for both flights:</p>
-            <div className={styles.decisionSummary}>
-              <div><div className={styles.decisionSummaryLabel}>Departure access</div><div className={styles.decisionSummaryValue}>How long to reach each departure airport from your real starting point?</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Airport arrival time</div><div className={styles.decisionSummaryValue}>How early must you arrive? Include check-in, security, known queues.</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Connections</div><div className={styles.decisionSummaryValue}>Any connections? How long is each layover? Terminal change required?</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Baggage</div><div className={styles.decisionSummaryValue}>Do you need to collect and re-check? Add 20–30 minutes per collection.</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Arrival transfer</div><div className={styles.decisionSummaryValue}>How long from the arrival airport to your final destination?</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Usable arrival</div><div className={styles.decisionSummaryValue}>What time do you actually get there? Is transport still running?</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Total door-to-door</div><div className={styles.decisionSummaryValue}>Add it all up. Which option gets you there sooner with less friction?</div></div>
-            </div>
+            <p style={{ marginBottom: 16 }}>Before choosing, run these seven questions for both flights:</p>
+            <ol style={{ fontFamily: "var(--sans)", fontSize: 15, lineHeight: 1.7, color: "#4a5560", paddingLeft: 22, margin: 0 }}>
+              <li style={{ marginBottom: 8 }}><strong style={{ color: "var(--ink)" }}>Departure access:</strong> How long to reach each departure airport from your real starting point?</li>
+              <li style={{ marginBottom: 8 }}><strong style={{ color: "var(--ink)" }}>Airport arrival time:</strong> How early must you arrive? Include check-in, security and known queues.</li>
+              <li style={{ marginBottom: 8 }}><strong style={{ color: "var(--ink)" }}>Connections:</strong> Any connections? How long is each layover? Terminal change required?</li>
+              <li style={{ marginBottom: 8 }}><strong style={{ color: "var(--ink)" }}>Baggage:</strong> Do you need to collect and re-check? Add 20–30 minutes per collection.</li>
+              <li style={{ marginBottom: 8 }}><strong style={{ color: "var(--ink)" }}>Arrival transfer:</strong> How long from the arrival airport to your final destination?</li>
+              <li style={{ marginBottom: 8 }}><strong style={{ color: "var(--ink)" }}>Usable arrival:</strong> What time do you actually get there? Is transport still running?</li>
+              <li><strong style={{ color: "var(--ink)" }}>Total door-to-door:</strong> Add it all up. Which option gets you there sooner with less friction?</li>
+            </ol>
 
             {/* ═══ 10. FAQ ═══ */}
             <h2 id="section-9">FAQ</h2>
@@ -551,34 +574,14 @@ export default function TotalTravelTimeGuide() {
           </div>
         </div>
 
-        {/* ═══ FOOTER ═══ */}
-        <footer className={styles.guideFooter}>
-          <div className={styles.guideFooterInner}>
-            <div>
-              <span className={styles.footerBrand}>Travelvus</span>
-              <p className={styles.footerBrandText}>Decision engine for smarter air travel.</p>
-            </div>
-            <div>
-              <span className={styles.footerColTitle}>Product</span>
-              <div className={styles.footerLinks}>
-                <Link href="/">Compare</Link>
-                <Link href="/london-airports">Airport Decisions</Link>
-                <Link href="/wego-flight">Travel Guides</Link>
-                <Link href="/methodology">Methodology</Link>
-              </div>
-            </div>
-            <div>
-              <span className={styles.footerColTitle}>Company</span>
-              <div className={styles.footerLinks}>
-                <Link href="/about">About</Link>
-                <Link href="/contact">Contact</Link>
-              </div>
-            </div>
+        {/* Footer — matching approved Guide #2 footer exactly */}
+        <footer style={{ padding: "88px 48px 0", borderTop: "1px solid var(--line)", marginTop: 80 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr 1fr", gap: 56, paddingBottom: 56 }}>
+            <div><span style={{ font: "700 20px/1 Geist, sans-serif", letterSpacing: "-.04em", color: "var(--ink)" }}>Travelvus</span><p style={{ font: "400 14px/1.6 Geist, sans-serif", color: "var(--muted)", margin: "16px 0 0", maxWidth: 280 }}>Decision engine for smarter air travel.</p></div>
+            <div><div style={{ font: "600 10px/1 IBM Plex Mono, monospace", letterSpacing: ".1em", textTransform: "uppercase", color: "#9aa4ac", marginBottom: 18 }}>Product</div><div style={{ display: "flex", flexDirection: "column", gap: 13 }}><Link href="/" style={{ color: "#4a5560", textDecoration: "none", font: "400 14px/1 Geist, sans-serif" }}>Compare</Link><Link href="/london-airports" style={{ color: "#4a5560", textDecoration: "none", font: "400 14px/1 Geist, sans-serif" }}>Airport Decisions</Link><Link href="/wego-flight" style={{ color: "#4a5560", textDecoration: "none", font: "400 14px/1 Geist, sans-serif" }}>Travel Guides</Link><Link href="/methodology" style={{ color: "#4a5560", textDecoration: "none", font: "400 14px/1 Geist, sans-serif" }}>Methodology</Link></div></div>
+            <div><div style={{ font: "600 10px/1 IBM Plex Mono, monospace", letterSpacing: ".1em", textTransform: "uppercase", color: "#9aa4ac", marginBottom: 18 }}>Company</div><div style={{ display: "flex", flexDirection: "column", gap: 13, marginBottom: 28 }}><Link href="/about" style={{ color: "#4a5560", textDecoration: "none", font: "400 14px/1 Geist, sans-serif" }}>About</Link><Link href="/contact" style={{ color: "#4a5560", textDecoration: "none", font: "400 14px/1 Geist, sans-serif" }}>Contact</Link></div></div>
           </div>
-          <div className={styles.guideFooterBottom}>
-            <span>Know the real cost before you book.</span>
-            <span>&copy; 2026 Travelvus</span>
-          </div>
+          <div style={{ borderTop: "1px solid var(--line)", padding: "28px 0", display: "flex", justifyContent: "space-between", alignItems: "center" }}><span style={{ font: "italic 400 15px/1 Instrument Serif, Georgia, serif", color: "var(--muted)" }}>Know the real cost before you book.</span><span style={{ font: "400 12px/1 IBM Plex Mono, monospace", color: "#9aa4ac" }}>&copy; 2026 Travelvus</span></div>
         </footer>
       </div>
     </div>
