@@ -1,7 +1,7 @@
 # TRAVELVUS V2 — PROYECTO HANDOFF
 
 **Fecha:** 2026-07-12
-**Último commit:** `9d215b1`
+**Último commit:** `8684514`
 **Producción:** https://www.travelvus.com
 
 ---
