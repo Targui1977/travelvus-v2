@@ -568,11 +568,11 @@ export default function TotalTravelTimeGuide() {
                   <span style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 13, lineHeight: 1.45, color: "var(--muted)" }}>Compare the complete journey before choosing your London airport.</span>
                   <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, lineHeight: 1, color: "var(--copper)", marginTop: 4 }}>Continue reading &rarr;</span>
                 </Link>
-                <Link href="/#compare" className="decisionCard">
-                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 9, lineHeight: 1, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--copper)" }}>Decision Engine</span>
-                  <span style={{ fontFamily: "var(--sans)", fontWeight: 600, fontSize: 15, lineHeight: 1.25, color: "var(--ink)" }}>Compare Your Own Flight</span>
-                  <span style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 13, lineHeight: 1.45, color: "var(--muted)" }}>Use the Travelvus calculator with your own airports and baggage.</span>
-                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, lineHeight: 1, color: "var(--copper)", marginTop: 4 }}>Reveal the real winner &rarr;</span>
+                <Link href="/compare/frankfurt-to-london" className="decisionCard">
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 9, lineHeight: 1, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--copper)" }}>Decision Page</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 600, fontSize: 15, lineHeight: 1.25, color: "var(--ink)" }}>Frankfurt to London</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 13, lineHeight: 1.45, color: "var(--muted)" }}>Hahn Airport adds 1h 45m to the door-to-door journey versus FRA.</span>
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, lineHeight: 1, color: "var(--copper)", marginTop: 4 }}>Continue reading &rarr;</span>
                 </Link>
               </div>
             </div>

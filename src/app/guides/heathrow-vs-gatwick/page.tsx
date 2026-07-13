@@ -267,6 +267,8 @@ function GuidePage() {
                 <div><div className={styles.relatedGuideTitle}>Gatwick vs Stansted</div><p className={styles.relatedGuideDesc}>When a small saving requires personal judgment</p></div>
                 <span className={styles.relatedGuideCta}>Read →</span>
               </Link>
+              <Link href="/compare/paris-to-london" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Paris to London</div><p className={styles.relatedGuideDesc}>Heathrow or Gatwick from Paris CDG? The airport decision changes the journey.</p></div><span className={styles.relatedGuideCta}>Read →</span></Link>
+              <Link href="/compare/barcelona-to-london" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Barcelona to London</div><p className={styles.relatedGuideDesc}>Heathrow, Gatwick or Stansted from Barcelona — which really wins?</p></div><span className={styles.relatedGuideCta}>Read →</span></Link>
               <Link href="/questions/london-airport-break-even" className={styles.relatedGuideRow}>
                 <div><div className={styles.relatedGuideTitle}>London airport break-even question</div><p className={styles.relatedGuideDesc}>How much cheaper should a flight be to justify a different airport?</p></div>
                 <span className={styles.relatedGuideCta}>Read →</span>

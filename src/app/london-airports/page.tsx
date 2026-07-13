@@ -108,6 +108,27 @@ export default function HubPage() {
         <Link href="/#compare" className="btn-filled inline-block no-underline" style={{ padding: "15px 28px", background: "var(--copper)" }}>Open Compare →</Link>
       </section>
 
+
+      {/* Compare your route */}
+      <section className={styles.coverage}>
+        <h2 style={{ fontFamily: "var(--serif)", fontWeight: 400, fontSize: 24, lineHeight: 1.25, color: "var(--ink)", margin: "0 0 16px" }}>Compare your route</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8, marginBottom: 8 }}>
+          <Link href="/compare/berlin-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Berlin</Link>
+          <Link href="/compare/paris-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Paris</Link>
+          <Link href="/compare/amsterdam-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Amsterdam</Link>
+          <Link href="/compare/madrid-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Madrid</Link>
+          <Link href="/compare/barcelona-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Barcelona</Link>
+        </div>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 8 }}>
+          <Link href="/compare/rome-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Rome</Link>
+          <Link href="/compare/milan-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Milan</Link>
+          <Link href="/compare/lisbon-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Lisbon</Link>
+          <Link href="/compare/dublin-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Dublin</Link>
+          <Link href="/compare/frankfurt-to-london" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, color: "var(--copper)", textDecoration: "none", padding: "10px 12px", background: "var(--card)", border: "1px solid var(--line)", borderRadius: 8, textAlign: "center", transition: "border-color .15s" }}>Frankfurt</Link>
+        </div>
+      </section>
+
+
       {/* Footer */}
       <footer className="home-footer">
         <div className="home-footer-links">
