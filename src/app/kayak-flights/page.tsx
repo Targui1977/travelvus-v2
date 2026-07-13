@@ -17,6 +17,7 @@ const related: RelatedItem[] = [
   },
 ];
 
+
 export const metadata: Metadata = {
   title: "Find Affordable Kayak Flights | Best Deals on Kayak Flight Bookings",
   description: "Find affordable flights on Kayak. Compare prices, get real-time alerts, and discover last-minute deals, package offers, and flexible booking options.",
@@ -25,20 +26,40 @@ export const metadata: Metadata = {
 
 export default function KayakFlightsPage() {
   return (
-    <LegacyArticleLayout related={related}>
-        <h1>Find Affordable Kayak Flights | Best Deals on Kayak Flight Bookings</h1>
-        <img src="/legacy/kayak-flights/kayak-travel.webp" alt="Kayak Flight" />
-        <ol>
-          <li><a href="#what-is-kayak">What is Kayak?</a></li>
-          <li><a href="#benefits-of-kayak">What are the Benefits of Kayak?</a></li>
-          <li><a href="#find-cheap-deals">How to Find Cheap Kayak Flight Deals</a></li>
-          <li><a href="#types-of-deals">Types of Kayak Flight Deals</a></li>
-          <li><a href="#tips">Tips for Finding the Best Kayak Flight Deals</a></li>
-          <li><a href="#comparing">Comparing Kayak Flight Deals with Other Airlines</a></li>
-          <li><a href="#best-deals">Finding the Best Deals on Kayak Flight Reservations</a></li>
-          <li><a href="#save-money">Using Kayak Flight Deals to Save Money</a></li>
-        </ol>
-        <p>Are you in search of low-cost <strong><a href="https://www.kayak.com/" rel="noopener noreferrer" target="_blank">kayak flights</a></strong>? Look no further than Kayak. This popular platform offers a wide range of flight options at affordable prices. Whether you are planning a vacation or a business trip, Kayak can help you save money on airfare costs. This article will cover the benefits of using Kayak, the different types of flight deals available, and tips and tricks for finding the best deals for your next journey.</p>
+    <LegacyArticleLayout
+      category="Flight Booking Guide"
+      title="Find Affordable Kayak Flights | Best Deals on Kayak Flight Bookings"
+      subtitle="Search across 400+ airlines, compare prices, and discover last-minute deals on one of the most popular flight search platforms."
+      readingTime="5 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/kayak-flights/kayak-travel.webp"
+      heroImageAlt="Kayak Flight"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "Kayak compares fares from 400+ airlines and travel sites in one search.",
+        "Flexible date tools and price alerts help you book at the right time.",
+        "Package deals bundling flights, hotels and cars can unlock extra savings.",
+        "Booking in advance and comparing nearby airports reduces total cost."
+      ]}
+      tocItems={[
+        { id: "what-is-kayak", title: "What is Kayak?" },
+        { id: "benefits-of-kayak", title: "Benefits of Kayak" },
+        { id: "find-cheap-deals", title: "How to Find Cheap Deals" },
+        { id: "types-of-deals", title: "Types of Flight Deals" },
+        { id: "tips", title: "Tips for Finding the Best Deals" },
+        { id: "comparing", title: "Comparing with Other Airlines" },
+        { id: "best-deals", title: "Finding the Best Deals" },
+        { id: "save-money", title: "Using Kayak to Save Money" }
+      ]}
+      ctaText="Found a cheap fare? Compare the real journey cost before you book."
+      ctaLink="/#compare"
+      ctaHint="The cheapest ticket isn't always the cheapest journey. Add baggage and transfers."
+      methodologyText="Travelvus adds baggage, transfers and time to the fare you found on Kayak. The complete journey cost often tells a different story than the ticket price alone."
+      trustNote="Flight search platforms compared editorially. Prices and availability change continuously."
+      related={related}
+    >
+
+<p>Are you in search of low-cost <strong><a href="https://www.kayak.com/" rel="noopener noreferrer" target="_blank">kayak flights</a></strong>? Look no further than Kayak. This popular platform offers a wide range of flight options at affordable prices. Whether you are planning a vacation or a business trip, Kayak can help you save money on airfare costs. This article will cover the benefits of using Kayak, the different types of flight deals available, and tips and tricks for finding the best deals for your next journey.</p>
 
         <h2 id="what-is-kayak">What is Kayak?</h2>
         <p>Kayak is an online travel search engine that allows you to compare fares and book flights, hotels, and car rentals all in one place. With just a few clicks, you can easily compare prices from multiple airlines and travel websites. Its user-friendly interface and wide range of filters make it easy to find the perfect flight at the best price. Whether you are a frequent traveler or planning a much-needed vacation, Kayak is a valuable resource for finding affordable and convenient flights. With Kayak, there are numerous opportunities to save money and time by using this helpful tool.</p>

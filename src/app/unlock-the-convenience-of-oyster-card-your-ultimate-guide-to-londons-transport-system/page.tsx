@@ -18,6 +18,7 @@ const related: RelatedItem[] = [
 ];
 
 
+
 export const metadata: Metadata = {
   title: "Unlock the Convenience of Oyster Card: Your Ultimate Guide to London's Transport System",
   description:
@@ -27,19 +28,36 @@ export const metadata: Metadata = {
 
 export default function OysterCardPage() {
   return (
-    <LegacyArticleLayout related={related}>
-        <h1>Unlock the Convenience of Oyster Card: Your Ultimate Guide to London&rsquo;s Transport System</h1>
+    <LegacyArticleLayout
+      category="London Transport Guide"
+      title="Unlock the Convenience of Oyster Card: Your Ultimate Guide to London&rsquo;s Transport System"
+      subtitle="How the Oyster Card works, which type to choose, and how to use it across London's buses, Tube, DLR and overground."
+      readingTime="3 min"
+      lastReviewed="Jul 2026"
+      summaryTitle="The quick answer"
+      summaryPoints={[
+        "The Oyster Card is a prepaid smart card valid on all London transport.",
+        "Visitor Oyster Cards come preloaded; standard cards use pay-as-you-go.",
+        "Daily and weekly fare caps mean you never pay more than a travelcard.",
+        "Contactless bank cards and mobile payments work as Oyster alternatives."
+      ]}
+      tocItems={[
+        { id: "what-is-oyster", title: "What is an Oyster Card?" },
+        { id: "benefits", title: "Benefits of the Oyster Card" },
+        { id: "types", title: "Types of Oyster Cards" },
+        { id: "how-to-use", title: "How to Use the Oyster Card" },
+        { id: "networks", title: "Transport Networks Accepting Oyster" },
+        { id: "conclusion", title: "Conclusion" }
+      ]}
+      ctaText="Flying into London? Compare airport transfer costs before you land."
+      ctaLink="/london-airports"
+      ctaHint="Heathrow, Gatwick and Stansted have very different transfer costs and times."
+      methodologyText="Travelvus calculates complete London journey costs — including Oyster/contactless fares from each airport to central London. The airport you choose can change the real trip cost by €50 or more."
+      trustNote="TfL fare data used for all London transport calculations. Off-peak single fares quoted."
+      related={related}
+    >
 
-        <ol>
-          <li><a href="#what-is-oyster">What is an Oyster Card?</a></li>
-          <li><a href="#benefits">Benefits of the Oyster Card</a></li>
-          <li><a href="#types">Types of Oyster Cards</a></li>
-          <li><a href="#how-to-use">How to Use the Oyster Card</a></li>
-          <li><a href="#networks">Transportation Networks Accepting the Oyster Card</a></li>
-          <li><a href="#conclusion">Conclusion</a></li>
-        </ol>
-
-        <p>Are you planning a trip to London and looking for a convenient way to navigate the city&rsquo;s bustling transport system? Look no further than the Oyster card &mdash; your ultimate ticket to hassle-free travel. This prepaid smart card is your key to unlocking the convenience of seamless travel across all zones of London. With the Oyster card, you can save both time and money while enjoying a seamless travel experience. Whether you&rsquo;re hopping on the iconic London Underground, catching a bus, or taking the overground, DLR, the Oyster card is your trusty companion. In this comprehensive guide, we will explore the benefits of the Oyster card, the different types available, and how to use it effectively. So, let&rsquo;s unlock the convenience of the Oyster card and embark on an effortless journey through London&rsquo;s vibrant cityscape.</p>
+<p>Are you planning a trip to London and looking for a convenient way to navigate the city&rsquo;s bustling transport system? Look no further than the Oyster card &mdash; your ultimate ticket to hassle-free travel. This prepaid smart card is your key to unlocking the convenience of seamless travel across all zones of London. With the Oyster card, you can save both time and money while enjoying a seamless travel experience. Whether you&rsquo;re hopping on the iconic London Underground, catching a bus, or taking the overground, DLR, the Oyster card is your trusty companion. In this comprehensive guide, we will explore the benefits of the Oyster card, the different types available, and how to use it effectively. So, let&rsquo;s unlock the convenience of the Oyster card and embark on an effortless journey through London&rsquo;s vibrant cityscape.</p>
 
         <h2 id="what-is-oyster">What is an Oyster Card?</h2>
         <p>The Oyster card has revolutionized the way people travel in London. Gone are the days of paper tickets and fishing for change at ticket machines. Instead, London commuters and visitors alike can simply tap their card on the yellow card reader at the beginning and end of their journey, and the correct fare will be automatically deducted from their balance. This means no more long queues at ticket machines and no more fumbling for loose change. The Oyster card ensures seamless journeys through all the zones of London.</p>

@@ -18,6 +18,7 @@ const related: RelatedItem[] = [
 ];
 
 
+
 export const metadata: Metadata = {
   title: "Discover the Affordable TSA Precheck Cost: Everything You Need to Know",
   description: "Learn about TSA PreCheck enrollment, benefits, pricing, and renewal. Expedited airport security screening for trusted travelers.",
@@ -26,19 +27,37 @@ export const metadata: Metadata = {
 
 export default function TsaPrecheckPage() {
   return (
-    <LegacyArticleLayout related={related}>
-        <h1>Discover the Affordable TSA Precheck Cost: Everything You Need to Know</h1>
-        <img src="/legacy/tsa-precheck-cost/tsa-precheck-cost.webp" alt="tsa precheck cost" />
+    <LegacyArticleLayout
+      category="Airport Security Guide"
+      title="Discover the Affordable TSA Precheck Cost: Everything You Need to Know"
+      subtitle="Everything you need to know about TSA PreCheck enrollment, pricing, benefits, and renewal — so you can breeze through airport security."
+      readingTime="4 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/tsa-precheck-cost/tsa-precheck-cost.webp"
+      heroImageAlt="tsa precheck cost"
+      summaryTitle="The quick answer"
+      summaryPoints={[
+        "TSA PreCheck costs $78 for a 5-year membership.",
+        "Renewal is $70 if completed online before expiration.",
+        "Members keep shoes, belts, jackets on and laptops in bags.",
+        "Enrollment is available online and at airport enrollment centers."
+      ]}
+      tocItems={[
+        { id: "what-is-tsa-precheck", title: "What is TSA PreCheck?" },
+        { id: "tsa-precheck-enrollment-options", title: "Enrollment Options" },
+        { id: "benefits-of-tsa-precheck", title: "Benefits of TSA PreCheck" },
+        { id: "current-tsa-precheck-price", title: "Current Price" },
+        { id: "how-to-renew-your-tsa-precheck", title: "How to Renew" }
+      ]}
+      ctaText="Planning a trip? Make sure you're comparing the full journey cost."
+      ctaLink="/#compare"
+      ctaHint="Airport choice affects transfer cost and total travel time."
+      methodologyText="Travelvus helps you compare the complete journey — ticket, baggage, airport transfers and time. Airport security wait times vary by terminal and time of day. TSA PreCheck can reduce screening time but does not affect the door-to-door journey calculation."
+      trustNote="TSA fees and policies sourced from tsa.gov. Verify current pricing before enrolling."
+      related={related}
+    >
 
-        <ol>
-          <li><a href="#what-is-tsa-precheck">What is TSA PreCheck?</a></li>
-          <li><a href="#tsa-precheck-enrollment-options">TSA PreCheck Enrollment Options</a></li>
-          <li><a href="#benefits-of-tsa-precheck">Benefits of TSA PreCheck</a></li>
-          <li><a href="#current-tsa-precheck-price">Current TSA PreCheck Price</a></li>
-          <li><a href="#how-to-renew-your-tsa-precheck">How to Renew Your TSA PreCheck</a></li>
-        </ol>
-
-        <p>Are you tired of long security lines at the airport? Do you want to breeze through security and save valuable time?</p>
+<p>Are you tired of long security lines at the airport? Do you want to breeze through security and save valuable time?</p>
         <p>Look no further than <strong>TSA PreCheck</strong>! In this article, we will explore the affordable price of TSA PreCheck and provide you with all the information you need to know.</p>
         <p>With TSA PreCheck, you can enjoy expedited screening and skip the hassle of removing your shoes, belt, and laptop.</p>
         <p>Plus, the enrollment process is now easier than ever with multiple enrollment options available.</p>

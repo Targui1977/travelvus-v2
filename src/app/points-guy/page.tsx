@@ -18,6 +18,7 @@ const related: RelatedItem[] = [
 ];
 
 
+
 export const metadata: Metadata = {
   title: "The Ultimate Guide to Becoming a Points Guy: Mastering the Art of Travel Hacking",
   description:
@@ -27,24 +28,36 @@ export const metadata: Metadata = {
 
 export default function PointsGuyPage() {
   return (
-    <LegacyArticleLayout related={related}>
-        <h1>The Ultimate Guide to Becoming a Points Guy: Mastering the Art of Travel Hacking</h1>
-
-        <img src="/legacy/points-guy/points-guy-1.webp" alt="Points Guy" />
-
-        {/* Table of Contents */}
-        <ol>
-          <li><a href="#introduction">Introduction</a></li>
-          <li><a href="#basics">Basics</a></li>
-          <li><a href="#loyalty-programs">Loyalty Programs</a></li>
-          <li><a href="#warrior-within">Warrior Within</a></li>
-          <li><a href="#travel-writing">Travel Writing</a></li>
-          <li><a href="#maximizing-points">Maximizing Points</a></li>
-          <li><a href="#best-deals">Best Deals</a></li>
-          <li><a href="#tips">Tips</a></li>
-        </ol>
-
-        {/* Introduction */}
+    <LegacyArticleLayout
+      category="Travel Rewards Guide"
+      title="The Ultimate Guide to Becoming a Points Guy: Mastering the Art of Travel Hacking"
+      subtitle="Master the art of travel hacking — loyalty programmes, credit card points, and strategies to unlock free flights and upgrades."
+      readingTime="8 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/points-guy/points-guy-1.webp"
+      heroImageAlt="Points Guy"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "Travel hacking uses loyalty points and miles to reduce flight costs.",
+        "Credit card sign-up bonuses are the fastest way to earn points.",
+        "Understanding airline alliances multiplies redemption options.",
+        "Points valuations help you compare whether a redemption is worth it."
+      ]}
+      tocItems={[
+        { id: "introduction", title: "Introduction" },
+        { id: "basics", title: "The Basics of Travel Hacking" },
+        { id: "loyalty-programs", title: "Loyalty Programs" },
+        { id: "warrior-within", title: "The Points Warrior Within" },
+        { id: "travel-writing", title: "Travel Writing for Points" }
+      ]}
+      ctaText="Using points for a flight? Still compare the real journey cost."
+      ctaLink="/#compare"
+      ctaHint="Even award tickets have taxes, fees and transfer costs. Know the real total."
+      methodologyText="Travelvus compares complete journeys — whether you pay with cash or points. Baggage, airport transfers and door-to-door time affect the real cost regardless of how you booked the ticket."
+      trustNote="Points valuations and sign-up bonuses change frequently. Verify current offers with each programme."
+      related={related}
+    >
+{/* Introduction */}
         <p>Welcome to the world of travel hacking, where savvy travelers turn everyday spending into extraordinary adventures. If you have ever dreamed of flying first class to exotic destinations, staying in luxury hotels for a fraction of the cost, or simply making your hard-earned money go further when you travel, you have come to the right place. This comprehensive guide will teach you everything you need to know about becoming a true <strong>Points Guy</strong> and mastering the art of travel hacking.</p>
 
         <p>The concept of travel hacking has exploded in popularity over the past decade, and for good reason. With the right strategies, anyone can <strong>take advantage of the sign-up bonuses</strong> offered by credit card companies, earn points through everyday purchases, and redeem those points for incredible travel experiences. Whether you are a complete beginner or someone who has dabbled in points collecting, this guide will help you take your skills to the next level.</p>

@@ -4,18 +4,19 @@ import type { RelatedItem } from "@/components/legacy";
 
 const related: RelatedItem[] = [
   {
+    title: "Find Affordable Kayak Flights",
+    description: "Compare 400+ airlines with Kayak's flight search engine.",
+    href: "/kayak-flights",
+    label: "Related Guide",
+  },
+  {
     title: "London Airport Decisions",
     description: "Which London airport really wins for your journey?",
     href: "/london-airports",
     label: "Decision Guide",
   },
-  {
-    title: "Our Methodology",
-    description: "How Travelvus calculates the real cost of your trip.",
-    href: "/methodology",
-    label: "How we work",
-  },
 ];
+
 
 export const metadata: Metadata = {
   title: "WeGo Flight: Your Ultimate Guide to Booking Affordable Flights - Outdoor Adventure",
@@ -26,27 +27,42 @@ export const metadata: Metadata = {
 
 export default function WegoFlightPage() {
   return (
-    <LegacyArticleLayout related={related}>
-        <h1>WeGo Flight: Your Ultimate Guide to Booking Affordable Flights - Outdoor Adventure</h1>
-
-        <img src="/legacy/wego-flight/wego-flight-1024x640.webp" alt="WeGo Flight banner showing affordable flight booking" />
-
-        {/* Table of Contents */}
-        <ol>
-          <li><a href="#cheapest-flight-deals">Cheapest Flight Deals</a></li>
-          <li><a href="#find-cheap-flights">Find Cheap Flights</a></li>
-          <li><a href="#last-minute-vacation">Last Minute Vacation</a></li>
-          <li><a href="#book-smart">Book Smart</a></li>
-          <li><a href="#compare-cheapest">Compare Cheapest</a></li>
-          <li><a href="#save-up-to-30">Save up to 30%</a></li>
-          <li><a href="#find-best-price">Find Best Price</a></li>
-          <li><a href="#european-flight-providers">European Flight Providers</a></li>
-          <li><a href="#book-your-flight-today">Book Your Flight Today</a></li>
-          <li><a href="#cheap-flight-tickets-europe">Cheap Flight Tickets Europe</a></li>
-          <li><a href="#travel-like-a-pro">Travel Like a Pro</a></li>
-        </ol>
-
-        {/* Introductory paragraphs */}
+    <LegacyArticleLayout
+      category="Flight Booking Guide"
+      title="WeGo Flight: Your Ultimate Guide to Booking Affordable Flights - Outdoor Adventure"
+      subtitle="Compare over 800 European providers, find the cheapest fares, and book with confidence using WeGo Flight's powerful search platform."
+      readingTime="9 min"
+      lastReviewed="Jul 2026"
+      heroImage="/legacy/wego-flight/wego-flight-1024x640.webp"
+      heroImageAlt="WeGo Flight banner showing affordable flight booking"
+      summaryTitle="What this guide covers"
+      summaryPoints={[
+        "WeGo compares 800+ European flight providers in one search.",
+        "Flexible date searches can save up to 30% on airfare.",
+        "Price alerts notify you when fares drop on your route.",
+        "Full-price transparency — no hidden fees at checkout."
+      ]}
+      tocItems={[
+        { id: "cheapest-flight-deals", title: "Cheapest Flight Deals" },
+        { id: "find-cheap-flights", title: "Find Cheap Flights" },
+        { id: "last-minute-vacation", title: "Last Minute Vacation" },
+        { id: "book-smart", title: "Book Smart" },
+        { id: "compare-cheapest", title: "Compare Cheapest" },
+        { id: "save-up-to-30", title: "Save up to 30%" },
+        { id: "find-best-price", title: "Find Best Price" },
+        { id: "european-flight-providers", title: "European Flight Providers" },
+        { id: "book-your-flight-today", title: "Book Your Flight Today" },
+        { id: "cheap-flight-tickets-europe", title: "Cheap Flight Tickets Europe" },
+        { id: "travel-like-a-pro", title: "Travel Like a Pro" }
+      ]}
+      ctaText="Found your flight? Compare the real journey cost before you book."
+      ctaLink="/#compare"
+      ctaHint="Ticket price is just the start. Baggage, transfers and time change the real cost."
+      methodologyText="Travelvus compares complete journeys — not just the listed fare. Once you find a flight on WeGo, our engine adds baggage, airport transfers and door-to-door time to reveal which option really wins."
+      trustNote="Flight search platforms compared editorially. Prices and availability change continuously."
+      related={related}
+    >
+{/* Introductory paragraphs */}
         <p>Are you ready to embark on your next adventure without breaking the bank? Look no further than <strong><a href="https://www.wego.com/flights" rel="noopener noreferrer" target="_blank">WeGo Flight</a></strong>, the ultimate platform for finding <strong>affordable flights</strong> to destinations around the world. Whether you are planning a weekend getaway or a once-in-a-lifetime journey, WeGo Flight empowers you to compare prices across hundreds of airlines and travel providers, ensuring you get the best possible deal on your airfare. With its intuitive interface and powerful search capabilities, finding cheap flights has never been easier.</p>
 
         <p>In today&rsquo;s fast-paced travel landscape, the ability to quickly and efficiently compare flight options is essential. WeGo Flight offers a comprehensive solution that brings together <strong>over 800 European providers</strong>, allowing you to search, compare, and book with confidence. The platform is designed with the modern traveler in mind, offering features such as flexible date searches, price alerts, and detailed fare breakdowns that give you <strong>full-price transparency</strong> at every step of the booking process. No hidden fees, no surprises, just honest pricing that lets you make informed decisions about your travel plans.</p>
