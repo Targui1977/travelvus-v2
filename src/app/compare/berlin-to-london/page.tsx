@@ -263,6 +263,36 @@ export default function BerlinToLondonPage() {
             <FAQAccordion items={DATA.faqItems} />
           </section>
 
+          {/* ═══ SOURCES & ASSUMPTIONS ═══ */}
+          <section className={styles.section} style={{ background: "var(--paper-2)" }}>
+            <h2 className={styles.sectionTitle}>How we sourced this page</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 20, marginTop: 14 }}>
+              <div>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 600, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", display: "block", marginBottom: 10 }}>Public sources</span>
+                <ul style={{ fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.6, color: "#4a5560", margin: 0, paddingLeft: 16 }}>
+                  <li>Heathrow and Stansted distances — public airport information</li>
+                  <li>Transfer times — TfL (Elizabeth Line, Piccadilly Line) and National Rail (Stansted Express)</li>
+                  <li>Off-peak single fares — TfL and National Rail published fares, July 2026</li>
+                  <li>Flight durations — typical scheduled times for BER–LHR and BER–STN</li>
+                  <li>BER airport access — VBB S-Bahn (S9, S45), ~40 min to city centre</li>
+                </ul>
+              </div>
+              <div>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 600, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--copper)", display: "block", marginBottom: 10 }}>Illustrative assumptions</span>
+                <ul style={{ fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.6, color: "#4a5560", margin: 0, paddingLeft: 16 }}>
+                  <li>Ticket prices (~€58 / ~€110) are illustrative — actual fares vary by airline, season and booking date</li>
+                  <li>Baggage costs are typical for European budget vs full-service airlines</li>
+                  <li>Total journey cost and time are estimates based on typical conditions</li>
+                  <li>The Verdict is illustrative — use the Comparison Engine with your real flight data</li>
+                  <li>Transfer times assume off-peak, no major disruption</li>
+                </ul>
+              </div>
+            </div>
+            <p style={{ fontFamily: "var(--mono)", fontWeight: 400, fontSize: 10, color: "var(--muted)", marginTop: 16, marginBottom: 0 }}>
+              Last reviewed: July 2026 · Next factual review: January 2027
+            </p>
+          </section>
+
           {/* ═══ 11. COMPARE YOUR OWN ═══ */}
           <section className={styles.ctaSection}>
             <div className={styles.ctaCard}>

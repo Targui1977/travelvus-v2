@@ -220,25 +220,25 @@ export default function HomePage() {
         <section className={styles.guidesSection}>
           <h2 className={styles.guidesH2}>Featured guides</h2>
           <div className={styles.guidesGrid}>
-            <Link href="/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system" className={styles.guideCard}>
+            <Link href="/guides/heathrow-vs-gatwick" className={styles.guideCard}>
+              <img src="/home/paddington-station.webp" alt="Interior of London Paddington railway station" className={styles.guideCardImg} />
+              <span className={styles.guideCardLabel}>Airport Decision</span>
+              <div className={styles.guideCardTitle}>Heathrow vs Gatwick: The Complete Decision Guide</div>
+              <p className={styles.guideCardText}>Compare real trip cost, transfer time and destination convenience before choosing your London airport.</p>
+              <span className={styles.guideCardCta}>Read guide →</span>
+            </Link>
+            <Link href="/guides/real-cost-of-a-flight" className={styles.guideCard}>
               <img src="/home/heathrow-express.webp" alt="Heathrow Express train at a station platform" className={styles.guideCardImg} />
-              <span className={styles.guideCardLabel}>London Transport</span>
-              <div className={styles.guideCardTitle}>Oyster Card London: The Complete Guide</div>
-              <p className={styles.guideCardText}>How Oyster, contactless and airport payment rules actually work for visitors.</p>
+              <span className={styles.guideCardLabel}>Cost Guide</span>
+              <div className={styles.guideCardTitle}>How to Compare Two Flights Properly</div>
+              <p className={styles.guideCardText}>See how baggage, airport transfers and schedule costs can change the apparent cheapest fare.</p>
               <span className={styles.guideCardCta}>Read guide →</span>
             </Link>
-            <Link href="/tsa-precheck-cost" className={styles.guideCard}>
-              <img src="/legacy/tsa-precheck-cost/tsa-precheck-cost.webp" alt="TSA PreCheck enrollment and security screening" className={styles.guideCardImg} />
-              <span className={styles.guideCardLabel}>Airport Security</span>
-              <div className={styles.guideCardTitle}>TSA PreCheck: Cost, Benefits &amp; Enrollment</div>
-              <p className={styles.guideCardText}>How to skip airport security lines. Pricing, renewal, and whether it&rsquo;s worth it.</p>
-              <span className={styles.guideCardCta}>Read guide →</span>
-            </Link>
-            <Link href="/kayak-flights" className={styles.guideCard}>
-              <img src="/legacy/kayak-flights/kayak-travel.webp" alt="Kayak flight search and booking platform" className={styles.guideCardImg} />
-              <span className={styles.guideCardLabel}>Flight Search</span>
-              <div className={styles.guideCardTitle}>Find Affordable Kayak Flights</div>
-              <p className={styles.guideCardText}>Compare prices across 400+ airlines. Deals, alerts, and booking tips.</p>
+            <Link href="/guides/total-travel-time-comparison" className={styles.guideCard}>
+              <img src="/home/canary-wharf-dlr.webp" alt="DLR platform near Canary Wharf in London" className={styles.guideCardImg} />
+              <span className={styles.guideCardLabel}>Time Guide</span>
+              <div className={styles.guideCardTitle}>Shorter Flight or Better Journey?</div>
+              <p className={styles.guideCardText}>Compare the complete door-to-door journey, not only the scheduled flight time.</p>
               <span className={styles.guideCardCta}>Read guide →</span>
             </Link>
           </div>

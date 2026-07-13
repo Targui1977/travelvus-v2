@@ -7,7 +7,7 @@ import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Decision Page Master — Template Preview | Travelvus",
-  description: "Master template for Travelvus Decision Pages. Placeholder content only.",
+  description: "Internal development template. Not for production use.",
   robots: "noindex, nofollow",
 };
 
