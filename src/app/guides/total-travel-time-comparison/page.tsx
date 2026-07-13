@@ -550,24 +550,29 @@ export default function TotalTravelTimeGuide() {
               <Link href="/#compare" style={{ fontFamily: "var(--sans)", fontWeight: 600, fontSize: 14, color: "var(--paper)", background: "var(--copper)", borderRadius: "var(--radius-button)", padding: "12px 22px", textDecoration: "none", whiteSpace: "nowrap" }}>Reveal the real winner</Link>
             </div>
 
-            {/* ═══ RELATED GUIDES ═══ */}
-            <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue reading</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/guides/heathrow-vs-gatwick" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Flagship Guide</span>
-                  <span className={styles.relatedGuideCardTitle}>Heathrow vs Gatwick</span>
-                  <span className={styles.relatedGuideCardText}>The complete decision guide — which London airport wins on real cost?</span>
+            {/* ═══ CONTINUE YOUR DECISION ═══ */}
+            <style>{`.decisionGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.decisionCard{display:flex;flex-direction:column;gap:6px;background:var(--paper);border:1px solid var(--line);border-radius:9px;padding:18px 20px;text-decoration:none;transition:border-color .2s}.decisionCard:hover{border-color:var(--copper)}@media(max-width:900px){.decisionGrid{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){.decisionGrid{grid-template-columns:1fr}}`}</style>
+            <div style={{ marginTop: 48 }}>
+              <h2 style={{ fontFamily: "var(--serif)", fontWeight: 400, fontSize: 24, lineHeight: 1.25, color: "var(--ink)", margin: "0 0 8px" }}>Continue your decision</h2>
+              <p style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 14, lineHeight: 1.5, color: "var(--muted)", margin: "0 0 22px" }}>The next guide depends on the question you&rsquo;re trying to answer.</p>
+              <div className="decisionGrid">
+                <Link href="/guides/real-cost-of-a-flight" className="decisionCard">
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 9, lineHeight: 1, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--copper)" }}>Cost Guide</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 600, fontSize: 15, lineHeight: 1.25, color: "var(--ink)" }}>Real Cost of a Flight</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 13, lineHeight: 1.45, color: "var(--muted)" }}>Why cheap tickets often become expensive after baggage, airports and transfers.</span>
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, lineHeight: 1, color: "var(--copper)", marginTop: 4 }}>Continue reading &rarr;</span>
                 </Link>
-                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Flagship Guide</span>
-                  <span className={styles.relatedGuideCardTitle}>How to Compare Two Flights Properly</span>
-                  <span className={styles.relatedGuideCardText}>The ticket price is never the full story. Learn the real cost framework.</span>
+                <Link href="/guides/heathrow-vs-gatwick" className="decisionCard">
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 9, lineHeight: 1, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--copper)" }}>Airport Guide</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 600, fontSize: 15, lineHeight: 1.25, color: "var(--ink)" }}>Heathrow vs Gatwick</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 13, lineHeight: 1.45, color: "var(--muted)" }}>Compare the complete journey before choosing your London airport.</span>
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, lineHeight: 1, color: "var(--copper)", marginTop: 4 }}>Continue reading &rarr;</span>
                 </Link>
-                <Link href="/london-airports" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Decision Hub</span>
-                  <span className={styles.relatedGuideCardTitle}>London Airport Decisions</span>
-                  <span className={styles.relatedGuideCardText}>Explore real comparisons between London's major airports.</span>
+                <Link href="/#compare" className="decisionCard">
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 9, lineHeight: 1, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--copper)" }}>Decision Engine</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 600, fontSize: 15, lineHeight: 1.25, color: "var(--ink)" }}>Compare Your Own Flight</span>
+                  <span style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 13, lineHeight: 1.45, color: "var(--muted)" }}>Use the Travelvus calculator with your own airports and baggage.</span>
+                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, lineHeight: 1, color: "var(--copper)", marginTop: 4 }}>Reveal the real winner &rarr;</span>
                 </Link>
               </div>
             </div>
