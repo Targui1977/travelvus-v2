@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "London Airport Decisions",
+    description: "Which London airport really wins for your journey?",
+    href: "/london-airports",
+    label: "Decision Guide",
+  },
+  {
+    title: "Heathrow vs Gatwick",
+    description: "The complete decision guide — which airport wins on real cost?",
+    href: "/guides/heathrow-vs-gatwick",
+    label: "Flagship Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Unlock the Convenience of Oyster Card: Your Ultimate Guide to London's Transport System",
@@ -11,22 +27,10 @@ export const metadata: Metadata = {
 
 export default function OysterCardPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" /><span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
-
-      <article className={styles.article}>
+    <LegacyArticleLayout related={related}>
         <h1>Unlock the Convenience of Oyster Card: Your Ultimate Guide to London&rsquo;s Transport System</h1>
 
-        <ol className={styles.toc}>
+        <ol>
           <li><a href="#what-is-oyster">What is an Oyster Card?</a></li>
           <li><a href="#benefits">Benefits of the Oyster Card</a></li>
           <li><a href="#types">Types of Oyster Cards</a></li>
@@ -55,12 +59,6 @@ export default function OysterCardPage() {
 
         <h2 id="conclusion">Conclusion</h2>
         <p>The Oyster card is a game-changer when it comes to navigating London&rsquo;s extensive transportation network. With its convenience and flexibility, it has become an indispensable tool for both locals and tourists alike. By simply tapping your card, you can easily move across various modes of transport, including buses, trains, and even boats. Whether you are exploring the city&rsquo;s iconic landmarks or visiting its hidden gems, the Oyster card provides a hassle-free and cost-effective way to explore the vibrant city. It is a must-have for anyone exploring the wonders of London.</p>
-      </article>
-
-      <footer className="home-footer">
-        <div className="home-footer-links"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/methodology">Methodology</Link><Link href="/london-airports">London Airports</Link></div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+          </LegacyArticleLayout>
   );
 }

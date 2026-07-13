@@ -1,6 +1,22 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "TSA Lock Guide",
+    description: "Everything about TSA-approved luggage locks for secure travel.",
+    href: "/tsa-lock",
+    label: "Related Guide",
+  },
+  {
+    title: "Global Entry Guide",
+    description: "Unlock global travel efficiency with expedited customs screening.",
+    href: "/unlock-global-travel-efficiency-with-global-entry-your-ultimate-guide",
+    label: "Related Guide",
+  },
+];
+
 
 export const metadata: Metadata = {
   title: "Discover the Affordable TSA Precheck Cost: Everything You Need to Know",
@@ -10,23 +26,11 @@ export const metadata: Metadata = {
 
 export default function TsaPrecheckPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" /><span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
-
-      <article className={styles.article}>
+    <LegacyArticleLayout related={related}>
         <h1>Discover the Affordable TSA Precheck Cost: Everything You Need to Know</h1>
         <img src="/legacy/tsa-precheck-cost/tsa-precheck-cost.webp" alt="tsa precheck cost" />
 
-        <ol className={styles.toc}>
+        <ol>
           <li><a href="#what-is-tsa-precheck">What is TSA PreCheck?</a></li>
           <li><a href="#tsa-precheck-enrollment-options">TSA PreCheck Enrollment Options</a></li>
           <li><a href="#benefits-of-tsa-precheck">Benefits of TSA PreCheck</a></li>
@@ -90,12 +94,6 @@ export default function TsaPrecheckPage() {
         <p>Save yourself the trouble of worrying about your TSA PreCheck membership by renewing on time.</p>
         <p>The <strong>process is straightforward</strong>, and the five-year renewal fee of $70 is well worth the investment. Opting to renew online is a convenient way to go, but if you prefer to do it in person, make sure to bring along the required documents and payment in cash, via credit cards, or other accepted methods.</p>
         <p>Let TSA PreCheck be your ticket to a hassle-free travel experience.</p>
-      </article>
-
-      <footer className="home-footer">
-        <div className="home-footer-links"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/methodology">Methodology</Link><Link href="/london-airports">London Airports</Link></div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+          </LegacyArticleLayout>
   );
 }

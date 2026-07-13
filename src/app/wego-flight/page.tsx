@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "London Airport Decisions",
+    description: "Which London airport really wins for your journey?",
+    href: "/london-airports",
+    label: "Decision Guide",
+  },
+  {
+    title: "Our Methodology",
+    description: "How Travelvus calculates the real cost of your trip.",
+    href: "/methodology",
+    label: "How we work",
+  },
+];
 
 export const metadata: Metadata = {
   title: "WeGo Flight: Your Ultimate Guide to Booking Affordable Flights - Outdoor Adventure",
@@ -11,28 +26,13 @@ export const metadata: Metadata = {
 
 export default function WegoFlightPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand">
-          <span className="app-header-wordmark">Travelvus</span>
-          <span className="app-header-line" />
-          <span className="app-header-dot" />
-        </span>
-        <nav className="app-header-nav mobile:hidden">
-          <span>Compare</span>
-          <Link href="/london-airports" className="no-underline">Airports</Link>
-          <Link href="/wego-flight" className="no-underline">Guides</Link>
-        </nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
-
-      <article className={styles.article}>
+    <LegacyArticleLayout related={related}>
         <h1>WeGo Flight: Your Ultimate Guide to Booking Affordable Flights - Outdoor Adventure</h1>
 
         <img src="/legacy/wego-flight/wego-flight-1024x640.webp" alt="WeGo Flight banner showing affordable flight booking" />
 
         {/* Table of Contents */}
-        <ol className={styles.toc}>
+        <ol>
           <li><a href="#cheapest-flight-deals">Cheapest Flight Deals</a></li>
           <li><a href="#find-cheap-flights">Find Cheap Flights</a></li>
           <li><a href="#last-minute-vacation">Last Minute Vacation</a></li>
@@ -373,17 +373,6 @@ export default function WegoFlightPage() {
 
         <p>Traveling like a pro is not about being perfect; it is about being prepared, adaptable, and intentional in your approach to travel. It is about making informed decisions, embracing new experiences, and learning from every journey. WeGo Flight is proud to be part of your travel toolkit, helping you find affordable flights that enable you to explore the world. With the right tools, mindset, and strategies, every trip can be a professional-grade travel experience that enriches your life and broadens your horizons.</p>
 
-      </article>
-
-      <footer className="home-footer">
-        <div className="home-footer-links">
-          <Link href="/">Home</Link>
-          <Link href="/about">About</Link>
-          <Link href="/methodology">Methodology</Link>
-          <Link href="/london-airports">London Airports</Link>
-        </div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+    </LegacyArticleLayout>
   );
 }

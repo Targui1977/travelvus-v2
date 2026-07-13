@@ -1,6 +1,21 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import styles from "../legacy-migration.module.css";
+import { LegacyArticleLayout } from "@/components/legacy";
+import type { RelatedItem } from "@/components/legacy";
+
+const related: RelatedItem[] = [
+  {
+    title: "WeGo Flight Guide",
+    description: "Compare over 800 European flight providers and save up to 30%.",
+    href: "/wego-flight",
+    label: "Related Guide",
+  },
+  {
+    title: "London Airport Decisions",
+    description: "Which London airport really wins for your journey?",
+    href: "/london-airports",
+    label: "Decision Guide",
+  },
+];
 
 export const metadata: Metadata = {
   title: "Find Affordable Kayak Flights | Best Deals on Kayak Flight Bookings",
@@ -10,16 +25,10 @@ export const metadata: Metadata = {
 
 export default function KayakFlightsPage() {
   return (
-    <div className="max-w-[var(--container-decision)] mx-auto w-full bg-[var(--paper)] pb-[90px] shadow-[0_1px_3px_rgba(0,0,0,.06),0_12px_34px_rgba(30,42,51,.10)]">
-      <header className="app-header">
-        <span className="app-header-brand"><span className="app-header-wordmark">Travelvus</span><span className="app-header-line" /><span className="app-header-dot" /></span>
-        <nav className="app-header-nav mobile:hidden"><span>Compare</span><Link href="/london-airports" className="no-underline">Airports</Link><Link href="/wego-flight" className="no-underline">Guides</Link></nav>
-        <span className="hidden mobile:block text-[20px] font-medium text-[var(--muted)] leading-none cursor-pointer">&#9776;</span>
-      </header>
-      <article className={styles.article}>
+    <LegacyArticleLayout related={related}>
         <h1>Find Affordable Kayak Flights | Best Deals on Kayak Flight Bookings</h1>
         <img src="/legacy/kayak-flights/kayak-travel.webp" alt="Kayak Flight" />
-        <ol className={styles.toc}>
+        <ol>
           <li><a href="#what-is-kayak">What is Kayak?</a></li>
           <li><a href="#benefits-of-kayak">What are the Benefits of Kayak?</a></li>
           <li><a href="#find-cheap-deals">How to Find Cheap Kayak Flight Deals</a></li>
@@ -84,11 +93,6 @@ export default function KayakFlightsPage() {
         <p>With Kayak, you can discover the most economical options and keep more money in your pocket. One of the primary benefits of using Kayak flight deals is the capacity to compare fares, which lets you see which airline offers the lowest fares for your desired destination.</p>
         <p>Kayak often provides exclusive deals and discounts for further savings. Using Kayak flight deals can make a considerable difference in your travel budget.</p>
         <p>Kayak provides flexible search options for finding the most economical flights. Adjust your search criteria such as travel dates and nearby airports to uncover hidden bargains. Kayak's sophisticated search filters let you customize your search to find the cheapest options and maximize your savings.</p>
-      </article>
-      <footer className="home-footer">
-        <div className="home-footer-links"><Link href="/">Home</Link><Link href="/about">About</Link><Link href="/methodology">Methodology</Link><Link href="/london-airports">London Airports</Link></div>
-        <p className="home-footer-note">&copy; 2026 Travelvus.</p>
-      </footer>
-    </div>
+          </LegacyArticleLayout>
   );
 }

@@ -5,22 +5,32 @@ import HomeHeader from "@/components/ui/HomeHeader";
 import Link from "next/link";
 import styles from "./legacy-article.module.css";
 
-/* ── Props ────────────────────────────────────────────────── */
+/* ── Types ────────────────────────────────────────────────── */
+
+export interface RelatedItem {
+  title: string;
+  description: string;
+  href: string;
+  label?: string;
+}
 
 export interface LegacyArticleLayoutProps {
   children: ReactNode;
+  /** Contextual related links for this article. Omit to hide the section. */
+  related?: RelatedItem[];
 }
 
 /* ── Component ────────────────────────────────────────────── */
 
-export default function LegacyArticleLayout({ children }: LegacyArticleLayoutProps) {
+export default function LegacyArticleLayout({
+  children,
+  related,
+}: LegacyArticleLayoutProps) {
   return (
     <div className={styles.page}>
       <HomeHeader />
 
-      <article className={styles.article}>
-        {children}
-      </article>
+      <article className={styles.article}>{children}</article>
 
       {/* ═══ Shared Footer ═══ */}
       <footer className={styles.footer}>
@@ -46,7 +56,10 @@ export default function LegacyArticleLayout({ children }: LegacyArticleLayoutPro
               <Link href="/about">About</Link>
               <Link href="/contact">Contact</Link>
             </div>
-            <div className={styles.footerColTitle} style={{ marginTop: 20, marginBottom: 12 }}>
+            <div
+              className={styles.footerColTitle}
+              style={{ marginTop: 20, marginBottom: 12 }}
+            >
               Verified with
             </div>
             <p className={styles.footerVerified}>
@@ -62,22 +75,27 @@ export default function LegacyArticleLayout({ children }: LegacyArticleLayoutPro
         </div>
       </footer>
 
-      {/* ═══ Related Guides — automatic interlinking ═══ */}
-      <div className={styles.relatedSection}>
-        <div className={styles.relatedInner}>
-          <span className={styles.relatedKicker}>Continue exploring</span>
-          <div className={styles.relatedGrid}>
-            <Link href="/london-airports" className={styles.relatedCard}>
-              <span className={styles.relatedCardTitle}>London Airport Decisions</span>
-              <span className={styles.relatedCardText}>Which London airport really wins for your journey?</span>
-            </Link>
-            <Link href="/methodology" className={styles.relatedCard}>
-              <span className={styles.relatedCardTitle}>Our Methodology</span>
-              <span className={styles.relatedCardText}>How Travelvus calculates the real cost of your trip.</span>
-            </Link>
+      {/* ═══ Contextual Related Guides ═══ */}
+      {related && related.length > 0 && (
+        <div className={styles.relatedSection}>
+          <div className={styles.relatedInner}>
+            <span className={styles.relatedKicker}>Continue exploring</span>
+            <div className={styles.relatedGrid}>
+              {related.map((item, i) => (
+                <Link key={i} href={item.href} className={styles.relatedCard}>
+                  {item.label && (
+                    <span className={styles.relatedCardLabel}>{item.label}</span>
+                  )}
+                  <span className={styles.relatedCardTitle}>{item.title}</span>
+                  <span className={styles.relatedCardText}>
+                    {item.description}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
