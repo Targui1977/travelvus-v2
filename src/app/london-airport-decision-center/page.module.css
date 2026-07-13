@@ -1,0 +1,808 @@
+/* ══════════════════════════════════════════════════════════════
+   LONDON AIRPORT DECISION CENTER — PILLAR PAGE
+   Phase P1. All tokens from globals.css.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Page shell ────────────────────────────────────────────── */
+
+.page {
+  max-width: 920px;
+  margin: 24px auto 0;
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(30,42,51,.04), 0 4px 16px rgba(30,42,51,.06);
+  overflow: hidden;
+}
+
+/* ── Section shared ────────────────────────────────────────── */
+
+.section {
+  padding: 40px 52px;
+  border-bottom: 1px solid var(--line);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionAlt {
+  background: var(--paper-2);
+}
+
+.sectionH2 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+.sectionSub {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #4a5560;
+  margin: 0 0 22px;
+  max-width: 640px;
+}
+
+/* ── 1. HERO ──────────────────────────────────────────────── */
+
+.hero {
+  padding: 48px 52px 40px;
+}
+
+.heroKicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.heroH1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 1.12;
+  color: var(--ink);
+  margin: 0 0 16px;
+  max-width: 720px;
+}
+
+.heroSub {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #4a5560;
+  margin: 0 0 18px;
+  max-width: 640px;
+}
+
+.heroMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.heroBadge {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--navy);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.heroCta {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--paper);
+  background: var(--copper);
+  border-radius: var(--radius-button);
+  padding: 13px 26px;
+  text-decoration: none;
+}
+
+.heroCta:hover {
+  background: #a04a2b;
+}
+
+/* ── 2. EXECUTIVE SUMMARY ─────────────────────────────────── */
+
+.execGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.execCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.execCardHd {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.execCode {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--navy);
+  background: rgba(30,42,51,.06);
+  padding: 3px 7px;
+  border-radius: 4px;
+}
+
+.execName {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.execBest {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0;
+  flex: 1;
+}
+
+.execLink {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--copper);
+  text-decoration: none;
+}
+
+/* ── 3. COMPARISON MATRIX ─────────────────────────────────── */
+
+.matrixScroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.matrix th {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  padding: 0 12px 10px;
+  border-bottom: 1px solid var(--line-2);
+  white-space: nowrap;
+}
+
+.matrix td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  color: #3c4650;
+  white-space: nowrap;
+}
+
+.matrix tr:last-child td {
+  border-bottom: none;
+}
+
+.matrix td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.matrixNote {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--muted);
+  margin: 14px 0 0;
+}
+
+/* ── 4. AIRPORT PROFILES ──────────────────────────────────── */
+
+.profileGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profileCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 20px 24px;
+}
+
+.profileHd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.profileCode {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--paper);
+  background: var(--navy);
+  padding: 4px 10px;
+  border-radius: 5px;
+}
+
+.profileName {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 20px;
+  color: var(--ink);
+}
+
+.profileRow {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 16px;
+  padding: 6px 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.profileRow span:first-child {
+  font-weight: 600;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.profileRow span:last-child {
+  color: #3c4650;
+}
+
+.profileLink {
+  display: inline-block;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--copper);
+  text-decoration: none;
+  margin-top: 12px;
+}
+
+/* ── 5. NEIGHBOURHOOD GUIDE ────────────────────────────────── */
+
+.neighborGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.neighborCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.neighborArea {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.neighborBest {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--copper);
+}
+
+.neighborNote {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+/* ── 6. TRANSFER COMPARISON ────────────────────────────────── */
+
+.transferGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.transferCard {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  padding: 16px 20px;
+}
+
+.transferAirport {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.transferRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 6px 0;
+}
+
+.transferName {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.transferDetail {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ── 7-8. GUIDE CARDS ─────────────────────────────────────── */
+
+.guideCard {
+  background: var(--navy);
+  border-radius: var(--radius-card);
+  padding: 22px 26px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: 8px;
+}
+
+.guideCardKicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper-lt);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.guideCardTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--paper);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.guideCardText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--pmuted);
+  margin: 0;
+}
+
+.guideCardLink {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--paper);
+  background: var(--copper);
+  border-radius: var(--radius-button);
+  padding: 10px 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+}
+
+.guideCardLink:hover {
+  background: #a04a2b;
+}
+
+/* ── 9 + 14. CTA ──────────────────────────────────────────── */
+
+.ctaSection {
+  padding: 36px 52px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ctaCard {
+  background: var(--navy);
+  border-radius: 10px;
+  padding: 26px 30px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.ctaKicker {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper-lt);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ctaTitle {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.25;
+  color: var(--paper);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.ctaText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--pmuted);
+  margin: 0;
+}
+
+.ctaBtn {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--paper);
+  background: var(--copper);
+  border-radius: var(--radius-button);
+  padding: 13px 24px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex: none;
+}
+
+.ctaBtn:hover {
+  background: #a04a2b;
+}
+
+/* ── 10. DECISION PAGES GRID ──────────────────────────────── */
+
+.routeGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.routeCard {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: border-color .15s;
+  text-align: center;
+}
+
+.routeCard:hover {
+  border-color: var(--copper);
+}
+
+.routeCity {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+
+.routeArrow {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* ── 11. FLAGSHIP GUIDES ──────────────────────────────────── */
+
+.flagshipGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.flagshipCard {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 9px;
+  padding: 18px 20px;
+  text-decoration: none;
+  transition: border-color .15s;
+}
+
+.flagshipCard:hover {
+  border-color: var(--copper);
+}
+
+.flagshipKicker {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.flagshipTitle {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.flagshipText {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--muted);
+  margin: 0;
+  flex: 1;
+}
+
+.flagshipLink {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 11px;
+  color: var(--copper);
+  margin-top: 4px;
+}
+
+/* ── 12. METHODOLOGY ──────────────────────────────────────── */
+
+.sourceGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.sourceLabel {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sourceLabelCopper {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 10px;
+}
+
+.sourceList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sourceList li {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #4a5560;
+}
+
+.sourceReview {
+  font-family: var(--mono);
+  font-weight: 400;
+  font-size: 10px;
+  color: var(--muted);
+  margin: 18px 0 0;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────── */
+
+.footer {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: 28px 52px 32px;
+}
+
+.footerInner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 28px;
+}
+
+.footerBrand {
+  font: 700 18px/1 Geist, sans-serif;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+}
+
+.footerBrandText {
+  font: 400 13px/1.5 Geist, sans-serif;
+  color: var(--muted);
+  margin: 12px 0 0;
+  max-width: 220px;
+}
+
+.footerColTitle {
+  font: 600 10px/1 IBM Plex Mono, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+.footerLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footerLinks a {
+  font: 400 14px/1 Geist, sans-serif;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.footerLinks a:hover {
+  color: var(--copper);
+}
+
+.footerBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  font: italic 400 14px/1 Instrument Serif, serif;
+  color: var(--muted);
+}
+
+.footerBottom span:last-child {
+  font: 400 11px/1 IBM Plex Mono, monospace;
+  color: var(--muted);
+  font-style: normal;
+}
+
+/* ═══════════════════════════════════════════════════════════ */
+/* RESPONSIVE                                                  */
+/* ═══════════════════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  .page {
+    margin: 12px 8px 0;
+    border-radius: 10px;
+  }
+
+  .hero { padding: 32px 28px 28px; }
+  .heroH1 { font-size: 30px; }
+  .heroSub { font-size: 16px; }
+
+  .section { padding: 28px; }
+  .sectionH2 { font-size: 22px; }
+
+  .execGrid { grid-template-columns: repeat(3, 1fr); }
+  .profileRow { grid-template-columns: 120px 1fr; font-size: 13px; }
+  .neighborGrid { grid-template-columns: 1fr; }
+  .sourceGrid { grid-template-columns: 1fr; gap: 16px; }
+  .routeGrid { grid-template-columns: repeat(3, 1fr); }
+  .flagshipGrid { grid-template-columns: 1fr 1fr; }
+
+  .guideCard { flex-direction: column; align-items: flex-start; }
+  .guideCardLink { width: 100%; text-align: center; }
+
+  .ctaSection { padding: 28px; }
+  .ctaCard { flex-direction: column; align-items: flex-start; }
+  .ctaBtn { width: 100%; text-align: center; }
+
+  .footer { padding: 24px 28px 28px; }
+  .footerInner { grid-template-columns: 1fr 1fr; gap: 24px; }
+}
+
+@media (max-width: 600px) {
+  .page {
+    margin: 8px 4px 0;
+    border-radius: 8px;
+  }
+
+  .hero { padding: 24px 18px 22px; }
+  .heroH1 { font-size: 24px; }
+  .heroSub { font-size: 14px; }
+  .heroMeta { font-size: 9px; flex-wrap: wrap; }
+
+  .section { padding: 22px 18px; }
+  .sectionH2 { font-size: 20px; }
+  .sectionSub { font-size: 14px; }
+
+  .execGrid { grid-template-columns: 1fr 1fr; }
+  .profileRow { grid-template-columns: 1fr; gap: 2px; }
+  .profileRow span:first-child { font-size: 11px; }
+  .routeGrid { grid-template-columns: repeat(2, 1fr); }
+  .flagshipGrid { grid-template-columns: 1fr; }
+  .transferRow { flex-direction: column; gap: 2px; }
+
+  .heroCta { width: 100%; text-align: center; justify-content: center; }
+
+  .footer { padding: 20px 18px 24px; }
+  .footerInner { grid-template-columns: 1fr; gap: 18px; }
+  .footerBottom { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  .matrix { font-size: 12px; }
+  .matrix td { padding: 10px 8px; }
+}
