@@ -4,8 +4,7 @@ import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import MobileTOC from "@/components/guide/MobileTOC";
-import { AirportComparisonMap } from "@/components/visual";
-import type { AirportMarker } from "@/components/visual";
+import { HeroEditorial } from "@/components/hero";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -35,18 +34,29 @@ function GuidePage() {
         <HomeHeader />
 
         {/* Hero */}
-        <section className={styles.guideHero}>
-          <span className={styles.guideHeroKicker}>London Airports</span>
-          <h1 className={styles.guideHeroH1}>Heathrow vs Gatwick: The Complete Decision Guide</h1>
-          <p className={styles.guideHeroSub}>Gatwick usually wins on money — but your destination determines by how much.</p>
-          <div className={styles.guideHeroMeta}>
-            <span>8 min read</span>
-            <span>·</span>
-            <span>Last reviewed: July 2026</span>
-            <span>·</span>
-            <span><span className={styles.guideHeroDot} /> Methodology verified</span>
-          </div>
-        </section>
+        <HeroEditorial
+          category="Airport Decision"
+          question="Heathrow vs Gatwick: The Complete Decision Guide"
+          subtitle="Gatwick usually wins on money — but your destination determines by how much."
+          metadata={{ readTime: "8 min read", reviewedDate: "Jul 2026", verified: true }}
+          decisionCard={{
+            winner: "Heathrow wins in the illustrative example",
+            timeSaved: "71 min faster",
+            moneySaved: "£27 cheaper",
+            bestFor: "Central London, business trips, easier transfers",
+            confidence: "clear",
+          }}
+          visual={{ type: "airport-map", data: { cityName: "Central London", airports: [
+            { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },
+            { code: "LGW", name: "Gatwick", distance: "45 km south" },
+          ]}}}
+          snapshot={[
+            { label: "Cheapest in example", value: "Heathrow" },
+            { label: "Fastest in example", value: "Heathrow" },
+            { label: "Better for some", value: "Gatwick" },
+          ]}
+          cta={{ label: "Compare your own trip →", href: "/#compare" }}
+        />
 
         {/* TOC + Content */}
         <div className={styles.tocRail}>
@@ -71,14 +81,6 @@ function GuidePage() {
               <div><div className={styles.decisionSummaryLabel}>When it matters</div><div className={styles.decisionSummaryValue}>When ticket prices are close but transfers differ</div></div>
               <div><div className={styles.decisionSummaryLabel}>Key takeaway</div><div className={styles.decisionSummaryValue}>Your London destination changes the winner</div></div>
             </div>
-
-            <AirportComparisonMap
-              cityName="Central London"
-              airports={[
-                { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },
-                { code: "LGW", name: "Gatwick", distance: "45 km south" },
-              ] satisfies AirportMarker[]}
-            />
 
             {/* Section: Who this guide is for */}
             <h2 id="section-0">Who this guide is for</h2>

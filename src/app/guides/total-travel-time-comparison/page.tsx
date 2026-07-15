@@ -4,7 +4,7 @@ import HomeHeader from "@/components/ui/HomeHeader";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import MobileTOC from "@/components/guide/MobileTOC";
-import { JourneyDiagram as VisualJourneyDiagram } from "@/components/visual";
+import { HeroEditorial } from "@/components/hero";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -217,26 +217,32 @@ export default function TotalTravelTimeGuide() {
         <HomeHeader />
 
         {/* ═══ HERO ═══ */}
-        <section className={styles.guideHero}>
-          <span className={styles.guideHeroKicker}>Travel Philosophy</span>
-          <h1 className={styles.guideHeroH1}>
-            Shorter Flight or Better Journey? How to Compare Total Travel Time
-          </h1>
-          <p className={styles.guideHeroSub}>
-            The fastest flight on paper can become the slower journey once
-            airport access, waiting, connections and final transfers are
-            included.
-          </p>
-          <div className={styles.guideHeroMeta}>
-            <span>7 min read</span>
-            <span>·</span>
-            <span>Last reviewed: July 2026</span>
-            <span>·</span>
-            <span>
-              <span className={styles.guideHeroDot} /> Methodology verified
-            </span>
-          </div>
-        </section>
+        <HeroEditorial
+          category="Time Guide"
+          question="Shorter Flight or Better Journey? How to Compare Total Travel Time"
+          subtitle="The fastest flight on paper can become the slower journey once airport access, waiting, connections and final transfers are included."
+          metadata={{ readTime: "7 min read", reviewedDate: "Jul 2026", verified: true }}
+          decisionCard={{
+            winner: "Heathrow wins in the worked example",
+            timeSaved: "3h 30m faster",
+            moneySaved: "5h 40m total",
+            bestFor: "Travellers comparing secondary airports, connections or awkward schedules",
+            confidence: "clear",
+          }}
+          visual={{ type: "journey-diagram", data: { stages: [
+            { label: "Home", type: "start" },
+            { label: "Departure transfer", type: "transfer" },
+            { label: "Flight", type: "flight" },
+            { label: "Arrival transfer", type: "arrival" },
+            { label: "Destination", type: "destination" },
+          ]}}}
+          snapshot={[
+            { label: "Shorter flight", value: "Not always faster" },
+            { label: "Biggest time loss", value: "Access + waiting" },
+            { label: "Real metric", value: "Door-to-door" },
+          ]}
+          cta={{ label: "Compare your own journey →", href: "/#compare" }}
+        />
 
         {/* ═══ TOC + CONTENT ═══ */}
         <div className={styles.tocRail}>
@@ -320,16 +326,6 @@ export default function TotalTravelTimeGuide() {
                 the complete door-to-door timeline.
               </p>
             </div>
-
-            <VisualJourneyDiagram
-              stages={[
-                { label: "Home", type: "start" },
-                { label: "Departure transfer", type: "transfer" },
-                { label: "Flight", type: "flight" },
-                { label: "Arrival transfer", type: "arrival" },
-                { label: "Destination", type: "destination" },
-              ]}
-            />
 
             {/* ═══ 3. TOTAL-TIME FORMULA ═══ */}
             <h2 id="section-2">The Travelvus Total-Time Formula</h2>

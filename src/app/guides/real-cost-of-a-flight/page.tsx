@@ -4,7 +4,7 @@ import HomeHeader from "@/components/ui/HomeHeader";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import MobileTOC from "@/components/guide/MobileTOC";
-import { RealCostInfographic } from "@/components/visual";
+import { HeroEditorial } from "@/components/hero";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -33,15 +33,31 @@ export default function RealCostGuide() {
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <HomeHeader />
 
-        <section className={styles.guideHero}>
-          <span className={styles.guideHeroKicker}>Travel Philosophy</span>
-          <h1 className={styles.guideHeroH1}>How to compare two flights properly</h1>
-          <p className={styles.guideHeroSub}>The ticket price shows one number. The real trip costs much more. Here is the framework that reveals which flight actually costs less.</p>
-          <div className={styles.guideHeroMeta}>
-            <span>9 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
-            <span><span className={styles.guideHeroDot} /> Methodology verified</span>
-          </div>
-        </section>
+        <HeroEditorial
+          category="Cost Guide"
+          question="How to compare two flights properly"
+          subtitle="The ticket price shows one number. The real trip costs much more. Here is the framework that reveals which flight actually costs less."
+          metadata={{ readTime: "9 min read", reviewedDate: "Jul 2026", verified: true }}
+          decisionCard={{
+            winner: "Heathrow wins in the worked example",
+            timeSaved: "85 min faster",
+            moneySaved: "€46 saved",
+            bestFor: "Travellers comparing two apparently different fares",
+            confidence: "clear",
+          }}
+          visual={{ type: "real-cost", data: { segments: [
+            { label: "Ticket", amount: 58 },
+            { label: "Baggage", amount: 42 },
+            { label: "Transfer", amount: 71 },
+            { label: "Schedule", amount: 33 },
+          ], showLiveTag: true }}}
+          snapshot={[
+            { label: "Ticket price alone", value: "Misleading" },
+            { label: "Real cost winner", value: "Heathrow" },
+            { label: "Biggest hidden factor", value: "Transfers" },
+          ]}
+          cta={{ label: "Compare your own flights →", href: "/#compare" }}
+        />
 
         <div className={styles.tocRail}>
           <div>
@@ -105,16 +121,6 @@ export default function RealCostGuide() {
               <p className={styles.tipBoxBody} style={{ font: "500 14px/1.6 Geist, sans-serif", color: "var(--ink)" }}><strong>Real Trip Cost</strong> = Ticket + Baggage + Seat Selection + Departure Transfer + Arrival Transfer + Schedule Costs + Time Value</p>
               <p className={styles.tipBoxBody} style={{ marginTop: 6 }}>Apply this to both flights. Measure every cost the same way. The lower real cost wins.</p>
             </div>
-
-            <RealCostInfographic
-              segments={[
-                { label: "Ticket", amount: 58 },
-                { label: "Baggage", amount: 42 },
-                { label: "Transfer", amount: 71 },
-                { label: "Taxi", amount: 33 },
-              ]}
-              showLiveTag
-            />
 
             <h2 id="section-3">Worked example: two flights compared</h2>
             <div className={styles.warningBox}>
