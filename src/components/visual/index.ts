@@ -1,7 +1,18 @@
 export { default as AirportComparisonMap } from "./AirportComparisonMap";
 export type { AirportMarker } from "./AirportComparisonMap";
+export { default as NeighbourhoodDecisionMap } from "./NeighbourhoodDecisionMap";
+export type { Neighbourhood } from "./NeighbourhoodDecisionMap";
 export { default as JourneyDiagram } from "./JourneyDiagram";
 export type { JourneyStage } from "./JourneyDiagram";
+export { default as DecisionFlow } from "./DecisionFlow";
+export type { DecisionStage } from "./DecisionFlow";
 export { default as RealCostInfographic } from "./RealCostInfographic";
 export type { CostSegment } from "./RealCostInfographic";
+export { default as JourneyTimeInfographic } from "./JourneyTimeInfographic";
+export type { TimeSegment } from "./JourneyTimeInfographic";
+export { default as ComparisonGraphic } from "./ComparisonGraphic";
+export type { ComparisonMetric } from "./ComparisonGraphic";
+export { default as TimelineGraphic } from "./TimelineGraphic";
+export type { TimelineEvent } from "./TimelineGraphic";
 export { default as TrustGraphic } from "./TrustGraphic";
+export { default as HeroEditorialPlaceholder } from "./HeroEditorialPlaceholder";
