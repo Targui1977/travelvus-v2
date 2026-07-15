@@ -3,8 +3,7 @@ import Link from "next/link";
 import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import { HeroEditorial } from "@/components/hero";
-import { AirportComparisonMap, JourneyDiagram, TrustGraphic } from "@/components/visual";
-import type { AirportMarker } from "@/components/visual";
+import { JourneyDiagram, TrustGraphic } from "@/components/visual";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -179,10 +178,9 @@ export default function LondonDecisionCenterPage() {
             metadata={{ readTime: "11 min read", reviewedDate: "Jul 2026", verified: true }}
             decisionCard={{
               winner: "Heathrow wins for most travellers",
-              timeSaved: "~30m",
-              moneySaved: "~£40",
-              bestFor: "International flights, west & central London",
-              avoidFor: "Budget travellers heading to east London",
+              timeSaved: "Fastest transfer",
+              moneySaved: "From ~£5 Tube",
+              bestFor: "International flights, west & central London, families",
               confidence: "clear",
             }}
             visual={{ type: "airport-map", data: { cityName: "Central London", airports: [
@@ -193,9 +191,9 @@ export default function LondonDecisionCenterPage() {
               { code: "LTN", name: "Luton", distance: "45 km north" },
             ]}}}
             snapshot={[
-              { label: "Transfer speed", value: "★★★★★" },
-              { label: "Airline choice", value: "80+ airlines" },
-              { label: "Tube connected", value: "Yes" },
+              { label: "Best overall", value: "Heathrow" },
+              { label: "Fastest to central", value: "London City" },
+              { label: "Best budget", value: "Stansted" },
             ]}
             cta={{ label: "Compare your own journey →", href: "/#compare" }}
           />
@@ -215,21 +213,6 @@ export default function LondonDecisionCenterPage() {
                 </div>
               ))}
             </div>
-          </section>
-
-          {/* ═══ AIRPORT DISTANCE MAP ═══ */}
-          <section className={styles.section}>
-            <h2 className={styles.sectionH2}>Airport distance from central London</h2>
-            <AirportComparisonMap
-              cityName="Central London"
-              airports={[
-                { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },
-                { code: "LCY", name: "London City", distance: "10 km east" },
-                { code: "LGW", name: "Gatwick", distance: "45 km south" },
-                { code: "STN", name: "Stansted", distance: "55 km northeast" },
-                { code: "LTN", name: "Luton", distance: "45 km north" },
-              ] satisfies AirportMarker[]}
-            />
           </section>
 
           {/* ═══ 4. AIRPORT COMPARISON MATRIX ═══ */}

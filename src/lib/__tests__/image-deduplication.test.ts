@@ -149,3 +149,26 @@ describe("Tier 1 articles preserve unique inline images", () => {
     expect(bodyImages.length).toBeGreaterThanOrEqual(1);
   });
 });
+
+/* ── Visual reuse guardrail ────────────────────────────────── */
+
+describe("Visual component deduplication", () => {
+  it("Decision Center has no duplicate AirportComparisonMap rendering", () => {
+    const content = fs.readFileSync(
+      path.resolve(__dirname, "../../app/london-airport-decision-center/page.tsx"),
+      "utf-8"
+    );
+    // The duplicate section header was removed
+    expect(content).not.toContain("Airport distance from central London");
+  });
+
+  it("AirportComparisonMap referenced at most once in page JSX", () => {
+    const content = fs.readFileSync(
+      path.resolve(__dirname, "../../app/london-airport-decision-center/page.tsx"),
+      "utf-8"
+    );
+    const matches = content.match(/AirportComparisonMap/g) || [];
+    // Acceptable: 0-1 references (after removing duplicate)
+    expect(matches.length).toBeLessThanOrEqual(1);
+  });
+});

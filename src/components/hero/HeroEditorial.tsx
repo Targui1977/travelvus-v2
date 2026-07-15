@@ -56,8 +56,8 @@ export default function HeroEditorial({
       <style>{`
         .hero-v2-grid {
           display: grid;
-          grid-template-columns: 1fr 340px;
-          gap: 32px;
+          grid-template-columns: 1fr 380px;
+          gap: 40px;
           align-items: start;
         }
         .hero-v2-mobile-hidden { display: flex; }
