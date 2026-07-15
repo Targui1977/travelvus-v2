@@ -280,7 +280,7 @@ export default function HeroEditorial({
             </div>
 
             {/* 6. Dynamic Visual */}
-            <div style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 10, overflow: "hidden" }}>
+            <div style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 10 }}>
               {renderVisual(visual)}
             </div>
           </div>

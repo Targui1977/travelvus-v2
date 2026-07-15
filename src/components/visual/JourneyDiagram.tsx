@@ -14,7 +14,7 @@ interface Props {
 
 export default function JourneyDiagram({ stages }: Props) {
   return (
-    <div style={{ padding: "44px 34px 30px" }}>
+    <div style={{ padding: "28px 34px 28px" }}>
       {/* Spine + nodes (desktop: horizontal) */}
       <div
         className="jd-spine"
