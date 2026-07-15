@@ -27,7 +27,7 @@ function renderVisual(visual: HeroEditorialProps["visual"]) {
     case "airport-map":
       return <AirportComparisonMap {...visual.data} />;
     case "journey-diagram":
-      return <JourneyDiagram {...visual.data} />;
+      return <JourneyDiagram {...visual.data} variant="hero" />;
     case "real-cost":
       return <RealCostInfographic {...visual.data} />;
     case "journey-time":
