@@ -4,6 +4,7 @@ import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import { AirportComparisonMap } from "@/components/visual";
 import type { AirportMarker } from "@/components/visual";
+import { JourneyDiagram, TrustGraphic } from "@/components/visual";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {

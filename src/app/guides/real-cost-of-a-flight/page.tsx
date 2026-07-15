@@ -4,6 +4,7 @@ import HomeHeader from "@/components/ui/HomeHeader";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import MobileTOC from "@/components/guide/MobileTOC";
+import { RealCostInfographic } from "@/components/visual";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -104,6 +105,16 @@ export default function RealCostGuide() {
               <p className={styles.tipBoxBody} style={{ font: "500 14px/1.6 Geist, sans-serif", color: "var(--ink)" }}><strong>Real Trip Cost</strong> = Ticket + Baggage + Seat Selection + Departure Transfer + Arrival Transfer + Schedule Costs + Time Value</p>
               <p className={styles.tipBoxBody} style={{ marginTop: 6 }}>Apply this to both flights. Measure every cost the same way. The lower real cost wins.</p>
             </div>
+
+            <RealCostInfographic
+              segments={[
+                { label: "Ticket", amount: 58 },
+                { label: "Baggage", amount: 42 },
+                { label: "Transfer", amount: 71 },
+                { label: "Taxi", amount: 33 },
+              ]}
+              showLiveTag
+            />
 
             <h2 id="section-3">Worked example: two flights compared</h2>
             <div className={styles.warningBox}>

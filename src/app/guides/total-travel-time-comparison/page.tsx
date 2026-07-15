@@ -4,6 +4,7 @@ import HomeHeader from "@/components/ui/HomeHeader";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import MobileTOC from "@/components/guide/MobileTOC";
+import { JourneyDiagram as VisualJourneyDiagram } from "@/components/visual";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -319,6 +320,16 @@ export default function TotalTravelTimeGuide() {
                 the complete door-to-door timeline.
               </p>
             </div>
+
+            <VisualJourneyDiagram
+              stages={[
+                { label: "Home", type: "start" },
+                { label: "Departure transfer", type: "transfer" },
+                { label: "Flight", type: "flight" },
+                { label: "Arrival transfer", type: "arrival" },
+                { label: "Destination", type: "destination" },
+              ]}
+            />
 
             {/* ═══ 3. TOTAL-TIME FORMULA ═══ */}
             <h2 id="section-2">The Travelvus Total-Time Formula</h2>

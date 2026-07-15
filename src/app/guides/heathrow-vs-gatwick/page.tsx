@@ -4,6 +4,8 @@ import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
 import MobileTOC from "@/components/guide/MobileTOC";
+import { AirportComparisonMap } from "@/components/visual";
+import type { AirportMarker } from "@/components/visual";
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -69,6 +71,14 @@ function GuidePage() {
               <div><div className={styles.decisionSummaryLabel}>When it matters</div><div className={styles.decisionSummaryValue}>When ticket prices are close but transfers differ</div></div>
               <div><div className={styles.decisionSummaryLabel}>Key takeaway</div><div className={styles.decisionSummaryValue}>Your London destination changes the winner</div></div>
             </div>
+
+            <AirportComparisonMap
+              cityName="Central London"
+              airports={[
+                { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },
+                { code: "LGW", name: "Gatwick", distance: "45 km south" },
+              ] satisfies AirportMarker[]}
+            />
 
             {/* Section: Who this guide is for */}
             <h2 id="section-0">Who this guide is for</h2>
