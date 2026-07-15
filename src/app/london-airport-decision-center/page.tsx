@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
+import { AirportComparisonMap } from "@/components/visual";
+import type { AirportMarker } from "@/components/visual";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -202,7 +204,22 @@ export default function LondonDecisionCenterPage() {
             </div>
           </section>
 
-          {/* ═══ 3. AIRPORT COMPARISON MATRIX ═══ */}
+          {/* ═══ AIRPORT DISTANCE MAP ═══ */}
+          <section className={styles.section}>
+            <h2 className={styles.sectionH2}>Airport distance from central London</h2>
+            <AirportComparisonMap
+              cityName="Central London"
+              airports={[
+                { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },
+                { code: "LCY", name: "London City", distance: "10 km east" },
+                { code: "LGW", name: "Gatwick", distance: "45 km south" },
+                { code: "STN", name: "Stansted", distance: "55 km northeast" },
+                { code: "LTN", name: "Luton", distance: "45 km north" },
+              ] satisfies AirportMarker[]}
+            />
+          </section>
+
+          {/* ═══ 4. AIRPORT COMPARISON MATRIX ═══ */}
           <section className={styles.section}>
             <h2 className={styles.sectionH2}>Airport comparison matrix</h2>
             <div className={styles.matrixScroll}>
