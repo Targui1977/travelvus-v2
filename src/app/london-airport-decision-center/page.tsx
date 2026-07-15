@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
-import { AirportComparisonMap } from "@/components/visual";
+import { HeroEditorial } from "@/components/hero";
+import { AirportComparisonMap, JourneyDiagram, TrustGraphic } from "@/components/visual";
 import type { AirportMarker } from "@/components/visual";
-import { JourneyDiagram, TrustGraphic } from "@/components/visual";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
@@ -172,21 +172,33 @@ export default function LondonDecisionCenterPage() {
 
         <div className={styles.page}>
           {/* ═══ 1. HERO ═══ */}
-          <section className={styles.hero}>
-            <span className={styles.heroKicker}>London Airport Decision Center</span>
-            <h1 className={styles.heroH1}>Which London airport is actually the best?</h1>
-            <p className={styles.heroSub}>
-              The answer depends on where you are flying from, where in London you are heading, your budget, and who you are travelling with. This is the complete decision framework — real transfer data, door-to-door comparisons, and balanced recommendations for every type of traveller.
-            </p>
-            <div className={styles.heroMeta}>
-              <span className={styles.heroBadge}>Methodology verified</span>
-              <span>·</span>
-              <span>Last reviewed: July 2026</span>
-              <span>·</span>
-              <span>Next factual review: January 2027</span>
-            </div>
-            <Link href="/#compare" className={styles.heroCta}>Compare your own journey →</Link>
-          </section>
+          <HeroEditorial
+            category="Airport Decision"
+            question="Which London airport is actually the best?"
+            subtitle="The answer depends on where you are flying from, where in London you are heading, your budget, and who you are travelling with."
+            metadata={{ readTime: "11 min read", reviewedDate: "Jul 2026", verified: true }}
+            decisionCard={{
+              winner: "Heathrow wins for most travellers",
+              timeSaved: "~30m",
+              moneySaved: "~£40",
+              bestFor: "International flights, west & central London",
+              avoidFor: "Budget travellers heading to east London",
+              confidence: "clear",
+            }}
+            visual={{ type: "airport-map", data: { cityName: "Central London", airports: [
+              { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },
+              { code: "LCY", name: "London City", distance: "10 km east" },
+              { code: "LGW", name: "Gatwick", distance: "45 km south" },
+              { code: "STN", name: "Stansted", distance: "55 km northeast" },
+              { code: "LTN", name: "Luton", distance: "45 km north" },
+            ]}}}
+            snapshot={[
+              { label: "Transfer speed", value: "★★★★★" },
+              { label: "Airline choice", value: "80+ airlines" },
+              { label: "Tube connected", value: "Yes" },
+            ]}
+            cta={{ label: "Compare your own journey →", href: "/#compare" }}
+          />
 
           {/* ═══ 2. EXECUTIVE SUMMARY ═══ */}
           <section className={styles.section}>
