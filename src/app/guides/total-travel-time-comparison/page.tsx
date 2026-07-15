@@ -229,13 +229,6 @@ export default function TotalTravelTimeGuide() {
             bestFor: "Travellers comparing secondary airports, connections or awkward schedules",
             confidence: "clear",
           }}
-          visual={{ type: "journey-diagram", data: { stages: [
-            { label: "Home", type: "start" },
-            { label: "Departure transfer", type: "transfer" },
-            { label: "Flight", type: "flight" },
-            { label: "Arrival transfer", type: "arrival" },
-            { label: "Destination", type: "destination" },
-          ]}}}
           snapshot={[
             { label: "Shorter flight", value: "Not always faster" },
             { label: "Biggest time loss", value: "Access + waiting" },

@@ -63,7 +63,8 @@ export interface HeroEditorialProps {
   subtitle: string;
   metadata?: HeroMetadata;
   decisionCard: HeroDecisionCard;
-  visual: HeroVisual;
+  /** Optional — omit when no visual adds clear decision value in the hero space */
+  visual?: HeroVisual;
   snapshot?: HeroSnapshotItem[];
   cta: HeroCTA;
 }

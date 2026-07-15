@@ -22,7 +22,7 @@ const CONFIDENCE_LABELS: Record<string, string> = {
 
 /* ── Visual renderer ──────────────────────────────────────── */
 
-function renderVisual(visual: HeroEditorialProps["visual"]) {
+function renderVisual(visual: NonNullable<HeroEditorialProps["visual"]>) {
   switch (visual.type) {
     case "airport-map":
       return <AirportComparisonMap {...visual.data} />;
@@ -279,10 +279,12 @@ export default function HeroEditorial({
               )}
             </div>
 
-            {/* 6. Dynamic Visual */}
-            <div style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 10 }}>
-              {renderVisual(visual)}
-            </div>
+            {/* 6. Dynamic Visual (optional) */}
+            {visual && (
+              <div style={{ background: "var(--card)", border: "1px solid var(--line)", borderRadius: 10 }}>
+                {renderVisual(visual!)}
+              </div>
+            )}
           </div>
         </div>
       </section>
