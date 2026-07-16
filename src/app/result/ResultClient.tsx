@@ -7,6 +7,10 @@ import { deriveEditorial, deriveThreshold, deriveFlips, deriveContextStrip, deri
 import type { CostLine, OptionResult, OptionId, FullResultData } from "@/lib/types";
 import type { CalculationResult } from "@/lib/calculation-contract";
 import type { CostLineDisplay, CostColumnDisplay } from "@/components/result/RealCost";
+import { buildDecisionContext } from "@/lib/interactive/interactive-decision-context";
+import { buildInteractiveDecisionOutcome } from "@/lib/interactive/interactive-decision-outcome";
+import RecommendationEvidence from "@/components/visual/RecommendationEvidence";
+import DecisionIntelligence from "@/components/visual/DecisionIntelligence";
 import {
   RealCost,
   DoorToDoor,
@@ -294,6 +298,21 @@ export default function ResultClient({
   );
   const contextStrip = useMemo(() => deriveContextStrip(optionA, optionB).text, [optionA, optionB]);
 
+  /* ── Interactive Decision Engine ───────────────────────── */
+  const decisionContext = useMemo(
+    () =>
+      buildDecisionContext(calculationResult, {
+        bagRemoved,
+        previousWinner: changedState?.previousWinner,
+      }),
+    [calculationResult, bagRemoved, changedState]
+  );
+
+  const decisionOutcome = useMemo(
+    () => buildInteractiveDecisionOutcome(decisionContext),
+    [decisionContext]
+  );
+
   /* ── Verdict data ────────────────────────────────────── */
   const currentVerdict = isChanged
     ? {
@@ -556,6 +575,19 @@ export default function ResultClient({
         <div className="hidden mobile:flex gap-[10px] items-center mt-[20px]">
           <button className="btn-outline flex-1" onClick={undo} style={{ padding: 12 }}>&#8634; Undo</button>
           <button className="btn-filled flex-1" onClick={keep} style={{ padding: 12 }}>Keep</button>
+        </div>
+      )}
+
+      {/* ═══ Interactive Decision Engine ═══ */}
+      {initialSupported && (
+        <div className="result-pad" aria-live="polite">
+          <RecommendationEvidence
+            factors={decisionOutcome.evidence.factors}
+            trace={decisionOutcome.evidence.trace}
+            limitations={decisionOutcome.evidence.limitations}
+            strength={decisionOutcome.evidence.strength}
+          />
+          <DecisionIntelligence data={decisionOutcome.decisionIntelligence} />
         </div>
       )}
 
