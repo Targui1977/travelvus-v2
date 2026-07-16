@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import HomeHeader from "@/components/ui/HomeHeader";
 import FAQAccordion from "@/components/guide/FAQAccordion";
+import Footer from "@/components/ui/Footer"
 import styles from "@/components/guide/guide.module.css";
 
 export const metadata: Metadata = {
@@ -67,14 +68,7 @@ export default function BestLondonAirportForFamiliesPage() {
           </div>
         </div>
 
-        <footer className={styles.guideFooter}>
-          <div className={styles.guideFooterInner}>
-            <div><span className={styles.footerBrand}>Travelvus</span><p className={styles.footerBrandText}>Decision engine for smarter air travel.</p></div>
-            <div><span className={styles.footerColTitle}>Product</span><div className={styles.footerLinks}><Link href="/">Compare</Link><Link href="/london-airports">Airport Decisions</Link><Link href="/wego-flight">Travel Guides</Link><Link href="/methodology">Methodology</Link></div></div>
-            <div><span className={styles.footerColTitle}>Company</span><div className={styles.footerLinks}><Link href="/about">About</Link><Link href="/contact">Contact</Link></div></div>
-          </div>
-          <div className={styles.guideFooterBottom}><span>Know the real cost before you book.</span><span>&copy; 2026 Travelvus</span></div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );

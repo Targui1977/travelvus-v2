@@ -3,7 +3,7 @@ import Link from "next/link";
 import HomeHeader from "@/components/ui/HomeHeader";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import FAQAccordion from "@/components/guide/FAQAccordion";
-import styles from "./page.module.css";
+import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
   title: "Barcelona to London: Heathrow, Gatwick or Stansted? | Travelvus",
