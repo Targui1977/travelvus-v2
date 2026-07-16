@@ -235,6 +235,18 @@ export default function TotalTravelTimeGuide() {
             { label: "Real metric", value: "Door-to-door" },
           ]}
           cta={{ label: "Compare your own journey →", href: "/#compare" }}
+          evidence={{ factors: [
+            { title: "Airport access", explanation: "A shorter flight can lose its advantage before departure if the origin airport is distant or difficult to reach.", weight: "critical" },
+            { title: "Final arrival transfer", explanation: "The destination-side journey — from the arrival airport to where you are actually going — can be longer than the flight-time difference.", weight: "critical" },
+            { title: "Waiting and schedule time", explanation: "Early departures, connections, security queues and unusable arrival times all affect the real journey duration.", weight: "high" },
+            { title: "Complete door-to-door duration", explanation: "Our comparison uses the full journey from origin to destination, not only scheduled flight time.", weight: "high" },
+            { title: "Baggage and arrival processing", explanation: "Checked baggage can extend the arrival sequence by 20–30 minutes per airport.", weight: "medium" },
+          ], limitations: [
+            "Airport queues vary by time and terminal.",
+            "Public transport availability changes by time and day.",
+            "Cabin-bag-only travel can shorten the journey.",
+            "A different final destination can reverse the result.",
+          ], trace: ["Home-to-airport", "Pre-flight time", "Flight duration", "Arrival transfer", "Total journey time"], strength: "Strong for the illustrative example" }}
         />
 
         {/* ═══ TOC + CONTENT ═══ */}

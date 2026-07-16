@@ -196,6 +196,18 @@ export default function LondonDecisionCenterPage() {
               { label: "Best budget", value: "Stansted" },
             ]}
             cta={{ label: "Compare your own journey →", href: "/#compare" }}
+            evidence={{ factors: [
+              { title: "Destination within London", explanation: "The neighbourhood you are heading to can change the fastest and cheapest airport. West London favours Heathrow; east London favours London City.", weight: "critical" },
+              { title: "Airport-to-city transport", explanation: "Direct rail and Underground access determine practical journey time more than distance from the airport.", weight: "critical" },
+              { title: "Airline and route availability", explanation: "Airport choice may be constrained before transfers are compared — Ryanair flyers go to Stansted, United flyers to Newark.", weight: "high" },
+              { title: "Total local transfer cost", explanation: "A lower airfare can be offset by a longer or more expensive arrival journey.", weight: "high" },
+              { title: "Traveller profile", explanation: "Families, business travellers and budget travellers value different trade-offs between speed, cost and simplicity.", weight: "medium" },
+            ], limitations: [
+              "Canary Wharf or east London can favour London City.",
+              "South London can favour Gatwick.",
+              "Budget airline availability can favour Stansted or Luton.",
+              "Late-night arrival can change transport availability.",
+            ], trace: ["Destination", "Available airports", "Transfer options", "Local cost and time", "Recommendation"], strength: "Conditional" }}
           />
 
           {/* ═══ 2. EXECUTIVE SUMMARY ═══ */}

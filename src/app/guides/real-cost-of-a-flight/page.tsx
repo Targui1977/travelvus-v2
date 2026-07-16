@@ -57,6 +57,18 @@ export default function RealCostGuide() {
             { label: "Biggest hidden factor", value: "Transfers" },
           ]}
           cta={{ label: "Compare your own flights →", href: "/#compare" }}
+          evidence={{ factors: [
+            { title: "Baggage and extras", explanation: "The apparent cheapest ticket changes when mandatory extras — checked baggage, seat selection — are added to the total.", weight: "critical" },
+            { title: "Airport transfers", explanation: "Ground transport from the airport to the destination can outweigh the original fare difference between two flights.", weight: "critical" },
+            { title: "Schedule-related costs", explanation: "Very early or late flights can introduce taxis, hotels or lost usable time that change the real cost.", weight: "high" },
+            { title: "Complete journey cost", explanation: "Our comparison uses all journey costs — ticket, baggage, transfers, schedule — rather than ticket price alone.", weight: "high" },
+            { title: "Journey time", explanation: "The cheaper complete option may also reduce total travel time, but this is not guaranteed.", weight: "medium" },
+          ], limitations: [
+            "The worked example is illustrative, not a live fare.",
+            "Hand-luggage-only travel can change the result.",
+            "Transfer prices vary by date and booking method.",
+            "Personal time value is not universal.",
+          ], trace: ["Ticket", "Baggage and extras", "Ground transfers", "Schedule costs", "Real trip cost"], strength: "Strong for the worked example" }}
         />
 
         <div className={styles.tocRail}>

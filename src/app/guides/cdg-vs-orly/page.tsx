@@ -25,6 +25,18 @@ export default function CdgVsOrly() {
           visual={{ type: "airport-map", data: { cityName: "Central Paris", airports: [{ code: "CDG", name: "CDG", distance: "25 km NE", isWinner: true },{ code: "ORY", name: "Orly", distance: "13 km S" }] }}}
           snapshot={[{ label: "Best for international", value: "CDG" },{ label: "Best for domestic", value: "Orly" },{ label: "Fastest to central", value: "Tied ~35 min" }]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}
+          evidence={{ factors: [
+            { title: "Flight availability", explanation: "CDG and Orly serve different route and airline networks. Long-haul international flights require CDG; many domestic and medium-haul routes use Orly.", weight: "critical" },
+            { title: "Paris destination", explanation: "The final arrondissement or onward connection can change the best airport. Orly is closer to the Left Bank; CDG serves the Right Bank better.", weight: "critical" },
+            { title: "Public transport connection", explanation: "Both airports reach central Paris in ~35 minutes by rail, but the transfer experience differs — CDG has direct RER B; Orly requires the Orlyval transfer at Antony.", weight: "high" },
+            { title: "Total transfer cost", explanation: "Orly taxis are cheaper (€35–40 vs €55–60) but CDG's RER B is slightly cheaper than Orlyval+RER for public transit.", weight: "high" },
+            { title: "Traveller profile", explanation: "International connections, families and short city trips have different priorities between the two airports.", weight: "medium" },
+          ], limitations: [
+            "Long-haul or connecting flights may require CDG.",
+            "Southern Paris destinations can favour Orly.",
+            "Strike disruption or construction can change transfer performance.",
+            "Flight schedule may outweigh airport convenience.",
+          ], trace: ["Flight type", "Paris destination", "Transport options", "Transfer cost and time", "Recommendation"], strength: "Conditional" }}
         />
         <div className={styles.tocRail}>
           <div><div className={styles.tocSticky}><ul>{TOC_ITEMS.map((item, i) => (<li key={i}><a href={`#section-${i}`}>{item}</a></li>))}</ul></div><MobileTOC items={TOC_ITEMS.map((label, i) => ({ label, anchor: `#section-${i}` }))} /></div>

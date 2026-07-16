@@ -23,6 +23,18 @@ export default function BestAirportForCentralParis() {
           visual={{ type: "airport-map", data: { cityName: "Central Paris", airports: [{ code: "ORY", name: "Orly", distance: "13 km S — OrlyBus 30 min", isWinner: true },{ code: "CDG", name: "CDG", distance: "25 km NE — RER B 35 min" },{ code: "BVA", name: "Beauvais", distance: "85 km N — shuttle 1h 15m" }] }}}
           snapshot={[{ label: "Best for Left Bank", value: "Orly" },{ label: "Best for Right Bank", value: "CDG" },{ label: "Avoid for central", value: "Beauvais" }]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}
+          evidence={{ factors: [
+            { title: "Exact arrondissement", explanation: "Central Paris contains materially different arrival routes. The 5th and 6th arrondissements are closest to Orly; the 8th and 9th are better served by CDG.", weight: "critical" },
+            { title: "Public transport path", explanation: "Directness and interchange burden affect practical transfer quality. CDG's RER B is direct; Orly requires the Orlyval light rail plus an RER transfer.", weight: "critical" },
+            { title: "Flight network", explanation: "Long-haul and international airline availability may determine the airport before any transfer comparison.", weight: "high" },
+            { title: "Total journey time", explanation: "Our comparison includes the complete airport-to-destination route — not only the flight or the rail segment.", weight: "high" },
+            { title: "Luggage and traveller profile", explanation: "Transfers with stairs or multiple changes affect families and travellers with heavy luggage more strongly than solo travellers.", weight: "medium" },
+          ], limitations: [
+            "Northern central Paris can favour CDG.",
+            "Long-haul availability may force CDG.",
+            "Taxi traffic can erase Orly's distance advantage during peak hours.",
+            "Construction and service changes affect public transport.",
+          ], trace: ["Arrondissement", "Available airports", "Transport path", "Journey time", "Recommendation"], strength: "Conditional" }}
         />
         <div className={styles.tocRail}><div><MobileTOC items={["The 30-second answer","Transfer comparison","Best by neighbourhood","When Orly wins","When CDG wins","About Beauvais","FAQ"].map((label, i) => ({ label, anchor: `#section-${i}` }))} /></div>
           <div className={styles.guideContent}>

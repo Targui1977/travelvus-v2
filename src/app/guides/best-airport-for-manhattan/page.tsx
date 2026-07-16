@@ -108,6 +108,18 @@ export default function BestAirportForManhattan() {
             { label: "Best 24-hour transit", value: "JFK" },
           ]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}
+          evidence={{ factors: [
+            { title: "Manhattan destination", explanation: "East Side, West Side, Downtown and Upper Manhattan produce different winners. Midtown East favours Newark; Upper East Side favours LaGuardia.", weight: "critical" },
+            { title: "Direct rail access", explanation: "NJ Transit to Penn Station gives Newark a strong Midtown advantage — the most direct rail connection of any NYC airport.", weight: "critical" },
+            { title: "Transfer reliability", explanation: "Rail-based access from Newark and JFK reduces exposure to road traffic, unlike LaGuardia's bus-dependent connections.", weight: "high" },
+            { title: "Airline availability", explanation: "The best transfer is irrelevant when the required flight does not serve that airport. United flyers go to Newark.", weight: "high" },
+            { title: "Arrival time", explanation: "Late-night transport options can change the practical recommendation. JFK's A subway runs 24/7; NJ Transit stops around 1am.", weight: "medium" },
+          ], limitations: [
+            "Upper East Side can favour LaGuardia.",
+            "Brooklyn or Queens destinations can favour JFK.",
+            "Road-based transfers are traffic-sensitive during rush hour.",
+            "Airline choice may override neighbourhood logic.",
+          ], trace: ["Neighbourhood", "Airline availability", "Transfer route", "Arrival conditions", "Recommendation"], strength: "Conditional" }}
         />
 
         <div className={styles.tocRail}>
