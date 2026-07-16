@@ -15,4 +15,6 @@ export type { ComparisonMetric } from "./ComparisonGraphic";
 export { default as TimelineGraphic } from "./TimelineGraphic";
 export type { TimelineEvent } from "./TimelineGraphic";
 export { default as TrustGraphic } from "./TrustGraphic";
+export { default as RecommendationEvidence } from "./RecommendationEvidence";
+export type { EvidenceFactor, EvidenceWeight } from "./RecommendationEvidence";
 export { default as HeroEditorialPlaceholder } from "./HeroEditorialPlaceholder";

@@ -10,6 +10,7 @@ import {
   JourneyTimeInfographic,
   NeighbourhoodDecisionMap,
   TimelineGraphic,
+  RecommendationEvidence,
 } from "@/components/visual";
 
 /* ── Visual renderer ──────────────────────────────────────── */
@@ -42,6 +43,7 @@ export default function HeroEditorial({
   visual,
   snapshot,
   cta,
+  evidence,
 }: HeroEditorialProps) {
   return (
     <>
@@ -290,6 +292,11 @@ export default function HeroEditorial({
                 ))}
               </div>
             </div>
+
+            {/* Evidence panel */}
+            {evidence && (
+              <RecommendationEvidence {...evidence} />
+            )}
 
             {/* 6. Dynamic Visual (optional) */}
             {visual && (

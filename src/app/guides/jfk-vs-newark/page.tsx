@@ -107,6 +107,17 @@ export default function JFKvsNewarkGuide() {
             { label: "Best for Brooklyn", value: "JFK" },
           ]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}
+          evidence={{ factors: [
+            { title: "Transfer time to Midtown", explanation: "Newark's NJ Transit reaches Penn Station in ~25 min train. JFK's AirTrain + LIRR takes ~35 min. A 10-minute difference — negligible on a transatlantic journey.", weight: "critical" },
+            { title: "Airline lock-in", explanation: "If you fly United, Newark is your airport (~70% of flights). If you fly Delta or JetBlue, JFK is yours. The airline often makes the decision for you.", weight: "critical" },
+            { title: "Destination in New York", explanation: "JFK wins for Brooklyn and Queens. Newark wins for Midtown West and New Jersey. Your neighbourhood changes the answer.", weight: "high" },
+            { title: "Total journey time", explanation: "In our illustrative example: JFK 785 min, Newark 790 min. A 5-minute difference over 13 hours. Effectively tied on time.", weight: "high" },
+            { title: "Late-night arrivals", explanation: "JFK's A subway runs 24/7. NJ Transit stops around 1am. For late arrivals, JFK has the edge.", weight: "medium" },
+          ], limitations: [
+            "Changes if you fly United — Newark becomes the default.",
+            "Changes if you are staying in Brooklyn — JFK is closer.",
+            "Changes if you arrive after midnight — JFK has 24-hour transit.",
+          ], trace: ["Airline choice", "Destination", "Transfer time", "Total journey", "Recommendation"], strength: "Too close to call — airline and neighbourhood decide" }}
         />
 
         <div className={styles.tocRail}>

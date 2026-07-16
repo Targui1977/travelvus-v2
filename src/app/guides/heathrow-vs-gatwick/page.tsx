@@ -56,6 +56,17 @@ function GuidePage() {
             { label: "Better for some", value: "Gatwick" },
           ]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}
+          evidence={{ factors: [
+            { title: "Airport access", explanation: "Heathrow's Elizabeth Line reaches central London in 35 min — faster and more reliable than Gatwick's train.", weight: "critical" },
+            { title: "Total journey cost", explanation: "Once baggage and transfers are included, Heathrow is often cheaper despite higher ticket prices.", weight: "critical" },
+            { title: "Public transport quality", explanation: "Heathrow has three rail options. Gatwick has two. More options means less waiting.", weight: "high" },
+            { title: "Destination within London", explanation: "The winner changes by destination. Gatwick wins for south London. This comparison uses a central London destination.", weight: "high" },
+            { title: "Airline choice", explanation: "Heathrow serves more airlines and routes. Gatwick is strong for easyJet and European leisure routes.", weight: "medium" },
+          ], limitations: [
+            "Changes if you are staying in south London — Gatwick is closer.",
+            "Changes if you are travelling with hand luggage only — baggage cost advantage disappears.",
+            "Changes if you fly easyJet — Gatwick is their primary London base.",
+          ], trace: ["Airport access", "Transfer time", "Journey cost", "Traveller profile", "Recommendation"], strength: "Strong" }}
         />
 
         {/* TOC + Content */}

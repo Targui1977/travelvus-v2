@@ -83,4 +83,6 @@ export interface HeroEditorialProps {
   visual?: HeroVisual;
   snapshot?: HeroSnapshotItem[];
   cta: HeroCTA;
+  /** Evidence factors explaining why this recommendation exists */
+  evidence?: { factors: { title: string; explanation: string; weight: "critical" | "high" | "medium" | "supporting" }[]; limitations?: string[]; trace?: string[]; strength?: string };
 }
