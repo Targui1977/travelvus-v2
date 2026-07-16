@@ -11,6 +11,7 @@ import {
   NeighbourhoodDecisionMap,
   TimelineGraphic,
   RecommendationEvidence,
+  DecisionIntelligence,
 } from "@/components/visual";
 
 /* ── Visual renderer ──────────────────────────────────────── */
@@ -44,6 +45,7 @@ export default function HeroEditorial({
   snapshot,
   cta,
   evidence,
+  decisionIntelligence,
 }: HeroEditorialProps) {
   return (
     <>
@@ -296,6 +298,11 @@ export default function HeroEditorial({
             {/* Evidence panel */}
             {evidence && (
               <RecommendationEvidence {...evidence} />
+            )}
+
+            {/* Decision Intelligence */}
+            {decisionIntelligence && (
+              <DecisionIntelligence data={decisionIntelligence} />
             )}
 
             {/* 6. Dynamic Visual (optional) */}

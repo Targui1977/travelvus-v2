@@ -3,7 +3,7 @@
  * Approved design contract from travelvus-hero-editorial-v2/PROPS_MODEL.md
  */
 
-import type { ReactNode } from "react";
+import type { DecisionIntelligenceData } from "@/lib/decision-intelligence";
 import type { AirportMarker } from "@/components/visual";
 import type { JourneyStage } from "@/components/visual";
 import type { CostSegment } from "@/components/visual";
@@ -85,4 +85,6 @@ export interface HeroEditorialProps {
   cta: HeroCTA;
   /** Evidence factors explaining why this recommendation exists */
   evidence?: { factors: { title: string; explanation: string; weight: "critical" | "high" | "medium" | "supporting" }[]; limitations?: string[]; trace?: string[]; strength?: string };
+  /** Decision intelligence — formalized reasoning, flips, trade-offs */
+  decisionIntelligence?: DecisionIntelligenceData;
 }
