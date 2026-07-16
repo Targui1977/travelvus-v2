@@ -277,13 +277,13 @@ export default function HeroEditorial({
               )}
             </div>
 
-            {/* Trust strip: why this recommendation */}
+            {/* Trust strip: what this recommendation is based on */}
             <div style={{ marginTop: 10, padding: "10px 14px", background: "rgba(244,241,234,0.04)", borderRadius: 8, border: "1px solid rgba(244,241,234,0.08)" }}>
               <span style={{ fontFamily: "var(--mono)", fontWeight: 600, fontSize: 8, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--pmuted)", display: "block", marginBottom: 6 }}>
-                Why this recommendation
+                What this is based on
               </span>
               <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 14px" }}>
-                {["Verified transfer data", "Public transport schedules", "Typical traveller profile", "Editorial methodology"].map((reason, i) => (
+                {["Verified public transport data", "Published schedules and fares", "Editorial analysis of typical scenarios", "Independent methodology"].map((reason, i) => (
                   <span key={i} style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 10, color: "var(--pmuted)", display: "flex", alignItems: "center", gap: 3 }}>
                     <span style={{ color: "var(--ok)", fontSize: 8 }}>✓</span> {reason}
                   </span>
