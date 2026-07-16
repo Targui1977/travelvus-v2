@@ -181,7 +181,7 @@ export default function LondonDecisionCenterPage() {
               timeSaved: "Fastest transfer",
               moneySaved: "From ~£5 Tube",
               bestFor: "International flights, west & central London, families",
-              confidence: "clear",
+              confidence: "high",
             }}
             visual={{ type: "airport-map", data: { cityName: "Central London", airports: [
               { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },

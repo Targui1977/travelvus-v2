@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { HeroEditorialProps, HeroSnapshotItem } from "./types";
+import { CONFIDENCE_META } from "./types";
 import {
   AirportComparisonMap,
   JourneyDiagram,
@@ -10,15 +11,6 @@ import {
   NeighbourhoodDecisionMap,
   TimelineGraphic,
 } from "@/components/visual";
-
-/* ── Confidence label map ─────────────────────────────────── */
-
-const CONFIDENCE_LABELS: Record<string, string> = {
-  robust: "Clear recommendation",
-  clear: "Clear recommendation",
-  narrow: "Narrow margin — verify before booking",
-  "near-tie": "Near-tie — personal preference decides",
-};
 
 /* ── Visual renderer ──────────────────────────────────────── */
 
@@ -272,11 +264,31 @@ export default function HeroEditorial({
               {/* Confidence */}
               {decisionCard.confidence && (
                 <div style={{ marginTop: 12, paddingTop: 10, borderTop: "1px solid rgba(244,241,234,0.12)" }}>
-                  <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 9, color: "var(--pmuted)", lineHeight: 1.3 }}>
-                    {CONFIDENCE_LABELS[decisionCard.confidence]}
+                  <span style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ width: 6, height: 6, borderRadius: "50%", background: CONFIDENCE_META[decisionCard.confidence].color, flex: "none" }} />
+                    <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 9, color: "var(--pmuted)", lineHeight: 1.3 }}>
+                      {CONFIDENCE_META[decisionCard.confidence].label}
+                    </span>
+                  </span>
+                  <span style={{ display: "block", fontFamily: "var(--sans)", fontWeight: 400, fontSize: 10, color: "var(--pmuted)", marginTop: 4, lineHeight: 1.35, opacity: 0.7 }}>
+                    {CONFIDENCE_META[decisionCard.confidence].description}
                   </span>
                 </div>
               )}
+            </div>
+
+            {/* Trust strip: why this recommendation */}
+            <div style={{ marginTop: 10, padding: "10px 14px", background: "rgba(244,241,234,0.04)", borderRadius: 8, border: "1px solid rgba(244,241,234,0.08)" }}>
+              <span style={{ fontFamily: "var(--mono)", fontWeight: 600, fontSize: 8, letterSpacing: "0.06em", textTransform: "uppercase", color: "var(--pmuted)", display: "block", marginBottom: 6 }}>
+                Why this recommendation
+              </span>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "4px 14px" }}>
+                {["Verified transfer data", "Public transport schedules", "Typical traveller profile", "Editorial methodology"].map((reason, i) => (
+                  <span key={i} style={{ fontFamily: "var(--sans)", fontWeight: 400, fontSize: 10, color: "var(--pmuted)", display: "flex", alignItems: "center", gap: 3 }}>
+                    <span style={{ color: "var(--ok)", fontSize: 8 }}>✓</span> {reason}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* 6. Dynamic Visual (optional) */}

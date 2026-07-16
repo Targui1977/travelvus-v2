@@ -88,7 +88,7 @@ export default function JFKvsNewarkGuide() {
             timeSaved: "~25 min faster to Penn",
             moneySaved: "From ~$15 NJ Transit",
             bestFor: "Newark: Midtown, United flyers. JFK: Brooklyn, international choice.",
-            confidence: "clear",
+            confidence: "too-close",
           }}
           visual={{
             type: "airport-map",

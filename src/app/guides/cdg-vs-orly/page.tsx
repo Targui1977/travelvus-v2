@@ -21,7 +21,7 @@ export default function CdgVsOrly() {
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <HomeHeader />
         <HeroEditorial category="Airport Decision" question="CDG vs Orly: Which Paris Airport Is Actually Better?" subtitle="Both are 13–25km from central Paris with rail connections. But the airline, your destination in Paris, and the type of flight change which one wins." metadata={{ readTime: "5 min read", reviewedDate: "Jul 2026", verified: true }}
-          decisionCard={{ winner: "CDG wins for international · Orly for domestic", timeSaved: "~35 min RER to central", moneySaved: "From ~€11 RER B", bestFor: "CDG: international, Air France. Orly: domestic, southern Paris.", confidence: "clear" }}
+          decisionCard={{ winner: "CDG wins for international · Orly for domestic", timeSaved: "~35 min RER to central", moneySaved: "From ~€11 RER B", bestFor: "CDG: international, Air France. Orly: domestic, southern Paris.", confidence: "context-dependent" }}
           visual={{ type: "airport-map", data: { cityName: "Central Paris", airports: [{ code: "CDG", name: "CDG", distance: "25 km NE", isWinner: true },{ code: "ORY", name: "Orly", distance: "13 km S" }] }}}
           snapshot={[{ label: "Best for international", value: "CDG" },{ label: "Best for domestic", value: "Orly" },{ label: "Fastest to central", value: "Tied ~35 min" }]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}

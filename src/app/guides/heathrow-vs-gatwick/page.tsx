@@ -44,7 +44,7 @@ function GuidePage() {
             timeSaved: "71 min faster",
             moneySaved: "£27 cheaper",
             bestFor: "Central London, business trips, easier transfers",
-            confidence: "clear",
+            confidence: "very-high",
           }}
           visual={{ type: "airport-map", data: { cityName: "Central London", airports: [
             { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },

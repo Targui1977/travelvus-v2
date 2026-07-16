@@ -43,7 +43,7 @@ export default function RealCostGuide() {
             timeSaved: "85 min faster",
             moneySaved: "€46 saved",
             bestFor: "Travellers comparing two apparently different fares",
-            confidence: "clear",
+            confidence: "high",
           }}
           visual={{ type: "real-cost", data: { segments: [
             { label: "Ticket", amount: 58 },

@@ -89,7 +89,7 @@ export default function BestAirportForManhattan() {
             timeSaved: "~25 min train to Penn",
             moneySaved: "From ~$15 NJ Transit",
             bestFor: "Newark: Midtown West. LGA: Upper East/Upper West. JFK: late-night arrivals.",
-            confidence: "clear",
+            confidence: "conditional",
           }}
           visual={{
             type: "airport-map",

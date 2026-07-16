@@ -19,7 +19,7 @@ export default function BestAirportForCentralParis() {
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <HomeHeader />
         <HeroEditorial category="Neighbourhood Guide" question="Best Airport for Central Paris: CDG, Orly or Beauvais?" subtitle="Your Paris neighbourhood — Right Bank, Left Bank, or central arrondissements — changes which airport is actually the best choice." metadata={{ readTime: "5 min read", reviewedDate: "Jul 2026", verified: true }}
-          decisionCard={{ winner: "Orly wins for central Paris · CDG for Right Bank", timeSaved: "~35 min rail to centre", moneySaved: "€35 taxi from Orly", bestFor: "Orly: Left Bank, central arrondissements. CDG: Right Bank, eastern Paris.", confidence: "clear" }}
+          decisionCard={{ winner: "Orly wins for central Paris · CDG for Right Bank", timeSaved: "~35 min rail to centre", moneySaved: "€35 taxi from Orly", bestFor: "Orly: Left Bank, central arrondissements. CDG: Right Bank, eastern Paris.", confidence: "conditional" }}
           visual={{ type: "airport-map", data: { cityName: "Central Paris", airports: [{ code: "ORY", name: "Orly", distance: "13 km S — OrlyBus 30 min", isWinner: true },{ code: "CDG", name: "CDG", distance: "25 km NE — RER B 35 min" },{ code: "BVA", name: "Beauvais", distance: "85 km N — shuttle 1h 15m" }] }}}
           snapshot={[{ label: "Best for Left Bank", value: "Orly" },{ label: "Best for Right Bank", value: "CDG" },{ label: "Avoid for central", value: "Beauvais" }]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}

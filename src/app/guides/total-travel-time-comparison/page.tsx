@@ -227,7 +227,7 @@ export default function TotalTravelTimeGuide() {
             timeSaved: "3h 30m faster",
             moneySaved: "5h 40m total",
             bestFor: "Travellers comparing secondary airports, connections or awkward schedules",
-            confidence: "clear",
+            confidence: "high",
           }}
           snapshot={[
             { label: "Shorter flight", value: "Not always faster" },
