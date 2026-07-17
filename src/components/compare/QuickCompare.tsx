@@ -61,6 +61,23 @@ function getInitialForCity(city: CityId): ComparisonState {
           arrivalTime: "14:15",
         },
       };
+    case "paris":
+      return {
+        optionA: {
+          ticketPrice: "€80",
+          origin: "Berlin · BER",
+          destination: "Paris · CDG",
+          departureTime: "08:00",
+          arrivalTime: "10:00",
+        },
+        optionB: {
+          ticketPrice: "€95",
+          origin: "Berlin · BER",
+          destination: "Paris · ORY",
+          departureTime: "08:30",
+          arrivalTime: "10:30",
+        },
+      };
   }
 }
 

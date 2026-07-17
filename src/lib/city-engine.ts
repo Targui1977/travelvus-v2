@@ -24,6 +24,12 @@ import {
   getNYDestinationShortLabel,
 } from "@/data/new-york-destinations";
 import type { NewYorkDestinationId } from "@/data/new-york-destinations";
+import {
+  getParisTransferProfile,
+  getParisDestinationLabel,
+  getParisDestinationShortLabel,
+} from "@/data/paris-destinations";
+import type { ParisDestinationId } from "@/data/paris-destinations";
 
 /* ── Unified Transfer Profile ─────────────────────────────── */
 
@@ -58,6 +64,17 @@ export function getCityTransfer(
     }
     case "new-york": {
       const profile = getNYTransferProfile(destinationId as NewYorkDestinationId, airportCode);
+      return profile ? {
+        transferCostEUR: profile.transferCostEUR,
+        transferDurationMin: profile.transferDurationMin,
+        mode: profile.mode,
+        interchangeCount: profile.interchangeCount,
+        serviceWindow: profile.serviceWindow,
+        isIllustrative: profile.isIllustrative,
+      } : undefined;
+    }
+    case "paris": {
+      const profile = getParisTransferProfile(destinationId as ParisDestinationId, airportCode);
       return profile ? {
         transferCostEUR: profile.transferCostEUR,
         transferDurationMin: profile.transferDurationMin,
@@ -171,6 +188,8 @@ export function getCityDestinationIds(cityId: CityId): string[] {
       return ["paddington", "westminster", "kings-cross", "liverpool-street", "canary-wharf"];
     case "new-york":
       return ["midtown", "lower-manhattan", "financial-district", "brooklyn-downtown", "long-island-city"];
+    case "paris":
+      return ["central-paris", "la-defense", "montparnasse", "gare-du-nord", "bercy"];
   }
 }
 
@@ -178,6 +197,7 @@ export function getCityDefaultDestination(cityId: CityId): string {
   switch (cityId) {
     case "london": return "westminster";
     case "new-york": return "midtown";
+    case "paris": return "central-paris";
   }
 }
 
@@ -187,6 +207,8 @@ export function getCityDestinationLabel(cityId: CityId, destinationId: string): 
       return getLondonDestLabel(destinationId as LondonDestinationId);
     case "new-york":
       return getNYDestinationLabel(destinationId as NewYorkDestinationId);
+    case "paris":
+      return getParisDestinationLabel(destinationId as ParisDestinationId);
   }
 }
 
@@ -196,6 +218,8 @@ export function getCityDestinationShortLabel(cityId: CityId, destinationId: stri
       return getLondonDestShortLabel(destinationId as LondonDestinationId);
     case "new-york":
       return getNYDestinationShortLabel(destinationId as NewYorkDestinationId);
+    case "paris":
+      return getParisDestinationShortLabel(destinationId as ParisDestinationId);
   }
 }
 
@@ -206,5 +230,7 @@ function estimateTransferTime(cost: number, airport: string): number {
   if (airport === "LHR") return 55;
   if (airport === "JFK") return 65;
   if (airport === "EWR") return 55;
+  if (airport === "CDG") return 50;
+  if (airport === "ORY") return 45;
   return Math.round(cost * 1.2);
 }

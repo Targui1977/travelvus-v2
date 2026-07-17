@@ -49,23 +49,29 @@ describe("validateCity", () => {
     expect(destCheck!.status).toBe("pass");
   });
 
-  it("London and NY both have all transfer profiles complete", () => {
-    for (const cityId of ["london", "new-york"] as const) {
+  it("London, NY, and Paris all have complete transfer profiles", () => {
+    for (const cityId of ["london", "new-york", "paris"] as const) {
       const result = validateCity(cityId);
       const transferCheck = result.results.find((r) => r.check === "All transfer profiles complete");
       expect(transferCheck).toBeDefined();
       expect(transferCheck!.status).toBe("pass");
     }
   });
+
+  it("Paris passes all checks", () => {
+    const result = validateCity("paris");
+    expect(result.failed).toBe(0);
+    expect(result.ready).toBe(true);
+  });
 });
 
 describe("validateAllCities", () => {
-  it("returns exactly 2 results", () => {
+  it("returns results for all supported cities", () => {
     const results = validateAllCities();
-    expect(results).toHaveLength(2);
+    expect(results.length).toBeGreaterThanOrEqual(3); // London, NY, Paris
   });
 
-  it("both cities are ready", () => {
+  it("all cities are ready", () => {
     const results = validateAllCities();
     for (const r of results) {
       expect(r.ready).toBe(true);

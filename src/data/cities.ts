@@ -9,9 +9,9 @@
 
 /* ── City ID ──────────────────────────────────────────────── */
 
-export type CityId = "london" | "new-york";
+export type CityId = "london" | "new-york" | "paris";
 
-export const SUPPORTED_CITIES: CityId[] = ["london", "new-york"];
+export const SUPPORTED_CITIES: CityId[] = ["london", "new-york", "paris"];
 
 export const LEGACY_DEFAULT_CITY: CityId = "london";
 
@@ -54,6 +54,17 @@ export const CITY_REGISTRY: Record<CityId, CityMetadata> = {
       { code: "EWR", name: "Newark", fullName: "New York Newark (EWR)" },
     ],
     defaultDestination: "midtown",
+  },
+  paris: {
+    id: "paris",
+    label: "Paris",
+    country: "France",
+    currency: "EUR",
+    airports: [
+      { code: "CDG", name: "Charles de Gaulle", fullName: "Paris Charles de Gaulle (CDG)" },
+      { code: "ORY", name: "Orly", fullName: "Paris Orly (ORY)" },
+    ],
+    defaultDestination: "central-paris",
   },
 };
 
