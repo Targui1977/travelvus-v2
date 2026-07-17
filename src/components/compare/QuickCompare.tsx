@@ -6,8 +6,9 @@ import Link from "next/link";
 import OptionToken from "@/components/ui/OptionToken";
 import Kicker from "@/components/ui/Kicker";
 import { encodeCompareParams } from "@/lib/navigation";
-import { LONDON_DESTINATION_IDS, getDestinationShortLabel } from "@/data/london-destinations";
-import type { LondonDestinationId } from "@/data/london-destinations";
+import { getCityDestinationIds, getCityDestinationShortLabel } from "@/lib/city-engine";
+import { SUPPORTED_CITIES, getCityLabel } from "@/data/cities";
+import type { CityId } from "@/data/cities";
 
 /* ── Types ─────────────────────────────────────────────── */
 interface OptionInput {
@@ -140,7 +141,8 @@ export default function QuickCompare({ standalone = true }: { standalone?: boole
   const [state, setState] = useState<ComparisonState>(INITIAL);
   const [activeTab, setActiveTab] = useState<"A" | "B">("A");
   const [errors, setErrors] = useState<string[]>([]);
-  const [londonDestination, setLondonDestination] = useState<LondonDestinationId>("westminster");
+  const [cityId, setCityId] = useState<CityId>("london");
+  const [destinationId, setDestinationId] = useState<string>("westminster");
 
   const updateOption = (
     option: "A" | "B",
@@ -187,7 +189,8 @@ export default function QuickCompare({ standalone = true }: { standalone?: boole
       bTo: b.destination,
       bDep: b.departureTime,
       bArr: b.arrivalTime,
-      londonDestination,
+      city: cityId,
+      destination: destinationId,
     });
     router.push(`/result?${params}`);
   };
@@ -257,22 +260,40 @@ export default function QuickCompare({ standalone = true }: { standalone?: boole
           </div>
         )}
 
-        {/* ═══ Destination selector ═══ */}
+        {/* ═══ City + Destination selector ═══ */}
         <div className="mt-[20px]">
           <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, color: "var(--muted)", display: "block", marginBottom: 8 }}>
-            Where in London are you going?
+            Which city?
           </span>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-            {LONDON_DESTINATION_IDS.map((id) => (
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
+            {SUPPORTED_CITIES.map((id) => (
               <button
                 key={id}
                 type="button"
-                onClick={() => setLondonDestination(id)}
-                className={id === londonDestination ? "btn-filled" : "btn-outline"}
+                onClick={() => { setCityId(id); setDestinationId(id === "london" ? "westminster" : "midtown"); }}
+                className={id === cityId ? "btn-filled" : "btn-outline"}
                 style={{ padding: "6px 12px", fontSize: 12, minHeight: 44 }}
-                aria-pressed={id === londonDestination}
+                aria-pressed={id === cityId}
               >
-                {getDestinationShortLabel(id)}
+                {getCityLabel(id)}
+              </button>
+            ))}
+          </div>
+
+          <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, color: "var(--muted)", display: "block", marginBottom: 8 }}>
+            Where in {getCityLabel(cityId)}?
+          </span>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+            {getCityDestinationIds(cityId).map((id) => (
+              <button
+                key={id}
+                type="button"
+                onClick={() => setDestinationId(id)}
+                className={id === destinationId ? "btn-filled" : "btn-outline"}
+                style={{ padding: "6px 12px", fontSize: 12, minHeight: 44 }}
+                aria-pressed={id === destinationId}
+              >
+                {getCityDestinationShortLabel(cityId, id)}
               </button>
             ))}
           </div>

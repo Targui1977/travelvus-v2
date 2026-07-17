@@ -11,8 +11,9 @@
 
 import type { OptionResult, OptionId } from "@/lib/types";
 import type { CalculationResult } from "@/lib/calculation-contract";
-import type { LondonDestinationId } from "@/data/london-destinations";
-import { getDestinationLabel, getDestinationShortLabel, getTransferProfile } from "@/data/london-destinations";
+import type { CityId } from "@/data/cities";
+import { getCityLabel, getCityAirports } from "@/data/cities";
+import { getCityDestinationLabel, getCityDestinationShortLabel, getCityTransfer } from "@/lib/city-engine";
 
 /* ── Context Contract ─────────────────────────────────────── */
 
@@ -53,15 +54,26 @@ export interface InteractiveDecisionContext {
   /** Winner before the current edit (if a change occurred) */
   previousWinner?: "A" | "B" | "tie";
 
+  /* City */
+  /** Selected city ID */
+  cityId: CityId;
+  /** Display label for the selected city */
+  cityLabel: string;
+
   /* Destination */
-  /** Selected London destination ID */
-  londonDestinationId: LondonDestinationId;
+  /** Selected destination ID */
+  destinationId: string;
   /** Display label for the selected destination */
-  londonDestinationLabel: string;
+  destinationLabel: string;
   /** Representative station */
   representativeStation: string;
   /** Whether the destination was explicitly selected (vs legacy default) */
   destinationExplicitlySelected: boolean;
+
+  /** @deprecated Legacy — use destinationId */
+  londonDestinationId: string;
+  /** @deprecated Legacy — use destinationLabel */
+  londonDestinationLabel: string;
 
   /* Currency treatment */
   /** All monetary values in this context use this currency */
@@ -82,13 +94,19 @@ export function buildDecisionContext(
     bagRemoved?: boolean;
     editedLineIndex?: number;
     previousWinner?: OptionId | "tie";
+    cityId?: string;
     londonDestinationId?: string;
     destinationExplicitlySelected?: boolean;
   }
 ): InteractiveDecisionContext {
   const { optionA, optionB } = result;
 
-  const destId = (overrides?.londonDestinationId ?? "westminster") as LondonDestinationId;
+  const cityId = (overrides?.cityId ?? "london") as CityId;
+  const destId = overrides?.londonDestinationId ?? "westminster";
+
+  const destLabel = getCityDestinationLabel(cityId, destId);
+  const destShort = getCityDestinationShortLabel(cityId, destId);
+  const cityLabelStr = getCityLabel(cityId);
 
   return {
     originCode: "BER",
@@ -110,10 +128,16 @@ export function buildDecisionContext(
     editedLineIndex: overrides?.editedLineIndex,
     previousWinner: overrides?.previousWinner,
 
-    londonDestinationId: destId,
-    londonDestinationLabel: getDestinationLabel(destId),
-    representativeStation: getDestinationShortLabel(destId),
+    cityId,
+    cityLabel: cityLabelStr,
+    destinationId: destId,
+    destinationLabel: destLabel,
+    representativeStation: destShort,
     destinationExplicitlySelected: overrides?.destinationExplicitlySelected ?? false,
+
+    // Legacy aliases
+    londonDestinationId: destId,
+    londonDestinationLabel: destLabel,
 
     comparisonCurrency: "EUR",
   };

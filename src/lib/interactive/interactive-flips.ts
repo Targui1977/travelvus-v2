@@ -136,7 +136,7 @@ export function generateFlips(
 
   /* ── 5. Destination changes ────────────────────────────── */
   flips.push({
-    condition: `Your destination changes from ${context.londonDestinationLabel}`,
+    condition: `Your destination changes from ${context.destinationLabel}`,
     result: `Transfer costs and times change. Different London destinations favour different airports. See the destination selector to compare.`,
   });
 

@@ -3,23 +3,16 @@
  * and supported scenario detection.
  *
  * Pure functions. No external dependencies.
+ * Phase 108.0 — Multi-city: isSupportedComparison now checks city-supported pairs.
  */
 
-/* ── Supported scenario contract ────────────────────────────
- *
- * The vertical slice currently supports ONLY:
- *   Option A: BER → STN
- *   Option B: BER → LHR
- *
- * For these routes, canonical transfer costs, door-to-door times,
- * and Decision Threshold data are valid and verified.
- *
- * For any other airports, Travelvus CANNOT yet provide the full
- * Real Cost / Door-to-Door / Decision Threshold analysis.
- * ─────────────────────────────────────────────────────────── */
+import type { CityId } from "@/data/cities";
+import { getCityAirports } from "@/data/cities";
+
+/* ── Supported scenario contract ──────────────────────────── */
 
 export interface NormalizedInput {
-  ticketA: number; // numeric, validated
+  ticketA: number;
   ticketB: number;
   fromA: string;
   toA: string;
@@ -32,15 +25,24 @@ export interface NormalizedInput {
 }
 
 /**
- * Check if a comparison uses the only currently supported route pair.
- * BER→STN vs BER→LHR (case-insensitive on airport codes).
+ * Check if a comparison uses a supported airport pair for the given city.
+ * Looks up supported airports from the city registry.
  */
-export function isSupportedComparison(input: NormalizedInput): boolean {
+export function isSupportedComparison(input: NormalizedInput, cityId?: CityId): boolean {
   const destA = extractCode(input.toA);
   const destB = extractCode(input.toB);
+
+  // Legacy: if no city specified, check London (STN vs LHR)
+  if (!cityId) {
+    return destA === "STN" && destB === "LHR";
+  }
+
+  const airports = getCityAirports(cityId);
+  if (airports.length < 2) return false;
+
   return (
-    destA === "STN" &&
-    destB === "LHR"
+    destA === airports[0]?.code &&
+    destB === airports[1]?.code
   );
 }
 
@@ -109,14 +111,16 @@ export function normalizeTime(raw: string): string | null {
   return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
 }
 
-/** Build the supported verdict based on actual calculated costs */
+/** Build verdict based on actual calculated costs. City-agnostic. */
 export function buildVerdict(
   costA: number,
   costB: number,
   timeA: string,
   timeB: string,
   _winnerA: boolean,
-  _winnerB: boolean
+  _winnerB: boolean,
+  placeA?: string,
+  placeB?: string
 ): {
   winner: "A" | "B";
   winnerName: string;
@@ -130,26 +134,28 @@ export function buildVerdict(
   const diff = Math.abs(costA - costB);
   const aw = costA < costB;
   const bw = costB < costA;
+  const nameA = placeA ?? "Option A";
+  const nameB = placeB ?? "Option B";
 
   if (aw) {
     return {
-      winner: "A", winnerName: "Option A", winnerPlace: "Stansted",
-      headlineHtml: `Option A — <span class="verdict-highlight">Stansted</span> — wins on money.`,
+      winner: "A", winnerName: "Option A", winnerPlace: nameA,
+      headlineHtml: `Option A — <span class="verdict-highlight">${nameA}</span> — wins on money.`,
       subtextHtml: `A is <b>€${diff} cheaper</b> — but still takes longer door-to-door. Your priority decides.`,
       confidenceLabel: "Confidence · Estimate", provenance: "Calculated from your inputs", priority: "Priority: Balanced",
     };
   }
   if (bw) {
     return {
-      winner: "B", winnerName: "Option B", winnerPlace: "Heathrow",
-      headlineHtml: `Option B — <span class="verdict-highlight">Heathrow</span> — is the better overall deal.`,
+      winner: "B", winnerName: "Option B", winnerPlace: nameB,
+      headlineHtml: `Option B — <span class="verdict-highlight">${nameB}</span> — is the better overall deal.`,
       subtextHtml: `Saves <b>€${diff}</b> and is faster door-to-door versus the cheaper-looking ticket.`,
       confidenceLabel: "Confidence · Strong", provenance: "Official fares + transit data · verified Jul 2026", priority: "Priority: Balanced",
     };
   }
 
   return {
-    winner: "B", winnerName: "Option B", winnerPlace: "Heathrow",
+    winner: "B", winnerName: "Option B", winnerPlace: nameB,
     headlineHtml: `They're practically tied on cost.`,
     subtextHtml: `Both come to €${costA}. The difference is in time.`,
     confidenceLabel: "Confidence · Estimate", provenance: "Calculated from your inputs", priority: "Priority: Balanced",

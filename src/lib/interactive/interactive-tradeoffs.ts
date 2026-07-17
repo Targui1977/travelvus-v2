@@ -184,7 +184,7 @@ function buildUnknowns(
   // Only list unknowns that materially affect the result
   // Destination is now selected — only note if it's the legacy default
   if (!ctx.destinationExplicitlySelected) {
-    unknowns.push(`Exact London destination — currently using default (${ctx.londonDestinationLabel}). Select your real destination to refine the result.`);
+    unknowns.push(`Exact destination — currently using default (${ctx.destinationLabel}). Select your real destination to refine the result.`);
   }
 
   if (!ctx.bagRemoved) {

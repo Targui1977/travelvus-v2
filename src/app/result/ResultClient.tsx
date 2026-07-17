@@ -11,9 +11,9 @@ import { buildDecisionContext } from "@/lib/interactive/interactive-decision-con
 import { buildInteractiveDecisionOutcome } from "@/lib/interactive/interactive-decision-outcome";
 import RecommendationEvidence from "@/components/visual/RecommendationEvidence";
 import DecisionIntelligence from "@/components/visual/DecisionIntelligence";
-import { buildDestinationOptions, resolveDestination } from "@/lib/destination-engine";
-import { getDestinationShortLabel, LONDON_DESTINATION_IDS } from "@/data/london-destinations";
-import type { LondonDestinationId } from "@/data/london-destinations";
+import { buildCityOptions, getCityDestinationIds, getCityDefaultDestination, getCityDestinationShortLabel } from "@/lib/city-engine";
+import { resolveCity, getCityLabel } from "@/data/cities";
+import type { CityId } from "@/data/cities";
 import { RealCost, DoorToDoor, VerdictChangedBanner, RobustnessNote } from "@/components/result";
 import { CalculationExperience } from "@/components/experience";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
@@ -85,9 +85,11 @@ interface ResultClientProps {
   initialDataRef: FullResultData;
   calculationResult: CalculationResult;
   stepLabels: string[];
-  /** London destination ID from URL (or legacy default) */
+  /** City ID from URL (or legacy default: london) */
+  initialCityId: string;
+  /** Destination ID from URL (or city default) */
   initialDestinationId: string;
-  /** London destination display label */
+  /** Destination display label */
   initialDestinationLabel: string;
 }
 
@@ -222,6 +224,7 @@ export default function ResultClient({
   initialDataRef: d,
   calculationResult,
   stepLabels,
+  initialCityId,
   initialDestinationId,
   initialDestinationLabel,
 }: ResultClientProps) {
@@ -234,6 +237,7 @@ export default function ResultClient({
   const [showEdit, setShowEdit] = useState(false);
   const [bagRemoved, setBagRemoved] = useState(false);
   const [shareMsg, setShareMsg] = useState<string | null>(null);
+  const [cityId, setCityId] = useState<string>(initialCityId);
   const [destinationId, setDestinationId] = useState<string>(initialDestinationId);
   const [changedState, setChangedState] = useState<{
     cause: string;
@@ -286,8 +290,9 @@ export default function ResultClient({
     setOptionB({ ...initialOptionB });
     setChangedState(null);
     setBagRemoved(false);
+    setCityId(initialCityId);
     setDestinationId(initialDestinationId);
-  }, [initialOptionA, initialOptionB, initialDestinationId]);
+  }, [initialOptionA, initialOptionB, initialCityId, initialDestinationId]);
 
   const keep = useCallback(() => {
     setChangedState(null);
@@ -297,15 +302,15 @@ export default function ResultClient({
     (newDest: string) => {
       if (newDest === destinationId) return;
 
-      const destId = resolveDestination(newDest);
       const oldA = { ...optionA, realCost: calcRealCost(optionA.costLines) };
       const oldB = { ...optionB, realCost: calcRealCost(optionB.costLines) };
 
-      // Rebuild options with new destination profile
-      const destOptions = buildDestinationOptions(
+      // Rebuild options with new destination profile (city-aware)
+      const destOptions = buildCityOptions(
         initialOptionA,
         initialOptionB,
-        destId,
+        cityId as CityId,
+        newDest,
         optionA.costLines[0]?.amount,
         optionB.costLines[0]?.amount
       );
@@ -325,11 +330,11 @@ export default function ResultClient({
 
       setOptionA(destOptions.optionA);
       setOptionB(destOptions.optionB);
-      setDestinationId(destId);
+      setDestinationId(newDest);
 
       if (change) {
         setChangedState({
-          cause: `Destination changed to ${getDestinationShortLabel(destId)}.`,
+          cause: `Destination changed to ${getCityDestinationShortLabel(cityId as CityId, newDest)}.`,
           consequence: deriveChangedConsequence(
             change.newWinner,
             destOptions.optionA.realCost,
@@ -342,7 +347,7 @@ export default function ResultClient({
         setChangedState(null);
       }
     },
-    [optionA, optionB, initialOptionA, initialOptionB, destinationId, bagRemoved]
+    [optionA, optionB, initialOptionA, initialOptionB, destinationId, cityId, bagRemoved]
   );
 
   /* ── Derived dynamic content ────────────────────────── */
@@ -355,10 +360,11 @@ export default function ResultClient({
       buildDecisionContext(calculationResult, {
         bagRemoved,
         previousWinner: changedState?.previousWinner,
+        cityId,
         londonDestinationId: destinationId,
         destinationExplicitlySelected: destinationId !== initialDestinationId,
       }),
-    [calculationResult, bagRemoved, changedState, destinationId, initialDestinationId]
+    [calculationResult, bagRemoved, changedState, cityId, destinationId, initialDestinationId]
   );
 
   const decisionOutcome = useMemo(
@@ -546,10 +552,10 @@ export default function ResultClient({
               {/* Destination selector */}
               <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, color: "var(--ink)" }}>
-                  Where in London?
+                  Where in {getCityLabel(cityId as CityId)}?
                 </span>
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                  {LONDON_DESTINATION_IDS.map((id) => (
+                  {getCityDestinationIds(cityId as CityId).map((id) => (
                     <button
                       key={id}
                       onClick={() => changeDestination(id)}
@@ -560,7 +566,7 @@ export default function ResultClient({
                       }}
                       aria-pressed={id === destinationId}
                     >
-                      {getDestinationShortLabel(id)}
+                      {getCityDestinationShortLabel(cityId as CityId, id)}
                     </button>
                   ))}
                 </div>
@@ -586,13 +592,13 @@ export default function ResultClient({
           <Signature variant="verdict" />
         </div>
 
-        {/* Destination context summary */}
+        {/* City + Destination context summary */}
         <div style={{
           fontFamily: "var(--mono)", fontWeight: 400, fontSize: 10,
           letterSpacing: "0.04em", color: "var(--pmuted)",
           marginBottom: 18, opacity: 0.7,
         }}>
-          Destination: {getDestinationShortLabel(destinationId as LondonDestinationId)}
+          {getCityLabel(cityId as CityId)} · {getCityDestinationShortLabel(cityId as CityId, destinationId)}
           {destinationId !== initialDestinationId && (
             <span style={{ color: "var(--copper)", marginLeft: 6 }}>(edited)</span>
           )}

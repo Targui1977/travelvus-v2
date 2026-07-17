@@ -13,8 +13,10 @@
  *   bt2 = B to airport
  *   bd  = B departure time
  *   ba  = B arrival time
- *   ld  = London destination (e.g. "westminster", "paddington")
- *          Omitted/missing → legacy default (westminster)
+ *   ld  = London destination (e.g. "westminster") — legacy, implies city=london
+ *   city= City ID (e.g. "london", "new-york") — canonical multi-city param
+ *   dest= Destination ID (e.g. "midtown", "westminster") — canonical destination param
+ *          Omitted/missing → city default
  */
 
 export interface CompareParams {
@@ -28,7 +30,11 @@ export interface CompareParams {
   bTo: string;
   bDep: string;
   bArr: string;
-  /** London destination ID — optional, defaults to westminster when absent */
+  /** City ID (e.g. "london", "new-york") — canonical multi-city param */
+  city?: string;
+  /** Destination ID (e.g. "westminster", "midtown") — canonical destination param */
+  destination?: string;
+  /** London destination ID — legacy, implies city=london */
   londonDestination?: string;
 }
 
@@ -52,7 +58,13 @@ export function encodeCompareParams(p: CompareParams): string {
   sp.set("bt2", p.bTo.trim());
   sp.set("bd", p.bDep.trim());
   sp.set("ba", p.bArr.trim());
-  if (p.londonDestination) {
+  if (p.city) {
+    sp.set("city", p.city.trim());
+  }
+  if (p.destination) {
+    sp.set("dest", p.destination.trim());
+  } else if (p.londonDestination) {
+    // Legacy: ld= implies city=london
     sp.set("ld", p.londonDestination.trim());
   }
   return sp.toString();
@@ -70,6 +82,8 @@ export function decodeCompareParams(
 
   if (vals.some((v) => !v || v.trim() === "")) return null;
 
+  const city = searchParams.get("city")?.trim() || undefined;
+  const destination = searchParams.get("dest")?.trim() || undefined;
   const londonDestination = searchParams.get("ld")?.trim() || undefined;
 
   return {
@@ -83,6 +97,8 @@ export function decodeCompareParams(
     bTo: vals[7]!,
     bDep: vals[8]!,
     bArr: vals[9]!,
+    city,
+    destination,
     londonDestination,
   };
 }

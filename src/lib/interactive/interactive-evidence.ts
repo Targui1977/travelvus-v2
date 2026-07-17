@@ -152,10 +152,10 @@ function buildFactors(
     const transferB = lastCostLine(optionB);
 
     factors.push({
-      title: `Transfer to ${ctx.londonDestinationLabel}`,
+      title: `Transfer to ${ctx.destinationLabel}`,
       explanation: transferA && transferB
-        ? `${optionB.name} reaches ${ctx.londonDestinationLabel} with a direct connection — €${transferB.amount} and faster. ${optionA.name} takes longer and costs €${transferA.amount} with more interchanges.`
-        : `${optionB.name} has better connections to ${ctx.londonDestinationLabel}. ${optionA.name}'s transfer is longer.`,
+        ? `${optionB.name} reaches ${ctx.destinationLabel} with a direct connection — €${transferB.amount} and faster. ${optionA.name} takes longer and costs €${transferA.amount} with more interchanges.`
+        : `${optionB.name} has better connections to ${ctx.destinationLabel}. ${optionA.name}'s transfer is longer.`,
       weight: "medium",
     });
   }

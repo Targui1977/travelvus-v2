@@ -5,8 +5,9 @@ import { normalizeInput, isSupportedComparison, buildVerdict } from "@/lib/norma
 import { MOCK_RESULT } from "@/lib/mock-data";
 import { calcRealCost, monetaryWinner } from "@/lib/decision-engine";
 import { buildCalculationResult } from "@/lib/calculation-contract";
-import { buildDestinationOptions, resolveDestination } from "@/lib/destination-engine";
-import { getDestinationLabel } from "@/data/london-destinations";
+import { buildCityOptions, getCityDefaultDestination, getCityDestinationLabel } from "@/lib/city-engine";
+import { resolveCity } from "@/data/cities";
+import type { CityId } from "@/data/cities";
 import { STEP_IDS } from "@/lib/experience-state";
 import type { OptionResult } from "@/lib/types";
 
@@ -41,10 +42,11 @@ export default async function ResultPage({
     )
   );
   const norm = raw ? normalizeInput(raw) : null;
-  const supported = norm ? isSupportedComparison(norm) : false;
 
-  // Resolve destination from URL parameter (legacy default: Westminster)
-  const destinationId = resolveDestination(raw?.londonDestination);
+  // Resolve city and destination from URL params
+  const cityId: CityId = resolveCity(raw?.city ?? (raw?.londonDestination ? "london" : undefined));
+  const destinationId = raw?.destination ?? raw?.londonDestination ?? getCityDefaultDestination(cityId);
+  const supported = norm ? isSupportedComparison(norm, cityId) : false;
 
   let initialOptionA: OptionResult;
   let initialOptionB: OptionResult;
@@ -52,10 +54,11 @@ export default async function ResultPage({
   let initialSupported: boolean;
 
   if (norm && supported) {
-    // Build destination-specific options from the base mock data
-    const destOptions = buildDestinationOptions(
+    // Build city-specific destination options from the base mock data
+    const destOptions = buildCityOptions(
       d.optionA,
       d.optionB,
+      cityId,
       destinationId,
       norm.ticketA,
       norm.ticketB
@@ -67,7 +70,8 @@ export default async function ResultPage({
     initialVerdict = buildVerdict(
       initialOptionA.realCost, initialOptionB.realCost,
       initialOptionA.doorToDoorLabel, initialOptionB.doorToDoorLabel,
-      mw === "A", mw === "B"
+      mw === "A", mw === "B",
+      initialOptionA.name, initialOptionB.name
     );
     initialSupported = true;
   } else if (norm && !supported) {
@@ -89,9 +93,9 @@ export default async function ResultPage({
     );
     initialSupported = false;
   } else {
-    // Demo mode: use default destination
-    const destOptions = buildDestinationOptions(
-      d.optionA, d.optionB, destinationId
+    // Demo mode: use default city destination
+    const destOptions = buildCityOptions(
+      d.optionA, d.optionB, cityId, destinationId
     );
     initialOptionA = destOptions.optionA;
     initialOptionB = destOptions.optionB;
@@ -130,8 +134,9 @@ export default async function ResultPage({
       initialDataRef={d}
       calculationResult={calculationResult}
       stepLabels={stepLabels}
+      initialCityId={cityId}
       initialDestinationId={destinationId}
-      initialDestinationLabel={getDestinationLabel(destinationId)}
+      initialDestinationLabel={getCityDestinationLabel(cityId, destinationId)}
     />
   );
 }

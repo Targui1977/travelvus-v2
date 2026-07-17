@@ -156,7 +156,7 @@ describe("estimateThreshold", () => {
 
 describe("buildVerdict", () => {
   it("B wins at canonical", () => {
-    const v = buildVerdict(204, 171, "8h 05m", "5h 10m", false, true);
+    const v = buildVerdict(204, 171, "8h 05m", "5h 10m", false, true, "Stansted", "Heathrow");
     expect(v.winner).toBe("B");
     expect(v.headlineHtml).toContain("Heathrow");
   });
