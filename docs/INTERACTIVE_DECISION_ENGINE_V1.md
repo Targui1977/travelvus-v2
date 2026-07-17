@@ -168,7 +168,76 @@ When editing changes the monetary winner:
 - Evidence uses semantic list structure
 - Flip rules use explicit IF → THEN text pattern
 - State/strength communicated by labels (not color alone)
-- Keyboard editing (bag toggle button) preserved
+- Keyboard editing preserved (44px min touch target, `aria-expanded`)
+- Progressive disclosure controls use native `<details>` with keyboard support
+
+---
+
+## Result Hierarchy (Phase 107.1)
+
+1. **Calculation Cascade** — animated step-by-step (transient)
+2. **TravelvusVerdict** — dominant recommendation component (navy block)
+3. **Real Cost + Door-to-Door** — executive metrics
+4. **RecommendationEvidence** — "Why this recommendation" (factors + trace only)
+5. **DecisionIntelligence** — "When it changes + what you give up" (state, advantages, tradeoffs, flips, limitations, unknowns)
+6. **Edit assumptions** — baggage toggle
+7. **Continuation** — related links
+
+### Evidence vs Intelligence Responsibility Boundary
+
+| Component | Answers | Contains |
+|-----------|---------|----------|
+| **RecommendationEvidence** | Which facts drove the current recommendation? | Weighted factors + decision trace |
+| **DecisionIntelligence** | When would the recommendation change, and what trade-offs remain? | State, recommendation, summary, advantages, tradeoffs, flips, limitations, unknowns |
+
+**Evidence does NOT repeat:** flip rules, limitations, unknowns, or strength.
+**Intelligence does NOT repeat:** weighted evidence factors or the decision trace.
+
+---
+
+## Progressive Disclosure Policy (Phase 107.1)
+
+- **Always visible:** recommendation, state label, evidence factors, advantages, trade-offs, first 3 flip rules, limitations
+- **Collapsed by default** (via `<details>`): extended flip rules (>3), unknown information
+- All collapsed controls use native `<details>/<summary>` with keyboard support
+
+---
+
+## Edit Feedback States (Phase 107.1)
+
+| Scenario | Behaviour |
+|----------|-----------|
+| Edit changes winner | "Recommendation changed" banner + exact cause + undo/keep |
+| Edit does NOT change winner | "Recommendation unchanged" note + updated metrics |
+| Revert edit | Full return to original — no stale banner, evidence, or flips |
+| Repeated edits | Each recalculation produces fresh outcome; no stale data |
+
+---
+
+## Production Acceptance Checklist (Phase 107.1)
+
+- [x] TypeScript: zero errors
+- [x] Lint: passing
+- [x] All 285 tests passing
+- [x] Production build: 74 routes, clean
+- [x] Deployed: https://www.travelvus.com
+- [x] Redundancies removed: DecisionThreshold, SecondaryFlips, DecisionDebt
+- [x] Evidence/Intelligence boundary documented
+- [x] Progressive disclosure: flips >3 + unknowns collapsed
+- [x] Edit button: 44px touch target, aria-expanded
+- [x] Unchanged-edit feedback implemented
+- [x] Mobile context strip handles all 3 edit states
+
+---
+
+## Known V1 UX Limitations (Phase 107.1)
+
+1. No browser-based interaction tests (Playwright) — relies on unit tests + build verification
+2. No automated visual regression screenshots
+3. Mobile QA done via responsive build verification, not device-level testing
+4. Edge states (malformed URL, rapid toggling) tested at unit level only
+5. Currency formatting uses inline `€` prefix rather than `formatMoney()` for most dynamic values
+6. The cascade animation is the only "delight" moment — the reasoning section is functional/editorial
 
 ---
 
