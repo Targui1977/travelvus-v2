@@ -262,7 +262,13 @@ export const CITY_PRODUCTION_CHECKLIST: string[] = [
   "isSupportedComparison() returns true for this city's airport pair",
   "buildCityOption() produces correct names + costs + times",
   "Validator (validateCity) returns ready=true with 0 failures",
+  "Airport Choice Hub: /{city}/airport-choice/ page created",
+  "Hub: airport cards with strengths/watch-outs/best-for",
+  "Hub: traveller scenarios with prefilled compare links",
+  "Hub: quick facts table with transfer costs/times",
+  "Hub: related guides linked",
   "Browser tests: Home → {city} → Result → Edit → Revert",
+  "Browser tests: Hub → Compare → Result",
   "Browser tests: mobile 390px no overflow",
   "Documentation: canonical scenario + assumptions + limitations",
 ];

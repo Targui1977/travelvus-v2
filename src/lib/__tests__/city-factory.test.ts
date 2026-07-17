@@ -127,8 +127,8 @@ describe("PARIS_TEMPLATE", () => {
 });
 
 describe("CITY_PRODUCTION_CHECKLIST", () => {
-  it("has at least 15 items", () => {
-    expect(CITY_PRODUCTION_CHECKLIST.length).toBeGreaterThanOrEqual(15);
+  it("has at least 20 items", () => {
+    expect(CITY_PRODUCTION_CHECKLIST.length).toBeGreaterThanOrEqual(20);
   });
 
   it("every item is a non-empty string", () => {
