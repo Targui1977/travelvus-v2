@@ -31,6 +31,8 @@ export interface CityTransferProfile {
   transferCostEUR: number;
   transferDurationMin: number;
   mode: string;
+  interchangeCount: number;
+  serviceWindow: string;
   isIllustrative: boolean;
 }
 
@@ -49,6 +51,8 @@ export function getCityTransfer(
         transferCostEUR: profile.transferCostEUR,
         transferDurationMin: profile.transferDurationMin,
         mode: profile.mode,
+        interchangeCount: profile.interchangeCount,
+        serviceWindow: profile.serviceWindow,
         isIllustrative: profile.isIllustrative,
       } : undefined;
     }
@@ -58,6 +62,8 @@ export function getCityTransfer(
         transferCostEUR: profile.transferCostEUR,
         transferDurationMin: profile.transferDurationMin,
         mode: profile.mode,
+        interchangeCount: profile.interchangeCount,
+        serviceWindow: profile.serviceWindow,
         isIllustrative: profile.isIllustrative,
       } : undefined;
     }
