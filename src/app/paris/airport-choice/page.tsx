@@ -205,15 +205,22 @@ export default function ParisAirportChoicePage() {
               <span className="app-header-dot" />
             </Link>
           </span>
-          <nav className="app-header-nav" style={{ display: "flex", gap: 22 }}>
-            <Link href="/" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)", textDecoration: "none" }}>Home</Link>
-            <Link href="/paris-airports" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)", textDecoration: "none" }}>Paris Airports</Link>
-            <Link href="/london-airports" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)", textDecoration: "none" }}>London</Link>
-            <Link href="/new-york-airports" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)", textDecoration: "none" }}>New York</Link>
-            <Link href="/methodology" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)", textDecoration: "none" }}>Methodology</Link>
+          <nav className="app-header-nav" style={{ display: "flex", gap: 8 }}>
+            <Link href="/" className="hub-nav-link" style={{ font: "600 14px/1 Geist, sans-serif", letterSpacing: "0.01em", color: "#3c4650", padding: "7px 14px", borderRadius: 20, textDecoration: "none", transition: "color 0.2s, background 0.2s" }}>Home</Link>
+            <Link href="/paris-airports" style={{ font: "600 14px/1 Geist, sans-serif", letterSpacing: "0.01em", color: "var(--ink)", padding: "7px 14px", borderRadius: 20, textDecoration: "none", background: "rgba(184,92,56,.10)" }}>Paris Airports</Link>
+            <Link href="/london-airports" className="hub-nav-link" style={{ font: "600 14px/1 Geist, sans-serif", letterSpacing: "0.01em", color: "#3c4650", padding: "7px 14px", borderRadius: 20, textDecoration: "none", transition: "color 0.2s, background 0.2s" }}>London</Link>
+            <Link href="/new-york-airports" className="hub-nav-link" style={{ font: "600 14px/1 Geist, sans-serif", letterSpacing: "0.01em", color: "#3c4650", padding: "7px 14px", borderRadius: 20, textDecoration: "none", transition: "color 0.2s, background 0.2s" }}>New York</Link>
+            <Link href="/methodology" className="hub-nav-link" style={{ font: "600 14px/1 Geist, sans-serif", letterSpacing: "0.01em", color: "#3c4650", padding: "7px 14px", borderRadius: 20, textDecoration: "none", transition: "color 0.2s, background 0.2s" }}>Methodology</Link>
           </nav>
         </div>
       </header>
+
+      <style>{`
+        .hub-nav-link:hover {
+          color: var(--copper) !important;
+          background: rgba(184,92,56,.06) !important;
+        }
+      `}</style>
 
       <main>
         {/* ══════════════════════════════════════════════════
