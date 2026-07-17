@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo } from "react";
 import Link from "next/link";
 import { calcRealCost, monetaryWinner, detectChange, estimateThreshold } from "@/lib/decision-engine";
-import { deriveEditorial, deriveThreshold, deriveFlips, deriveContextStrip, deriveChangedConsequence } from "@/lib/derive-content";
+import { deriveEditorial, deriveContextStrip, deriveChangedConsequence } from "@/lib/derive-content";
 import type { CostLine, OptionResult, OptionId, FullResultData } from "@/lib/types";
 import type { CalculationResult } from "@/lib/calculation-contract";
 import type { CostLineDisplay, CostColumnDisplay } from "@/components/result/RealCost";
@@ -11,15 +11,7 @@ import { buildDecisionContext } from "@/lib/interactive/interactive-decision-con
 import { buildInteractiveDecisionOutcome } from "@/lib/interactive/interactive-decision-outcome";
 import RecommendationEvidence from "@/components/visual/RecommendationEvidence";
 import DecisionIntelligence from "@/components/visual/DecisionIntelligence";
-import {
-  RealCost,
-  DoorToDoor,
-  DecisionThreshold,
-  SecondaryFlips,
-  DecisionDebt,
-  VerdictChangedBanner,
-  RobustnessNote,
-} from "@/components/result";
+import { RealCost, DoorToDoor, VerdictChangedBanner, RobustnessNote } from "@/components/result";
 import { CalculationExperience } from "@/components/experience";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
 import Signature from "@/components/ui/Signature";
@@ -244,6 +236,7 @@ export default function ResultClient({
   const baseA = initialOptionA;
   const winner = monetaryWinner(optionA.realCost, optionB.realCost);
   const isChanged = changedState !== null;
+  const isEditedUnchanged = bagRemoved && !isChanged;
 
   /* ── Actions ─────────────────────────────────────────── */
 
@@ -291,11 +284,6 @@ export default function ResultClient({
 
   /* ── Derived dynamic content ────────────────────────── */
   const editorial = useMemo(() => deriveEditorial(optionA, optionB), [optionA, optionB]);
-  const dynThreshold = useMemo(() => deriveThreshold(optionA, optionB), [optionA, optionB]);
-  const dynFlips = useMemo(
-    () => deriveFlips(optionA, optionB, bagRemoved, initialOptionA, initialOptionB),
-    [optionA, optionB, bagRemoved, initialOptionA, initialOptionB]
-  );
   const contextStrip = useMemo(() => deriveContextStrip(optionA, optionB).text, [optionA, optionB]);
 
   /* ── Interactive Decision Engine ───────────────────────── */
@@ -433,8 +421,8 @@ export default function ResultClient({
           <Link href="/" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)", textDecoration: "none" }}>
             &larr; Compare
           </Link>
-          <button onClick={() => setShowEdit(!showEdit)} className="cursor-pointer bg-transparent border-0 p-0" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)" }}>
-            Edit options
+          <button onClick={() => setShowEdit(!showEdit)} className="cursor-pointer bg-transparent border-0 p-0" style={{ fontFamily: "var(--sans)", fontWeight: 500, fontSize: 13, lineHeight: 1, color: "var(--muted)", minHeight: 44, minWidth: 44, display: "inline-flex", alignItems: "center" }} aria-expanded={showEdit}>
+            {showEdit ? "Close" : "Edit options"}
           </button>
           <button
             onClick={async () => {
@@ -458,6 +446,13 @@ export default function ResultClient({
             &#9670; A now wins &middot; &euro;12
           </span>
           <button className="flip-undo-btn" onClick={undo} style={{ fontSize: 9 }}>&#8634; Undo</button>
+        </div>
+      ) : isEditedUnchanged ? (
+        <div className="hidden mobile:flex items-center justify-between" style={{ background: "var(--paper-2)", padding: "8px 16px", borderBottom: "1px solid var(--line)" }}>
+          <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 10, lineHeight: 1, letterSpacing: "0.06em", color: "var(--copper)" }}>
+            &#9670; Rec unchanged
+          </span>
+          <button onClick={undo} style={{ fontFamily: "var(--mono)", fontSize: 9, color: "var(--muted)", background: "none", border: "none", cursor: "pointer" }}>&#8634; Undo</button>
         </div>
       ) : (
         <div className="hidden mobile:flex items-center gap-[8px]" style={{ background: "var(--paper-2)", padding: "8px 16px", borderBottom: "1px solid var(--line)" }}>
@@ -522,14 +517,28 @@ export default function ResultClient({
         </div>
       </div>
 
+      {/* ═══ Edit unchanged feedback ═══ */}
+      {isEditedUnchanged && (
+        <div className="result-pad" style={{ paddingBottom: 0 }}>
+          <div style={{
+            padding: "8px 14px", borderRadius: 6,
+            border: "1px solid rgba(184,92,56,0.15)", background: "rgba(184,92,56,0.04)",
+            fontFamily: "var(--sans)", fontSize: 11, color: "var(--pmuted)", lineHeight: 1.4,
+          }}>
+            <span style={{ color: "var(--copper)", fontWeight: 600 }}>Recommendation unchanged.</span>
+            {" "}Removing the bag changed the cost gap but the same option still wins. See updated metrics below.
+          </div>
+        </div>
+      )}
+
       {/* ═══ Content ═══ */}
       <div className="result-pad">
         <RealCost
           optionA={costA}
           optionB={costB}
           winner={winner as OptionId}
-          editorial={isChanged || !initialSupported ? undefined : editorial}
-          sectionTitle={isChanged ? "Real cost — one line changed" : !initialSupported ? "Ticket comparison only" : undefined}
+          editorial={isChanged || isEditedUnchanged || !initialSupported ? undefined : editorial}
+          sectionTitle={isChanged ? "Real cost — one line changed" : isEditedUnchanged ? "Real cost — bag removed" : !initialSupported ? "Ticket comparison only" : undefined}
         />
 
         {isChanged && (
@@ -554,13 +563,8 @@ export default function ResultClient({
           </>
         )}
 
-        {!isChanged && initialSupported && (
-          <>
-            <DecisionThreshold data={dynThreshold.data} />
-            <SecondaryFlips flips={dynFlips} />
-            <DecisionDebt title={d.decisionDebt.title} textHtml={d.decisionDebt.textHtml} factors={d.decisionDebt.factors} />
-          </>
-        )}
+        {/* DecisionThreshold, SecondaryFlips, DecisionDebt removed in Phase 107.1 —
+            superseded by RecommendationEvidence + DecisionIntelligence below */}
 
         {isChanged && (
           <div className="undo-keep-row">
@@ -584,8 +588,6 @@ export default function ResultClient({
           <RecommendationEvidence
             factors={decisionOutcome.evidence.factors}
             trace={decisionOutcome.evidence.trace}
-            limitations={decisionOutcome.evidence.limitations}
-            strength={decisionOutcome.evidence.strength}
           />
           <DecisionIntelligence data={decisionOutcome.decisionIntelligence} />
         </div>
