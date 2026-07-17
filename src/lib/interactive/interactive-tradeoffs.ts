@@ -182,7 +182,10 @@ function buildUnknowns(
   }
 
   // Only list unknowns that materially affect the result
-  unknowns.push("Exact London destination — transfer costs assume central London");
+  // Destination is now selected — only note if it's the legacy default
+  if (!ctx.destinationExplicitlySelected) {
+    unknowns.push(`Exact London destination — currently using default (${ctx.londonDestinationLabel}). Select your real destination to refine the result.`);
+  }
 
   if (!ctx.bagRemoved) {
     unknowns.push("Actual baggage needs — travelling without a checked bag reduces cost");

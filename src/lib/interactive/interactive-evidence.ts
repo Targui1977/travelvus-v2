@@ -146,12 +146,17 @@ function buildFactors(
     }
   }
 
-  // 5. Arrival convenience (only when both options have door-to-door data)
-  if (optionA.doorToDoorMinutes > 0 && optionB.doorToDoorMinutes > 0) {
+  // 5. Destination transfer (destination-aware)
+  if (ctx.isSupported && optionA.doorToDoorMinutes > 0 && optionB.doorToDoorMinutes > 0) {
+    const transferA = lastCostLine(optionA);
+    const transferB = lastCostLine(optionB);
+
     factors.push({
-      title: "Arrival convenience",
-      explanation: `${optionB.name} arrives into central London directly via the Elizabeth Line or Piccadilly Line. ${optionA.name} requires a 45–60 min transfer from Stansted to central London.`,
-      weight: "supporting",
+      title: `Transfer to ${ctx.londonDestinationLabel}`,
+      explanation: transferA && transferB
+        ? `${optionB.name} reaches ${ctx.londonDestinationLabel} with a direct connection — €${transferB.amount} and faster. ${optionA.name} takes longer and costs €${transferA.amount} with more interchanges.`
+        : `${optionB.name} has better connections to ${ctx.londonDestinationLabel}. ${optionA.name}'s transfer is longer.`,
+      weight: "medium",
     });
   }
 

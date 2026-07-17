@@ -136,8 +136,8 @@ export function generateFlips(
 
   /* ── 5. Destination changes ────────────────────────────── */
   flips.push({
-    condition: `Your destination is not central London`,
-    result: `Transfer costs and times would need recalculation. The current comparison assumes central London arrival.`,
+    condition: `Your destination changes from ${context.londonDestinationLabel}`,
+    result: `Transfer costs and times change. Different London destinations favour different airports. See the destination selector to compare.`,
   });
 
   return flips;

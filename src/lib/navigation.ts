@@ -13,6 +13,8 @@
  *   bt2 = B to airport
  *   bd  = B departure time
  *   ba  = B arrival time
+ *   ld  = London destination (e.g. "westminster", "paddington")
+ *          Omitted/missing → legacy default (westminster)
  */
 
 export interface CompareParams {
@@ -26,6 +28,8 @@ export interface CompareParams {
   bTo: string;
   bDep: string;
   bArr: string;
+  /** London destination ID — optional, defaults to westminster when absent */
+  londonDestination?: string;
 }
 
 /**
@@ -48,6 +52,9 @@ export function encodeCompareParams(p: CompareParams): string {
   sp.set("bt2", p.bTo.trim());
   sp.set("bd", p.bDep.trim());
   sp.set("ba", p.bArr.trim());
+  if (p.londonDestination) {
+    sp.set("ld", p.londonDestination.trim());
+  }
   return sp.toString();
 }
 
@@ -63,6 +70,8 @@ export function decodeCompareParams(
 
   if (vals.some((v) => !v || v.trim() === "")) return null;
 
+  const londonDestination = searchParams.get("ld")?.trim() || undefined;
+
   return {
     aTicket: vals[0]!,
     aFrom: vals[1]!,
@@ -74,5 +83,6 @@ export function decodeCompareParams(
     bTo: vals[7]!,
     bDep: vals[8]!,
     bArr: vals[9]!,
+    londonDestination,
   };
 }

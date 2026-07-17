@@ -11,6 +11,9 @@ import { buildDecisionContext } from "@/lib/interactive/interactive-decision-con
 import { buildInteractiveDecisionOutcome } from "@/lib/interactive/interactive-decision-outcome";
 import RecommendationEvidence from "@/components/visual/RecommendationEvidence";
 import DecisionIntelligence from "@/components/visual/DecisionIntelligence";
+import { buildDestinationOptions, resolveDestination } from "@/lib/destination-engine";
+import { getDestinationShortLabel, LONDON_DESTINATION_IDS } from "@/data/london-destinations";
+import type { LondonDestinationId } from "@/data/london-destinations";
 import { RealCost, DoorToDoor, VerdictChangedBanner, RobustnessNote } from "@/components/result";
 import { CalculationExperience } from "@/components/experience";
 import TravelvusVerdict from "@/components/guide/TravelvusVerdict";
@@ -82,6 +85,10 @@ interface ResultClientProps {
   initialDataRef: FullResultData;
   calculationResult: CalculationResult;
   stepLabels: string[];
+  /** London destination ID from URL (or legacy default) */
+  initialDestinationId: string;
+  /** London destination display label */
+  initialDestinationLabel: string;
 }
 
 /* ── Explanation (shown after verdict during cascade) ────── */
@@ -215,6 +222,8 @@ export default function ResultClient({
   initialDataRef: d,
   calculationResult,
   stepLabels,
+  initialDestinationId,
+  initialDestinationLabel,
 }: ResultClientProps) {
   /* ── Cascade state ─────────────────────────────────────── */
   const [cascadeComplete, setCascadeComplete] = useState(false);
@@ -225,6 +234,7 @@ export default function ResultClient({
   const [showEdit, setShowEdit] = useState(false);
   const [bagRemoved, setBagRemoved] = useState(false);
   const [shareMsg, setShareMsg] = useState<string | null>(null);
+  const [destinationId, setDestinationId] = useState<string>(initialDestinationId);
   const [changedState, setChangedState] = useState<{
     cause: string;
     consequence: string;
@@ -276,11 +286,64 @@ export default function ResultClient({
     setOptionB({ ...initialOptionB });
     setChangedState(null);
     setBagRemoved(false);
-  }, [initialOptionA, initialOptionB]);
+    setDestinationId(initialDestinationId);
+  }, [initialOptionA, initialOptionB, initialDestinationId]);
 
   const keep = useCallback(() => {
     setChangedState(null);
   }, []);
+
+  const changeDestination = useCallback(
+    (newDest: string) => {
+      if (newDest === destinationId) return;
+
+      const destId = resolveDestination(newDest);
+      const oldA = { ...optionA, realCost: calcRealCost(optionA.costLines) };
+      const oldB = { ...optionB, realCost: calcRealCost(optionB.costLines) };
+
+      // Rebuild options with new destination profile
+      const destOptions = buildDestinationOptions(
+        initialOptionA,
+        initialOptionB,
+        destId,
+        optionA.costLines[0]?.amount,
+        optionB.costLines[0]?.amount
+      );
+
+      // If bag was removed, re-apply bag removal
+      if (bagRemoved) {
+        destOptions.optionA.costLines = destOptions.optionA.costLines.map(
+          (l, i) =>
+            i === 1
+              ? { ...l, amount: 0, isIncluded: true, label: "Checked bag — removed" }
+              : l
+        );
+        destOptions.optionA.realCost = calcRealCost(destOptions.optionA.costLines);
+      }
+
+      const change = detectChange(oldA, oldB, destOptions.optionA, destOptions.optionB);
+
+      setOptionA(destOptions.optionA);
+      setOptionB(destOptions.optionB);
+      setDestinationId(destId);
+
+      if (change) {
+        setChangedState({
+          cause: `Destination changed to ${getDestinationShortLabel(destId)}.`,
+          consequence: deriveChangedConsequence(
+            change.newWinner,
+            destOptions.optionA.realCost,
+            destOptions.optionB.realCost
+          ),
+          previousWinner: change.previousWinner,
+          newWinner: change.newWinner,
+        });
+      } else {
+        setChangedState(null);
+      }
+    },
+    [optionA, optionB, initialOptionA, initialOptionB, destinationId, bagRemoved]
+  );
 
   /* ── Derived dynamic content ────────────────────────── */
   const editorial = useMemo(() => deriveEditorial(optionA, optionB), [optionA, optionB]);
@@ -292,8 +355,10 @@ export default function ResultClient({
       buildDecisionContext(calculationResult, {
         bagRemoved,
         previousWinner: changedState?.previousWinner,
+        londonDestinationId: destinationId,
+        destinationExplicitlySelected: destinationId !== initialDestinationId,
       }),
-    [calculationResult, bagRemoved, changedState]
+    [calculationResult, bagRemoved, changedState, destinationId, initialDestinationId]
   );
 
   const decisionOutcome = useMemo(
@@ -467,13 +532,39 @@ export default function ResultClient({
             <p style={{ fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.5, color: "var(--muted)", margin: "0 0 12px 0" }}>
               Edit one variable to see if the verdict holds.
             </p>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-              <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, color: "var(--ink)" }}>
-                Option A · Checked bag:
-              </span>
-              <button className={bagRemoved ? "btn-outline" : "btn-filled"} onClick={bagRemoved ? undo : removeBag} style={{ padding: "8px 16px", fontSize: 13 }}>
-                {bagRemoved ? "Restore (€45)" : "Remove (−€45)"}
-              </button>
+            <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+              {/* Baggage toggle */}
+              <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, color: "var(--ink)" }}>
+                  Checked bag:
+                </span>
+                <button className={bagRemoved ? "btn-outline" : "btn-filled"} onClick={bagRemoved ? undo : removeBag} style={{ padding: "8px 16px", fontSize: 13 }}>
+                  {bagRemoved ? "Restore (€45)" : "Remove (−€45)"}
+                </button>
+              </div>
+
+              {/* Destination selector */}
+              <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <span style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 11, color: "var(--ink)" }}>
+                  Where in London?
+                </span>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {LONDON_DESTINATION_IDS.map((id) => (
+                    <button
+                      key={id}
+                      onClick={() => changeDestination(id)}
+                      className={id === destinationId ? "btn-filled" : "btn-outline"}
+                      style={{
+                        padding: "6px 12px", fontSize: 12,
+                        minHeight: 44, minWidth: 44,
+                      }}
+                      aria-pressed={id === destinationId}
+                    >
+                      {getDestinationShortLabel(id)}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -493,6 +584,18 @@ export default function ResultClient({
             {isChanged ? "The Verdict · updated" : "The Verdict"}
           </span>
           <Signature variant="verdict" />
+        </div>
+
+        {/* Destination context summary */}
+        <div style={{
+          fontFamily: "var(--mono)", fontWeight: 400, fontSize: 10,
+          letterSpacing: "0.04em", color: "var(--pmuted)",
+          marginBottom: 18, opacity: 0.7,
+        }}>
+          Destination: {getDestinationShortLabel(destinationId as LondonDestinationId)}
+          {destinationId !== initialDestinationId && (
+            <span style={{ color: "var(--copper)", marginLeft: 6 }}>(edited)</span>
+          )}
         </div>
 
         <h2 style={{ fontFamily: "var(--serif)", fontWeight: 400, fontSize: isChanged ? 34 : 40, lineHeight: 1.12, color: "var(--paper)", maxWidth: 640, margin: 0 }}

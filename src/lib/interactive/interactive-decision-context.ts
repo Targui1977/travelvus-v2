@@ -11,6 +11,8 @@
 
 import type { OptionResult, OptionId } from "@/lib/types";
 import type { CalculationResult } from "@/lib/calculation-contract";
+import type { LondonDestinationId } from "@/data/london-destinations";
+import { getDestinationLabel, getDestinationShortLabel, getTransferProfile } from "@/data/london-destinations";
 
 /* ── Context Contract ─────────────────────────────────────── */
 
@@ -51,6 +53,16 @@ export interface InteractiveDecisionContext {
   /** Winner before the current edit (if a change occurred) */
   previousWinner?: "A" | "B" | "tie";
 
+  /* Destination */
+  /** Selected London destination ID */
+  londonDestinationId: LondonDestinationId;
+  /** Display label for the selected destination */
+  londonDestinationLabel: string;
+  /** Representative station */
+  representativeStation: string;
+  /** Whether the destination was explicitly selected (vs legacy default) */
+  destinationExplicitlySelected: boolean;
+
   /* Currency treatment */
   /** All monetary values in this context use this currency */
   comparisonCurrency: "EUR";
@@ -70,9 +82,13 @@ export function buildDecisionContext(
     bagRemoved?: boolean;
     editedLineIndex?: number;
     previousWinner?: OptionId | "tie";
+    londonDestinationId?: string;
+    destinationExplicitlySelected?: boolean;
   }
 ): InteractiveDecisionContext {
   const { optionA, optionB } = result;
+
+  const destId = (overrides?.londonDestinationId ?? "westminster") as LondonDestinationId;
 
   return {
     originCode: "BER",
@@ -93,6 +109,11 @@ export function buildDecisionContext(
     bagRemoved: overrides?.bagRemoved ?? false,
     editedLineIndex: overrides?.editedLineIndex,
     previousWinner: overrides?.previousWinner,
+
+    londonDestinationId: destId,
+    londonDestinationLabel: getDestinationLabel(destId),
+    representativeStation: getDestinationShortLabel(destId),
+    destinationExplicitlySelected: overrides?.destinationExplicitlySelected ?? false,
 
     comparisonCurrency: "EUR",
   };

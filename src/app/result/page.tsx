@@ -5,6 +5,8 @@ import { normalizeInput, isSupportedComparison, buildVerdict } from "@/lib/norma
 import { MOCK_RESULT } from "@/lib/mock-data";
 import { calcRealCost, monetaryWinner } from "@/lib/decision-engine";
 import { buildCalculationResult } from "@/lib/calculation-contract";
+import { buildDestinationOptions, resolveDestination } from "@/lib/destination-engine";
+import { getDestinationLabel } from "@/data/london-destinations";
 import { STEP_IDS } from "@/lib/experience-state";
 import type { OptionResult } from "@/lib/types";
 
@@ -41,29 +43,30 @@ export default async function ResultPage({
   const norm = raw ? normalizeInput(raw) : null;
   const supported = norm ? isSupportedComparison(norm) : false;
 
+  // Resolve destination from URL parameter (legacy default: Westminster)
+  const destinationId = resolveDestination(raw?.londonDestination);
+
   let initialOptionA: OptionResult;
   let initialOptionB: OptionResult;
   let initialVerdict: typeof d.verdict;
   let initialSupported: boolean;
 
   if (norm && supported) {
-    const baseA = { ...d.optionA };
-    const baseB = { ...d.optionB };
-    baseA.costLines = baseA.costLines.map((l, i) =>
-      i === 0 ? { ...l, amount: norm.ticketA } : l
+    // Build destination-specific options from the base mock data
+    const destOptions = buildDestinationOptions(
+      d.optionA,
+      d.optionB,
+      destinationId,
+      norm.ticketA,
+      norm.ticketB
     );
-    baseA.visibleTicketPrice = norm.ticketA;
-    baseA.realCost = calcRealCost(baseA.costLines);
-    baseB.costLines = baseB.costLines.map((l, i) =>
-      i === 0 ? { ...l, amount: norm.ticketB } : l
-    );
-    baseB.visibleTicketPrice = norm.ticketB;
-    baseB.realCost = calcRealCost(baseB.costLines);
-    const mw = monetaryWinner(baseA.realCost, baseB.realCost);
-    initialOptionA = baseA;
-    initialOptionB = baseB;
+    initialOptionA = destOptions.optionA;
+    initialOptionB = destOptions.optionB;
+
+    const mw = monetaryWinner(initialOptionA.realCost, initialOptionB.realCost);
     initialVerdict = buildVerdict(
-      baseA.realCost, baseB.realCost, baseA.doorToDoorLabel, baseB.doorToDoorLabel,
+      initialOptionA.realCost, initialOptionB.realCost,
+      initialOptionA.doorToDoorLabel, initialOptionB.doorToDoorLabel,
       mw === "A", mw === "B"
     );
     initialSupported = true;
@@ -86,8 +89,12 @@ export default async function ResultPage({
     );
     initialSupported = false;
   } else {
-    initialOptionA = { ...d.optionA };
-    initialOptionB = { ...d.optionB };
+    // Demo mode: use default destination
+    const destOptions = buildDestinationOptions(
+      d.optionA, d.optionB, destinationId
+    );
+    initialOptionA = destOptions.optionA;
+    initialOptionB = destOptions.optionB;
     initialVerdict = d.verdict;
     initialSupported = true;
   }
@@ -123,6 +130,8 @@ export default async function ResultPage({
       initialDataRef={d}
       calculationResult={calculationResult}
       stepLabels={stepLabels}
+      initialDestinationId={destinationId}
+      initialDestinationLabel={getDestinationLabel(destinationId)}
     />
   );
 }
