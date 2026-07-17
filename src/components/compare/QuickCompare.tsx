@@ -24,23 +24,45 @@ interface ComparisonState {
   optionB: OptionInput;
 }
 
-/* ── Canonical mock data (Heathrow vs Stansted, Hi-Fi T2) ── */
-const INITIAL: ComparisonState = {
-  optionA: {
-    ticketPrice: "€58",
-    origin: "Berlin · BER",
-    destination: "London · STN",
-    departureTime: "20:40",
-    arrivalTime: "23:15",
-  },
-  optionB: {
-    ticketPrice: "€126",
-    origin: "Berlin · BER",
-    destination: "London · LHR",
-    departureTime: "14:10",
-    arrivalTime: "16:45",
-  },
-};
+/* ── City-aware canonical mock data ── */
+function getInitialForCity(city: CityId): ComparisonState {
+  switch (city) {
+    case "london":
+      return {
+        optionA: {
+          ticketPrice: "€58",
+          origin: "Berlin · BER",
+          destination: "London · STN",
+          departureTime: "20:40",
+          arrivalTime: "23:15",
+        },
+        optionB: {
+          ticketPrice: "€126",
+          origin: "Berlin · BER",
+          destination: "London · LHR",
+          departureTime: "14:10",
+          arrivalTime: "16:45",
+        },
+      };
+    case "new-york":
+      return {
+        optionA: {
+          ticketPrice: "€95",
+          origin: "Berlin · BER",
+          destination: "New York · JFK",
+          departureTime: "10:30",
+          arrivalTime: "13:45",
+        },
+        optionB: {
+          ticketPrice: "€110",
+          origin: "Berlin · BER",
+          destination: "New York · EWR",
+          departureTime: "11:00",
+          arrivalTime: "14:15",
+        },
+      };
+  }
+}
 
 /* ── Sub-components ────────────────────────────────────── */
 
@@ -138,11 +160,18 @@ function VsDivider() {
 /* ── Main component ────────────────────────────────────── */
 export default function QuickCompare({ standalone = true }: { standalone?: boolean }) {
   const router = useRouter();
-  const [state, setState] = useState<ComparisonState>(INITIAL);
+  const [state, setState] = useState<ComparisonState>(getInitialForCity("london"));
   const [activeTab, setActiveTab] = useState<"A" | "B">("A");
   const [errors, setErrors] = useState<string[]>([]);
   const [cityId, setCityId] = useState<CityId>("london");
   const [destinationId, setDestinationId] = useState<string>("westminster");
+
+  const handleCityChange = (newCity: CityId) => {
+    setCityId(newCity);
+    setDestinationId(newCity === "london" ? "westminster" : "midtown");
+    setState(getInitialForCity(newCity));
+    setErrors([]);
+  };
 
   const updateOption = (
     option: "A" | "B",
@@ -270,7 +299,7 @@ export default function QuickCompare({ standalone = true }: { standalone?: boole
               <button
                 key={id}
                 type="button"
-                onClick={() => { setCityId(id); setDestinationId(id === "london" ? "westminster" : "midtown"); }}
+                onClick={() => handleCityChange(id)}
                 className={id === cityId ? "btn-filled" : "btn-outline"}
                 style={{ padding: "6px 12px", fontSize: 12, minHeight: 44 }}
                 aria-pressed={id === cityId}

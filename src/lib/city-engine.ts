@@ -11,7 +11,7 @@
 
 import type { OptionResult, CostLine } from "./types";
 import type { CityId } from "@/data/cities";
-import { getCityAirports } from "@/data/cities";
+import { getCityAirports, CITY_REGISTRY } from "@/data/cities";
 import {
   getTransferProfile as getLondonTransfer,
   getDestinationLabel as getLondonDestLabel,
@@ -112,8 +112,13 @@ export function buildCityOption(input: CityOptionInput): OptionResult {
   const m = newDoorToDoorMinutes % 60;
   const doorToDoorLabel = `${h}h ${String(m).padStart(2, "0")}m`;
 
+  // Get airport name from city registry
+  const airports = getCityAirports(cityId);
+  const airportProfile = airports.find((a) => a.code === airportCode);
+
   return {
     ...baseOption,
+    name: airportProfile?.name ?? airportCode,
     code: airportCode,
     costLines: newLines,
     realCost,

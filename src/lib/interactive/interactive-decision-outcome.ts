@@ -208,9 +208,9 @@ function buildChangedState(
   const savings = Math.abs(optionA.realCost - optionB.realCost);
   const consequence =
     winner === "A"
-      ? `Option A — Stansted — now wins on money by €${savings}.`
+      ? `Option A — ${optionA.name} — now wins on money by €${savings}.`
       : winner === "B"
-        ? `Option B — Heathrow — is now the better deal by €${savings}.`
+        ? `Option B — ${optionB.name} — is now the better deal by €${savings}.`
         : `They are now tied on cost.`;
 
   return {
