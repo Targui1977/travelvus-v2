@@ -13,7 +13,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const guide = getGuide(slug);
   if (!guide) return { title: "Guide Not Found | Travelvus" };
-  return { title: guide.title, description: guide.description };
+  const url = `https://www.travelvus.com/guides/${slug}`;
+  return {
+    title: guide.title,
+    description: guide.description,
+    alternates: { canonical: url },
+    openGraph: { title: guide.title, description: guide.description, url, type: "article", siteName: "Travelvus" },
+    twitter: { card: "summary", title: guide.title, description: guide.description },
+  };
 }
 
 export default async function GuidePageRoute({ params }: Props) {

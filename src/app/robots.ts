@@ -5,8 +5,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: "/result",
+      disallow: ["/result", "/coverage"],
     },
-    sitemap: "https://travelvus.com/sitemap.xml",
+    sitemap: "https://www.travelvus.com/sitemap.xml",
   };
 }
