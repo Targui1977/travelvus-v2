@@ -40,6 +40,54 @@ const PARIS_GUIDES: GuideConfig[] = [
       { label: "Cheapest Paris Airport", href: "/guides/best-airport-for-cheapest-paris" },
     ], lastReviewed: "July 2026",
   },
+  // La Défense destination
+  {
+    slug: "best-airport-for-la-defense-guide", type: "destination", cityId: "paris", destinationId: "la-defense",
+    title: "Best Airport for La Défense — CDG or Orly?", description: "Which Paris airport is best for La Défense business district? CDG is faster and cheaper.",
+    headline: "Which airport is best for La Défense?",
+    intro: "La Défense is Europe's largest business district. CDG reaches it via RER B → RER A in ~55 min. Orly requires Orlyval + two RER changes (~70 min). CDG is faster, cheaper on transfer, and has better airline options for business travellers.",
+    airports: [
+      { code: "CDG", name: "Charles de Gaulle", why: "RER B to Châtelet then RER A to La Défense — about 55 minutes. One change. CDG also has more business-class routes and lounges.", transferNote: "RER B → RER A, €12, ~55 min, 1 change" },
+      { code: "ORY", name: "Orly", why: "Orlyval to Antony, RER B to Châtelet, RER A to La Défense — about 70 minutes with two changes. The Orlyval premium (€9.30) makes this more expensive too.", transferNote: "Orlyval → RER B → RER A, €15, ~70 min, 2 changes" },
+    ],
+    transferFacts: [
+      { label: "CDG → La Défense", value: "€12", note: "RER B → RER A, ~55 min" },
+      { label: "ORY → La Défense", value: "€15", note: "Orlyval → RER B → RER A, ~70 min" },
+      { label: "CDG time advantage", value: "15 min", note: "CDG is 15 min faster" },
+      { label: "CDG cost advantage", value: "€3", note: "CDG transfer is €3 cheaper" },
+    ],
+    takeaway: "CDG is better for La Défense — faster (55 vs 70 min) and cheaper transfer (€12 vs €15). Only choose Orly if the airfare difference is very large.",
+    ctaLabel: "Compare CDG vs ORY for La Défense →", ctaHref: buildHubCompareUrl("paris", "la-defense"),
+    relatedGuides: [
+      { label: "Best Airport for Central Paris", href: "/guides/best-airport-for-central-paris-guide" },
+      { label: "Best Airport for Gare du Nord", href: "/guides/best-airport-for-gare-du-nord" },
+      { label: "CDG vs Orly", href: "/guides/cdg-vs-orly" },
+    ], lastReviewed: "July 2026",
+  },
+  // Gare du Nord destination
+  {
+    slug: "best-airport-for-gare-du-nord-guide", type: "destination", cityId: "paris", destinationId: "gare-du-nord",
+    title: "Best Airport for Gare du Nord — CDG or Orly?", description: "Which Paris airport is best for Gare du Nord? CDG has a direct RER B in 35 min.",
+    headline: "Which airport is best for Gare du Nord?",
+    intro: "Gare du Nord is Paris's busiest railway station — and CDG has a direct RER B connection in just 35 minutes. No changes, trains every 10–15 minutes. Orly requires the Orlyval shuttle plus RER B (~55 min). For Eurostar, Thalys, or TGV connections, CDG is the overwhelming choice.",
+    airports: [
+      { code: "CDG", name: "Charles de Gaulle", why: "RER B direct to Gare du Nord in 35 minutes. No changes. Ideal for connecting to Eurostar, Thalys, or TGV services. The fastest airport-to-station connection in Paris.", transferNote: "RER B direct, €12, ~35 min, 0 changes" },
+      { code: "ORY", name: "Orly", why: "Orlyval to Antony, then RER B to Gare du Nord — about 55 minutes. The Orlyval premium adds cost and the change at Antony adds complexity. Only worth it for exceptional airfare deals.", transferNote: "Orlyval → RER B, €15, ~55 min, 1 change" },
+    ],
+    transferFacts: [
+      { label: "CDG → Gare du Nord", value: "€12", note: "RER B direct, ~35 min — fastest" },
+      { label: "ORY → Gare du Nord", value: "€15", note: "Orlyval + RER B, ~55 min" },
+      { label: "CDG time advantage", value: "20 min", note: "CDG is 20 min faster" },
+      { label: "CDG changes", value: "0", note: "Direct — no changes needed" },
+    ],
+    takeaway: "CDG is overwhelmingly better for Gare du Nord — 35 minutes direct vs 55 with a change. Only consider Orly with an exceptional airfare deal.",
+    ctaLabel: "Compare CDG vs ORY for Gare du Nord →", ctaHref: buildHubCompareUrl("paris", "gare-du-nord"),
+    relatedGuides: [
+      { label: "Best Airport for Central Paris", href: "/guides/best-airport-for-central-paris-guide" },
+      { label: "Best Airport for La Défense", href: "/guides/best-airport-for-la-defense-guide" },
+      { label: "CDG vs Orly", href: "/guides/cdg-vs-orly" },
+    ], lastReviewed: "July 2026",
+  },
   // Bercy destination
   {
     slug: "best-airport-for-bercy", type: "destination", cityId: "paris", destinationId: "bercy",
