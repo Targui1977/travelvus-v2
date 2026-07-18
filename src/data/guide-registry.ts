@@ -419,6 +419,185 @@ const LONDON_GUIDES: GuideConfig[] = [
       { label: "Heathrow vs Gatwick", href: "/guides/heathrow-vs-gatwick" },
     ], lastReviewed: "July 2026",
   },
+  // King's Cross destination
+  {
+    slug: "best-airport-for-kings-cross", type: "destination", cityId: "london", destinationId: "kings-cross",
+    title: "Best Airport for King's Cross — Heathrow or Stansted?", description: "Which London airport is best for King's Cross and St Pancras? Compare Heathrow vs Stansted for Eurostar connections.",
+    headline: "Which airport is best for King's Cross?",
+    intro: "King's Cross and St Pancras are major rail hubs — Eurostar, Thameslink, and national rail services. Heathrow's Piccadilly Line reaches King's Cross in ~55 minutes direct. Stansted Express reaches Tottenham Hale in 30 min, then Victoria Line to King's Cross (total ~40 min). Stansted is actually faster to King's Cross than Heathrow — a rare advantage for the budget airport.",
+    airports: [
+      { code: "STN", name: "Stansted", why: "Stansted Express to Tottenham Hale (30 min), then Victoria Line 2 stops to King's Cross (5 min). Total: ~40 minutes with one easy change. Stansted is faster than Heathrow for this specific destination.", transferNote: "Stansted Express + Victoria Line, €32, ~40 min, 1 change" },
+      { code: "LHR", name: "Heathrow", why: "Piccadilly Line direct to King's Cross takes ~55 minutes. No changes, but slower than Stansted. Elizabeth Line to Farringdon then Metropolitan/Circle to King's Cross is slightly faster (~50 min) but requires a change.", transferNote: "Piccadilly Line direct, €18, ~55 min, 0 changes" },
+    ],
+    transferFacts: [
+      { label: "STN → King's Cross", value: "€32", note: "Stansted Express + Victoria Line, ~40 min" },
+      { label: "LHR → King's Cross", value: "€18", note: "Piccadilly Line direct, ~55 min" },
+      { label: "STN time advantage", value: "15 min", note: "Stansted is faster to King's Cross" },
+      { label: "LHR cost advantage", value: "€14", note: "Heathrow transfer is cheaper" },
+    ],
+    takeaway: "Stansted is faster to King's Cross (~40 min vs ~55 min) — a rare win for the budget airport. But Heathrow is cheaper on transfer (€18 vs €32). If speed matters most, choose Stansted. If cost matters most, use the Decision Engine.",
+    ctaLabel: "Compare Heathrow vs Stansted →", ctaHref: buildHubCompareUrl("london", "kings-cross"),
+    relatedGuides: [
+      { label: "Best Airport for Paddington", href: "/guides/best-airport-for-paddington" },
+      { label: "Best Airport for Westminster", href: "/guides/best-airport-for-westminster" },
+      { label: "Fastest London Airport", href: "/guides/fastest-london-airport" },
+    ], lastReviewed: "July 2026",
+  },
+  // Traveller guides — 7 patterns
+  {
+    slug: "best-airport-for-business-london", type: "traveller", cityId: "london", travellerScenario: "business",
+    title: "Best London Airport for Business Travellers", description: "Which London airport is best for business travel? Speed, lounges, and City/Canary Wharf access compared.",
+    headline: "Which London airport is best for business travellers?",
+    intro: "Business travellers value speed, reliability, and proximity to business districts. Heathrow dominates: Elizabeth Line to Canary Wharf (48 min direct), Heathrow Express to Paddington (15 min), more lounges. Stansted is viable for Liverpool Street/City — Stansted Express direct in 47 min.",
+    airports: [
+      { code: "LHR", name: "Heathrow", why: "Elizabeth Line direct to Canary Wharf, Heathrow Express to Paddington. Multiple business-class lounges. Fast-track security available. The clear business-travel choice for most London destinations.", transferNote: "Heathrow Express/Elizabeth Line, multiple lounges, fast-track" },
+      { code: "STN", name: "Stansted", why: "Stansted Express direct to Liverpool Street (47 min) — good for the City. But limited lounges and no fast-track. Only viable if the meeting is near Liverpool Street or Shoreditch.", transferNote: "Stansted Express to Liverpool St, limited business facilities" },
+    ],
+    transferFacts: [
+      { label: "LHR → Canary Wharf", value: "€22", note: "Elizabeth Line direct, ~48 min" },
+      { label: "STN → Liverpool St", value: "€28", note: "Stansted Express direct, ~47 min" },
+      { label: "LHR lounges", value: "10+", note: "Multiple business/first-class lounges" },
+      { label: "STN lounges", value: "2", note: "Limited, primarily Escape Lounge" },
+    ],
+    takeaway: "Heathrow is the business traveller's London airport — better connections, more lounges, faster to most business districts. Stansted only for the City/Liverpool Street.",
+    ctaLabel: "Compare Heathrow vs Stansted →", ctaHref: buildHubCompareUrl("london", "canary-wharf"),
+    relatedGuides: [
+      { label: "Best Airport for Canary Wharf", href: "/guides/best-airport-for-canary-wharf" },
+      { label: "Fastest London Airport", href: "/guides/fastest-london-airport" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-fastest-london", type: "traveller", cityId: "london", travellerScenario: "fastest-arrival",
+    title: "Fastest London Airport — Heathrow vs Stansted", description: "Which London airport gets you to central London fastest? Door-to-door times compared.",
+    headline: "Which London airport is fastest to central London?",
+    intro: "Heathrow wins on speed for most destinations: 15 min to Paddington (Express), 28 min (Elizabeth Line), or 50 min (Piccadilly). Stansted's fastest connection is 47 min to Liverpool Street. For central and west London, Heathrow is significantly faster.",
+    airports: [
+      { code: "LHR", name: "Heathrow", why: "Heathrow Express: 15 min to Paddington. Elizabeth Line: 28 min to Paddington. This is the fastest airport-to-city connection in the UK. Piccadilly Line takes longer (50 min) but runs 24h on weekends.", transferNote: "15–50 min depending on mode — fastest of any London airport" },
+      { code: "STN", name: "Stansted", why: "Stansted Express takes 47 min to Liverpool Street. From there, add Tube time to your final destination. For King's Cross it's ~40 min total. For anywhere west of the City, Heathrow is faster.", transferNote: "47 min to Liverpool St, then Tube — total varies by destination" },
+    ],
+    transferFacts: [
+      { label: "LHR → Paddington (Express)", value: "15 min", note: "Fastest airport connection in the UK" },
+      { label: "STN → Liverpool St", value: "47 min", note: "Stansted Express non-stop from Tottenham Hale" },
+      { label: "LHR → Westminster", value: "~50 min", note: "Piccadilly/Elizabeth + District" },
+      { label: "STN → Westminster", value: "~70 min", note: "Express + 2 Tube changes" },
+    ],
+    takeaway: "Heathrow is faster for west and central London. Stansted is competitive for King's Cross and Liverpool Street. For most destinations, Heathrow saves 20+ minutes.",
+    ctaLabel: "Compare door-to-door times →", ctaHref: buildHubCompareUrl("london", "westminster"),
+    relatedGuides: [
+      { label: "Best Airport for Paddington", href: "/guides/best-airport-for-paddington" },
+      { label: "Best Airport for King's Cross", href: "/guides/best-airport-for-kings-cross" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-backpackers-london", type: "traveller", cityId: "london", travellerScenario: "lowest-cost",
+    title: "Best London Airport for Backpackers", description: "Which London airport is cheapest for backpackers? Budget airlines, no checked bags, cheapest transfers.",
+    headline: "Which London airport is best for backpackers?",
+    intro: "Backpackers travel light and cheap. Stansted's budget airlines (Ryanair, easyJet) offer lower base fares. With carry-on only, you avoid the €45 baggage fee. The cheaper ticket makes Stansted genuinely cheaper for backpackers — even with the longer transfer.",
+    airports: [
+      { code: "STN", name: "Stansted", why: "Ryanair and easyJet hub. Fares from €20–50 if you book ahead. No bag fee with carry-on only. Stansted Express to Liverpool Street then hostel-bound. The cheapest door-to-door option for budget travellers.", transferNote: "Budget fares €20–50, carry-on included, transfer €28–35" },
+      { code: "LHR", name: "Heathrow", why: "More expensive base fares on full-service airlines. But cheaper transfer (€18 vs €28–35). If you find a cheap Heathrow fare, the lower transfer cost makes it competitive.", transferNote: "Higher fares but cheaper transfer — check both" },
+    ],
+    transferFacts: [
+      { label: "STN budget fare", value: "€20–50", note: "Ryanair, easyJet — book ahead" },
+      { label: "LHR budget fare", value: "€60–100", note: "Fewer budget options from Heathrow" },
+      { label: "STN total (carry-on)", value: "€48–85", note: "Fare + €28 transfer" },
+      { label: "LHR total (carry-on)", value: "€78–118", note: "Fare + €18 transfer" },
+    ],
+    takeaway: "Stansted is usually cheaper for backpackers — especially with carry-on only. Budget airlines + no bag fees = genuine savings. But always check both on the Decision Engine.",
+    ctaLabel: "Compare cheapest STN vs LHR →", ctaHref: buildHubCompareUrl("london", "westminster"),
+    relatedGuides: [
+      { label: "Cheapest London Airport", href: "/guides/best-airport-for-cheapest-london" },
+      { label: "Best Airport for King's Cross", href: "/guides/best-airport-for-kings-cross" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-luxury-london", type: "traveller", cityId: "london", travellerScenario: "business",
+    title: "Best London Airport for Luxury Travellers", description: "Which London airport offers the best premium experience? Lounges, fast-track, and chauffeur transfers compared.",
+    headline: "Which London airport is best for luxury travellers?",
+    intro: "Heathrow is the luxury traveller's London airport. T5 has the Concorde Room (BA First), multiple premium lounges, personal shopping, and chauffeur transfers. The Sofitel is inside T5. Stansted has one Escape Lounge and no premium airline facilities.",
+    airports: [
+      { code: "LHR", name: "Heathrow", why: "T5 Concorde Room for BA First. Multiple Star Alliance and SkyTeam lounges. Personal shopping, champagne bars, spa. Sofitel inside T5. Heathrow Express or chauffeur to central London. The only choice for luxury arrivals.", transferNote: "Premium lounges, personal shopping, chauffeur available" },
+      { code: "STN", name: "Stansted", why: "One Escape Lounge (paid access, €30). No airline-first or business-class lounges. No fast-track. No premium transfer options. Not a luxury airport by any measure.", transferNote: "Limited to one paid-access lounge" },
+    ],
+    transferFacts: [
+      { label: "LHR premium lounges", value: "10+", note: "Including Concorde Room (BA First)" },
+      { label: "STN premium lounges", value: "1", note: "Escape Lounge only (paid access)" },
+      { label: "LHR → central chauffeur", value: "~€80", note: "Private transfer, ~40 min" },
+      { label: "STN → central chauffeur", value: "~€100", note: "Private transfer, ~60 min" },
+    ],
+    takeaway: "Heathrow is the only choice for luxury travellers. Premium lounges, personal shopping, chauffeur transfers, and the Sofitel. Stansted doesn't compete in this category.",
+    ctaLabel: "See Heathrow premium options →", ctaHref: buildHubCompareUrl("london", "paddington"),
+    relatedGuides: [
+      { label: "Best Airport for Business", href: "/guides/best-airport-for-business-london" },
+      { label: "Fastest London Airport", href: "/guides/best-airport-for-fastest-london" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-early-london", type: "traveller", cityId: "london", travellerScenario: "business",
+    title: "Best London Airport for Early Departures", description: "Which London airport is best for early flights? First trains, airport hotels, and reliable transfers.",
+    headline: "Which London airport is best for early departures?",
+    intro: "Heathrow has more early-morning options: first Heathrow Express at 05:10, first Piccadilly Line at 05:00, 15+ airport hotels. Stansted's first Express is at 05:30 — adequate but later. For flights before 07:00, Heathrow is the safer choice.",
+    airports: [
+      { code: "LHR", name: "Heathrow", why: "First Heathrow Express at 05:10 (arrives 05:25). First Piccadilly Line at ~05:00 from central London. 15+ airport hotels including Aerotel airside at T3. 24h taxi available.", transferNote: "First train 05:10, 15+ hotels, 24h taxi" },
+      { code: "STN", name: "Stansted", why: "First Stansted Express at 05:30 (arrives 06:17). Limited airport hotels (~5). Taxi from central London is expensive (€100+). Adequate but fewer options than Heathrow.", transferNote: "First train 05:30, ~5 hotels, taxi €100+" },
+    ],
+    transferFacts: [
+      { label: "LHR first train", value: "05:10", note: "Heathrow Express, arrives 05:25" },
+      { label: "STN first train", value: "05:30", note: "Stansted Express, arrives 06:17" },
+      { label: "LHR airport hotels", value: "15+", note: "Including Aerotel T3 (airside)" },
+      { label: "STN airport hotels", value: "~5", note: "Radisson Blu connected to terminal" },
+    ],
+    takeaway: "Heathrow is better for early departures — earlier trains, more hotels, better backup options. Stansted works for flights after 07:30.",
+    ctaLabel: "Compare LHR vs STN early morning →", ctaHref: buildHubCompareUrl("london", "westminster"),
+    relatedGuides: [
+      { label: "Best Airport for Business", href: "/guides/best-airport-for-business-london" },
+      { label: "Sleeping at Heathrow", href: "/knowledge/sleeping-at-heathrow" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-late-london", type: "traveller", cityId: "london", travellerScenario: "late-night",
+    title: "Best London Airport for Late Arrivals", description: "Which London airport is best for late-night arrivals? Transport after midnight and safety compared.",
+    headline: "Which London airport is best for late-night arrivals?",
+    intro: "Heathrow has better late-night options. Piccadilly Line runs 24h on Friday and Saturday nights. Night buses serve Heathrow. Taxis are available 24h. Stansted's last Express is at 00:30 — after that, you're taking an expensive taxi or waiting until 05:30.",
+    airports: [
+      { code: "LHR", name: "Heathrow", why: "Piccadilly Line 24h (Fri–Sat). Night Tube on Central and Victoria lines for connections. Night buses N9 to central London. Taxis available 24h. Better-lit, busier, safer-feeling at night.", transferNote: "24h Tube (Fri–Sat), night buses, 24h taxis" },
+      { code: "STN", name: "Stansted", why: "Last Stansted Express at 00:30. After that: only taxi or wait until 05:30. National Express coaches run through the night but take 90+ minutes. Limited facilities. Quiet and isolated-feeling after midnight.", transferNote: "Last train 00:30, then taxi or 90-min coach" },
+    ],
+    transferFacts: [
+      { label: "LHR last Tube", value: "00:30 (24h Fri–Sat)", note: "Piccadilly Line, Night Tube weekends" },
+      { label: "STN last train", value: "00:30", note: "Then nothing until 05:30" },
+      { label: "LHR night bus", value: "N9", note: "To central London, hourly" },
+      { label: "STN night coach", value: "National Express", note: "90+ min to central London" },
+    ],
+    takeaway: "Heathrow is far better for late-night arrivals — 24h Tube on weekends, better night buses, safer environment. Stansted is risky after 00:30.",
+    ctaLabel: "Compare LHR vs STN late-night →", ctaHref: buildHubCompareUrl("london", "westminster"),
+    relatedGuides: [
+      { label: "Best Airport for Early Departure", href: "/guides/best-airport-for-early-london" },
+      { label: "Sleeping at Stansted", href: "/knowledge/sleeping-at-stansted" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-carry-on-london", type: "traveller", cityId: "london", travellerScenario: "lowest-cost",
+    title: "Best London Airport for Carry-On Only", description: "Which London airport wins with carry-on only? No baggage fees change the cost comparison.",
+    headline: "Which London airport is best for carry-on only?",
+    intro: "Without checked baggage fees, Stansted's budget airlines become genuinely cheaper. No €45 bag fee means the ticket price advantage translates directly to real savings. But Heathrow's cheaper transfer (€18 vs €28–35) narrows the gap. Here's how they compare.",
+    airports: [
+      { code: "STN", name: "Stansted", why: "Ryanair/easyJet fares from €20–50 with carry-on included. No €45 bag fee to erode savings. The cheapest door-to-door option — even with the longer transfer.", transferNote: "Fare €20–50 + transfer €28–35, no bag fee" },
+      { code: "LHR", name: "Heathrow", why: "Higher base fares but cheaper transfer. With carry-on only and a competitive fare, Heathrow can be close. Check both on the Decision Engine.", transferNote: "Higher fares, cheaper transfer — check both" },
+    ],
+    transferFacts: [
+      { label: "STN carry-on total", value: "€48–85", note: "Fare + €28 transfer, no bag fee" },
+      { label: "LHR carry-on total", value: "€78–118", note: "Fare + €18 transfer, no bag fee" },
+      { label: "STN saving vs LHR", value: "€30+", note: "With carry-on only, STN is significantly cheaper" },
+      { label: "STN time cost", value: "+20 min", note: "Longer transfer than Heathrow" },
+    ],
+    takeaway: "Stansted is significantly cheaper for carry-on-only travellers. The budget airline advantage is real when you're not paying baggage fees. Use the Decision Engine to confirm for your dates.",
+    ctaLabel: "Compare carry-on STN vs LHR →", ctaHref: buildHubCompareUrl("london", "westminster"),
+    relatedGuides: [
+      { label: "Cheapest London Airport", href: "/guides/best-airport-for-cheapest-london" },
+      { label: "Best Airport for Backpackers", href: "/guides/best-airport-for-backpackers-london" },
+    ], lastReviewed: "July 2026",
+  },
 ];
 
 /* ═══════════════════════════════════════════════════════════ */
