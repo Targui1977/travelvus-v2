@@ -720,6 +720,161 @@ const NY_GUIDES: GuideConfig[] = [
       { label: "JFK vs Newark", href: "/guides/jfk-vs-newark" },
     ], lastReviewed: "July 2026",
   },
+  // Traveller guides — 7 patterns
+  {
+    slug: "best-airport-for-cheapest-ny", type: "traveller", cityId: "new-york", travellerScenario: "lowest-cost",
+    title: "Cheapest New York Airport — JFK or Newark?", description: "Which New York airport is actually cheapest? Real trip cost including baggage and transfers.",
+    headline: "Which New York airport is actually cheapest?",
+    intro: "JFK often has lower total costs: AirTrain + LIRR is cheaper than Newark's NJ Transit, and more airline competition means competitive fares. But Newark's United hub can produce deals. The cheaper ticket isn't always the cheaper journey — here's the real comparison.",
+    airports: [
+      { code: "JFK", name: "JFK", why: "AirTrain + LIRR transfer costs €11–16 depending on destination. More airline competition keeps fares competitive. Often the cheaper total journey despite Newark sometimes having lower base fares.", transferNote: "Transfer €11–16, competitive fares, more airlines" },
+      { code: "EWR", name: "Newark", why: "NJ Transit transfer costs €20 to most destinations — more than JFK. But United hub can produce lower fares on specific routes. Check both — the fare gap can overcome the transfer cost difference.", transferNote: "Transfer €20, United hub can mean lower fares" },
+    ],
+    transferFacts: [
+      { label: "JFK → Midtown", value: "€16", note: "AirTrain + LIRR to Grand Central" },
+      { label: "EWR → Midtown", value: "€20", note: "AirTrain + NJ Transit to Penn Station" },
+      { label: "JFK cheapest total", value: "€11+fare", note: "LIC via E subway — cheapest transfer" },
+      { label: "EWR cheapest total", value: "€20+fare", note: "No cheap transfer option from Newark" },
+    ],
+    takeaway: "JFK is usually cheaper on total cost — lower transfer costs and competitive fares. Newark can win with exceptional United deals. Use the Decision Engine to compare your specific dates.",
+    ctaLabel: "Compare real cost JFK vs Newark →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
+    relatedGuides: [
+      { label: "Best Airport for Midtown", href: "/guides/best-airport-for-midtown" },
+      { label: "Best Airport for Brooklyn", href: "/guides/best-airport-for-downtown-brooklyn" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-business-ny", type: "traveller", cityId: "new-york", travellerScenario: "business",
+    title: "Best New York Airport for Business Travellers", description: "Which New York airport is best for business travel? Speed, lounges, and Midtown/Financial District access.",
+    headline: "Which New York airport is best for business travellers?",
+    intro: "For Midtown offices, Newark's NJ Transit to Penn Station (30 min train) is hard to beat. For Financial District, both are competitive. JFK has more international business-class routes and better lounges. Newark wins on speed to Midtown; JFK wins on airline choice and facilities.",
+    airports: [
+      { code: "EWR", name: "Newark", why: "NJ Transit to Penn Station in 30 min — the fastest to Midtown. United hub with strong domestic network. Adequate business facilities. Better for Midtown meetings.", transferNote: "NJ Transit 30 min to Penn Station, United hub" },
+      { code: "JFK", name: "JFK", why: "More international business-class routes. Better lounges (Amex Centurion, Delta Sky Club, BA Galleries). AirTrain + LIRR to Grand Central (50 min) or Penn Station. Better for international business travel.", transferNote: "AirTrain + LIRR 50 min, premium lounges, more routes" },
+    ],
+    transferFacts: [
+      { label: "EWR → Midtown", value: "€20", note: "NJ Transit, ~30 min train" },
+      { label: "JFK → Midtown", value: "€16", note: "AirTrain + LIRR, ~50 min" },
+      { label: "EWR time advantage", value: "20 min", note: "Faster to Midtown offices" },
+      { label: "JFK lounges", value: "8+", note: "Centurion, Sky Club, BA Galleries" },
+    ],
+    takeaway: "Newark wins for Midtown business (faster). JFK wins for international business travel (more routes, better lounges). Choose based on where your meeting is and where you're flying from.",
+    ctaLabel: "Compare JFK vs Newark business →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
+    relatedGuides: [
+      { label: "Best Airport for Midtown", href: "/guides/best-airport-for-midtown" },
+      { label: "Best Airport for Financial District", href: "/guides/best-airport-for-midtown" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-fastest-ny", type: "traveller", cityId: "new-york", travellerScenario: "fastest-arrival",
+    title: "Fastest New York Airport — JFK or Newark?", description: "Which New York airport gets you to Manhattan fastest? Door-to-door times compared.",
+    headline: "Which New York airport is fastest to Manhattan?",
+    intro: "Newark wins on speed to Midtown: NJ Transit reaches Penn Station in 30 minutes (~40 min door-to-door). JFK takes 50 minutes to Grand Central via AirTrain + LIRR. But for Brooklyn and Queens, JFK is faster. The 'fastest' airport depends on where you're going.",
+    airports: [
+      { code: "EWR", name: "Newark", why: "NJ Transit to Penn Station: 30 min train + 10 min AirTrain = ~40 min total to Midtown. The fastest airport-to-Midtown connection in New York. Also faster to Lower Manhattan (50 min vs 60).", transferNote: "~40 min to Midtown — fastest in New York" },
+      { code: "JFK", name: "JFK", why: "AirTrain + LIRR to Grand Central: ~50 min to Midtown. But to Brooklyn (40 min) and LIC (45 min), JFK is faster than Newark. The 'fastest' label depends entirely on your destination.", transferNote: "Faster to Brooklyn/Queens, slower to Midtown" },
+    ],
+    transferFacts: [
+      { label: "EWR → Midtown", value: "~40 min", note: "Fastest to Midtown Manhattan" },
+      { label: "JFK → Midtown", value: "~50 min", note: "10 min slower than Newark" },
+      { label: "JFK → Brooklyn", value: "~40 min", note: "Faster to Brooklyn — JFK wins" },
+      { label: "EWR → Brooklyn", value: "~60 min", note: "Slower to Brooklyn — Newark loses" },
+    ],
+    takeaway: "Newark is fastest to Midtown. JFK is fastest to Brooklyn and Queens. The 'fastest airport' depends on your destination. Use the Decision Engine to see door-to-door times for your specific trip.",
+    ctaLabel: "Compare door-to-door times →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
+    relatedGuides: [
+      { label: "Best Airport for Midtown", href: "/guides/best-airport-for-midtown" },
+      { label: "Best Airport for Brooklyn", href: "/guides/best-airport-for-downtown-brooklyn" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-backpackers-ny", type: "traveller", cityId: "new-york", travellerScenario: "lowest-cost",
+    title: "Best New York Airport for Backpackers", description: "Which New York airport is cheapest for backpackers? Budget travel with carry-on only.",
+    headline: "Which New York airport is best for backpackers?",
+    intro: "Backpackers need the cheapest door-to-door journey. JFK's AirTrain + E subway to LIC costs just €11 — the cheapest airport transfer in New York. Newark's cheapest transfer is €20. For budget travellers heading to hostels in Brooklyn or Queens, JFK is the clear winner.",
+    airports: [
+      { code: "JFK", name: "JFK", why: "AirTrain + E subway to Court Square (LIC): €11 total. Cheapest airport transfer in New York. LIC and Brooklyn have the best hostel options. JFK is closer to both. The natural choice for backpackers.", transferNote: "€11 to LIC via E subway — cheapest transfer in NYC" },
+      { code: "EWR", name: "Newark", why: "NJ Transit minimum €20 to anywhere — nearly double JFK's cheapest transfer. Only makes sense if you find a dramatically cheaper flight into Newark.", transferNote: "Minimum €20 transfer — much more expensive than JFK" },
+    ],
+    transferFacts: [
+      { label: "JFK cheapest transfer", value: "€11", note: "AirTrain + E subway to LIC/Queens" },
+      { label: "EWR cheapest transfer", value: "€20", note: "NJ Transit to Penn Station" },
+      { label: "JFK → Brooklyn hostels", value: "€14", note: "AirTrain + LIRR to Atlantic Terminal" },
+      { label: "EWR → Brooklyn hostels", value: "€20", note: "NJ Transit + subway — longer and pricier" },
+    ],
+    takeaway: "JFK is the backpacker's New York airport. Cheaper transfers, closer to Brooklyn/Queens hostels, and the €11 E subway option is the best budget deal in the city.",
+    ctaLabel: "Compare cheapest JFK vs Newark →", ctaHref: buildHubCompareUrl("new-york", "long-island-city"),
+    relatedGuides: [
+      { label: "Cheapest NY Airport", href: "/guides/best-airport-for-cheapest-ny" },
+      { label: "Best Airport for LIC", href: "/guides/best-airport-for-lic" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-early-ny", type: "traveller", cityId: "new-york", travellerScenario: "business",
+    title: "Best New York Airport for Early Departures", description: "Which New York airport is best for early flights? First trains, airport hotels, and reliable transfers.",
+    headline: "Which New York airport is best for early departures?",
+    intro: "JFK has better early-morning options: AirTrain runs 24/7, LIRR starts early (~5:00 from Jamaica), and the TWA Hotel is connected to T5. Newark's NJ Transit starts ~5:00 as well, but JFK has more airport hotels and the 24h AirTrain makes terminal access easier.",
+    airports: [
+      { code: "JFK", name: "JFK", why: "AirTrain 24/7 to all terminals. LIRR from Jamaica starts ~5:00. TWA Hotel connected to T5. 10+ airport hotels. More options for early morning flights.", transferNote: "AirTrain 24/7, TWA Hotel at T5, 10+ hotels" },
+      { code: "EWR", name: "Newark", why: "NJ Transit starts ~5:00 from Penn Station. Marriott connected to terminal. ~6 airport hotels. Adequate but fewer options than JFK. Works for flights after 7:00.", transferNote: "NJ Transit from ~5:00, Marriott at terminal, ~6 hotels" },
+    ],
+    transferFacts: [
+      { label: "JFK first LIRR", value: "~05:00", note: "From Jamaica to Grand Central/Penn" },
+      { label: "EWR first NJ Transit", value: "~05:00", note: "From Penn Station to Newark Airport" },
+      { label: "JFK airport hotels", value: "10+", note: "Including TWA Hotel at T5" },
+      { label: "EWR airport hotels", value: "~6", note: "Marriott connected to terminal" },
+    ],
+    takeaway: "JFK is slightly better for early departures — more hotels, 24h AirTrain, and the TWA Hotel. Both airports have ~5:00 first trains. The difference is small.",
+    ctaLabel: "Compare JFK vs Newark early →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
+    relatedGuides: [
+      { label: "Best Airport for Business", href: "/guides/best-airport-for-business-ny" },
+      { label: "Sleeping at JFK", href: "/knowledge/sleeping-at-jfk" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-late-ny", type: "traveller", cityId: "new-york", travellerScenario: "late-night",
+    title: "Best New York Airport for Late Arrivals", description: "Which New York airport is best for late-night arrivals? Transport after midnight and safety.",
+    headline: "Which New York airport is best for late-night arrivals?",
+    intro: "JFK is better for late arrivals: AirTrain runs 24/7, the E subway runs 24/7, and the A train from Howard Beach also runs 24/7. Newark's NJ Transit stops around 01:30 — after that, taxi is your only option. For flights arriving after midnight, JFK is the safer choice.",
+    airports: [
+      { code: "JFK", name: "JFK", why: "AirTrain 24/7. E subway 24/7 to Queens and Midtown. A train 24/7 from Howard Beach. Multiple 24h transport options. Busier, better-lit, more security presence at night.", transferNote: "AirTrain 24/7, E and A subway 24/7, always an option" },
+      { code: "EWR", name: "Newark", why: "NJ Transit stops around 01:30. After that, only taxi ($50–70 to Manhattan). AirTrain runs 24/7 but the train connection doesn't. Limited late-night facilities. Riskier for delayed flights.", transferNote: "NJ Transit stops ~01:30 — taxi only after that" },
+    ],
+    transferFacts: [
+      { label: "JFK 24h options", value: "AirTrain + E/A subway", note: "Always a public-transport option" },
+      { label: "EWR after 01:30", value: "Taxi only", note: "NJ Transit stops — no public transport" },
+      { label: "JFK taxi to Midtown", value: "$52 fixed", note: "Flat fare to Manhattan" },
+      { label: "EWR taxi to Midtown", value: "$50–70", note: "Variable, no flat fare" },
+    ],
+    takeaway: "JFK is much better for late-night arrivals. 24/7 subway means you always have a public-transport option. Newark after 01:30 means an expensive taxi. If your flight lands after midnight, choose JFK.",
+    ctaLabel: "Compare JFK vs Newark late →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
+    relatedGuides: [
+      { label: "Best Airport for Early Departure", href: "/guides/best-airport-for-early-ny" },
+      { label: "Sleeping at Newark", href: "/knowledge/sleeping-at-newark" },
+    ], lastReviewed: "July 2026",
+  },
+  {
+    slug: "best-airport-for-first-time-ny", type: "traveller", cityId: "new-york", travellerScenario: "business",
+    title: "Best New York Airport for First-Time Visitors", description: "Which New York airport is easiest for first-time visitors? Simple transfers and clear navigation.",
+    headline: "Which New York airport is best for first-time visitors?",
+    intro: "First time in New York? Newark offers the simplest arrival: AirTrain → NJ Transit → Penn Station → you're in Midtown. One train, clear signage, 40 minutes. JFK requires AirTrain → LIRR or subway → more decisions, more complexity. For first-timers, Newark's straightforward NJ Transit connection is the friendlier introduction to the city.",
+    airports: [
+      { code: "EWR", name: "Newark", why: "AirTrain to Newark Airport Station. Buy NJ Transit ticket to Penn Station. 30-minute train ride. Arrive at Penn Station in Midtown — Madison Square Garden, Hudson Yards, Times Square are steps away. Simple, linear, hard to get lost.", transferNote: "AirTrain → NJ Transit → Penn Station. Simple." },
+      { code: "JFK", name: "JFK", why: "AirTrain to Jamaica. Decide: LIRR (faster, more expensive) or E subway (slower, cheaper). Then navigate to your destination. More choices = more complexity for jet-lagged first-timers. Works fine but requires more decisions.", transferNote: "AirTrain → choose LIRR or subway → more complex" },
+    ],
+    transferFacts: [
+      { label: "EWR transfer steps", value: "2", note: "AirTrain → NJ Transit → arrive Penn Station" },
+      { label: "JFK transfer steps", value: "3+", note: "AirTrain → choose mode → navigate subway/LIRR" },
+      { label: "EWR arrival", value: "Penn Station", note: "Right in Midtown — easy to orient" },
+      { label: "JFK arrival", value: "Grand Central/Jamaica", note: "Depends on which option you choose" },
+    ],
+    takeaway: "Newark is better for first-time visitors — simpler transfer, clearer navigation, arrives right in Midtown. JFK works but requires more decisions when you're tired and unfamiliar with New York.",
+    ctaLabel: "Compare JFK vs Newark first-timer →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
+    relatedGuides: [
+      { label: "Best Airport for Midtown", href: "/guides/best-airport-for-midtown" },
+      { label: "Best Airport for Business", href: "/guides/best-airport-for-business-ny" },
+    ], lastReviewed: "July 2026",
+  },
 ];
 
 /* ═══════════════════════════════════════════════════════════ */

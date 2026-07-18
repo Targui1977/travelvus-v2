@@ -492,6 +492,38 @@ const NY_KNOWLEDGE: KnowledgeConfig[] = [
     ctaLabel: "Compare JFK vs Newark →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
     lastReviewed: "July 2026",
   },
+  {
+    slug: "jfk-terminals-guide", cityId: "new-york", category: "terminals",
+    title: "JFK Terminals Guide — Layout, Airlines & Connections | Travelvus",
+    description: "Complete guide to JFK terminals: T1, T4, T5, T7, T8. Which terminal for which airline, AirTrain connections, and navigating between terminals.",
+    headline: "JFK terminals explained",
+    intro: "JFK has six active terminals: T1 (international), T4 (Delta, international), T5 (JetBlue, TWA Hotel), T7 (British Airways, Alaska), and T8 (American Airlines). They're arranged in a U-shape around the central roadway. The AirTrain connects all terminals in minutes — it's free between terminals and runs 24/7.",
+    keyFacts: [
+      { label: "Active terminals", value: "5 (T1, T4, T5, T7, T8)" },
+      { label: "T4 airlines", value: "Delta, Virgin, Emirates, KLM" },
+      { label: "T5 airline", value: "JetBlue + TWA Hotel" },
+      { label: "T8 airline", value: "American Airlines" },
+      { label: "AirTrain between terminals", value: "Free, every 4–12 min, 24/7" },
+      { label: "TWA Hotel", value: "Connected to T5, landmark building" },
+    ],
+    sections: [
+      { heading: "Terminal 1", body: "T1 serves primarily international carriers: Air France, Japan Airlines, Korean Air, Lufthansa, Turkish Airlines. It's a single, modern building with good dining and shopping. Connected to T4 and T8 via AirTrain (5 min). Recently renovated with improved security and departure lounges." },
+      { heading: "Terminal 4", body: "T4 is JFK's largest terminal and Delta's international hub. Also serves Emirates, Etihad, KLM, LATAM, Singapore Airlines, Virgin Atlantic, and Swiss. Two concourses (A and B) connected by a central hall. The busiest and best-equipped terminal — most lounges, most dining options, most shops. Connected to all terminals via AirTrain." },
+      { heading: "Terminal 5", body: "T5 is JetBlue's exclusive terminal — modern, well-designed, with good food options (Shake Shack, Blue Smoke). The landmark TWA Hotel is connected to T5 via a walkway — you can visit the rooftop pool and observation deck even if you're not staying. AirTrain stop directly outside." },
+    ],
+    tips: ["AirTrain is free between terminals — don't buy a ticket for inter-terminal transfers", "T4 has the most dining and lounge options — head there during long layovers", "T5's TWA Hotel rooftop pool is open to non-guests for a day pass — great for long layovers", "Check which terminal your airline uses before arriving — JFK terminals are far apart by foot"],
+    relatedGuides: [
+      { label: "Best Airport for Midtown", href: "/guides/best-airport-for-midtown" },
+      { label: "Best Airport for Brooklyn", href: "/guides/best-airport-for-downtown-brooklyn" },
+    ],
+    relatedKnowledge: [
+      { label: "AirTrain JFK Guide", href: "/knowledge/airtrain-jfk-guide" },
+      { label: "Sleeping at JFK", href: "/knowledge/sleeping-at-jfk" },
+    ],
+    hubLink: { label: "New York Airport Choice Hub →", href: "/new-york/airport-choice" },
+    ctaLabel: "Compare JFK vs Newark →", ctaHref: buildHubCompareUrl("new-york", "midtown"),
+    lastReviewed: "July 2026",
+  },
 ];
 
 /* ═══════════════════════════════════════════════════════════ */
