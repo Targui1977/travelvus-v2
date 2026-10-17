@@ -41,6 +41,14 @@ export default function BestLondonAirportForBusinessTravelPage() {
             <p><strong>London City Airport is the best airport for business travellers heading to Canary Wharf, the City or Docklands</strong> — DLR to the office in 20–25 minutes. <strong>Heathrow is best for west London offices, international business travel and when you need maximum airline and schedule choice.</strong> Gatwick is a solid third option — Gatwick Express to Victoria plus a taxi works for many business travellers. Stansted and Luton are rarely ideal for business.</p>
             <h2 id="section-1">Business traveller airport comparison</h2>
             <p>Business travel has different priorities: predictable journey time, fast transfer, lounge access, flight frequency, and proximity to meeting venues. Here is how the airports compare:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Business priority</th><th>Best airport</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Canary Wharf, the City, Docklands meetings</td><td>London City</td><td>DLR to the office in ~20–25 min; land-to-desk under 45 min</td></tr>
+                <tr><td>International travel, west London offices</td><td>Heathrow</td><td>80+ airlines, business lounges, Elizabeth Line to the City</td></tr>
+                <tr><td>Victoria and west-end meetings</td><td>Gatwick</td><td>Gatwick Express ~30 min to Victoria, then a short taxi</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">Why London City is the business winner</h2>
             <p>LCY is designed for business travel. The DLR connects directly to Canary Wharf (~20 min) and Bank (~25 min). The airport is tiny — 20 minutes from landing to the DLR platform. Security is fast. There are no crowds. For a Canary Wharf morning meeting, you can land at 08:30 and be at your desk by 09:00.</p>
             <h2 id="section-3">Why Heathrow matters for international business</h2>
@@ -58,11 +66,11 @@ export default function BestLondonAirportForBusinessTravelPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/compare/heathrow-vs-london-city" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Heathrow vs London City</span><span className={styles.relatedGuideCardText}>Business traveller's ultimate airport comparison.</span></Link>
-                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Time Guide</span><span className={styles.relatedGuideCardTitle}>Total Travel Time Comparison</span><span className={styles.relatedGuideCardText}>Flight duration is just one segment of the door-to-door journey.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/heathrow-vs-london-city" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs London City</div><p className={styles.relatedGuideDesc}>Business traveller's ultimate airport comparison.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Total Travel Time Comparison</div><p className={styles.relatedGuideDesc}>Flight duration is just one segment of the door-to-door journey.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

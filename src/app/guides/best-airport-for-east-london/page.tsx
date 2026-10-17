@@ -24,7 +24,7 @@ export default function BestAirportForEastLondonPage() {
           <h1 className={styles.guideHeroH1}>Which London airport is best for east London?</h1>
           <p className={styles.guideHeroSub}>London City Airport wins for Canary Wharf and Docklands. Stansted wins for northeast London, Hackney and Stratford.</p>
           <div className={styles.guideHeroMeta}>
-            <span>4 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>4 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>
@@ -41,6 +41,15 @@ export default function BestAirportForEastLondonPage() {
             <p>East London is split between two airports. <strong>London City Airport is unbeatable for Canary Wharf, Docklands and the Isle of Dogs</strong> — the DLR takes ~20 minutes. <strong>Stansted is better for northeast London — Hackney, Stratford, Walthamstow</strong> — the Stansted Express to Tottenham Hale connects to the Victoria Line. Heathrow and Gatwick are both on the wrong side of London for east London destinations.</p>
             <h2 id="section-1">East London airport comparison</h2>
             <p>Here is how the airports compare for reaching different parts of east London:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Area</th><th>Best airport</th><th>Route and time</th></tr></thead>
+              <tbody>
+                <tr><td>Canary Wharf, Docklands, Isle of Dogs</td><td>London City</td><td>DLR, ~20 min</td></tr>
+                <tr><td>Bank</td><td>London City</td><td>DLR, ~25 min</td></tr>
+                <tr><td>Stratford</td><td>London City</td><td>DLR via Poplar, ~30–40 min (Stansted route ~70 min)</td></tr>
+                <tr><td>Hackney, Stoke Newington, Walthamstow</td><td>Stansted</td><td>Express to Tottenham Hale (~40 min) + bus/Overground</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">London City Airport: the Canary Wharf specialist</h2>
             <p>London City Airport is purpose-built for east London business travellers. The DLR connects directly from the terminal to Canary Wharf (~20 min), Bank (~25 min) and Stratford (~30 min via Poplar). The total door-to-door journey from landing to office can be under 45 minutes — no other London airport achieves this for Docklands.</p>
             <h2 id="section-3">Stansted: best for northeast London</h2>
@@ -60,11 +69,11 @@ export default function BestAirportForEastLondonPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/compare/stansted-vs-london-city" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Stansted vs London City</span><span className={styles.relatedGuideCardText}>Budget vs speed — which wins for east London?</span></Link>
-                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Cost Guide</span><span className={styles.relatedGuideCardTitle}>Real Cost of a Flight</span><span className={styles.relatedGuideCardText}>Why cheap tickets often become expensive after baggage and transfers.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/stansted-vs-london-city" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Stansted vs London City</div><p className={styles.relatedGuideDesc}>Budget vs speed — which wins for east London?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Real Cost of a Flight</div><p className={styles.relatedGuideDesc}>Why cheap tickets often become expensive after baggage and transfers.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

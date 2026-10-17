@@ -41,6 +41,15 @@ export default function CheapestLondonAirportPage() {
             <p>The cheapest ticket is rarely the cheapest journey. <strong>Stansted, Luton and Gatwick have the lowest advertised ticket prices</strong> (Ryanair, Wizz Air, easyJet — often £30–60 one-way). But once you add a checked bag (£35–60), an airport transfer (£10–22), and factor in schedule waiting, a more expensive ticket to Heathrow (which is closer to central London and has cheaper transfers) can be cheaper overall. Always compare the <strong>complete door-to-door cost</strong> — not just the ticket price.</p>
             <h2 id="section-1">Real cost comparison: ticket vs total journey</h2>
             <p>Here is a typical comparison for a European flight with one checked bag to central London:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Cost item</th><th>Stansted (Ryanair)</th><th>Heathrow (BA)</th></tr></thead>
+              <tbody>
+                <tr><td>Ticket</td><td>£30</td><td>£120</td></tr>
+                <tr><td>Checked bag</td><td>+£45</td><td>Included</td></tr>
+                <tr><td>Airport transfer</td><td>+£22 (Stansted Express)</td><td>+£15 (Elizabeth Line)</td></tr>
+                <tr><td>Total</td><td>£97</td><td>£135</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">Why the cheapest ticket loses</h2>
             <p>The budget airline model works by unbundling: the base fare is low, but everything else costs extra. Checked bag: £35–60. Seat selection: £5–25. Airport transfer from a distant airport: £10–22. Schedule waiting: 30–90 minutes of your time. When you add everything up, the 'cheap' ticket can become the expensive journey.</p>
             <h2 id="section-3">How to find the genuinely cheapest journey</h2>
@@ -58,11 +67,11 @@ export default function CheapestLondonAirportPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Cost Guide</span><span className={styles.relatedGuideCardTitle}>How to Compare Two Flights Properly</span><span className={styles.relatedGuideCardText}>The complete framework for comparing the real cost of any two flights.</span></Link>
-                <Link href="/compare/heathrow-vs-stansted" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Heathrow vs Stansted</span><span className={styles.relatedGuideCardText}>The budget ticket that became the expensive trip.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>How to Compare Two Flights Properly</div><p className={styles.relatedGuideDesc}>The complete framework for comparing the real cost of any two flights.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/heathrow-vs-stansted" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs Stansted</div><p className={styles.relatedGuideDesc}>The budget ticket that became the expensive trip.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

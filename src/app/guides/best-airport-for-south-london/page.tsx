@@ -24,7 +24,7 @@ export default function BestAirportForSouthLondonPage() {
           <h1 className={styles.guideHeroH1}>Which London airport is best for south London?</h1>
           <p className={styles.guideHeroSub}>Gatwick is the natural choice for most of south London — direct trains connect to Clapham Junction, East Croydon and Victoria.</p>
           <div className={styles.guideHeroMeta}>
-            <span>3 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>3 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>
@@ -41,6 +41,15 @@ export default function BestAirportForSouthLondonPage() {
             <p><strong>Gatwick is the best airport for south London</strong>. Southern and Thameslink trains connect Gatwick directly to Clapham Junction, East Croydon, London Bridge and Victoria — without needing to cross central London. Gatwick is geographically south of the city, making transfers to south London shorter and cheaper than Heathrow.</p>
             <h2 id="section-1">South London airport comparison</h2>
             <p>Here is how the airports compare for south London neighbourhoods:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Area</th><th>Best airport</th><th>Route and time</th></tr></thead>
+              <tbody>
+                <tr><td>Clapham Junction, East Croydon</td><td>Gatwick</td><td>Southern trains, ~25 min</td></tr>
+                <tr><td>London Bridge, Blackfriars</td><td>Gatwick</td><td>Thameslink, direct</td></tr>
+                <tr><td>Richmond, Twickenham, Kingston (southwest)</td><td>Heathrow</td><td>X26 bus or taxi — closest airport</td></tr>
+                <tr><td>Anywhere else in south London</td><td>Gatwick</td><td>No need to cross central London</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">Why Gatwick wins for south London</h2>
             <p>Gatwick is south of London — the train lines run directly into south London stations. Southern trains serve Clapham Junction, East Croydon, Purley and Sutton. Thameslink trains serve London Bridge, Blackfriars, East Croydon and Brighton. You never need to cross central London to reach your south London destination from Gatwick.</p>
             <h2 id="section-3">When Heathrow is better for south London</h2>
@@ -58,11 +67,11 @@ export default function BestAirportForSouthLondonPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/compare/gatwick-vs-luton" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Gatwick vs Luton</span><span className={styles.relatedGuideCardText}>Which budget-friendly southern airport wins?</span></Link>
-                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Cost Guide</span><span className={styles.relatedGuideCardTitle}>Real Cost of a Flight</span><span className={styles.relatedGuideCardText}>Why cheap tickets often become expensive after baggage and transfers.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/gatwick-vs-luton" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Gatwick vs Luton</div><p className={styles.relatedGuideDesc}>Which budget-friendly southern airport wins?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Real Cost of a Flight</div><p className={styles.relatedGuideDesc}>Why cheap tickets often become expensive after baggage and transfers.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

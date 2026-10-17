@@ -41,6 +41,14 @@ export default function BestAirportForNorthLondonPage() {
             <p>North London is best served by <strong>Luton (northwest) and Stansted (northeast)</strong>. Luton's DART + Thameslink reaches St Pancras in ~40 minutes — ideal for Camden, Islington and King's Cross. Stansted Express to Tottenham Hale connects to the Victoria Line for Finsbury Park, Seven Sisters and Walthamstow. Heathrow is also viable for northwest London (Harrow, Wembley) but is further away.</p>
             <h2 id="section-1">North London airport comparison</h2>
             <p>Here is how the airports compare for north London:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Area</th><th>Best airport</th><th>Route and time</th></tr></thead>
+              <tbody>
+                <tr><td>Camden, Islington, King&rsquo;s Cross</td><td>Luton</td><td>DART + Thameslink to St Pancras, ~40 min</td></tr>
+                <tr><td>Finsbury Park, Seven Sisters, Walthamstow</td><td>Stansted</td><td>Stansted Express to Tottenham Hale (~40 min) + Victoria Line</td></tr>
+                <tr><td>Harrow, Wembley (northwest)</td><td>Heathrow</td><td>Piccadilly Line, ~60–75 min</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">Luton: best for northwest London</h2>
             <p>Luton Airport is north of London. The DART automated rail link (5 minutes, £4.90) connects to Luton Airport Parkway station, where Thameslink trains run to St Pancras (~30 min), West Hampstead and Kentish Town. From St Pancras, Camden, Islington and King&rsquo;s Cross are walking distance or a short bus ride. Total door-to-door to Camden: ~45 minutes.</p>
             <h2 id="section-3">Stansted: best for northeast London</h2>
@@ -58,11 +66,11 @@ export default function BestAirportForNorthLondonPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/compare/stansted-vs-luton" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Stansted vs Luton</span><span className={styles.relatedGuideCardText}>Which budget airport wins for north London?</span></Link>
-                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Time Guide</span><span className={styles.relatedGuideCardTitle}>Total Travel Time Comparison</span><span className={styles.relatedGuideCardText}>Flight duration is just one segment of the door-to-door journey.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/stansted-vs-luton" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Stansted vs Luton</div><p className={styles.relatedGuideDesc}>Which budget airport wins for north London?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Total Travel Time Comparison</div><p className={styles.relatedGuideDesc}>Flight duration is just one segment of the door-to-door journey.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

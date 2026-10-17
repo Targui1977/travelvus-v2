@@ -289,22 +289,22 @@ export default function JFKvsNewarkGuide() {
 
             {/* Related Guides */}
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/new-york-airports" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Decision Hub</span>
-                  <span className={styles.relatedGuideCardTitle}>New York Airport Decisions</span>
-                  <span className={styles.relatedGuideCardText}>Explore the complete New York airport ecosystem.</span>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/new-york-airports" className={styles.relatedGuideRow}>
+                  <div><div className={styles.relatedGuideTitle}>New York Airport Decisions</div>
+                  <p className={styles.relatedGuideDesc}>Explore the complete New York airport ecosystem.</p></div>
+                  <span className={styles.relatedGuideCta}>Read &rarr;</span>
                 </Link>
-                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Cost Guide</span>
-                  <span className={styles.relatedGuideCardTitle}>How to Compare Two Flights Properly</span>
-                  <span className={styles.relatedGuideCardText}>The ticket price is never the full story.</span>
+                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideRow}>
+                  <div><div className={styles.relatedGuideTitle}>How to Compare Two Flights Properly</div>
+                  <p className={styles.relatedGuideDesc}>The ticket price is never the full story.</p></div>
+                  <span className={styles.relatedGuideCta}>Read &rarr;</span>
                 </Link>
-                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Time Guide</span>
-                  <span className={styles.relatedGuideCardTitle}>Total Travel Time Comparison</span>
-                  <span className={styles.relatedGuideCardText}>Flight duration is just one segment of the journey.</span>
+                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideRow}>
+                  <div><div className={styles.relatedGuideTitle}>Total Travel Time Comparison</div>
+                  <p className={styles.relatedGuideDesc}>Flight duration is just one segment of the journey.</p></div>
+                  <span className={styles.relatedGuideCta}>Read &rarr;</span>
                 </Link>
               </div>
             </div>

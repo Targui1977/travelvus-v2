@@ -24,7 +24,7 @@ export default function BestLondonAirportForFamiliesPage() {
           <h1 className={styles.guideHeroH1}>Which London airport is best for families?</h1>
           <p className={styles.guideHeroSub}>Heathrow is the best airport for families — direct train connections, no coach transfers, good terminal facilities and the widest choice of airlines and flight times.</p>
           <div className={styles.guideHeroMeta}>
-            <span>4 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>4 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>
@@ -58,11 +58,11 @@ export default function BestLondonAirportForFamiliesPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/compare/heathrow-vs-gatwick" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Heathrow vs Gatwick</span><span className={styles.relatedGuideCardText}>Which London airport really wins on real cost and convenience?</span></Link>
-                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Cost Guide</span><span className={styles.relatedGuideCardTitle}>Real Cost of a Flight</span><span className={styles.relatedGuideCardText}>Why cheap tickets become expensive after baggage and transfers.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/heathrow-vs-gatwick" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs Gatwick</div><p className={styles.relatedGuideDesc}>Which London airport really wins on real cost and convenience?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Real Cost of a Flight</div><p className={styles.relatedGuideDesc}>Why cheap tickets become expensive after baggage and transfers.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

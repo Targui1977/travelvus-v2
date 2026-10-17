@@ -24,7 +24,7 @@ export default function BestAirportForWestLondonPage() {
           <h1 className={styles.guideHeroH1}>Which London airport is best for west London?</h1>
           <p className={styles.guideHeroSub}>Heathrow wins overwhelmingly for west London — it IS west London's airport.</p>
           <div className={styles.guideHeroMeta}>
-            <span>3 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>3 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>
@@ -58,11 +58,11 @@ export default function BestAirportForWestLondonPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/compare/heathrow-vs-gatwick" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Heathrow vs Gatwick</span><span className={styles.relatedGuideCardText}>Which London airport really wins on real cost?</span></Link>
-                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Time Guide</span><span className={styles.relatedGuideCardTitle}>Total Travel Time Comparison</span><span className={styles.relatedGuideCardText}>Flight duration is just one segment of the door-to-door journey.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/heathrow-vs-gatwick" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs Gatwick</div><p className={styles.relatedGuideDesc}>Which London airport really wins on real cost?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Total Travel Time Comparison</div><p className={styles.relatedGuideDesc}>Flight duration is just one segment of the door-to-door journey.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

@@ -287,22 +287,22 @@ export default function BestAirportForManhattan() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/guides/jfk-vs-newark" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Flagship Guide</span>
-                  <span className={styles.relatedGuideCardTitle}>JFK vs Newark</span>
-                  <span className={styles.relatedGuideCardText}>The complete decision guide for New York's two international hubs.</span>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/guides/jfk-vs-newark" className={styles.relatedGuideRow}>
+                  <div><div className={styles.relatedGuideTitle}>JFK vs Newark</div>
+                  <p className={styles.relatedGuideDesc}>The complete decision guide for New York's two international hubs.</p></div>
+                  <span className={styles.relatedGuideCta}>Read &rarr;</span>
                 </Link>
-                <Link href="/new-york-airports" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Decision Hub</span>
-                  <span className={styles.relatedGuideCardTitle}>New York Airport Decisions</span>
-                  <span className={styles.relatedGuideCardText}>Explore the complete New York airport ecosystem.</span>
+                <Link href="/new-york-airports" className={styles.relatedGuideRow}>
+                  <div><div className={styles.relatedGuideTitle}>New York Airport Decisions</div>
+                  <p className={styles.relatedGuideDesc}>Explore the complete New York airport ecosystem.</p></div>
+                  <span className={styles.relatedGuideCta}>Read &rarr;</span>
                 </Link>
-                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideCard}>
-                  <span className={styles.relatedGuideCardKicker}>Time Guide</span>
-                  <span className={styles.relatedGuideCardTitle}>Total Travel Time Comparison</span>
-                  <span className={styles.relatedGuideCardText}>Flight duration is just one segment of the door-to-door journey.</span>
+                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideRow}>
+                  <div><div className={styles.relatedGuideTitle}>Total Travel Time Comparison</div>
+                  <p className={styles.relatedGuideDesc}>Flight duration is just one segment of the door-to-door journey.</p></div>
+                  <span className={styles.relatedGuideCta}>Read &rarr;</span>
                 </Link>
               </div>
             </div>

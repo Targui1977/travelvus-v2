@@ -32,8 +32,8 @@ export default function FastestLondonAirportPage() {
         <div className={styles.tocRail}>
           <div className={styles.guideContent}>
             <div className={styles.decisionSummary}>
-              <div><div className={styles.decisionSummaryLabel}>Who it&rsquo;s for</div><div className={styles.decisionSummaryValue}>Travellers deciding which London airport to use for which london airport gets you there fastest</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Decision it solves</div><div className={styles.decisionSummaryValue}>Which airport creates the best journey for which london airport gets you there fastest</div></div>
+              <div><div className={styles.decisionSummaryLabel}>Who it&rsquo;s for</div><div className={styles.decisionSummaryValue}>Travellers deciding which London airport gets them to their destination fastest</div></div>
+              <div><div className={styles.decisionSummaryLabel}>Decision it solves</div><div className={styles.decisionSummaryValue}>Which airport creates the fastest door-to-door journey</div></div>
               <div><div className={styles.decisionSummaryLabel}>Key takeaway</div><div className={styles.decisionSummaryValue}>London City Airport is the fastest door-to-door for east and central London. Heathrow is fastest for west London. Your destination within London determines the answer.</div></div>
             </div>
 
@@ -41,6 +41,16 @@ export default function FastestLondonAirportPage() {
             <p><strong>The fastest airport depends entirely on where in London you are heading.</strong> London City Airport is fastest for Canary Wharf, the City, and the eastern edge of central London (DLR, ~25 min to Bank). Heathrow is fastest for west and much of central London (Elizabeth Line, ~35 min). Gatwick is fastest for south London and Victoria (Gatwick Express, ~30 min). Stansted and Luton are rarely the fastest — their longer transfers mean you arrive later even if your flight lands earlier.</p>
             <h2 id="section-1">Fastest transfer by destination</h2>
             <p>Here is the fastest airport for each London destination:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Destination</th><th>Fastest airport</th><th>Route and time</th></tr></thead>
+              <tbody>
+                <tr><td>Canary Wharf, the City, east central</td><td>London City</td><td>DLR, ~25 min to Bank</td></tr>
+                <tr><td>West and much of central London</td><td>Heathrow</td><td>Elizabeth Line, ~35 min</td></tr>
+                <tr><td>Victoria and south London</td><td>Gatwick</td><td>Gatwick Express, ~30 min</td></tr>
+                <tr><td>Liverpool Street corridor</td><td>Stansted</td><td>Stansted Express, ~50 min</td></tr>
+                <tr><td>King&rsquo;s Cross and St Pancras</td><td>Luton</td><td>DART + Thameslink, ~40 min</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">Why flight time is misleading</h2>
             <p>A flight to Stansted might be 15 minutes shorter than a flight to Heathrow — but the Stansted transfer is 35 minutes longer. You arrive at your destination 20 minutes later despite the shorter flight. Always compare door-to-door time, not flight duration. Our Total Travel Time Guide explains this in detail.</p>
             <h2 id="section-3">When to choose speed over cost</h2>
@@ -58,11 +68,11 @@ export default function FastestLondonAirportPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Time Guide</span><span className={styles.relatedGuideCardTitle}>Total Travel Time Comparison</span><span className={styles.relatedGuideCardText}>Flight duration is just one segment of the door-to-door journey.</span></Link>
-                <Link href="/compare/heathrow-vs-london-city" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Heathrow vs London City</span><span className={styles.relatedGuideCardText}>Which wins for speed — Elizabeth Line or DLR?</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Total Travel Time Comparison</div><p className={styles.relatedGuideDesc}>Flight duration is just one segment of the door-to-door journey.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/heathrow-vs-london-city" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs London City</div><p className={styles.relatedGuideDesc}>Which wins for speed — Elizabeth Line or DLR?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

@@ -41,6 +41,14 @@ export default function BestLondonAirportForBudgetTravellersPage() {
             <p><strong>Budget travellers should choose their airport based on which budget airline serves their route.</strong> Ryanair: Stansted. Wizz Air: Luton. easyJet: Gatwick (primary) or Luton. Once you know your airline, check the total cost — ticket + baggage + transfer. A £30 Ryanair ticket to Stansted becomes a £95+ journey once you add a checked bag (£45) and the Stansted Express (~£22).</p>
             <h2 id="section-1">Budget airport comparison</h2>
             <p>Here is how the three budget-focused airports compare for the budget traveller:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Airline</th><th>Primary airport</th><th>Transfer to central London (approx)</th></tr></thead>
+              <tbody>
+                <tr><td>Ryanair</td><td>Stansted</td><td>Stansted Express ~£22, or coach ~£10–12</td></tr>
+                <tr><td>Wizz Air</td><td>Luton</td><td>DART £4.90 + Thameslink, ~£15 total</td></tr>
+                <tr><td>easyJet</td><td>Gatwick (also Luton)</td><td>Gatwick Express ~£20</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">The hidden costs of budget travel</h2>
             <p>Budget airlines save you money on the ticket but charge for everything else. Checked bag: £35–60. Cabin bag (if not included): £10–25. Seat selection: £5–15. Airport transfer from a distant airport: £10–22. Always calculate the total cost before booking — a £60 easyJet ticket from Gatwick can be cheaper in total than a £30 Ryanair ticket from Stansted once everything is added up.</p>
             <h2 id="section-3">When to choose a non-budget airport on a budget</h2>
@@ -58,11 +66,11 @@ export default function BestLondonAirportForBudgetTravellersPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Cost Guide</span><span className={styles.relatedGuideCardTitle}>How to Compare Two Flights Properly</span><span className={styles.relatedGuideCardText}>The complete framework for comparing real flight costs.</span></Link>
-                <Link href="/compare/stansted-vs-luton" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Stansted vs Luton</span><span className={styles.relatedGuideCardText}>Which budget airport is right for your journey?</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/real-cost-of-a-flight" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>How to Compare Two Flights Properly</div><p className={styles.relatedGuideDesc}>The complete framework for comparing real flight costs.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/stansted-vs-luton" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Stansted vs Luton</div><p className={styles.relatedGuideDesc}>Which budget airport is right for your journey?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>

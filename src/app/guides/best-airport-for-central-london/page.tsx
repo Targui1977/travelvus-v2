@@ -41,8 +41,30 @@ export default function BestAirportForCentralLondonPage() {
             <p>For most central London destinations — Westminster, Soho, Covent Garden, the West End — <strong>Heathrow is the best airport</strong>. The Elizabeth Line connects directly to central London stations (Tottenham Court Road, Bond Street, Paddington) in ~30–35 minutes for ~£15. London City Airport is also excellent for central London — the DLR to Bank takes ~25 minutes — but it serves far fewer routes. Gatwick, Stansted and Luton involve longer transfers of 40–90 minutes and are generally better for other parts of London.</p>
             <h2 id="section-1">Central London airport comparison</h2>
             <p>Here is how the five London airports compare for reaching central London (Westminster, Soho, Covent Garden, the West End):</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Airport</th><th>Route</th><th>Time</th><th>Fare (approx)</th></tr></thead>
+              <tbody>
+                <tr><td>Heathrow</td><td>Elizabeth Line to Tottenham Court Road / Bond Street</td><td>~30–35 min</td><td>~£15</td></tr>
+                <tr><td>Heathrow</td><td>Heathrow Express to Paddington</td><td>15 min</td><td>~£26</td></tr>
+                <tr><td>Heathrow</td><td>Piccadilly Line</td><td>~50–60 min</td><td>~£6</td></tr>
+                <tr><td>London City</td><td>DLR to Bank</td><td>~25 min</td><td>~£3.30</td></tr>
+                <tr><td>Gatwick</td><td>Gatwick Express to Victoria</td><td>~30 min</td><td>~£20</td></tr>
+                <tr><td>Stansted</td><td>Stansted Express to Liverpool Street</td><td>~50 min</td><td>~£22</td></tr>
+                <tr><td>Luton</td><td>DART + Thameslink to St Pancras</td><td>~40 min</td><td>~£15</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-2">Best for specific central London locations</h2>
             <p>Central London is not one place. Here is the best airport for each central area:</p>
+            <table className={styles.compTable}>
+              <thead><tr><th>Central area</th><th>Best airport</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Westminster, the West End</td><td>Heathrow</td><td>Elizabeth Line, ~30–35 min</td></tr>
+                <tr><td>Soho, Covent Garden</td><td>Heathrow</td><td>Tottenham Court Road station, ~30 min</td></tr>
+                <tr><td>Bank, Monument, Tower Hill</td><td>London City</td><td>DLR, ~25 min</td></tr>
+                <tr><td>Victoria area</td><td>Gatwick</td><td>Gatwick Express, ~30 min</td></tr>
+                <tr><td>St Pancras, King&rsquo;s Cross</td><td>Luton</td><td>DART + Thameslink, ~40 min</td></tr>
+              </tbody>
+            </table>
             <h2 id="section-3">Why Heathrow wins for central London</h2>
             <p>Heathrow has three separate rail connections to central London. The Elizabeth Line is the best balance of speed and cost (~35 min, ~£15). The Heathrow Express is fastest (15 min to Paddington, ~£26). The Piccadilly Line is cheapest (~50–60 min, ~£6). No other London airport has this range of central London connections.</p>
             <h2 id="section-4">When another airport is better</h2>
@@ -60,11 +82,11 @@ export default function BestAirportForCentralLondonPage() {
             </div>
 
             <div className={styles.relatedGuides}>
-              <h2 className={styles.relatedGuidesTitle}>Continue your decision</h2>
-              <div className={styles.relatedGuidesGrid}>
-                <Link href="/london-airport-decision-center" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Center</span><span className={styles.relatedGuideCardTitle}>London Airport Decision Center</span><span className={styles.relatedGuideCardText}>The complete guide to choosing the best London airport.</span></Link>
-                <Link href="/compare/heathrow-vs-london-city" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Decision Page</span><span className={styles.relatedGuideCardTitle}>Heathrow vs London City</span><span className={styles.relatedGuideCardText}>Which wins for central London — Heathrow's Elizabeth Line or City's DLR?</span></Link>
-                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideCard}><span className={styles.relatedGuideCardKicker}>Time Guide</span><span className={styles.relatedGuideCardTitle}>Total Travel Time Comparison</span><span className={styles.relatedGuideCardText}>Flight duration is just one segment of the door-to-door journey.</span></Link>
+              <h2>Continue your decision</h2>
+              <div>
+                <Link href="/london-airport-decision-center" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>London Airport Decision Center</div><p className={styles.relatedGuideDesc}>The complete guide to choosing the best London airport.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/compare/heathrow-vs-london-city" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Heathrow vs London City</div><p className={styles.relatedGuideDesc}>Which wins for central London — Heathrow's Elizabeth Line or City's DLR?</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
+                <Link href="/guides/total-travel-time-comparison" className={styles.relatedGuideRow}><div><div className={styles.relatedGuideTitle}>Total Travel Time Comparison</div><p className={styles.relatedGuideDesc}>Flight duration is just one segment of the door-to-door journey.</p></div><span className={styles.relatedGuideCta}>Read &rarr;</span></Link>
               </div>
             </div>
           </div>
