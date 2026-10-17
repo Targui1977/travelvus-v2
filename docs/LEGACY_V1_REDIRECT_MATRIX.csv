@@ -1,0 +1,48 @@
+legacy_url,topic,live_status,v2_replacement_candidate,intent_equivalent,proposed_action,gsc_evidence_required,notes
+/blog/,Blog index,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),no V2 blog exists; do not redirect to home
+/cities/,Cities overview,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),no single V2 equivalent (3 city hubs exist)
+/europe/,Europe overview,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),no single V2 equivalent
+/yacht-booking/,Yacht booking,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),no V2 equivalent; off-strategy
+/airport-transfer/,Airport transfer (generic),404,/guides/total-travel-time-comparison,PARTIAL,301-CANDIDATE,yes (mandatory before 410; recommended before 301),intent overlaps transfer content; evaluate as future transfer hub
+/tours-and-activities/,Tours & activities,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/car-rental/,Car rental,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/category/blog/,Blog category index,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),no V2 blog
+/category/cities/,Cities category,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),no single equivalent
+/category/europe/,Europe category,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),no single equivalent
+/london/,London landing (core market),404,/london-airports,YES,301-CANDIDATE,yes (mandatory before 410; recommended before 301),V2 hub covers the intent; strongest redirect candidate
+/computicket-travel/,Computicket booking,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy brand post
+/go-city-travel-plan-and-tickets/,Go City passes,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/unlock-amazing-travel-deals-with-costcotravel-your-ultimate-guide/,Costco duplicate,404,/costco-vacation,YES,301-CANDIDATE,yes (mandatory before 410; recommended before 301),high-confidence duplicate (redirect-map draft)
+/unlock-the-benefits-of-oyster-card-your-ultimate-guide-to-londons-transit-system/,Oyster duplicate,404,/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system,YES,301-CANDIDATE,yes (mandatory before 410; recommended before 301),high-confidence duplicate (redirect-map draft)
+/easy-and-convenient-irctc-railway-booking-your-one-stop-solution-for-booking-train-tickets/,IRCTC duplicate,404,/irctc-train-ticket-booking,YES,301-CANDIDATE,yes (mandatory before 410; recommended before 301),high-confidence duplicate (redirect-map draft)
+/unlock-fast-and-hassle-free-travel-with-tsa-precheck-your-guide-to-streamline-airport-security/,TSA PreCheck duplicate 1,404,/tsa-precheck-cost,YES,301-CANDIDATE,yes (mandatory before 410; recommended before 301),high-confidence duplicate (redirect-map draft)
+/maximize-convenience-and-save-time-with-tsa-precheck-your-complete-guide/,TSA PreCheck duplicate 2,404,/tsa-precheck-cost,YES,301-CANDIDATE,yes (mandatory before 410; recommended before 301),high-confidence duplicate (redirect-map draft)
+/cordelia-cruise-the-ultimate-luxury-experience-at-sea/,Cordelia cruise 1,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate after GSC zero-traffic window
+/cordelia-cruise-unforgettable-luxury-travel-experience-for-discerning-travelers/,Cordelia cruise 2 (dup),404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate; pick primary only if rebuilt
+/unlock-the-world-with-etravel-your-ultimate-guide-to-seamless-online-travel-experience/,eTravel platform,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/book-your-dream-vacation-with-expedia-ca-the-ultimate-travel-platform/,Expedia CA,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/unlock-your-dream-destinations-with-google-travel-the-ultimate-guide-for-seamless-trip-planning-and-booking/,Google Travel,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/convenient-online-ksrtc-bus-booking-book-your-tickets-now/,KSRTC bus,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/zingbus/,Zingbus,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/easemy-trip-your-ultimate-guide-to-stress-free-travels/,EaseMyTrip,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/bilal-travels-explore-the-world-with-the-best-travel-services/,Bilal Travels agency,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/bonza-airlines/,Bonza Airlines,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),airline ceased operations; 410 candidate
+/solo-travel/,Solo travel,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/travelogue/,Travelogue,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/cheeky-trip/,Cheeky Trip,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/army-dts/,Army DTS duplicate,404,/defense-travel-system,YES,301-CANDIDATE,yes (mandatory before 410; recommended before 301),high-confidence duplicate (redirect-map draft)
+/ef-ultimate-break/,EF Ultimate Break,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/marco-polo-hotel/,Hotel review,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/hawaiian-vacation-packages/,Hawaii packages,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/habitas-alula/,Habitas AlUla hotel,404,,NO-REPLACEMENT,NO-REPLACEMENT,yes (mandatory before 410; recommended before 301),off-strategy
+/9-best-luxury-hotels-in-the-world/,Thin listicle,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate (60d zero-impression rule)
+/13-most-beautiful-islands-in-the-world/,Thin listicle,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/5-ways-to-tackle-air-travel-woes/,Thin listicle,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/10-best-tropical-vacations/,Thin listicle,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/top-10-must-visit-destinations-for-travel-enthusiasts/,Thin listicle,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/top-10-must-visit-destinations-around-the-world-explore-the-best-destinations-for-your-next-adventure/,Thin listicle (dup),404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/discover-top-10-must-visit-places-to-go-in-english-ideal-destinations-for-travelers/,Thin listicle,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/explore-the-enchanting-land-of-japan-plan-your-dream-visit-to-japan-today/,Thin destination,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/explore-africas-stunning-wildlife-on-an-unforgettable-safari-adventure/,Thin destination,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/the-ultimate-guide-to-packing-cubes-how-to-organize-and-maximize-space-in-your-travel-bags/,Thin accessory,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate
+/discover-the-magic-of-plitvice-holiday-resort-your-ultimate-guide-to-the-perfect-vacation/,Thin hotel,404,,NO-REPLACEMENT,410-CANDIDATE,yes (mandatory before 410; recommended before 301),410 candidate

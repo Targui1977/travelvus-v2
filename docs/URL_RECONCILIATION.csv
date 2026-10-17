@@ -1,0 +1,131 @@
+url,template,category,http_status,canonical,robots,sitemap,inlinks,indexability
+/,home,home,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,117,expected indexable
+/aaa-travel,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/about,utility,utility,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,42,expected indexable
+/bart-trip-planner,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/compare/amsterdam-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/barcelona-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/compare/berlin-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/dublin-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/frankfurt-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/compare/gatwick-vs-london-city,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/compare/gatwick-vs-luton,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/gatwick-vs-stansted,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,7,expected indexable
+/compare/heathrow-vs-gatwick,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,14,expected indexable
+/compare/heathrow-vs-london-city,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/compare/heathrow-vs-luton,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/compare/heathrow-vs-stansted,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,11,expected indexable
+/compare/lisbon-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/luton-vs-london-city,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/compare/madrid-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/milan-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/paris-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/compare/rome-to-london,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/stansted-vs-london-city,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/compare/stansted-vs-luton,compare,comparison intent,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/contact,utility,utility,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,36,expected indexable
+/costco-vacation,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/data-coverage,trust,trust,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/defense-travel-system,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/editorial-standards,trust,trust,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/expedia-taap,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/google-flight-matrix,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-airport-hotel-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/best-airport-for-backpackers-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-backpackers-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-backpackers-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-bercy,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-business-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/best-airport-for-business-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/best-airport-for-business-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/guides/best-airport-for-canary-wharf,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/guides/best-airport-for-carry-on-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-carry-on-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-central-london,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/best-airport-for-central-paris,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,7,expected indexable
+/guides/best-airport-for-central-paris-guide,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,6,expected indexable
+/guides/best-airport-for-cheapest-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/guides/best-airport-for-cheapest-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-cheapest-paris,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,6,expected indexable
+/guides/best-airport-for-downtown-brooklyn,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,7,expected indexable
+/guides/best-airport-for-early-departure-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/guides/best-airport-for-early-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-early-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-east-london,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-families-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/guides/best-airport-for-families-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-families-paris,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/guides/best-airport-for-fastest-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-fastest-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-first-time-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-first-time-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-gare-du-nord,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,6,expected indexable
+/guides/best-airport-for-gare-du-nord-guide,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-kings-cross,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/best-airport-for-la-defense,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/guides/best-airport-for-la-defense-guide,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-late-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-late-night-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/guides/best-airport-for-late-ny,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-lic,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/best-airport-for-lower-manhattan,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/guides/best-airport-for-luxury-london,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-luxury-paris,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-manhattan,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/best-airport-for-midtown,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,17,expected indexable
+/guides/best-airport-for-montparnasse,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/guides/best-airport-for-north-london,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-paddington,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,5,expected indexable
+/guides/best-airport-for-south-london,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-west-london,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-airport-for-westminster,guide-registry,airport choice programmatic,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,5,expected indexable
+/guides/best-london-airport-for-budget-travellers,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-london-airport-for-business-travel,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/best-london-airport-for-families,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/guides/cdg-vs-orly,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,20,expected indexable
+/guides/cheapest-london-airport,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/guides/fastest-london-airport,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,7,expected indexable
+/guides/heathrow-vs-gatwick,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,10,expected indexable
+/guides/jfk-vs-newark,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,8,expected indexable
+/guides/real-cost-of-a-flight,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,29,expected indexable
+/guides/total-travel-time-comparison,guide-static,airport choice editorial,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,28,expected indexable
+/irctc-train-ticket-booking,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/kayak-flights,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/knowledge/airtrain-jfk-guide,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/knowledge/airtrain-newark-guide,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/knowledge/cdg-terminals-guide,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/knowledge/cdg-to-central-paris,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/knowledge/heathrow-arrival-guide,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/knowledge/heathrow-express-guide,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/knowledge/jfk-terminals-guide,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/knowledge/orly-to-central-paris,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/knowledge/sleeping-at-cdg,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/knowledge/sleeping-at-heathrow,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/knowledge/sleeping-at-jfk,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/knowledge/sleeping-at-newark,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/knowledge/sleeping-at-orly,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/knowledge/sleeping-at-stansted,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/knowledge/stansted-express-guide,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/knowledge/when-to-arrive-at-cdg,knowledge,airport transfer / terminals,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/limits,trust,trust,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/london-airport-decision-center,hub,hub,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,17,expected indexable
+/london-airports,hub,hub,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,78,expected indexable
+/london/airport-choice,hub,hub,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,6,expected indexable
+/methodology,trust,trust,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,61,expected indexable
+/mta-trip-planner,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/new-york-airports,hub,hub,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,19,expected indexable
+/new-york/airport-choice,hub,hub,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,6,expected indexable
+/paris-airports,hub,hub,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,15,expected indexable
+/paris/airport-choice,hub,hub,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,8,expected indexable
+/planner,utility,utility,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/points-guy,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,0,expected indexable
+/questions/london-airport-break-even,support,break-even question,200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,7,expected indexable
+/top-rated-tourists-attractions-in-rome,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/trimet-trip-planner,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/tsa-lock,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,2,expected indexable
+/tsa-precheck-cost,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,3,expected indexable
+/ultimate-guide-to-interrailing-explore-europe-by-train-with-ease,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/unlock-global-travel-efficiency-with-global-entry-your-ultimate-guide,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,4,expected indexable
+/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/vrl-bus-booking,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,1,expected indexable
+/wego-flight,legacy,V1 article (migrated),200 (verified 2026-10-17),yes (absolute via metadataBase),index (default),yes,38,expected indexable
