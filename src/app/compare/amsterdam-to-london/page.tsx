@@ -6,62 +6,62 @@ import FAQAccordion from "@/components/guide/FAQAccordion";
 import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
-  title: "Amsterdam to London: Heathrow, Gatwick, Stansted or City? | Travelvus",
-  description: "Flying Amsterdam to London? Compare London City and Stansted on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  title: "Amsterdam to London: Stansted or London City? | Travelvus",
+  description: "Flying Amsterdam to London? Compare Stansted and London City on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/amsterdam-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "amsterdam-to-london",
   category: "London Airport Decision",
-  question: "Amsterdam to London: Heathrow, Gatwick, Stansted or City?",
-  shortAnswer: "London City wins for most travellers from Amsterdam once total journey time and cost are compared.",
+  question: "Amsterdam to London: Stansted or London City?",
+  shortAnswer: "London City wins for most travellers from Amsterdam: the DLR gets you into central London in ~25 minutes, making the door-to-door journey ~20 minutes faster and ~€33 cheaper than Stansted.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
     line: "London City wins.",
     stats: [
-      { label: "Total journey time", value: "195", unit: "min" },
-      { label: "Time saved", value: "25", unit: "min", accent: true },
+      { label: "Total journey time", value: "255", unit: "min" },
+      { label: "Time saved", value: "20", unit: "min", accent: true },
       { label: "Flight duration", value: "1", unit: "h 10m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "London City", a: "~3h 40m", b: "~3h 15m", verdict: "London City is ~25 min faster" },
-    { factor: "Total journey cost", winner: "London City", a: "~€155", b: "~€115", verdict: "London City saves ~€40" },
-    { factor: "Transfer convenience", winner: "London City", a: "Coach or train, 45–90 min", b: "~35 min (Elizabeth Line)", verdict: "London City has more options" },
-    { factor: "Arrival reliability", winner: "London City", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "London City is more predictable" },
+    { factor: "Total journey time", winner: "London City", a: "~4h 35m", b: "~4h 15m", verdict: "London City is ~20 min faster" },
+    { factor: "Total journey cost", winner: "London City", a: "~€172", b: "~€139", verdict: "London City saves ~€33" },
+    { factor: "Transfer convenience", winner: "London City", a: "~50 min (Stansted Express)", b: "~25 min (DLR to Bank)", verdict: "London City's DLR is quicker" },
+    { factor: "Arrival reliability", winner: "London City", a: "Stansted Express every 15–30 min", b: "DLR every 5–10 min", verdict: "London City is more predictable" },
     { factor: "Overall winner", winner: "London City", a: "—", b: "—", verdict: "London City wins on 4 of 4 factors", isFinal: true },
   ],
-  winnerReasons: ["London City Airport is only 10km from central London — the transfer is dramatically shorter.", "LCY's DLR connection takes ~25 minutes to Bank — faster than any Heathrow transfer.", "LCY is a small airport — baggage collection and walking time are significantly shorter.", "The total door-to-door journey is ~25 minutes shorter through City despite the similar flight time.", "For business travellers heading to Canary Wharf or the City, LCY is unbeatable."],
+  winnerReasons: ["London City Airport is only 11km east of central London — the DLR reaches Bank in ~25 minutes.", "The DLR costs ~£3.30 off-peak versus ~£22 walk-up on the Stansted Express.", "LCY is a small airport — baggage collection and walking time are significantly shorter.", "The total door-to-door journey is ~20 minutes shorter through City despite the slightly longer flight.", "Checked baggage is typically included on City fares, which offsets the higher ticket price."],
   alternative: {
-    title: "When Heathrow is actually the better choice",
-    points: ["If you are heading to west London — Heathrow is much closer than City Airport.", "If you need a wider choice of airlines and flight times — Heathrow serves far more routes.", "If you prefer the Piccadilly Line or Elizabeth Line to the DLR — Heathrow has more transport options.", "If you are connecting to another flight — Heathrow is the UK's main hub airport."],
+    title: "When Stansted is actually the better choice",
+    points: ["If you are heading to northeast London, Cambridge or East Anglia — Stansted is geographically closer.", "If you need a wider choice of departure times — Stansted serves far more routes and airlines than London City.", "If the advertised fare is €40 or more below the City fare — the saving can cover the longer transfer.", "If you are travelling with hand luggage only — the baggage-included advantage of a City fare disappears."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€100 (Cityflyer/short-haul)", b: "~€130 (full-service)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "Often included on City routes", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Flight ticket", a: "~€100 (Ryanair/easyJet)", b: "~€130 (BA Cityflyer/full-service)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€42 (typical budget fee)", b: "Often included on City fares", winner: "b" as const, note: "Budget airlines typically charge extra" },
     { label: "Airport transfer — Amsterdam", a: "NS train — ~20 min from Amsterdam Centraal, ~€5", b: "NS train — ~20 min from Amsterdam Centraal, ~€5", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£17 (Stansted Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
+    { label: "Airport transfer — London", a: "~€25 (~£22, Stansted Express)", b: "~€4 (~£3.30, DLR to Bank)", winner: "b" as const, note: "Typical single fares" },
+    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent DLR service", winner: "b" as const },
   ],
   journeyTimeline: [
     { stage: "Amsterdam city → Airport", a: "NS train — ~20 min from Amsterdam Centraal, ~€5", b: "NS train — ~20 min from Amsterdam Centraal, ~€5" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Amsterdam → London", a: "~1h 00m", b: "~1h 10m" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~3h 40m", b: "~3h 15m", isFinal: true },
+    { stage: "Airport → Central London", a: "~50 min (Stansted Express)", b: "~25 min (DLR to Bank)" },
+    { stage: "Total door-to-door", a: "~4h 35m", b: "~4h 15m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller (Canary Wharf)", "choice": "London City", "why": "DLR to Canary Wharf takes ~20 minutes. Unbeatable for Docklands meetings."}, {"who": "Business traveller (West End)", "choice": "Heathrow", "why": "Elizabeth Line to Tottenham Court Road in ~30 min. Better for West End offices."}, {"who": "Family with children", "choice": "Heathrow", "why": "More space, more facilities, wider choice of airlines and flight times."}, {"who": "Budget traveller", "choice": "Stansted or Gatwick", "why": "Budget airlines from AMS serve STN and LGW. Check total cost including transfer."}, {"who": "Weekend trip", "choice": "London City", "why": "The fastest door-to-door — maximises time in London on a short trip."}, {"who": "Eurostar alternative", "choice": "Eurostar", "why": "Amsterdam Centraal to London St Pancras in ~4h. Often more comfortable than flying."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Stansted is 55km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Stansted often charge €35–60 for a checked bag. Full-service airlines into London City frequently include it."}, {"mistake": "Not comparing Amsterdam airport access", "fix": "NS train — factor this into the total journey before comparing London airports."}],
+  scenarios: [{"who": "Business traveller (Canary Wharf)", "choice": "London City", "why": "DLR to Canary Wharf takes ~20 minutes. Unbeatable for Docklands meetings."}, {"who": "Business traveller (West End)", "choice": "London City", "why": "DLR to Bank in ~25 min, then onward by Tube — still simpler than the Stansted Express plus a connection."}, {"who": "Family with children", "choice": "London City", "why": "A small terminal with short walks and no long transfer at the London end."}, {"who": "Budget traveller", "choice": "Stansted", "why": "Budget airlines from AMS serve STN. Check the total cost including baggage and the transfer."}, {"who": "Weekend trip", "choice": "London City", "why": "The fastest door-to-door — maximises time in London on a short trip."}, {"who": "Eurostar alternative", "choice": "Eurostar", "why": "Amsterdam Centraal to London St Pancras in ~4h. Often more comfortable than flying."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €30 saving on the ticket can disappear after one checked bag and the Stansted Express."}, {"mistake": "Ignoring the airport transfer", "fix": "Stansted is 55km northeast of central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Stansted often charge €35–60 for a checked bag. City fares frequently include it."}, {"mistake": "Not comparing Amsterdam airport access", "fix": "The NS train from Amsterdam Centraal takes ~20 min — factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Amsterdam?", answer: "Stansted and other budget-airline airports often have cheaper advertised ticket prices from Amsterdam. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, London City is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Stansted to central London?", answer: "Stansted Express — ~50 min, ~£17 off-peak." },
-    { question: "How long is the transfer from London City to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Amsterdam?", answer: "Yes. Late-night arrivals at Stansted mean fewer transport options. Late-night arrivals at London City still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from London City to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Amsterdam?", answer: "Stansted and other budget-airline airports often have cheaper advertised ticket prices from Amsterdam. However, once you add a checked bag (~€42 on a budget fare) and the ~£22 Stansted Express, London City is frequently cheaper overall — ~€33 lower on our illustrative numbers. Always compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Stansted to central London?", answer: "The Stansted Express takes ~50 min to Liverpool Street and costs ~£22 walk-up (advance fares from £9.90)." },
+    { question: "How long is the transfer from London City to central London?", answer: "The DLR takes ~25 min to Bank and costs ~£3.30 off-peak. London City has no Tube or Elizabeth Line station — the DLR is the only rail link." },
+    { question: "Does the time of day change which airport is better from Amsterdam?", answer: "Yes. Late-night arrivals at Stansted mean fewer train departures — the last Stansted Express runs in the late evening. London City's DLR runs until around 00:30, and night buses from Canary Wharf serve central London after that. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from London City to central London?", answer: "The DLR — ~25 min to Bank, ~€4 (~£3.30 off-peak). There is no Elizabeth Line and no Piccadilly Line at London City; the DLR is the only rail connection." },
   ],
   cta: {
     title: "Compare your own Amsterdam–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "London City and Stansted distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Stansted and London City distances and terminal information", source: "Stansted Airport Ltd, London City Airport" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Amsterdam airport access and fares", source: "NS (Nederlandse Spoorwegen), Schiphol Group" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -159,7 +159,7 @@ export default function AmsterdamToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€155</span><span className={styles.costBetter}>~€115</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span>~€172</span><span className={styles.costBetter}>~€139</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

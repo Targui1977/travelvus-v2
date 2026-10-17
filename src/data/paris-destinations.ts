@@ -4,11 +4,13 @@
  * First factory-generated city. Transfer profiles for CDG and ORY.
  * Follows the City Factory dataset contract.
  *
- * Values are illustrative planning estimates grounded in official
- * RATP/SNCF/Paris Aéroport fares and timetables as of July 2026.
+ * Values are planning estimates grounded in official Île-de-France
+ * Mobilités 2026 airport fares and service-public.gouv.fr taxi flat
+ * fares (A15396, effective 2026-02-01), reviewed October 2026.
+ * Unverified bus/tram fares are flagged isIllustrative.
  * NOT live fares. NOT real-time data.
  *
- * Phase 109.0 — Part B.
+ * Phase 109.0 — Part B. Canonical dataset: Phase 123.1.
  */
 
 /* ── Destination ID ──────────────────────────────────────── */
@@ -61,11 +63,13 @@ export interface ParisDestination {
 /**
  * Paris destination transfer data.
  *
- * Transfer costs are illustrative EUR values. CDG transfer via RER B
- * (€11.80 single) and ORY via Orlyval + RER B / Orlybus / Metro.
+ * Transfer costs use the unified Paris Region ⇄ Airports ticket
+ * (€14 since 2026-01-01) for rail journeys. CDG via RER B; ORY via
+ * Metro 14 (primary) or Orlyval + RER B. Orlybus (~€11) and Tram T7
+ * (~€4) fares are approximate and flagged isIllustrative.
  * Times include average wait and walking time.
  *
- * Sources: RATP, SNCF, Paris Aéroport, Île-de-France Mobilités, July 2026.
+ * Sources: Île-de-France Mobilités, RATP, SNCF, Paris Aéroport, October 2026.
  */
 export const PARIS_DESTINATIONS: Record<ParisDestinationId, ParisDestination> = {
   /* ── Central Paris ─────────────────────────────────────── */
@@ -78,25 +82,25 @@ export const PARIS_DESTINATIONS: Record<ParisDestinationId, ParisDestination> = 
     representativeStation: "Châtelet–Les Halles",
     transfers: {
       CDG: {
-        mode: "RER B direct to Châtelet–Les Halles (35 min)",
-        transferCostEUR: 12,
+        mode: "RER B direct to Châtelet–Les Halles (35–40 min)",
+        transferCostEUR: 14,
         transferDurationMin: 40,
         interchangeCount: 0,
-        serviceWindow: "RER B 05:00–00:30, every 10–15 min",
+        serviceWindow: "RER B ~05:00–00:30, every 10–15 min",
         isIllustrative: false,
       },
       ORY: {
-        mode: "Orlyval → Antony → RER B to Châtelet (45 min)",
-        transferCostEUR: 15,
-        transferDurationMin: 50,
-        interchangeCount: 1,
-        serviceWindow: "Orlyval 06:00–23:30, RER B until 00:30",
+        mode: "Metro 14 direct to Châtelet (25 min)",
+        transferCostEUR: 14,
+        transferDurationMin: 25,
+        interchangeCount: 0,
+        serviceWindow: "Metro 14 ~05:30–00:40 (approx)",
         isIllustrative: false,
       },
     },
-    sourceLabel: "RATP RER B + Orlyval",
-    sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    sourceLabel: "ÎdFM 2026 airport ticket + RATP Metro 14 / RER B",
+    sourceDate: "2026-10",
+    reviewedDate: "2026-10",
   },
 
   /* ── La Défense ────────────────────────────────────────── */
@@ -110,24 +114,24 @@ export const PARIS_DESTINATIONS: Record<ParisDestinationId, ParisDestination> = 
     transfers: {
       CDG: {
         mode: "RER B to Châtelet → RER A to La Défense (50 min)",
-        transferCostEUR: 12,
-        transferDurationMin: 55,
+        transferCostEUR: 14,
+        transferDurationMin: 50,
         interchangeCount: 1,
-        serviceWindow: "RER B 05:00–00:30, RER A until 00:30",
-        isIllustrative: true,
+        serviceWindow: "RER B ~05:00–00:30, RER A until ~00:30",
+        isIllustrative: false,
       },
       ORY: {
-        mode: "Orlyval → Antony → RER B to Châtelet → RER A to La Défense (65 min)",
-        transferCostEUR: 15,
-        transferDurationMin: 70,
-        interchangeCount: 2,
-        serviceWindow: "Orlyval 06:00–23:30, RER until 00:30",
-        isIllustrative: true,
+        mode: "Metro 14 to Châtelet → RER A to La Défense (40 min)",
+        transferCostEUR: 14,
+        transferDurationMin: 40,
+        interchangeCount: 1,
+        serviceWindow: "Metro 14 ~05:30–00:40, RER A until ~00:30 (approx)",
+        isIllustrative: false,
       },
     },
-    sourceLabel: "RATP RER B/A + Orlyval",
-    sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    sourceLabel: "RATP Metro 14 / RER B + RER A",
+    sourceDate: "2026-10",
+    reviewedDate: "2026-10",
   },
 
   /* ── Montparnasse ──────────────────────────────────────── */
@@ -140,25 +144,25 @@ export const PARIS_DESTINATIONS: Record<ParisDestinationId, ParisDestination> = 
     representativeStation: "Gare Montparnasse",
     transfers: {
       CDG: {
-        mode: "RER B to Denfert-Rochereau → Metro 4/6 to Montparnasse (50 min)",
-        transferCostEUR: 12,
-        transferDurationMin: 55,
+        mode: "RER B direct to Denfert-Rochereau (~40 min) → short Metro to Montparnasse",
+        transferCostEUR: 14,
+        transferDurationMin: 45,
         interchangeCount: 1,
-        serviceWindow: "RER B 05:00–00:30, Metro until 01:00",
-        isIllustrative: true,
+        serviceWindow: "RER B ~05:00–00:30, Metro until ~01:00 (approx)",
+        isIllustrative: false,
       },
       ORY: {
-        mode: "Orlybus direct to Denfert-Rochereau → Metro to Montparnasse (40 min)",
+        mode: "Orlybus direct to Denfert-Rochereau (~30 min) → short Metro to Montparnasse",
         transferCostEUR: 11,
         transferDurationMin: 35,
         interchangeCount: 1,
-        serviceWindow: "Orlybus 06:00–00:30, Metro until 01:00",
-        isIllustrative: false,
+        serviceWindow: "Orlybus 06:00–00:30, Metro until ~01:00 (approx)",
+        isIllustrative: true,
       },
     },
-    sourceLabel: "RATP RER B + Orlybus + Metro",
-    sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    sourceLabel: "Orlybus (approx) + RATP RER B + Metro",
+    sourceDate: "2026-10",
+    reviewedDate: "2026-10",
   },
 
   /* ── Gare du Nord ──────────────────────────────────────── */
@@ -171,25 +175,25 @@ export const PARIS_DESTINATIONS: Record<ParisDestinationId, ParisDestination> = 
     representativeStation: "Gare du Nord",
     transfers: {
       CDG: {
-        mode: "RER B direct to Gare du Nord (30 min)",
-        transferCostEUR: 12,
+        mode: "RER B direct to Gare du Nord (35–40 min)",
+        transferCostEUR: 14,
         transferDurationMin: 35,
         interchangeCount: 0,
-        serviceWindow: "RER B 05:00–00:30, every 10–15 min",
+        serviceWindow: "RER B ~05:00–00:30, every 10–15 min",
         isIllustrative: false,
       },
       ORY: {
-        mode: "Orlyval → Antony → RER B direct to Gare du Nord (55 min)",
-        transferCostEUR: 15,
-        transferDurationMin: 55,
+        mode: "Metro 14 to Châtelet → RER B/D direct to Gare du Nord (45 min)",
+        transferCostEUR: 14,
+        transferDurationMin: 45,
         interchangeCount: 1,
-        serviceWindow: "Orlyval 06:00–23:30, RER B until 00:30",
-        isIllustrative: true,
+        serviceWindow: "Metro 14 ~05:30–00:40, RER until ~00:30 (approx)",
+        isIllustrative: false,
       },
     },
-    sourceLabel: "RATP RER B + Orlyval",
-    sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    sourceLabel: "RATP Metro 14 + RER B/D",
+    sourceDate: "2026-10",
+    reviewedDate: "2026-10",
   },
 
   /* ── Bercy ──────────────────────────────────────────────── */
@@ -202,25 +206,25 @@ export const PARIS_DESTINATIONS: Record<ParisDestinationId, ParisDestination> = 
     representativeStation: "Gare de Lyon",
     transfers: {
       CDG: {
-        mode: "RER B to Châtelet → RER A/Metro 14 to Gare de Lyon (45 min)",
-        transferCostEUR: 12,
+        mode: "RER B to Châtelet → Metro 14 to Bercy (50 min)",
+        transferCostEUR: 14,
         transferDurationMin: 50,
         interchangeCount: 1,
-        serviceWindow: "RER B 05:00–00:30, RER A until 00:30",
-        isIllustrative: true,
+        serviceWindow: "RER B ~05:00–00:30, Metro 14 until ~00:40 (approx)",
+        isIllustrative: false,
       },
       ORY: {
-        mode: "Orlyval → Antony → RER B to Châtelet → Metro 14 to Gare de Lyon (60 min)",
-        transferCostEUR: 15,
-        transferDurationMin: 65,
-        interchangeCount: 2,
-        serviceWindow: "Orlyval 06:00–23:30, RER/Metro until 00:30",
-        isIllustrative: true,
+        mode: "Metro 14 direct to Bercy (20 min)",
+        transferCostEUR: 14,
+        transferDurationMin: 20,
+        interchangeCount: 0,
+        serviceWindow: "Metro 14 ~05:30–00:40 (approx)",
+        isIllustrative: false,
       },
     },
-    sourceLabel: "RATP RER B + Metro 14 + Orlyval",
-    sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    sourceLabel: "RATP Metro 14 + RER B",
+    sourceDate: "2026-10",
+    reviewedDate: "2026-10",
   },
 };
 

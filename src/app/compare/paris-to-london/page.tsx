@@ -6,62 +6,62 @@ import FAQAccordion from "@/components/guide/FAQAccordion";
 import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
-  title: "Paris to London: Heathrow, Gatwick or Stansted? | Travelvus",
-  description: "Flying Paris to London? Compare Heathrow and Gatwick on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  title: "Paris to London: Gatwick or Heathrow? | Travelvus",
+  description: "Flying Paris to London? Compare Gatwick and Heathrow on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/paris-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "paris-to-london",
   category: "London Airport Decision",
-  question: "Paris to London: Heathrow, Gatwick or Stansted?",
-  shortAnswer: "Heathrow wins for most travellers from Paris once total journey time and cost are compared.",
+  question: "Paris to London: Gatwick or Heathrow?",
+  shortAnswer: "Gatwick wins for most travellers from Paris on our illustrative numbers: it is ~5 minutes faster door-to-door and ~€27 cheaper than Heathrow.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Heathrow wins.",
+    line: "Gatwick wins.",
     stats: [
-      { label: "Total journey time", value: "260", unit: "min" },
-      { label: "Time saved", value: "30", unit: "min", accent: true },
-      { label: "Flight duration", value: "1", unit: "h 15m" },
+      { label: "Total journey cost", value: "134", unit: "€" },
+      { label: "Money saved", value: "27", unit: "€", accent: true },
+      { label: "Door-to-door time", value: "280", unit: "min" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Heathrow", a: "~4h 20m", b: "~4h 50m", verdict: "Heathrow is ~30 min faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€147", b: "~€125", verdict: "Heathrow saves ~€22" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Train, 30–50 min", b: "~35 min (Elizabeth Line)", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Gatwick", a: "~4h 40m", b: "~4h 45m", verdict: "Gatwick is ~5 min faster" },
+    { factor: "Total journey cost", winner: "Gatwick", a: "~€134", b: "~€161", verdict: "Gatwick saves ~€27" },
+    { factor: "Transfer convenience", winner: "Gatwick", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)", verdict: "Gatwick Express is ~5 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Gatwick Express every 15 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Gatwick", a: "—", b: "—", verdict: "Gatwick wins on 3 of 4 factors", isFinal: true },
   ],
-  winnerReasons: ["Heathrow's Elizabeth Line gets you to central London 20-30 minutes faster than Gatwick's train.", "Full-service airlines into Heathrow typically include baggage — no surprise fees at check-in.", "Heathrow's trains run every 10–15 minutes; Gatwick Express every 15 but you may wait longer for connections.", "The total door-to-door journey is ~30 minutes shorter through Heathrow despite the slightly longer flight.", "Heathrow connects to more London Underground lines, making onward travel simpler."],
+  winnerReasons: ["Gatwick is ~5 minutes faster door-to-door on these timings.", "The Gatwick Express takes ~30 minutes to Victoria — ~5 minutes quicker than the Elizabeth Line from Heathrow.", "Budget easyJet fares from Paris are ~€75 below full-service Heathrow fares.", "Even with a checked bag and the Gatwick Express, the total is ~€27 below the Heathrow route.", "For south London, Brighton and the south coast, Gatwick is geographically closer."],
   alternative: {
-    title: "When Gatwick is actually the better choice",
-    points: ["If you find an easyJet fare at least €40 cheaper than the Heathrow option — the saving covers the longer transfer.", "If you are travelling with only hand luggage — the baggage cost gap disappears.", "If you are heading to south London, Brighton or the south coast — Gatwick is geographically closer.", "If you want the shortest flight — Gatwick flights are ~5 min shorter."],
+    title: "When Heathrow is actually the better choice",
+    points: ["If the Heathrow fare is within ~€27 of the Gatwick fare — baggage inclusion and onward connections can swing the total.", "If you are heading to west London or the West End — the Elizabeth Line runs direct to Paddington and Tottenham Court Road.", "If you want full-service airlines and more departure times — Heathrow has the wider choice.", "If you are connecting to a long-haul flight — Heathrow is the UK's main hub."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€55 (budget/easyJet)", b: "~€120 (full-service)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "+€35–50 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — Paris", a: "RER B — ~35 min from central Paris, ~€11", b: "RER B — ~35 min from central Paris, ~€11", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Flight ticket", a: "~€55 (budget/easyJet)", b: "~€130 (full-service)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€42 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — Paris", a: "RER B — ~35 min from central Paris, ~€14", b: "RER B — ~35 min from central Paris, ~€14", winner: "tie" as const },
+    { label: "Airport transfer — London", a: "~€23 (~£20, Gatwick Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
     { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
   journeyTimeline: [
-    { stage: "Paris city → Airport", a: "RER B — ~35 min from central Paris, ~€11", b: "RER B — ~35 min from central Paris, ~€11" },
+    { stage: "Paris city → Airport", a: "RER B — ~35 min from central Paris, ~€14", b: "RER B — ~35 min from central Paris, ~€14" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Paris → London", a: "~1h 10m", b: "~1h 15m" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~45 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~4h 20m", b: "~4h 50m", isFinal: true },
+    { stage: "Airport → Central London", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
+    { stage: "Total door-to-door", a: "~4h 40m", b: "~4h 45m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "Faster transfer, more transport options, closer to most London offices."}, {"who": "Family with children", "choice": "Heathrow", "why": "Direct train connections from the airport — easier with tired children and luggage."}, {"who": "Budget traveller", "choice": "Gatwick", "why": "easyJet fares from CDG can be very low. The saving justifies the slightly longer transfer."}, {"who": "Weekend trip", "choice": "Heathrow", "why": "Every hour counts — the faster transfer means more time in London."}, {"who": "Heading to south London", "choice": "Gatwick", "why": "Gatwick is south of the city — closer to Croydon, Brighton and the south coast."}, {"who": "Eurostar alternative", "choice": "Eurostar", "why": "For central Paris to central London, the Eurostar (2h 15m) often beats flying door-to-door."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Paris airport access", "fix": "RER B — factor this into the total journey before comparing London airports."}],
+  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "Full-service airlines, the Elizabeth Line to Paddington and more onward connections."}, {"who": "Family with children", "choice": "Gatwick", "why": "~€27 cheaper overall on our numbers, and the Gatwick Express runs direct to Victoria."}, {"who": "Budget traveller", "choice": "Gatwick", "why": "easyJet fares plus a checked bag still come in ~€27 below the Heathrow route."}, {"who": "Weekend trip", "choice": "Gatwick", "why": "~5 minutes faster door-to-door and cheaper — more time and money in London."}, {"who": "Heading to south London", "choice": "Gatwick", "why": "Gatwick is south of the city — closer to Croydon, Brighton and the south coast."}, {"who": "Eurostar alternative", "choice": "Eurostar", "why": "For central Paris to central London, the Eurostar (2h 17m) often beats flying door-to-door."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The Gatwick Express takes ~30 min and costs ~£20 — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Paris airport access", "fix": "RER B — factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Paris?", answer: "Gatwick and other budget-airline airports often have cheaper advertised ticket prices from Paris. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express — ~30 min, ~£20 off-peak." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Paris?", answer: "Yes. Late-night arrivals at Gatwick mean fewer transport options. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Paris?", answer: "Gatwick usually has the cheaper advertised fare from Paris. Add a checked bag (~€42) and the Gatwick Express (~£20), and the total is still ~€27 below a full-service Heathrow fare on our illustrative numbers. Always compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Gatwick to central London?", answer: "The Gatwick Express takes ~30 min to Victoria and costs ~£20 off-peak." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "Does the time of day change which airport is better from Paris?", answer: "Yes. Late-night arrivals at Gatwick mean fewer rail options after the last Gatwick Express. Heathrow still has the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£15 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
   ],
   cta: {
     title: "Compare your own Paris–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Gatwick Airport Ltd" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Paris airport access and fares", source: "RATP (RER B), Aéroports de Paris" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -159,7 +159,7 @@ export default function ParisToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€147</span><span className={styles.costBetter}>~€125</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€134</span><span>~€161</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

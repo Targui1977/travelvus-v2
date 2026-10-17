@@ -6,40 +6,40 @@ import FAQAccordion from "@/components/guide/FAQAccordion";
 import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
-  title: "Berlin to London: Heathrow or Stansted? | Travelvus",
+  title: "Berlin to London: Stansted or Heathrow? | Travelvus",
   description:
-    "Flying Berlin to London? Compare Heathrow and Stansted on total journey cost, door-to-door time, airport transfers and convenience. Which airport really wins?",
+    "Flying Berlin to London? Compare Stansted and Heathrow on total journey cost, door-to-door time, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/berlin-to-london" },
 };
 
 /* ── Data ─────────────────────────────────────────────────── */
 
-const DATA = {
-  question: "Berlin to London — should I choose Heathrow or Stansted?",
-  quickAnswer: "Heathrow wins for most travellers once total journey time and cost are compared.",
+export const DATA = {
+  question: "Berlin to London: Stansted or Heathrow?",
+  quickAnswer: "Heathrow wins for most travellers from Berlin by a narrow margin: ~5 minutes faster than Stansted, though ~€2 more expensive once the checked bag and the Stansted Express are included.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
 
   verdictLine: "Heathrow wins.",
   verdictStats: [
-    { label: "Total journey cost", value: "135", unit: "€" },
-    { label: "Money saved", value: "26", unit: "€", accent: true },
-    { label: "Door-to-door time", value: "5", unit: "h 25m" },
+    { label: "Total journey cost", value: "131", unit: "€" },
+    { label: "Time saved", value: "5", unit: "min", accent: true },
+    { label: "Door-to-door time", value: "340", unit: "min" },
   ] as [any, any, any],
 
   atAGlance: [
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€161", b: "~€135", verdict: "Heathrow saves ~€26" },
-    { factor: "Door-to-door time", winner: "Heathrow", a: "~5h 50m", b: "~5h 25m", verdict: "Heathrow is ~25 min faster" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Coach or train, 50–90 min", b: "Train or Tube, 35–60 min", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Coach subject to traffic", b: "Trains every 15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Heathrow", a: "~5h 45m", b: "~5h 40m", verdict: "Heathrow is ~5 min faster" },
+    { factor: "Total journey cost", winner: "Stansted", a: "~€129", b: "~€131", verdict: "Stansted saves ~€2" },
+    { factor: "Transfer convenience", winner: "Heathrow", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)", verdict: "Heathrow transfer is ~15 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Stansted Express every 15–30 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 3 of 4 factors", isFinal: true },
   ],
 
   whyThisWins: [
     "Heathrow is 24km from central London — less than half the distance of Stansted at 55km.",
     "The Elizabeth Line and Piccadilly Line run every 10–15 minutes with no traffic risk.",
-    "Heathrow's total journey cost is lower once the shorter, cheaper airport transfer is included.",
+    "Heathrow's transfer is ~15 minutes quicker (Elizabeth Line ~35 min vs Stansted Express ~50 min), which outweighs Stansted's ~€2 fare advantage.",
     "Door-to-door time is shorter — the faster transfer outweighs the slightly longer flight.",
     "More transport options mean less schedule waiting and fewer missed connections.",
   ],
@@ -47,10 +47,10 @@ const DATA = {
   whenOtherBetter: {
     title: "When Stansted is actually the better choice",
     points: [
-      "If you find a ticket at least €50 cheaper than the Heathrow option — the saving may justify the longer coach or train transfer.",
+      "If you find a ticket at least €20 cheaper than the Heathrow option — the saving may justify the longer coach or train transfer.",
       "If you are travelling with only hand luggage — the baggage cost advantage of full-service airlines disappears.",
       "If you are heading to northeast London, Cambridge or East Anglia — Stansted is geographically closer to these destinations.",
-      "If you are on a tight budget and willing to trade 25–40 minutes of transfer time for a lower ticket price.",
+      "If you are on a tight budget and willing to trade ~15 minutes of transfer time for a lower total cost.",
     ],
   },
 
@@ -58,8 +58,8 @@ const DATA = {
     { label: "Flight ticket", a: "~€58", b: "~€110", winner: "a" as const, note: "Budget airline vs full-service" },
     { label: "Checked bag", a: "+€42 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines charge extra" },
     { label: "Airport transfer — Berlin", a: "~€4 (S-Bahn)", b: "~€4 (S-Bahn)", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~€22 (Stansted Express)", b: "~€16 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Risk: 30–60 min coach gap", b: "Minimal: trains every 15 min", winner: "b" as const },
+    { label: "Airport transfer — London", a: "~€25 (~£22, Stansted Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
+    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
 
   journeyTimeline: [
@@ -68,7 +68,7 @@ const DATA = {
     { stage: "Flight Berlin → London", a: "~1h 50m to STN", b: "~2h 05m to LHR" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
     { stage: "Airport → Central London", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~5h 50m", b: "~5h 25m", isFinal: true },
+    { stage: "Total door-to-door", a: "~5h 45m", b: "~5h 40m", isFinal: true },
   ],
 
   scenarios: [
@@ -82,7 +82,7 @@ const DATA = {
 
   commonMistakes: [
     { mistake: "Choosing by ticket price only", fix: "Add baggage fees, airport transfer cost and schedule waiting time before comparing." },
-    { mistake: "Ignoring the airport transfer", fix: "Stansted is 55km from central London. The Stansted Express costs ~£17 one way and takes 50 minutes." },
+    { mistake: "Ignoring the airport transfer", fix: "Stansted is 55km from central London. The Stansted Express takes ~50 minutes and costs ~£22 walk-up (advance fares from £9.90)." },
     { mistake: "Forgetting baggage costs", fix: "Budget airlines flying into Stansted often charge €30–60 for a checked bag. Add it to the total." },
     { mistake: "Assuming a shorter flight is faster", fix: "The flight to Stansted is ~15 min shorter — but the longer transfer to central London more than cancels that saving." },
   ],
@@ -90,15 +90,15 @@ const DATA = {
   faqItems: [
     {
       question: "Which London airport is cheaper overall — Heathrow or Stansted?",
-      answer: "Stansted often has cheaper ticket prices because it serves more budget airlines. However, once you add baggage fees and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost: ticket + baggage + Berlin airport transfer + London airport transfer."
+      answer: "Stansted often has cheaper ticket prices because it serves more budget airlines. On our illustrative numbers the total is ~€2 cheaper via Stansted, but Heathrow is ~5 minutes faster and has the more frequent transfer — so the two are close to level. Always compare the complete door-to-door cost: ticket + baggage + Berlin airport transfer + London airport transfer."
     },
     {
       question: "How long does it take to get from Stansted to central London?",
-      answer: "The Stansted Express train takes approximately 50 minutes to Liverpool Street station and costs around £17 one way off-peak. National Express coaches take 75–90 minutes to central London and cost £10–15. The coach is cheaper but slower and subject to traffic. Trains run every 15–30 minutes; coaches every 30–60 minutes."
+      answer: "The Stansted Express train takes approximately 50 minutes to Liverpool Street station. Walk-up fares are ~£22; advance tickets start from £9.90. National Express coaches take 75–90 minutes to central London and cost £10–15. The coach is cheaper but slower and subject to traffic. Trains run every 15–30 minutes; coaches every 30–60 minutes."
     },
     {
       question: "How long does it take to get from Heathrow to central London?",
-      answer: "The Elizabeth Line takes approximately 35 minutes to central London and costs around £12 off-peak. The Piccadilly Line takes 50–60 minutes and costs £5–6. The Heathrow Express takes 15 minutes to Paddington but costs £25. All three options run frequently throughout the day."
+      answer: "The Elizabeth Line takes approximately 35 minutes to central London and costs ~£15 (approx. 2026). The Piccadilly Line takes 50–60 minutes and costs £5–6. The Heathrow Express takes 15 minutes to Paddington but costs £26. All three options run frequently throughout the day."
     },
     {
       question: "Does the time of day change which airport is better?",
@@ -115,6 +115,7 @@ const DATA = {
     { kicker: "Time Guide", title: "Total Travel Time Comparison", desc: "Flight duration is just one segment of the door-to-door journey.", href: "/guides/total-travel-time-comparison", link: "Continue reading →" },
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
+  factualReviewDate: "April 2027",
 };
 
 /* ── Sub-components ───────────────────────────────────────── */
@@ -207,7 +208,7 @@ export default function BerlinToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€161</span><span className={styles.costBetter}>~€135</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€129</span><span>~€131</span></div>
           </section>
 
           {/* ═══ 7. JOURNEY TIMELINE ═══ */}
@@ -272,7 +273,7 @@ export default function BerlinToLondonPage() {
                 <ul style={{ fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.6, color: "#4a5560", margin: 0, paddingLeft: 16 }}>
                   <li>Heathrow and Stansted distances — public airport information</li>
                   <li>Transfer times — TfL (Elizabeth Line, Piccadilly Line) and National Rail (Stansted Express)</li>
-                  <li>Off-peak single fares — TfL and National Rail published fares, July 2026</li>
+                  <li>Off-peak single fares — TfL and National Rail published fares, October 2026</li>
                   <li>Flight durations — typical scheduled times for BER–LHR and BER–STN</li>
                   <li>BER airport access — VBB S-Bahn (S9, S45), ~40 min to city centre</li>
                 </ul>
@@ -289,7 +290,7 @@ export default function BerlinToLondonPage() {
               </div>
             </div>
             <p style={{ fontFamily: "var(--mono)", fontWeight: 400, fontSize: 10, color: "var(--muted)", marginTop: 16, marginBottom: 0 }}>
-              Last reviewed: July 2026 · Next factual review: January 2027
+              Last reviewed: October 2026 · Next factual review: April 2027
             </p>
           </section>
 

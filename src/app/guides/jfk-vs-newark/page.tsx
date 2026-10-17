@@ -38,12 +38,12 @@ const FAQ_ITEMS = [
   {
     question: "How long does it take from JFK to Midtown Manhattan?",
     answer:
-      "AirTrain + LIRR takes ~35 minutes to Penn Station and costs ~$15. AirTrain + Subway (A/E) takes ~60 minutes and costs ~$8. A taxi takes 45–75 minutes with a $70 flat fare plus tolls and tip (~$85–95 total). Rideshare costs $55–80 depending on demand.",
+      "AirTrain + LIRR takes ~35–40 minutes to Penn Station and costs ~$15–19. AirTrain + Subway (A/E) takes ~60 minutes and costs ~$11.75. A taxi takes 45–75 minutes with a $70 flat fare plus ~$7–12 in mandatory surcharges, then tolls and tip. Rideshare costs $55–80 depending on demand.",
   },
   {
     question: "How long does it take from Newark to Midtown Manhattan?",
     answer:
-      "AirTrain + NJ Transit takes ~40 minutes total to Penn Station and costs ~$15. The train ride itself is only ~25 minutes. A taxi takes 35–60 minutes and costs $65–85 plus a $17.50 airport surcharge and tolls (~$95–120 total). Rideshare costs $55–85.",
+      "AirTrain + NJ Transit takes ~40–45 minutes total to Penn Station and costs ~$17.25 — the fare includes the AirTrain access fee. The train ride itself is only ~25 minutes. A taxi takes 35–60 minutes and costs $65–85 plus a $17.50 airport surcharge and tolls (~$95–120 total). Rideshare costs $55–85.",
   },
   {
     question: "Is Newark really in New York?",
@@ -58,7 +58,7 @@ const FAQ_ITEMS = [
   {
     question: "Which airport is cheaper to fly into?",
     answer:
-      "Ticket prices are comparable between JFK and Newark for most routes, as both are major international airports with competitive pricing. The real cost difference comes from the airport transfer — Newark's NJ Transit (~$15) is cheaper than JFK's taxi ($70 flat) but similar to JFK's AirTrain + LIRR (~$15). Always compare the total door-to-door cost.",
+      "Ticket prices are comparable between JFK and Newark for most routes, as both are major international airports with competitive pricing. The real cost difference comes from the airport transfer — Newark's NJ Transit (~$17.25, including the AirTrain access fee) is cheaper than JFK's taxi ($70 flat plus surcharges) but similar to JFK's AirTrain + LIRR (~$15–19). Always compare the total door-to-door cost.",
   },
   {
     question: "Which airport is better for a connecting flight?",
@@ -82,11 +82,10 @@ export default function JFKvsNewarkGuide() {
           category="Airport Decision"
           question="JFK vs Newark: Which New York Airport Is Actually Better?"
           subtitle="Both are international hubs 15–16 miles from Midtown. But the transfer, the airline, and your destination in New York change which one wins."
-          metadata={{ readTime: "8 min read", reviewedDate: "Jul 2026", verified: true }}
+          metadata={{ readTime: "8 min read", reviewedDate: "Oct 2026", verified: true }}
           decisionCard={{
             winner: "Newark wins for Midtown — JFK for Brooklyn",
-            timeSaved: "~25 min faster to Penn",
-            moneySaved: "From ~$15 NJ Transit",
+            moneySaved: "From ~$17.25 NJ Transit",
             bestFor: "Newark: Midtown, United flyers. JFK: Brooklyn, international choice.",
             confidence: "too-close",
           }}
@@ -160,9 +159,9 @@ export default function JFKvsNewarkGuide() {
             <table className={styles.compTable}>
               <thead><tr><th>Transfer option</th><th>JFK</th><th>Newark</th></tr></thead>
               <tbody>
-                <tr><td>Fastest rail</td><td>AirTrain + LIRR (~35 min, ~$15)</td><td>AirTrain + NJ Transit (~40 min, ~$15)</td></tr>
-                <tr><td>Cheapest public transit</td><td>AirTrain + Subway A/E (~60 min, ~$8)</td><td>NJ Transit alone (~$15)</td></tr>
-                <tr><td>Taxi</td><td>$70 flat + tolls/tip (~$85–95)</td><td>Metered + $17.50 surcharge (~$95–120)</td></tr>
+                <tr><td>Fastest rail</td><td>AirTrain + LIRR (~35–40 min, ~$15–19)</td><td>AirTrain + NJ Transit (~40–45 min, ~$17.25)</td></tr>
+                <tr><td>Cheapest public transit</td><td>AirTrain + Subway A/E (~60 min, ~$11.75)</td><td>NJ Transit (~$17.25, incl. AirTrain fee)</td></tr>
+                <tr><td>Taxi</td><td>$70 flat + ~$7–12 surcharges + tolls/tip</td><td>Metered + $17.50 surcharge (~$95–120)</td></tr>
                 <tr><td>Rideshare</td><td>$55–80</td><td>$55–85</td></tr>
                 <tr><td>Rail frequency</td><td>Every 5–10 min</td><td>Every 15–30 min</td></tr>
                 <tr><td>24-hour transit</td><td>Subway A train (limited night service)</td><td>No — NJ Transit stops ~1am</td></tr>
@@ -241,7 +240,7 @@ export default function JFKvsNewarkGuide() {
               <li><strong>You fly Delta, JetBlue, or a non-United international carrier.</strong> JFK has over 80 airlines versus Newark's United-dominated terminals.</li>
               <li><strong>You want the widest choice of flight times and routes.</strong> JFK has ~67% more international routes than Newark.</li>
               <li><strong>You are arriving very late at night.</strong> The A subway runs 24/7. NJ Transit stops around 1am.</li>
-              <li><strong>You want the cheapest possible public transit.</strong> AirTrain + Subway is ~$8 versus ~$15 for NJ Transit.</li>
+              <li><strong>You want the cheapest possible public transit.</strong> AirTrain + Subway is ~$11.75 versus ~$17.25 for NJ Transit.</li>
             </ul>
 
             {/* When Newark is better */}

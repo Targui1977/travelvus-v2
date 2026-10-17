@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guides/best-airport-for-north-london" },
 };
 
-const FAQ_ITEMS = [{"question": "Which is better for Camden — Luton or Stansted?", "answer": "Luton. Thameslink from Luton Airport Parkway to St Pancras takes ~25 minutes. Camden is a 10-minute walk or 5-minute bus from St Pancras."}, {"question": "Is Heathrow an option for north London?", "answer": "Yes but not ideal. Piccadilly Line to north London (Finsbury Park, Wood Green) takes 60–75 minutes. Only use Heathrow if your route is not served by Luton or Stansted."}];
+const FAQ_ITEMS = [{"question": "Which is better for Camden — Luton or Stansted?", "answer": "Luton. The DART rail link takes ~5 minutes to Luton Airport Parkway, then Thameslink reaches St Pancras in ~30 minutes — about 40 minutes in total. Camden is a 10-minute walk or 5-minute bus from St Pancras."}, {"question": "Is Heathrow an option for north London?", "answer": "Yes but not ideal. Piccadilly Line to north London (Finsbury Park, Wood Green) takes 60–75 minutes. Only use Heathrow if your route is not served by Luton or Stansted."}];
 
 export default function BestAirportForNorthLondonPage() {
   return (
@@ -24,7 +24,7 @@ export default function BestAirportForNorthLondonPage() {
           <h1 className={styles.guideHeroH1}>Which London airport is best for north London?</h1>
           <p className={styles.guideHeroSub}>Luton and Stansted are the closest airports to north London. Luton via Thameslink to St Pancras is fastest for northwest London. Stansted via Tottenham Hale is best for northeast London.</p>
           <div className={styles.guideHeroMeta}>
-            <span>3 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>3 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>
@@ -42,7 +42,7 @@ export default function BestAirportForNorthLondonPage() {
             <h2 id="section-1">North London airport comparison</h2>
             <p>Here is how the airports compare for north London:</p>
             <h2 id="section-2">Luton: best for northwest London</h2>
-            <p>Luton Airport is north of London. The DART shuttle (5 minutes) connects to Luton Airport Parkway station, where Thameslink trains run to St Pancras (~25 min), West Hampstead and Kentish Town. From St Pancras, Camden, Islington and King's Cross are walking distance or a short bus ride. Total door-to-door to Camden: ~50–60 minutes.</p>
+            <p>Luton Airport is north of London. The DART automated rail link (5 minutes, £4.90) connects to Luton Airport Parkway station, where Thameslink trains run to St Pancras (~30 min), West Hampstead and Kentish Town. From St Pancras, Camden, Islington and King&rsquo;s Cross are walking distance or a short bus ride. Total door-to-door to Camden: ~45 minutes.</p>
             <h2 id="section-3">Stansted: best for northeast London</h2>
             <p>Stansted Airport is northeast of London. The Stansted Express serves Tottenham Hale (~40 min), connecting to the Victoria Line for Finsbury Park, Seven Sisters and Walthamstow. For Hackney, change at Tottenham Hale for Overground or bus. Total door-to-door to Finsbury Park: ~55–65 minutes.</p>
 

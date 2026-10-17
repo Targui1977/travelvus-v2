@@ -216,6 +216,10 @@
   color: var(--navy);
 }
 
+.glanceWinnerA {
+  color: var(--navy);
+}
+
 /* ── 4. WHY THIS WINS ─────────────────────────────────────── */
 
 .whyGrid {

@@ -11,61 +11,80 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/luton-vs-london-city" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "luton-vs-london-city",
   category: "London Airport Decision",
   question: "Luton vs London City — which London airport wins?",
-  shortAnswer: "London City for speed, Luton for budget wins for most travellers once total journey time and cost are compared.",
+  shortAnswer: "Luton wins on price — about £53 cheaper door-to-door — and offers far more budget routes; London City wins on speed, with a DLR transfer of about 25 minutes and a journey about 20 minutes shorter.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "London City for speed, Luton for budget wins.",
+    line: "Luton wins on budget, London City on speed.",
     stats: [
-      { label: "Total journey time", value: "210", unit: "min" },
-      { label: "Time saved", value: "60", unit: "min", accent: true },
+      { label: "Total journey time", value: "255", unit: "min" },
+      { label: "Time saved", value: "20", unit: "min", accent: true },
       { label: "Flight duration", value: "1", unit: "h 30m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "London City for speed, Luton for budget", a: "~4h 30m", b: "~3h 30m", verdict: "London City for speed, Luton for budget is ~60 faster" },
-    { factor: "Total journey cost", winner: "Luton", a: "~£100", b: "~£160", verdict: "Luton saves ~£60" },
-    { factor: "Transfer convenience", winner: "London City", a: "40 min (DART+Thameslink)", b: "25 min (DLR)", verdict: "London City has the faster transfer" },
-    { factor: "Route and airline choice", winner: "London City", a: "Budget-focused, good choice", b: "Budget-focused, good choice", verdict: "London City has more airlines and routes" },
-    { factor: "Overall winner", winner: "London City for speed, Luton for budget", a: "—", b: "—", verdict: "London City for speed, Luton for budget wins on most factors", isFinal: true },
+    { factor: "Total journey time", winner: "London City", a: "~4h 35m", b: "~4h 15m", verdict: "London City is ~20 min faster" },
+    { factor: "Total journey cost", winner: "Luton", a: "~£100", b: "~£153", verdict: "Luton saves ~£53" },
+    { factor: "Transfer convenience", winner: "London City", a: "40 min (DART + Thameslink)", b: "25 min (DLR)", verdict: "London City's transfer is ~15 min faster" },
+    { factor: "Route and airline choice", winner: "Luton", a: "Budget-focused, wide European network", b: "Short-haul business routes", verdict: "Luton has more airlines and routes" },
+    { factor: "Overall winner", winner: "Split decision", a: "—", b: "—", verdict: "Luton wins on budget and routes, London City on speed", isFinal: true },
   ],
-  winnerReasons: ["London City Airport saves ~1 hour door-to-door versus Luton — but typically costs ~£60 more.", "LCY's DLR is direct from the terminal. Luton requires a shuttle bus (DART) plus a train connection.", "LCY is a premium small-airport experience — 20 min from plane to DLR. Luton is a budget airport with budget facilities.", "Luton wins on route choice for budget travellers — Wizz Air and easyJet cover Europe extensively.", "This comparison mirrors Stansted vs LCY but with Luton's slightly better location for north London."],
+  winnerReasons: [
+    "Luton is about £53 cheaper door-to-door in this comparison — the ticket price gap more than covers the checked bag and the transfer.",
+    "Luton's DART rail link plus Thameslink reaches St Pancras in about 40 minutes, so the transfer is workable rather than painful.",
+    "Wizz Air and easyJet cover a wide European network from Luton — far more routes than LCY offers.",
+    "London City wins on speed: the DLR reaches Bank in about 25 minutes and the whole journey is about 20 minutes shorter.",
+    "LCY is a premium small-airport experience — about 20 minutes from plane to DLR — while Luton is functional and budget.",
+  ],
   alternative: {
     title: "When Luton is actually the better choice",
-    points: ["Wizz Air and easyJet from Luton fly to many destinations LCY does not serve.", "The price difference can exceed £100 — significant for any traveller.", "Luton is better for north London, Milton Keynes, Bedford and the Midlands.", "Luton's DART+Thameslink connection is faster than Stansted's equivalent — ~40 min to St Pancras."],
+    points: [
+      "Wizz Air and easyJet from Luton fly to many destinations LCY does not serve.",
+      "The price difference is about £53 in this comparison — significant for any traveller.",
+      "Luton is better for north London, Milton Keynes, Bedford and the Midlands.",
+      "Luton's DART + Thameslink connection reaches St Pancras in about 40 minutes.",
+      "If your destination is north London rather than the City, Luton's geography helps too.",
+    ],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~£150 (BA CityFlyer)", b: "~£45 (Wizz Air/easyJet)", winner: "b" as const, note: "+£35–50 vs Often included" },
-    { label: "Checked bag", a: "Often included", b: "+£35–50", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — London", a: "25 min to Bank", b: "40 min to St Pancras", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Minimal: Every 5–10 min", b: "Risk: 20–40 min gap", winner: "b" as const },
-    { label: "Terminal experience", a: "Premium facilities", b: "Functional, basic amenities", winner: "b" as const },
+    { label: "Flight ticket", a: "~£45 (Wizz Air/easyJet)", b: "~£150 (BA CityFlyer)", winner: "a" as const, note: "Base fare before baggage" },
+    { label: "Checked bag", a: "~£40", b: "£0 (included)", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — London", a: "~£15 (DART + Thameslink)", b: "~£3 (DLR)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: every 5–10 min", winner: "b" as const },
+    { label: "Terminal experience", a: "Functional, basic amenities", b: "Premium facilities", winner: "b" as const },
   ],
   journeyTimeline: [
-    { stage: "London city → Airport", a: "45km north of central London", b: "10km east of central London" },
+    { stage: "London city → Airport", a: "45km north of central London", b: "11km east of central London" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight (typical European)", a: "~1h 30m (typical European)", b: "~1h 30m (typical European)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "25 min (DLR)", b: "40 min (DART+Thameslink)" },
-    { stage: "Total door-to-door", a: "~4h 30m", b: "~3h 30m", isFinal: true },
+    { stage: "Airport → Central London", a: "40 min (DART + Thameslink)", b: "25 min (DLR)" },
+    { stage: "Total door-to-door", a: "~4h 35m", b: "~4h 15m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller (City/Canary Wharf)", "choice": "London City", "why": "LCY is purpose-built for this — DLR to the office in 20-25 min."}, {"who": "Budget traveller", "choice": "Luton", "why": "Wizz Air and easyJet fares are far cheaper than LCY — the saving is real."}, {"who": "North London", "choice": "Luton", "why": "Luton is closer to north London than LCY. DART+Thameslink to St Pancras is fast."}, {"who": "Weekend trip", "choice": "London City", "why": "Faster door-to-door means more time in London on a short trip."}, {"who": "Travelling to Eastern Europe", "choice": "Luton", "why": "Wizz Air's LTN base serves Eastern European destinations LCY doesn't touch."}, {"who": "Family with children", "choice": "London City", "why": "If LCY serves your route, the tiny airport means no long walks, no shuttle buses, less stress."}],
+  scenarios: [
+    { who: "Business traveller (City/Canary Wharf)", choice: "London City", why: "LCY is purpose-built for this — the DLR reaches the office in about 25 minutes." },
+    { who: "Budget traveller", choice: "Luton", why: "Wizz Air and easyJet fares are far cheaper than LCY — the saving is real." },
+    { who: "North London", choice: "Luton", why: "Luton is closer to north London than LCY. DART + Thameslink to St Pancras is fast." },
+    { who: "Weekend trip", choice: "London City", why: "About 20 minutes faster door-to-door — more time in London on a short trip." },
+    { who: "Travelling to Eastern Europe", choice: "Luton", why: "Wizz Air's LTN base serves Eastern European destinations LCY doesn't touch." },
+    { who: "Family with children", choice: "London City", why: "If LCY serves your route, the tiny airport means no long walks and no DART change — less stress." },
+  ],
   commonMistakes: [
     { mistake: "Choosing by ticket price only", fix: "Add baggage fees, transfer cost and schedule waiting. A £50 saving on the ticket can disappear after one checked bag." },
-    { mistake: "Ignoring the airport transfer", fix: "London City is 10km from central London. Luton is 45km. The transfer cost and time differ significantly." },
-    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge £35–50 for a checked bag. Full-service airlines often include it." },
+    { mistake: "Ignoring the airport transfer", fix: "London City is 11km from central London. Luton is 45km. The transfer cost and time differ significantly." },
+    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge around £40 for a checked bag. Full-service airlines often include it." },
     { mistake: "Not checking your destination within London", fix: "Luton is better for north London. London City is better for east London and Canary Wharf." },
   ],
   faqItems: [
-    { question: "Which is better — Luton or London City?", answer: "Luton and London City serve different travellers. London City for speed, Luton for budget generally wins for most journeys when total cost and time are compared, but the right choice depends on your airline preference, destination within London, and budget." },
-    { question: "How long is the transfer from Luton to central London?", answer: "DART + Thameslink (~40 min to St Pancras, ~£15). Every 10–15 min. No direct rail — shuttle bus (DART) required to reach station; limited airline choice" },
-    { question: "How long is the transfer from London City to central London?", answer: "DLR (~25 min to Bank, ~£3). Every 5–10 min. Limited routes (short-haul European only); higher ticket prices; no long-haul" },
-    { question: "Is Luton or London City cheaper overall?", answer: "Luton typically costs ~£100 total door-to-door. London City typically costs ~£160. The difference depends on baggage and transfer choices." },
+    { question: "Which is better — Luton or London City?", answer: "Luton wins on price — about £53 cheaper door-to-door — and has far more budget routes. London City wins on speed: about 20 minutes faster door-to-door, with a DLR transfer of about 25 minutes to Bank." },
+    { question: "How long is the transfer from Luton to central London?", answer: "The DART rail link connects the terminal to Luton Airport Parkway in about 5 minutes (£4.90), then Thameslink reaches St Pancras in about 30 minutes — roughly 40 minutes and ~£15 in total. DART is an automated people mover on rails, not a bus." },
+    { question: "How long is the transfer from London City to central London?", answer: "The DLR reaches Bank in about 25 minutes (~£3.30 off-peak) and runs every 5–10 minutes. London City has no Elizabeth Line and no Piccadilly Line — the DLR is its only rail link." },
+    { question: "Is Luton or London City cheaper overall?", answer: "Luton typically costs around £100 door-to-door in this comparison; London City around £153 — about £53 more." },
     { question: "Which airline flies from Luton vs London City?", answer: "Luton serves mainly Wizz Air and easyJet. London City serves mainly BA CityFlyer and niche business carriers." },
   ],
   cta: {
@@ -91,7 +110,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -100,7 +119,7 @@ function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.a
       <span className={styles.glanceFactor}>{factor}</span>
       <span className={styles.glanceVal}>{a}</span>
       <span className={styles.glanceVal}>{b}</span>
-      <span className={`${styles.glanceWinner} ${winner === "London City for speed, Luton for budget" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
+      <span className={`${styles.glanceWinner} ${winner === "London City" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
     </div>
   );
 }
@@ -163,7 +182,7 @@ export default function LutonVsLondonCityPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~£100</span><span className={styles.costBetter}>~£160</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~£100</span><span>~£153</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

@@ -5,7 +5,7 @@ import { buildHubCompareUrl } from "@/lib/hub-model";
 
 export const metadata: Metadata = {
   title: "Best Airport for Gare du Nord — CDG or Orly? | Travelvus",
-  description: "Which Paris airport is best for Gare du Nord? Compare Charles de Gaulle (CDG) vs Orly (ORY) — CDG has a direct RER B connection in 35 min.",
+  description: "Which Paris airport is best for Gare du Nord? Compare Charles de Gaulle (CDG) vs Orly (ORY) — CDG has a direct RER B connection in ~35–40 min.",
   alternates: { canonical: "/guides/best-airport-for-gare-du-nord" },
 };
 
@@ -15,20 +15,20 @@ const guide: GuideConfig = {
   cityId: "paris",
   destinationId: "gare-du-nord",
   title: "Best Airport for Gare du Nord — CDG or Orly?",
-  description: "Which Paris airport is best for Gare du Nord? CDG has a direct RER B connection in 35 min. Compare transfer costs, times, and real trip cost.",
+  description: "Which Paris airport is best for Gare du Nord? CDG has a direct RER B connection in ~35–40 min. Compare transfer costs, times, and real trip cost.",
   headline: "Which airport is best for Gare du Nord?",
-  intro: "Gare du Nord is one of Paris's major railway stations — and CDG has a direct RER B connection that takes just 35 minutes. No changes, no shuttle transfers. Orly requires the Orlyval shuttle plus RER B, taking 55 minutes. For anyone arriving at Gare du Nord — especially Eurostar or Thalys passengers making a connection — CDG is the obvious choice.",
+  intro: "Gare du Nord is one of Paris's major railway stations — and CDG has a direct RER B connection that takes ~35–40 minutes. No changes, no shuttle transfers. Orly now reaches it with one change: Metro 14 to Châtelet, then RER B or D to Gare du Nord, about 45 minutes. For anyone arriving at Gare du Nord — especially Eurostar passengers making a connection — CDG remains the simpler choice.",
   airports: [
-    { code: "CDG", name: "Charles de Gaulle", why: "RER B runs direct from CDG to Gare du Nord in 35 minutes — the fastest airport-to-station connection in Paris. No interchanges, trains every 10–15 minutes. Ideal for travellers connecting to Eurostar, Thalys, or TGV services.", transferNote: "RER B direct, €12, ~35 min, 0 interchanges" },
-    { code: "ORY", name: "Orly", why: "Orly requires Orlyval to Antony, then RER B to Gare du Nord — about 55 minutes total. The Orlyval premium adds cost, and the interchange at Antony adds complexity. Only worth it if the Orly airfare is dramatically cheaper.", transferNote: "Orlyval → RER B, €15, ~55 min, 1 interchange" },
+    { code: "CDG", name: "Charles de Gaulle", why: "RER B runs direct from CDG to Gare du Nord in ~35–40 minutes — the fastest airport-to-station connection in Paris. No interchanges, trains every 10–15 minutes, €14. Ideal for travellers connecting to Eurostar, Thalys, or TGV services.", transferNote: "RER B direct, €14, ~35–40 min, 0 interchanges" },
+    { code: "ORY", name: "Orly", why: "Orly reaches Gare du Nord with one change: Metro 14 direct to Châtelet (~25 min), then RER B or D to Gare du Nord. About 45 minutes total for the same €14 airport ticket. Only worth it if the Orly airfare is significantly cheaper.", transferNote: "Metro 14 → RER B/D, €14, ~45 min, 1 interchange" },
   ],
   transferFacts: [
-    { label: "CDG → Gare du Nord", value: "€12", note: "RER B direct, ~35 min — fastest connection" },
-    { label: "ORY → Gare du Nord", value: "€15", note: "Orlyval + RER B, ~55 min" },
-    { label: "CDG → Central Paris", value: "€12", note: "RER B direct, ~40 min" },
-    { label: "ORY → Central Paris", value: "€15", note: "Orlyval + RER B, ~50 min" },
+    { label: "CDG → Gare du Nord", value: "€14", note: "RER B direct, ~35–40 min — fastest connection" },
+    { label: "ORY → Gare du Nord", value: "€14", note: "Metro 14 + RER B/D, ~45 min, 1 change" },
+    { label: "CDG → Central Paris", value: "€14", note: "RER B direct, ~35–40 min" },
+    { label: "ORY → Central Paris", value: "€14", note: "Metro 14 direct, ~25 min" },
   ],
-  takeaway: "CDG is overwhelmingly the better airport for Gare du Nord — 35 minutes direct on RER B vs 55 minutes with a change from Orly. Unless there's an exceptional Orly airfare deal, CDG is the right choice. Use the Decision Engine to confirm with real numbers.",
+  takeaway: "CDG remains the better airport for Gare du Nord — ~35–40 minutes direct on RER B versus ~45 minutes with one change from Orly. Both cost €14 by rail. Unless there is an exceptional Orly airfare deal, CDG is the right choice. Use the Decision Engine to confirm with real numbers.",
   ctaLabel: "Compare CDG vs ORY for Gare du Nord →",
   ctaHref: buildHubCompareUrl("paris", "gare-du-nord"),
   relatedGuides: [
@@ -36,7 +36,7 @@ const guide: GuideConfig = {
     { label: "Best Airport for La Défense", href: "/guides/best-airport-for-la-defense" },
     { label: "CDG vs Orly", href: "/guides/cdg-vs-orly" },
   ],
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
 };
 
 export default function Page() { return <GuidePage guide={guide} />; }

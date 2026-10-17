@@ -24,7 +24,7 @@ export default function BestLondonAirportForBudgetTravellersPage() {
           <h1 className={styles.guideHeroH1}>Which London airport is best for budget travellers?</h1>
           <p className={styles.guideHeroSub}>Stansted wins for Ryanair flyers. Luton wins for Wizz Air and easyJet. Gatwick wins for easyJet with better transfer. Always compare total cost.</p>
           <div className={styles.guideHeroMeta}>
-            <span>4 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>4 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>
@@ -38,13 +38,13 @@ export default function BestLondonAirportForBudgetTravellersPage() {
             </div>
 
             <h2 id="section-0">The 30-second answer</h2>
-            <p><strong>Budget travellers should choose their airport based on which budget airline serves their route.</strong> Ryanair: Stansted. Wizz Air: Luton. easyJet: Gatwick (primary) or Luton. Once you know your airline, check the total cost — ticket + baggage + transfer. A £30 Ryanair ticket to Stansted becomes a £90+ journey once you add a checked bag (£45) and the Stansted Express (£17).</p>
+            <p><strong>Budget travellers should choose their airport based on which budget airline serves their route.</strong> Ryanair: Stansted. Wizz Air: Luton. easyJet: Gatwick (primary) or Luton. Once you know your airline, check the total cost — ticket + baggage + transfer. A £30 Ryanair ticket to Stansted becomes a £95+ journey once you add a checked bag (£45) and the Stansted Express (~£22).</p>
             <h2 id="section-1">Budget airport comparison</h2>
             <p>Here is how the three budget-focused airports compare for the budget traveller:</p>
             <h2 id="section-2">The hidden costs of budget travel</h2>
-            <p>Budget airlines save you money on the ticket but charge for everything else. Checked bag: £35–60. Cabin bag (if not included): £10–25. Seat selection: £5–15. Airport transfer from a distant airport: £10–25. Always calculate the total cost before booking — a £60 easyJet ticket from Gatwick can be cheaper in total than a £30 Ryanair ticket from Stansted once everything is added up.</p>
+            <p>Budget airlines save you money on the ticket but charge for everything else. Checked bag: £35–60. Cabin bag (if not included): £10–25. Seat selection: £5–15. Airport transfer from a distant airport: £10–22. Always calculate the total cost before booking — a £60 easyJet ticket from Gatwick can be cheaper in total than a £30 Ryanair ticket from Stansted once everything is added up.</p>
             <h2 id="section-3">When to choose a non-budget airport on a budget</h2>
-            <p>Sometimes a full-service ticket to Heathrow is cheaper overall. BA and other full-service airlines often include checked baggage in the ticket price. The Heathrow transfer is cheaper (£5–12 on the Tube/Elizabeth Line). If the gap between the budget ticket + extras and the full-service ticket is less than £20, the full-service option is usually the better choice.</p>
+            <p>Sometimes a full-service ticket to Heathrow is cheaper overall. BA and other full-service airlines often include checked baggage in the ticket price. The Heathrow transfer is cheaper (£6–15 on the Piccadilly or Elizabeth Line). If the gap between the budget ticket + extras and the full-service ticket is less than £20, the full-service option is usually the better choice.</p>
 
             <h2>FAQ</h2>
             <FAQAccordion items={FAQ_ITEMS} />

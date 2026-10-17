@@ -17,18 +17,18 @@ const guide: GuideConfig = {
   title: "Cheapest Paris Airport — CDG or Orly?",
   description: "Which Paris airport is cheapest? Real trip cost comparison including baggage, seat selection, and airport transfers.",
   headline: "Which Paris airport is actually cheapest?",
-  intro: "Ticket prices can be misleading. A €60 fare that becomes €120 after baggage, seat selection, and a €15 airport transfer isn't cheaper than an €80 all-in fare. Here's how CDG and Orly compare on real trip cost — the number that actually matters.",
+  intro: "Ticket prices can be misleading. A €60 fare that becomes €120 after baggage, seat selection, and an airport transfer isn't cheaper than an €80 all-in fare. And the transfer no longer separates CDG from Orly: both use the same €14 Paris Region ⇄ Airports ticket. Here's how they compare on real trip cost — the number that actually matters.",
   airports: [
-    { code: "CDG", name: "Charles de Gaulle", why: "CDG often wins on total cost. Transfer is cheaper (€12 RER B vs €15 Orlyval+RER). More airline competition means lower base fares. And with direct RER access, you save time as well as money. The combination of lower transfer cost and competitive airfares makes CDG the value champion for most Paris destinations.", transferNote: "Transfer €12, direct RER B, more airline competition" },
-    { code: "ORY", name: "Orly", why: "Orly's airfares can sometimes be lower — especially on European budget airlines. But the Orlyval premium (€9.30 of the €15 transfer) erodes that advantage. And once you add baggage fees (which budget airlines charge), the apparent savings often disappear. For Montparnasse, Orly wins — but for most other destinations, CDG is cheaper.", transferNote: "Transfer €15, Orlyval premium €9.30, budget airlines may charge for bags" },
+    { code: "ORY", name: "Orly", why: "Orly is the cheaper airport once you are on the ground: the unified airport ticket costs €14 by Metro 14, and official taxis are €36–45 flat versus €56–65 from CDG. On airfare, Orly competes mainly with budget and leisure carriers — but baggage and seat fees can erase the ticket saving. There is no single cheapest airport: compare the all-in fare.", transferNote: "Transfer €14 by Metro 14, taxis €36–45, budget airlines may charge for bags" },
+    { code: "CDG", name: "Charles de Gaulle", why: "CDG uses the same €14 airport ticket on the RER B, so rail cost is identical. Its advantage is airline competition and long-haul route density, which can produce lower all-in fares on some routes. Its weakness is ground cost: official taxis are €56–65 flat. CDG is not automatically cheaper — the airfare decides.", transferNote: "Transfer €14 by RER B, taxis €56–65, widest airline choice" },
   ],
   transferFacts: [
-    { label: "CDG transfer cost", value: "€12", note: "RER B to central Paris" },
-    { label: "ORY transfer cost", value: "€15", note: "Orlyval + RER B to central Paris" },
-    { label: "CDG airfare range", value: "€80+", note: "Illustrative — varies by route and season" },
-    { label: "ORY airfare range", value: "€60+", note: "Often cheaper on budget airlines" },
+    { label: "CDG transfer cost", value: "€14", note: "RER B to central Paris" },
+    { label: "ORY transfer cost", value: "€14", note: "Metro 14 to Châtelet — same unified ticket" },
+    { label: "ORY taxi", value: "€36–45", note: "Official flat fare — cheaper than CDG" },
+    { label: "CDG taxi", value: "€56–65", note: "Official flat fare" },
   ],
-  takeaway: "CDG is usually the cheaper total journey despite sometimes having higher ticket prices. The €12 direct transfer beats Orly's €15 shuttle-dependent connection. But for Montparnasse — where Orlybus costs only €11 — Orly can win. Use the Decision Engine to see the real numbers for your specific trip.",
+  takeaway: "There is no single cheapest Paris airport. Rail transfers cost the same €14 from both CDG and Orly, so the decision comes down to the airfare, baggage and seat fees — and how you leave the airport. Orly is cheaper by taxi (€36–45 vs €56–65); CDG has more airline competition. Compare the all-in trip, not the headline fare.",
   ctaLabel: "Compare real cost CDG vs ORY →",
   ctaHref: buildHubCompareUrl("paris", "central-paris"),
   relatedGuides: [
@@ -36,7 +36,7 @@ const guide: GuideConfig = {
     { label: "Best Airport for Montparnasse", href: "/guides/best-airport-for-montparnasse" },
     { label: "CDG vs Orly", href: "/guides/cdg-vs-orly" },
   ],
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
 };
 
 export default function Page() { return <GuidePage guide={guide} />; }

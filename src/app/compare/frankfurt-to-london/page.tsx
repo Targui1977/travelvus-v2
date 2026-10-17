@@ -7,61 +7,61 @@ import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
   title: "Frankfurt to London: FRA or Hahn? | Travelvus",
-  description: "Flying Frankfurt to London? Compare Heathrow and Gatwick on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  description: "Flying Frankfurt to London? Compare Hahn + Stansted with FRA + Heathrow on total journey time, door-to-door cost, airport transfers and convenience. Which route really wins?",
   alternates: { canonical: "/compare/frankfurt-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "frankfurt-to-london",
   category: "London Airport Decision",
   question: "Frankfurt to London: FRA or Hahn?",
-  shortAnswer: "Heathrow wins for most travellers from Frankfurt once total journey time and cost are compared.",
+  shortAnswer: "Heathrow wins for most travellers from Frankfurt: the FRA + Heathrow route is ~1h 40m faster door-to-door, though Hahn + Stansted is ~€54 cheaper.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
     line: "Heathrow wins.",
     stats: [
-      { label: "Total journey time", value: "250", unit: "min" },
-      { label: "Time saved", value: "105", unit: "min", accent: true },
+      { label: "Total journey time", value: "290", unit: "min" },
+      { label: "Time saved", value: "100", unit: "min", accent: true },
       { label: "Flight duration", value: "1", unit: "h 40m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Heathrow", a: "~4h 10m", b: "~5h 55m", verdict: "Heathrow is ~1h 45m faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€182", b: "~€140", verdict: "Heathrow saves ~€42" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Train, 30–50 min", b: "~35 min (Elizabeth Line)", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Heathrow", a: "~6h 30m", b: "~4h 50m", verdict: "Heathrow is ~1h 40m faster" },
+    { factor: "Total journey cost", winner: "Stansted", a: "~€128", b: "~€182", verdict: "Stansted saves ~€54" },
+    { factor: "Transfer convenience", winner: "Heathrow", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)", verdict: "Heathrow transfer is ~15 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Stansted Express every 15–30 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 3 of 4 factors", isFinal: true },
   ],
-  winnerReasons: ["Frankfurt–Hahn is not in Frankfurt — it is 120km away, requiring a 1h 45m bus transfer.", "The FRA+LHR combination saves ~1h 45m door-to-door — the largest saving in the London cluster.", "FRA has a direct S-Bahn connection (15 min from the city centre). HHN requires a long-distance bus.", "Full-service Lufthansa/BA flights include baggage — Ryanair from Hahn adds €40–60.", "Both the German-side and London-side airport choices heavily favour the FRA+LHR route."],
+  winnerReasons: ["Frankfurt–Hahn is not in Frankfurt — it is 120km away, requiring a 1h 45m bus transfer.", "The FRA+LHR combination saves ~1h 40m door-to-door — the largest saving in the London cluster.", "FRA has a direct S-Bahn connection (15 min from the city centre). HHN requires a long-distance bus.", "Full-service Lufthansa/BA flights include baggage — Ryanair from Hahn adds ~€50.", "Both the German-side and London-side airport choices heavily favour the FRA+LHR route."],
   alternative: {
     title: "When Hahn + Stansted is actually the better choice",
-    points: ["Ryanair fares from Hahn can be €20–35 — the saving can exceed €120 versus Lufthansa from FRA.", "If you are already west of Frankfurt (Mainz, Wiesbaden, Koblenz) — Hahn is closer than FRA.", "Travelling with only hand luggage eliminates the baggage fee on Ryanair.", "If you have plenty of time and are on a very tight budget, the HHN+STN combination works."],
+    points: ["Ryanair fares from Hahn can be €20–35 — the total can be ~€54 below the FRA + Heathrow route on our illustrative numbers.", "If you are already west of Frankfurt (Mainz, Wiesbaden, Koblenz) — Hahn is closer than FRA.", "Travelling with only hand luggage eliminates the baggage fee on Ryanair.", "If you have plenty of time and are on a very tight budget, the HHN+STN combination works."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€35 (Ryanair)", b: "~€160 (full-service/LH/BA)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "+€40–60 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — Frankfurt", a: "S-Bahn to FRA — ~15 min from Hauptbahnhof, ~€5. Bus to HHN — ~1h 45m, ~€18", b: "S-Bahn to FRA — ~15 min from Hauptbahnhof, ~€5. Bus to HHN — ~1h 45m, ~€18", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Flight ticket", a: "~€35 (Ryanair)", b: "~€160 (full-service/LH/BA)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€50 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — Frankfurt", a: "Bus to HHN — ~1h 45m, ~€18", b: "S-Bahn to FRA — ~15 min, ~€5", winner: "b" as const, note: "HHN is 120km from Frankfurt" },
+    { label: "Airport transfer — London", a: "~€25 (~£22, Stansted Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
     { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
   journeyTimeline: [
-    { stage: "Frankfurt city → Airport", a: "S-Bahn to FRA — ~15 min from Hauptbahnhof, ~€5. Bus to HHN — ~1h 45m, ~€18", b: "S-Bahn to FRA — ~15 min from Hauptbahnhof, ~€5. Bus to HHN — ~1h 45m, ~€18" },
+    { stage: "Frankfurt city → Airport", a: "Bus to HHN — ~1h 45m, ~€18", b: "S-Bahn to FRA — ~15 min, ~€5" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Frankfurt → London", a: "~1h 30m (from HHN)", b: "~1h 40m (from FRA)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~45 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~4h 10m", b: "~5h 55m", isFinal: true },
+    { stage: "Airport → Central London", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)" },
+    { stage: "Total door-to-door", a: "~6h 30m", b: "~4h 50m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller", "choice": "FRA + Heathrow", "why": "FRA is one of Europe's best-connected airports. LHR transfer is fast. The only serious choice."}, {"who": "Family with children", "choice": "FRA + Heathrow", "why": "Avoid the 1h 45m bus to Hahn. The S-Bahn to FRA is 15 minutes."}, {"who": "Budget traveller", "choice": "Hahn + Stansted", "why": "Ryanair at €20–35 is compelling — but allow 5h 55m total door-to-door."}, {"who": "Weekend trip", "choice": "FRA + Heathrow", "why": "The HHN bus alone costs 3h 30m round-trip. FRA+LHR saves ~1h 45m each way."}, {"who": "Rheinland-Pfalz resident", "choice": "Hahn + Stansted", "why": "If you are already near Hahn (Mainz, Trier, Koblenz), the bus is shorter than reaching FRA."}, {"who": "Long stay", "choice": "FRA + Heathrow", "why": "Less friction, faster journey, more comfortable. The FRA+LHR premium is worth it."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Frankfurt airport access", "fix": "S-Bahn to FRA — factor this into the total journey before comparing London airports."}],
+  scenarios: [{"who": "Business traveller", "choice": "FRA + Heathrow", "why": "FRA is one of Europe's best-connected airports. LHR transfer is fast. The only serious choice."}, {"who": "Family with children", "choice": "FRA + Heathrow", "why": "Avoid the 1h 45m bus to Hahn. The S-Bahn to FRA is 15 minutes."}, {"who": "Budget traveller", "choice": "Hahn + Stansted", "why": "Ryanair at €20–35 is compelling — but allow 6h 30m total door-to-door."}, {"who": "Weekend trip", "choice": "FRA + Heathrow", "why": "The HHN bus alone costs 3h 30m round-trip. FRA+LHR saves ~1h 40m each way."}, {"who": "Rheinland-Pfalz resident", "choice": "Hahn + Stansted", "why": "If you are already near Hahn (Mainz, Trier, Koblenz), the bus is shorter than reaching FRA."}, {"who": "Long stay", "choice": "FRA + Heathrow", "why": "Less friction, faster journey, more comfortable. The FRA+LHR premium is worth it."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Stansted is 55km from central London. The Stansted Express takes ~50 min and costs ~£22 walk-up (advance fares from £9.90) — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Stansted often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Frankfurt airport access", "fix": "The S-Bahn to FRA takes ~15 min; the bus to HHN takes ~1h 45m and costs ~€18. Factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Frankfurt?", answer: "Gatwick and other budget-airline airports often have cheaper advertised ticket prices from Frankfurt. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express — ~30 min, ~£20 off-peak." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Frankfurt?", answer: "Yes. Late-night arrivals at Gatwick mean fewer transport options. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Frankfurt?", answer: "Hahn + Stansted usually has the cheaper advertised fare from Frankfurt. Once you add a checked bag (~€50) and the bus to Hahn, the total is still ~€54 below the FRA + Heathrow route on our illustrative numbers — but the journey is ~1h 40m longer door-to-door. Which matters more depends on your trip. Always compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Stansted to central London?", answer: "The Stansted Express takes ~50 min to Liverpool Street and costs ~£22 walk-up; advance fares start from £9.90." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "Does the time of day change which airport is better from Frankfurt?", answer: "Yes. Late-night arrivals at Stansted mean fewer train departures — the last Stansted Express leaves around 23:30, though coaches run later. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£15 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
   ],
   cta: {
     title: "Compare your own Frankfurt–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Heathrow, Stansted and Frankfurt airport distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Fraport AG" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Frankfurt airport access and fares", source: "RMV, Fraport AG" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -126,7 +126,7 @@ export default function FrankfurtToLondonPage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>At a glance</h2>
             <p className={styles.sectionSub} style={{ marginBottom: 14 }}>Illustrative comparison based on typical fares and public transport costs. Ticket prices vary by airline, season and booking date.</p>
-            <div className={styles.glanceHeader}><span /><span className={styles.glanceColLabel}>Gatwick</span><span className={styles.glanceColLabel}>Heathrow</span><span /></div>
+            <div className={styles.glanceHeader}><span /><span className={styles.glanceColLabel}>Stansted</span><span className={styles.glanceColLabel}>Heathrow</span><span /></div>
             {DATA.atAGlance.map((row, i) => <AtAGlanceRow key={i} {...row} />)}
           </section>
           <section className={styles.section}>
@@ -151,7 +151,7 @@ export default function FrankfurtToLondonPage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>How the real cost compares</h2>
             <p className={styles.sectionSub}>Illustrative breakdown. Actual costs depend on your specific flight, baggage and chosen transfer option.</p>
-            <div className={styles.costHeader}><span>Cost factor</span><span>Gatwick</span><span>Heathrow</span></div>
+            <div className={styles.costHeader}><span>Cost factor</span><span>Stansted</span><span>Heathrow</span></div>
             {DATA.costBreakdown.map((row, i) => (
               <div key={i} className={styles.costRow}>
                 <span className={styles.costLabel}>{row.label}{row.note && <span style={{ display: "block", fontFamily: "var(--sans)", fontWeight: 400, fontSize: 11, color: "var(--muted)", marginTop: 1 }}>{row.note}</span>}</span>
@@ -159,7 +159,7 @@ export default function FrankfurtToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€182</span><span className={styles.costBetter}>~€140</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€128</span><span>~€182</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

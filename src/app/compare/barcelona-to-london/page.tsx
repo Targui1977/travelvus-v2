@@ -6,44 +6,44 @@ import FAQAccordion from "@/components/guide/FAQAccordion";
 import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
-  title: "Barcelona to London: Heathrow, Gatwick or Stansted? | Travelvus",
-  description: "Flying Barcelona to London? Compare Heathrow and Gatwick on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  title: "Barcelona to London: Gatwick or Heathrow? | Travelvus",
+  description: "Flying Barcelona to London? Compare Gatwick and Heathrow on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/barcelona-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "barcelona-to-london",
   category: "London Airport Decision",
-  question: "Barcelona to London: Heathrow, Gatwick or Stansted?",
-  shortAnswer: "Heathrow wins for most travellers from Barcelona once total journey time and cost are compared.",
+  question: "Barcelona to London: Gatwick or Heathrow?",
+  shortAnswer: "Gatwick wins for most travellers from Barcelona: on our illustrative fares it is ~€32 cheaper and ~5 minutes faster door-to-door than Heathrow.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Heathrow wins.",
+    line: "Gatwick wins.",
     stats: [
-      { label: "Total journey time", value: "300", unit: "min" },
-      { label: "Time saved", value: "20", unit: "min", accent: true },
-      { label: "Flight duration", value: "2", unit: "h 20m" },
+      { label: "Total journey cost", value: "131", unit: "€" },
+      { label: "Money saved", value: "32", unit: "€", accent: true },
+      { label: "Door-to-door time", value: "340", unit: "min" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Heathrow", a: "~5h 00m", b: "~5h 20m", verdict: "Heathrow is ~20 min faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€167", b: "~€135", verdict: "Heathrow saves ~€32" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Train, 30–50 min", b: "~35 min (Elizabeth Line)", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Gatwick", a: "~5h 40m", b: "~5h 45m", verdict: "Gatwick is ~5 min faster" },
+    { factor: "Total journey cost", winner: "Gatwick", a: "~€131", b: "~€163", verdict: "Gatwick saves ~€32" },
+    { factor: "Transfer convenience", winner: "Gatwick", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)", verdict: "Gatwick Express is ~5 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Gatwick Express every 15 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Gatwick", a: "—", b: "—", verdict: "Gatwick wins on 3 of 4 factors", isFinal: true },
   ],
-  winnerReasons: ["Heathrow's transfer is consistently faster — Elizabeth Line in 35 minutes versus Gatwick's 30–50 min train.", "Full-service airlines into Heathrow typically include baggage.", "Heathrow trains run more frequently — less waiting, more predictable journey.", "Direct Piccadilly Line connection opens up more of London without changing trains.", "Total door-to-door time is shorter through Heathrow on this route."],
+  winnerReasons: ["Gatwick's total journey cost is ~€32 lower once the checked bag and the Gatwick Express are included.", "Budget easyJet fares from Barcelona are ~€80 below full-service Heathrow fares.", "The Gatwick Express takes ~30 minutes to Victoria — ~5 minutes quicker than the Elizabeth Line from Heathrow.", "Door-to-door, Gatwick is ~5 minutes faster on these timings.", "For south London, Brighton and the south coast, Gatwick is also geographically closer."],
   alternative: {
-    title: "When Gatwick or Stansted is better",
-    points: ["easyJet and Ryanair offer very low BCN–LGW/STN fares — €60 or less one-way.", "Travelling with hand luggage only? The baggage cost gap disappears.", "Stansted is better for northeast London, Cambridge and East Anglia.", "Gatwick is better for south London and Brighton connections."],
+    title: "When Heathrow is actually the better choice",
+    points: ["If the Heathrow fare is within ~€32 of the Gatwick fare — baggage inclusion and the cheaper Elizabeth Line can swing the total.", "If you are heading to west London or the West End — the Elizabeth Line runs direct to Paddington and Tottenham Court Road.", "If you want the widest choice of airlines and departure times — Heathrow serves far more routes.", "If you are connecting to a long-haul flight — Heathrow is the UK's main hub."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€60 (budget/easyJet)", b: "~€140 (full-service/BA/Vueling)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "+€35–50 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Flight ticket", a: "~€60 (budget/easyJet)", b: "~€140 (full-service/BA)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€42 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
     { label: "Airport transfer — Barcelona", a: "Aerobús or R2 Nord train — ~30 min from central Barcelona, ~€6", b: "Aerobús or R2 Nord train — ~30 min from central Barcelona, ~€6", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Airport transfer — London", a: "~€23 (~£20, Gatwick Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
     { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
   journeyTimeline: [
@@ -51,17 +51,17 @@ const DATA = {
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Barcelona → London", a: "~2h 15m", b: "~2h 20m" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~45 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~5h 00m", b: "~5h 20m", isFinal: true },
+    { stage: "Airport → Central London", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
+    { stage: "Total door-to-door", a: "~5h 40m", b: "~5h 45m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "Faster, more reliable transfer. Better for meetings in central and west London."}, {"who": "Family with children", "choice": "Heathrow", "why": "Easier transfer, baggage included on full-service flights, more space."}, {"who": "Budget traveller", "choice": "Gatwick or Stansted", "why": "Ryanair and easyJet fares from BCN can be very low — the saving justifies the transfer."}, {"who": "Weekend trip", "choice": "Heathrow", "why": "Maximise your short trip — faster door-to-door means more time in Barcelona or London."}, {"who": "Beach + city combo", "choice": "Gatwick", "why": "If combining London with Brighton or the south coast, Gatwick is the natural choice."}, {"who": "Long stay", "choice": "Either", "why": "With a longer trip, transfer time matters less. Choose by total cost."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Barcelona airport access", "fix": "Aerobús or R2 Nord train — factor this into the total journey before comparing London airports."}],
+  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "Direct Elizabeth Line to Paddington and the City, with more full-service departures."}, {"who": "Family with children", "choice": "Heathrow", "why": "Checked baggage is usually included on full-service fares — no €42 fee at check-in."}, {"who": "Budget traveller", "choice": "Gatwick", "why": "easyJet fares from BCN can be very low — the saving covers the transfer."}, {"who": "Weekend trip", "choice": "Gatwick", "why": "Slightly faster door-to-door on these timings and ~€32 cheaper."}, {"who": "Beach + city combo", "choice": "Gatwick", "why": "If combining London with Brighton or the south coast, Gatwick is the natural choice."}, {"who": "Long stay", "choice": "Either", "why": "With a longer trip, transfer time matters less. Choose by total cost."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €30 saving on the ticket can disappear after one checked bag and the Gatwick Express."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km south of central London. The Gatwick Express takes ~30 min and costs ~£20 — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Barcelona airport access", "fix": "Aerobús or R2 Nord train — factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Barcelona?", answer: "Gatwick and other budget-airline airports often have cheaper advertised ticket prices from Barcelona. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express — ~30 min, ~£20 off-peak." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Barcelona?", answer: "Yes. Late-night arrivals at Gatwick mean fewer transport options. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Barcelona?", answer: "Gatwick usually has the cheaper advertised fare from Barcelona. Add a checked bag (~€42) and the Gatwick Express (~£20), and the total is still ~€32 below a full-service Heathrow fare on our illustrative numbers. Always compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Gatwick to central London?", answer: "The Gatwick Express takes ~30 min to Victoria and costs ~£20 off-peak." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "Does the time of day change which airport is better from Barcelona?", answer: "Yes. Late-night arrivals at Gatwick mean fewer rail options after the last Gatwick Express. Heathrow still has the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£15 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
   ],
   cta: {
     title: "Compare your own Barcelona–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Gatwick and Heathrow distances and terminal information", source: "Heathrow Airport Ltd, Gatwick Airport Ltd" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Barcelona airport access and fares", source: "TMB, Aena" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -159,7 +159,7 @@ export default function BarcelonaToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€167</span><span className={styles.costBetter}>~€135</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€131</span><span>~€163</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

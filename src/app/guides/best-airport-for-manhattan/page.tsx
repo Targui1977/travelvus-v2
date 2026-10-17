@@ -44,7 +44,7 @@ const FAQ_ITEMS = [
   {
     question: "Which airport has the fastest public transit to Manhattan?",
     answer:
-      "Newark's NJ Transit to Penn Station (~40 min, ~$15) and JFK's AirTrain + LIRR to Penn Station (~35 min, ~$15) are nearly tied for speed. Newark's train is slightly more direct (no change at Jamaica). LaGuardia has no rail — the Q70 bus + subway takes 45–60 minutes.",
+      "Newark's NJ Transit to Penn Station (~40 min, ~$17.25) and JFK's AirTrain + LIRR to Penn Station (~35 min, ~$15–19) are nearly tied for speed. Newark's train is slightly more direct (no change at Jamaica). LaGuardia has no rail — the Q70 bus + subway takes 45–60 minutes.",
   },
   {
     question: "Which airport is best for Upper Manhattan (Harlem, Washington Heights)?",
@@ -54,7 +54,7 @@ const FAQ_ITEMS = [
   {
     question: "Which airport is cheapest for Manhattan?",
     answer:
-      "LaGuardia has the cheapest taxi/rideshare to Manhattan ($35–55) due to its proximity. JFK has a $70 flat-rate taxi. Newark taxis include a $17.50 surcharge. For public transit, JFK's AirTrain + Subway (~$8) is cheapest, followed by Newark NJ Transit (~$15) and LGA bus (~$3).",
+      "LaGuardia has the cheapest taxi/rideshare to Manhattan ($35–55) due to its proximity. JFK has a $70 flat-rate taxi plus ~$7–12 in mandatory surcharges before tolls and tip. Newark taxis include a $17.50 surcharge. For public transit, the LGA Q70 bus + subway (~$3) is cheapest, followed by JFK's AirTrain + Subway (~$11.75) and Newark NJ Transit (~$17.25).",
   },
   {
     question: "Does rush hour change which airport is best?",
@@ -83,11 +83,11 @@ export default function BestAirportForManhattan() {
           category="Neighbourhood Guide"
           question="Best Airport for Manhattan: JFK, Newark or LaGuardia?"
           subtitle="If your destination is Manhattan, the right airport depends on where in Manhattan you are going — Midtown, Downtown, Upper East or Upper West Side. Distance alone does not decide."
-          metadata={{ readTime: "7 min read", reviewedDate: "Jul 2026", verified: true }}
+          metadata={{ readTime: "7 min read", reviewedDate: "Oct 2026", verified: true }}
           decisionCard={{
             winner: "Newark wins for Midtown · LGA for Upper Manhattan",
             timeSaved: "~25 min train to Penn",
-            moneySaved: "From ~$15 NJ Transit",
+            moneySaved: "From ~$17.25 NJ Transit",
             bestFor: "Newark: Midtown West. LGA: Upper East/Upper West. JFK: late-night arrivals.",
             confidence: "conditional",
           }}
@@ -159,9 +159,9 @@ export default function BestAirportForManhattan() {
               <thead><tr><th>Factor</th><th>Newark (EWR)</th><th>JFK</th><th>LaGuardia (LGA)</th></tr></thead>
               <tbody>
                 <tr><td>Distance from Midtown</td><td>16 miles</td><td>15 miles</td><td><strong>8 miles</strong></td></tr>
-                <tr><td>Fastest rail to Midtown</td><td><strong>NJ Transit ~40 min, ~$15</strong></td><td>AirTrain + LIRR ~35 min, ~$15</td><td>No rail — bus to subway</td></tr>
-                <tr><td>Cheapest public transit</td><td>~$15</td><td><strong>AirTrain + Subway ~$8</strong></td><td>Q70 bus + Subway ~$3</td></tr>
-                <tr><td>Taxi to Midtown</td><td>$65–85 + surcharge (~$95–120)</td><td>$70 flat + tolls (~$85–95)</td><td><strong>$35–55</strong></td></tr>
+                <tr><td>Fastest rail to Midtown</td><td><strong>NJ Transit ~40 min, ~$17.25</strong></td><td>AirTrain + LIRR ~35 min, ~$15–19</td><td>No rail — bus to subway</td></tr>
+                <tr><td>Cheapest public transit</td><td>~$17.25</td><td>AirTrain + Subway ~$11.75</td><td><strong>Q70 bus + Subway ~$3</strong></td></tr>
+                <tr><td>Taxi to Midtown</td><td>$65–85 + surcharge (~$95–120)</td><td>$70 flat + ~$7–12 surcharges + tolls/tip</td><td><strong>$35–55</strong></td></tr>
                 <tr><td>Rideshare</td><td>$55–85</td><td>$55–80</td><td><strong>$35–55</strong></td></tr>
                 <tr><td>24-hour transit</td><td>No — stops ~1am</td><td><strong>Yes — A subway 24/7</strong></td><td>Limited night bus</td></tr>
                 <tr><td>Rush-hour risk</td><td>Low — rail unaffected</td><td>Low — rail unaffected</td><td><strong>High — road traffic</strong></td></tr>
@@ -175,7 +175,7 @@ export default function BestAirportForManhattan() {
               <tbody>
                 <tr><td>Midtown West (Hudson Yards, Hell&rsquo;s Kitchen)</td><td><strong>Newark</strong></td><td>NJ Transit to Penn Station — walk to most Midtown West hotels</td></tr>
                 <tr><td>Midtown East (Grand Central, Murray Hill)</td><td><strong>Newark</strong></td><td>Penn Station to Grand Central in 10 min via subway or 15 min walk</td></tr>
-                <tr><td>Upper East Side</td><td><strong>LaGuardia</strong></td><td>Closest airport — taxi/rideshare in 25–40 min, $35–50</td></tr>
+                <tr><td>Upper East Side</td><td><strong>LaGuardia</strong></td><td>Closest airport — taxi/rideshare in 25–40 min, $35–55</td></tr>
                 <tr><td>Upper West Side</td><td><strong>LaGuardia</strong></td><td>M60 bus to 125th St, then 1 train downtown. Taxi also fast off-peak.</td></tr>
                 <tr><td>Financial District / Wall Street</td><td><strong>JFK</strong></td><td>A train from Howard Beach direct to Fulton Street in ~55 min</td></tr>
                 <tr><td>Chelsea / Greenwich Village</td><td><strong>Newark</strong></td><td>Penn Station to 14th Street via subway in 5–10 min</td></tr>
@@ -204,7 +204,7 @@ export default function BestAirportForManhattan() {
                   <div className={styles.workedRow}><span>AirTrain to NJ Transit</span><span className={styles.workedRowAmount}>~10 min</span></div>
                   <div className={styles.workedRow}><span>NJ Transit to Penn Station</span><span className={styles.workedRowAmount}>~25 min</span></div>
                   <div className={styles.workedRow}><span>Walk to Midtown hotel</span><span className={styles.workedRowAmount}>~10 min</span></div>
-                  <div className={styles.workedTotal}><span className={styles.workedTotalLabel}>Transfer total</span><span className={styles.workedTotalWin}>~60 min · ~$15</span></div>
+                  <div className={styles.workedTotal}><span className={styles.workedTotalLabel}>Transfer total</span><span className={styles.workedTotalWin}>~60 min · ~$17.25</span></div>
                 </div>
                 <div className={styles.workedCol}>
                   <div className={styles.workedColHd}><span className={styles.workedColLabel}>Option B · JFK</span><span className={`${styles.workedBadge} ${styles.workedBadgeLose}`}>B</span></div>
@@ -212,7 +212,7 @@ export default function BestAirportForManhattan() {
                   <div className={styles.workedRow}><span>AirTrain to Jamaica</span><span className={styles.workedRowAmount}>~10 min</span></div>
                   <div className={styles.workedRow}><span>LIRR to Penn Station</span><span className={styles.workedRowAmount}>~20 min</span></div>
                   <div className={styles.workedRow}><span>Walk to Midtown hotel</span><span className={styles.workedRowAmount}>~10 min</span></div>
-                  <div className={styles.workedTotal}><span className={styles.workedTotalLabel}>Transfer total</span><span className={styles.workedTotalLose}>~60 min · ~$15</span></div>
+                  <div className={styles.workedTotal}><span className={styles.workedTotalLabel}>Transfer total</span><span className={styles.workedTotalLose}>~60 min · ~$15–19</span></div>
                 </div>
                 <div className={styles.workedCol}>
                   <div className={styles.workedColHd}><span className={styles.workedColLabel}>Option C · LaGuardia</span></div>
@@ -239,7 +239,7 @@ export default function BestAirportForManhattan() {
 
             <h2 id="section-6">When LaGuardia wins</h2>
             <ul style={{ fontFamily: "var(--sans)", fontSize: 15, lineHeight: 1.7, color: "#4a5560", marginBottom: 18, paddingLeft: 22 }}>
-              <li><strong>You are staying on the Upper East or Upper West Side.</strong> LGA is closest — a taxi takes 25–40 minutes off-peak and costs $35–50.</li>
+              <li><strong>You are staying on the Upper East or Upper West Side.</strong> LGA is closest — a taxi takes 25–40 minutes off-peak and costs $35–55.</li>
               <li><strong>You are taking a taxi or rideshare, not public transit.</strong> LGA has the cheapest car journeys to Manhattan of any NYC airport.</li>
               <li><strong>You are travelling during off-peak hours.</strong> The Grand Central Parkway is fast outside rush hour — but gridlocked during it.</li>
               <li><strong>You want the absolute cheapest public transit.</strong> The Q70 bus is free, and a subway ride is $2.90 — total ~$3.</li>
@@ -258,7 +258,7 @@ export default function BestAirportForManhattan() {
               <li><strong>You are arriving late at night.</strong> The A subway runs 24/7. Newark's NJ Transit stops around 1am. JFK is the only NYC airport with true 24-hour rail transit to Manhattan.</li>
               <li><strong>You are staying in Lower Manhattan (Financial District, Battery Park).</strong> The A train goes directly from Howard Beach to Fulton Street — no Midtown detour needed.</li>
               <li><strong>You fly Delta, JetBlue, or a non-United international carrier.</strong> JFK has the widest choice of airlines and international routes of any NYC airport.</li>
-              <li><strong>You want the cheapest rail option.</strong> AirTrain + Subway (~$8) is cheaper than NJ Transit (~$15) — though slower at ~60 minutes.</li>
+              <li><strong>You want the cheapest rail option.</strong> AirTrain + Subway (~$11.75) is cheaper than NJ Transit (~$17.25) — though slower at ~60 minutes.</li>
             </ul>
 
             {/* Rush hour reality */}

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/heathrow-vs-gatwick" },
 };
 
-const THRESHOLD = getThresholdData();
+export const THRESHOLD = getThresholdData();
 
 /* Contrast data — computed server-side from verified matrix */
 const canaryWharf = calculateResult(DESTINATIONS[2]); // Canary Wharf
@@ -69,7 +69,7 @@ export default function DecisionPage() {
               color: "var(--muted)",
             }}
           >
-            <span>2 travellers &middot; Barcelona flights &middot; Verified Jul 2026</span>
+            <span>2 travellers &middot; Barcelona flights &middot; Verified Oct 2026</span>
           </div>
         </div>
       </section>
@@ -88,11 +88,12 @@ export default function DecisionPage() {
           </div>
           <p className="lvg-evidence-note" style={{ maxWidth: 560, marginBottom: 12 }}>
             Gatwick flights are about &euro;{Math.abs(THRESHOLD.flightAdvantage)} cheaper
-            for 2 travellers before any transfer costs. Gatwick can absorb up to
-            &euro;{Math.abs(THRESHOLD.flightAdvantage)} in higher transfer costs
-            and still win. Most destinations keep Gatwick&rsquo;s transfer penalty
-            below that line. Paddington — with Heathrow Express advance fares —
-            pushes the transfer advantage high enough to create a near-tie.
+            for 2 travellers before any transfer costs. Gatwick can absorb just
+            under &euro;{Math.abs(THRESHOLD.flightAdvantage)} in higher transfer
+            costs and still win — at exactly that figure the two airports tie.
+            Most destinations keep Gatwick&rsquo;s transfer penalty below that
+            line. Paddington — with Heathrow Express advance fares — lands
+            exactly on it, which is why that comparison is a near-tie.
           </p>
           <div className="method-box">
             <b>How this works.</b> Flight advantage (&minus;&euro;34)

@@ -6,44 +6,44 @@ import FAQAccordion from "@/components/guide/FAQAccordion";
 import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
-  title: "Madrid to London: Heathrow or Gatwick? | Travelvus",
-  description: "Flying Madrid to London? Compare Heathrow and Gatwick on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  title: "Madrid to London: Gatwick or Heathrow? | Travelvus",
+  description: "Flying Madrid to London? Compare Gatwick and Heathrow on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/madrid-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "madrid-to-london",
   category: "London Airport Decision",
-  question: "Madrid to London: Heathrow or Gatwick?",
-  shortAnswer: "Heathrow wins for most travellers from Madrid once total journey time and cost are compared.",
+  question: "Madrid to London: Gatwick or Heathrow?",
+  shortAnswer: "Gatwick wins for most travellers from Madrid on cost: it is ~€32 cheaper door-to-door, while Heathrow is only ~5 minutes faster.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Heathrow wins.",
+    line: "Gatwick wins on price.",
     stats: [
-      { label: "Total journey time", value: "310", unit: "min" },
-      { label: "Time saved", value: "30", unit: "min", accent: true },
-      { label: "Flight duration", value: "2", unit: "h 30m" },
+      { label: "Total journey cost", value: "140", unit: "€" },
+      { label: "Money saved", value: "32", unit: "€", accent: true },
+      { label: "Door-to-door time", value: "355", unit: "min" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Heathrow", a: "~5h 10m", b: "~5h 40m", verdict: "Heathrow is ~30 min faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€177", b: "~€140", verdict: "Heathrow saves ~€37" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Train, 30–50 min", b: "~35 min (Elizabeth Line)", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Heathrow", a: "~5h 55m", b: "~5h 50m", verdict: "Heathrow is ~5 min faster" },
+    { factor: "Total journey cost", winner: "Gatwick", a: "~€140", b: "~€172", verdict: "Gatwick saves ~€32" },
+    { factor: "Transfer convenience", winner: "Gatwick", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)", verdict: "Gatwick Express is ~5 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Gatwick Express every 15 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Gatwick", a: "—", b: "—", verdict: "Gatwick wins on cost; Heathrow is only ~5 min faster", isFinal: true },
   ],
-  winnerReasons: ["Heathrow's faster transfer saves ~30 minutes door-to-door versus Gatwick.", "Full-service Iberia and BA flights include baggage — budget Gatwick fares add €35–50.", "Elizabeth Line trains every 10–15 minutes versus Gatwick Express every 15 minutes.", "Heathrow connects to more London neighbourhoods without changing trains.", "On a ~5-hour journey, the transfer time difference is proportionally significant."],
+  winnerReasons: ["Gatwick saves ~€32 door-to-door once the checked bag and the Gatwick Express are included.", "Budget easyJet and Vueling fares from Madrid are ~€80 below full-service Iberia fares.", "The Gatwick Express takes ~30 minutes to Victoria — ~5 minutes quicker than the Elizabeth Line from Heathrow.", "Heathrow's ~5-minute advantage is inside the margin of error for an estimated journey.", "For south London, Brighton and Gatwick airport hotels, Gatwick is also geographically closer."],
   alternative: {
-    title: "When Gatwick is actually the better choice",
-    points: ["Budget airline ticket savings of €70+ can justify the longer Gatwick transfer.", "If travelling with only hand luggage — the baggage cost gap disappears.", "Gatwick is better for south London, Gatwick Airport hotels and Brighton connections.", "easyJet and Vueling offer frequent MAD–LGW flights at very competitive prices."],
+    title: "When Heathrow is actually the better choice",
+    points: ["If the Heathrow fare is within ~€32 of the Gatwick fare — baggage inclusion and the cheaper Elizabeth Line can swing the total.", "If you are heading to west London or the West End — the Elizabeth Line runs direct to Paddington and Tottenham Court Road.", "If you need Iberia's network or a long-haul connection — Heathrow is the hub.", "If frequency matters most — Elizabeth Line trains run every 10–15 minutes versus every 15 on the Gatwick Express."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€70 (budget/easyJet)", b: "~€150 (full-service/Iberia)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "+€35–50 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Flight ticket", a: "~€70 (budget/easyJet)", b: "~€150 (full-service/Iberia)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€42 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
     { label: "Airport transfer — Madrid", a: "Metro Line 8 — ~25 min from central Madrid, ~€5", b: "Metro Line 8 — ~25 min from central Madrid, ~€5", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Airport transfer — London", a: "~€23 (~£20, Gatwick Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
     { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
   journeyTimeline: [
@@ -51,17 +51,17 @@ const DATA = {
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Madrid → London", a: "~2h 35m", b: "~2h 30m" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~45 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~5h 10m", b: "~5h 40m", isFinal: true },
+    { stage: "Airport → Central London", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
+    { stage: "Total door-to-door", a: "~5h 55m", b: "~5h 50m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "Iberia/BA full-service flights, faster transfer, more transport options."}, {"who": "Family with children", "choice": "Heathrow", "why": "Baggage included, simpler transfers, wider choice of airlines."}, {"who": "Budget traveller", "choice": "Gatwick", "why": "easyJet and Vueling fares can be significantly cheaper — justify the extra transfer time."}, {"who": "Weekend trip", "choice": "Heathrow", "why": "Every hour counts on a short trip from Madrid."}, {"who": "Heading to south London", "choice": "Gatwick", "why": "Gatwick is south of London — closer to Croydon, Brighton and Gatwick airport hotels."}, {"who": "Long stay", "choice": "Either", "why": "The transfer difference matters less on a longer trip. Choose by total cost."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Madrid airport access", "fix": "Metro Line 8 — factor this into the total journey before comparing London airports."}],
+  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "Iberia/BA full-service flights, more frequent trains and better links to west London."}, {"who": "Family with children", "choice": "Heathrow", "why": "Baggage is usually included on full-service fares — no checked-bag fee."}, {"who": "Budget traveller", "choice": "Gatwick", "why": "easyJet and Vueling fares can be significantly cheaper — the ~€32 saving justifies the transfer."}, {"who": "Weekend trip", "choice": "Gatwick", "why": "Cheaper overall, and the time difference is only ~5 minutes."}, {"who": "Heading to south London", "choice": "Gatwick", "why": "Gatwick is south of London — closer to Croydon, Brighton and Gatwick airport hotels."}, {"who": "Long stay", "choice": "Either", "why": "The transfer difference matters less on a longer trip. Choose by total cost."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €30 saving on the ticket can disappear after one checked bag and the Gatwick Express."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km south of central London. The Gatwick Express takes ~30 min and costs ~£20 — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Madrid airport access", "fix": "Metro Line 8 — factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Madrid?", answer: "Gatwick and other budget-airline airports often have cheaper advertised ticket prices from Madrid. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express — ~30 min, ~£20 off-peak." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Madrid?", answer: "Yes. Late-night arrivals at Gatwick mean fewer transport options. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Madrid?", answer: "Gatwick usually has the cheaper advertised fare from Madrid. Even after a checked bag (~€42) and the Gatwick Express (~£20), the total is ~€32 below a full-service Heathrow fare on our illustrative numbers. Heathrow is only ~5 minutes faster, so the saving usually outweighs the time difference. Compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Gatwick to central London?", answer: "The Gatwick Express takes ~30 min to Victoria and costs ~£20 off-peak." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "Does the time of day change which airport is better from Madrid?", answer: "Yes. Late-night arrivals at Gatwick mean fewer rail options after the last Gatwick Express. Heathrow still has the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£15 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
   ],
   cta: {
     title: "Compare your own Madrid–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Gatwick and Heathrow distances and terminal information", source: "Heathrow Airport Ltd, Gatwick Airport Ltd" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Madrid airport access and fares", source: "Metro de Madrid, Aena" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -159,7 +159,7 @@ export default function MadridToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€177</span><span className={styles.costBetter}>~€140</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€140</span><span>~€172</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

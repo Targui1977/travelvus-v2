@@ -7,61 +7,61 @@ import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
   title: "Milan to London: Malpensa, Linate or Bergamo? | Travelvus",
-  description: "Flying Milan to London? Compare Heathrow and Gatwick on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  description: "Flying Milan to London? Compare Heathrow and Stansted on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/milan-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "milan-to-london",
   category: "London Airport Decision",
   question: "Milan to London: Malpensa, Linate or Bergamo?",
-  shortAnswer: "Heathrow wins for most travellers from Milan once total journey time and cost are compared.",
+  shortAnswer: "Heathrow wins for most travellers from Milan: the Linate/Malpensa + Heathrow route is ~55 minutes faster door-to-door, though Bergamo + Stansted is ~€29 cheaper.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
     line: "Heathrow wins.",
     stats: [
-      { label: "Total journey time", value: "290", unit: "min" },
-      { label: "Time saved", value: "50", unit: "min", accent: true },
+      { label: "Total journey time", value: "320", unit: "min" },
+      { label: "Time saved", value: "55", unit: "min", accent: true },
       { label: "Flight duration", value: "2", unit: "h 00m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Heathrow", a: "~4h 50m", b: "~5h 40m", verdict: "Heathrow is ~50 min faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€164", b: "~€130", verdict: "Heathrow saves ~€34" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Train, 30–50 min", b: "~35 min (Elizabeth Line)", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Heathrow", a: "~6h 15m", b: "~5h 20m", verdict: "Heathrow is ~55 min faster" },
+    { factor: "Total journey cost", winner: "Stansted", a: "~€120", b: "~€149", verdict: "Stansted saves ~€29" },
+    { factor: "Transfer convenience", winner: "Heathrow", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)", verdict: "Heathrow transfer is ~15 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Stansted Express every 15–30 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 3 of 4 factors", isFinal: true },
   ],
-  winnerReasons: ["Heathrow saves ~50 minutes door-to-door — Milan's airport choice amplifies the London transfer difference.", "Linate is only 7km from Milan centre (Metro M4, 25 min) versus Bergamo at 55km (bus, 60 min).", "Full-service BA/ITA flights include baggage — Ryanair from Bergamo adds €40–60.", "Heathrow trains every 10–15 min vs Stansted Express every 15–30 min.", "Both the Milan-side and London-side airport choices favour the LHR route."],
+  winnerReasons: ["Heathrow saves ~55 minutes door-to-door — Milan's airport choice amplifies the London transfer difference.", "Linate is only 7km from Milan centre (Metro M4, 25 min) versus Bergamo at 55km (bus, 60 min).", "Full-service BA/ITA flights include baggage — Ryanair from Bergamo adds ~€50.", "Heathrow trains every 10–15 min vs Stansted Express every 15–30 min.", "Both the Milan-side and London-side airport choices favour the LHR route."],
   alternative: {
     title: "When Bergamo + Stansted is actually the better choice",
-    points: ["Ryanair fares from Bergamo can be as low as €20–35 — the saving is dramatic.", "If travelling with hand luggage only, the baggage fee difference disappears.", "Bergamo is a small, efficient airport — security and walking time are often shorter.", "The combined saving (cheaper ticket + no baggage) can exceed €100."],
+    points: ["Ryanair fares from Bergamo can be as low as €20–35 — the saving is dramatic.", "If travelling with hand luggage only, the baggage fee disappears and the saving can exceed €70.", "Bergamo is a small, efficient airport — security and walking time are often shorter.", "On our illustrative numbers the Bergamo + Stansted total is ~€29 below the Linate/Malpensa + Heathrow route with a checked bag."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€35 (Ryanair)", b: "~€130 (full-service/BA/ITA)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "+€40–60 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — Milan", a: "Malpensa Express — ~50 min from Cadorna, ~€13. Linate — Metro M4, ~25 min, ~€2. Bergamo — bus ~60 min, ~€10", b: "Malpensa Express — ~50 min from Cadorna, ~€13. Linate — Metro M4, ~25 min, ~€2. Bergamo — bus ~60 min, ~€10", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Flight ticket", a: "~€35 (Ryanair)", b: "~€130 (full-service/BA/ITA)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€50 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — Milan", a: "Bus to Bergamo — ~60 min, ~€10", b: "Metro M4 to Linate — ~25 min, ~€2", winner: "b" as const, note: "Bergamo is 55km from Milan" },
+    { label: "Airport transfer — London", a: "~€25 (~£22, Stansted Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
     { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
   journeyTimeline: [
-    { stage: "Milan city → Airport", a: "Malpensa Express — ~50 min from Cadorna, ~€13. Linate — Metro M4, ~25 min, ~€2. Bergamo — bus ~60 min, ~€10", b: "Malpensa Express — ~50 min from Cadorna, ~€13. Linate — Metro M4, ~25 min, ~€2. Bergamo — bus ~60 min, ~€10" },
+    { stage: "Milan city → Airport", a: "Bus to Bergamo — ~60 min, ~€10", b: "Metro M4 to Linate — ~25 min, ~€2" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Milan → London", a: "~2h 00m (from BGY)", b: "~2h 00m (from LIN or MXP)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~45 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~4h 50m", b: "~5h 40m", isFinal: true },
+    { stage: "Airport → Central London", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)" },
+    { stage: "Total door-to-door", a: "~6h 15m", b: "~5h 20m", isFinal: true },
   ],
   scenarios: [{"who": "Business traveller", "choice": "Linate + Heathrow", "why": "Linate is closest to Milan centre. Heathrow has the fastest London transfer. Best at both ends."}, {"who": "Family with children", "choice": "Malpensa + Heathrow", "why": "Malpensa Express is comfortable. Heathrow transfer is simpler than Stansted coach."}, {"who": "Budget traveller", "choice": "Bergamo + Stansted", "why": "Ryanair at €20–35 one-way is hard to beat. The longer transfers are worth the saving."}, {"who": "Weekend trip", "choice": "Linate + Heathrow", "why": "Fastest door-to-door. Maximises a short trip between two great cities."}, {"who": "Milan city centre dweller", "choice": "Linate + Heathrow", "why": "Metro M4 to Linate in 25 min. The most seamless city-to-city journey."}, {"who": "Lake Como bound", "choice": "Bergamo + Stansted", "why": "Bergamo is closer to Lake Como and the eastern lakes than Malpensa."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Milan airport access", "fix": "Malpensa Express — factor this into the total journey before comparing London airports."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Stansted is 55km from central London. The Stansted Express takes ~50 min and costs ~£22 walk-up (advance fares from £9.90) — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Stansted often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Milan airport access", "fix": "Metro M4 to Linate, the Malpensa Express or the Bergamo bus — factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Milan?", answer: "Gatwick and other budget-airline airports often have cheaper advertised ticket prices from Milan. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express — ~30 min, ~£20 off-peak." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Milan?", answer: "Yes. Late-night arrivals at Gatwick mean fewer transport options. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Milan?", answer: "Bergamo + Stansted usually has the cheaper advertised fare from Milan. Add a checked bag (~€50) and the Stansted Express (~£20), and the total is still ~€29 below the Linate/Malpensa + Heathrow route on our illustrative numbers — but the journey is ~55 minutes longer door-to-door. Which matters more depends on your trip. Always compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Stansted to central London?", answer: "The Stansted Express takes ~50 min to Liverpool Street and costs ~£22 walk-up; advance fares start from £9.90." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "Does the time of day change which airport is better from Milan?", answer: "Yes. Late-night arrivals at Stansted mean fewer train departures — the last Stansted Express leaves around 23:30, though coaches run later. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£15 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
   ],
   cta: {
     title: "Compare your own Milan–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Heathrow and Stansted distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, SACBO (Bergamo)" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Milan airport access and fares", source: "Trenord, ATM Milano, SACBO (Bergamo)" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -126,7 +126,7 @@ export default function MilanToLondonPage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>At a glance</h2>
             <p className={styles.sectionSub} style={{ marginBottom: 14 }}>Illustrative comparison based on typical fares and public transport costs. Ticket prices vary by airline, season and booking date.</p>
-            <div className={styles.glanceHeader}><span /><span className={styles.glanceColLabel}>Gatwick</span><span className={styles.glanceColLabel}>Heathrow</span><span /></div>
+            <div className={styles.glanceHeader}><span /><span className={styles.glanceColLabel}>Stansted</span><span className={styles.glanceColLabel}>Heathrow</span><span /></div>
             {DATA.atAGlance.map((row, i) => <AtAGlanceRow key={i} {...row} />)}
           </section>
           <section className={styles.section}>
@@ -151,7 +151,7 @@ export default function MilanToLondonPage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>How the real cost compares</h2>
             <p className={styles.sectionSub}>Illustrative breakdown. Actual costs depend on your specific flight, baggage and chosen transfer option.</p>
-            <div className={styles.costHeader}><span>Cost factor</span><span>Gatwick</span><span>Heathrow</span></div>
+            <div className={styles.costHeader}><span>Cost factor</span><span>Stansted</span><span>Heathrow</span></div>
             {DATA.costBreakdown.map((row, i) => (
               <div key={i} className={styles.costRow}>
                 <span className={styles.costLabel}>{row.label}{row.note && <span style={{ display: "block", fontFamily: "var(--sans)", fontWeight: 400, fontSize: 11, color: "var(--muted)", marginTop: 1 }}>{row.note}</span>}</span>
@@ -159,7 +159,7 @@ export default function MilanToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€164</span><span className={styles.costBetter}>~€130</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€120</span><span>~€149</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

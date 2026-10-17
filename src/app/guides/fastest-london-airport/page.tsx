@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guides/fastest-london-airport" },
 };
 
-const FAQ_ITEMS = [{"question": "Which airport has the fastest transfer to central London?", "answer": "London City Airport (LCY) via DLR to Bank in ~25 minutes. Of the major airports, Heathrow via Heathrow Express to Paddington in 15 minutes (but costs £25). For best speed-to-cost ratio, the Elizabeth Line from Heathrow (~35 min, ~£12)."}, {"question": "Is a shorter flight always faster door-to-door?", "answer": "No. A flight 15 minutes shorter to Stansted can lose 35 minutes on the longer transfer — arriving 20 minutes later overall. Always compare total door-to-door time."}];
+const FAQ_ITEMS = [{"question": "Which airport has the fastest transfer to central London?", "answer": "London City Airport (LCY) via DLR to Bank in ~25 minutes. Of the major airports, Heathrow via Heathrow Express to Paddington in 15 minutes (but costs ~£26). For best speed-to-cost ratio, the Elizabeth Line from Heathrow (~35 min, ~£15)."}, {"question": "Is a shorter flight always faster door-to-door?", "answer": "No. A flight 15 minutes shorter to Stansted can lose 35 minutes on the longer transfer — arriving 20 minutes later overall. Always compare total door-to-door time."}];
 
 export default function FastestLondonAirportPage() {
   return (
@@ -24,7 +24,7 @@ export default function FastestLondonAirportPage() {
           <h1 className={styles.guideHeroH1}>Which London airport gets you there fastest?</h1>
           <p className={styles.guideHeroSub}>London City Airport is the fastest door-to-door for east and central London. Heathrow is fastest for west London. Your destination within London determines the answer.</p>
           <div className={styles.guideHeroMeta}>
-            <span>4 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>4 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>

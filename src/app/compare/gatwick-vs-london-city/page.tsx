@@ -11,61 +11,80 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/gatwick-vs-london-city" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "gatwick-vs-london-city",
   category: "London Airport Decision",
   question: "Gatwick vs London City — which London airport wins?",
-  shortAnswer: "Depends on destination wins for most travellers once total journey time and cost are compared.",
+  shortAnswer: "Gatwick wins on money and route choice — about £13 cheaper with far more flights — while London City is about 10 minutes faster door-to-door and far quicker to navigate.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Depends on destination wins.",
+    line: "Gatwick wins on money, London City on speed.",
     stats: [
-      { label: "Total journey time", value: "210", unit: "min" },
-      { label: "Time saved", value: "45", unit: "min", accent: true },
+      { label: "Total journey time", value: "255", unit: "min" },
+      { label: "Time saved", value: "10", unit: "min", accent: true },
       { label: "Flight duration", value: "1", unit: "h 30m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Depends on destination", a: "~4h 15m", b: "~3h 30m", verdict: "Depends on destination is ~45 faster" },
-    { factor: "Total journey cost", winner: "Gatwick", a: "~£110", b: "~£160", verdict: "Gatwick saves ~£50" },
-    { factor: "Transfer convenience", winner: "London City", a: "30 min (Gatwick Express)", b: "25 min (DLR)", verdict: "London City has the faster transfer" },
-    { factor: "Route and airline choice", winner: "Gatwick", a: "Wide choice, all alliances", b: "Budget-focused, good choice", verdict: "Gatwick has more airlines and routes" },
-    { factor: "Overall winner", winner: "Depends on destination", a: "—", b: "—", verdict: "Depends on destination wins on most factors", isFinal: true },
+    { factor: "Total journey time", winner: "London City", a: "~4h 25m", b: "~4h 15m", verdict: "London City is ~10 min faster" },
+    { factor: "Total journey cost", winner: "Gatwick", a: "~£140", b: "~£153", verdict: "Gatwick saves ~£13" },
+    { factor: "Transfer convenience", winner: "London City", a: "30 min (Gatwick Express)", b: "25 min (DLR)", verdict: "London City's transfer is ~5 min faster" },
+    { factor: "Route and airline choice", winner: "Gatwick", a: "Wide choice, all alliances", b: "Short-haul business routes", verdict: "Gatwick has far more airlines and routes" },
+    { factor: "Overall winner", winner: "Split decision", a: "—", b: "—", verdict: "Gatwick wins on money and routes, London City on speed", isFinal: true },
   ],
-  winnerReasons: ["London City Airport is dramatically faster door-to-door — DLR to Bank in 25 min vs Gatwick Express 30 min to Victoria plus onward travel.", "LCY's tiny size means 20 minutes from landing to the DLR platform — no long walks, no crowds.", "For Canary Wharf and the City, LCY is simply unbeatable — the DLR drops you at your office.", "Gatwick wins on cost — easyJet fares are significantly cheaper than BA CityFlyer from LCY.", "Gatwick serves many more routes — LCY's limited destination list may not include where you need to go."],
+  winnerReasons: [
+    "London City is dramatically faster to the City — the DLR to Bank takes about 25 minutes, versus the Gatwick Express to Victoria plus onward travel.",
+    "LCY's tiny size means about 20 minutes from landing to the DLR platform — no long walks, no crowds.",
+    "For Canary Wharf and the City, LCY is simply unbeatable — the DLR drops you at your office.",
+    "Gatwick wins on money — around £13 cheaper door-to-door in this comparison.",
+    "Gatwick serves many more routes — LCY's limited destination list may not include where you need to go.",
+  ],
   alternative: {
     title: "When Gatwick is actually the better choice",
-    points: ["Gatwick has far more flight options — easyJet, BA, TUI, Vueling, and many more airlines.", "Gatwick is significantly cheaper — ticket prices 30-50% lower than LCY on comparable European routes.", "Gatwick connects to south London and Brighton — LCY only connects east toward the City and Canary Wharf.", "If LCY doesn't fly to your destination, Gatwick is the next best option among the southern airports."],
+    points: [
+      "Gatwick has far more flight options — easyJet, BA, TUI, Vueling, and many more airlines.",
+      "Gatwick is significantly cheaper on the ticket — around 45% lower than LCY on comparable European routes.",
+      "Gatwick connects to south London and Brighton — LCY only connects east toward the City and Canary Wharf.",
+      "If LCY doesn't fly to your destination, Gatwick is the next best option among the southern airports.",
+      "Gatwick is about £13 cheaper door-to-door in this comparison, even after a checked bag.",
+    ],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~£150 (BA CityFlyer)", b: "~£80 (easyJet/BA)", winner: "b" as const, note: "Varies by airline vs Often included" },
-    { label: "Checked bag", a: "Often included", b: "Varies by airline", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — London", a: "25 min to Bank", b: "30 min to Victoria", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Minimal: Every 5–10 min", b: "Risk: 20–40 min gap", winner: "b" as const },
-    { label: "Terminal experience", a: "Premium facilities", b: "Functional, basic amenities", winner: "b" as const },
+    { label: "Flight ticket", a: "~£80 (easyJet/BA)", b: "~£150 (BA CityFlyer)", winner: "a" as const, note: "Base fare before baggage" },
+    { label: "Checked bag", a: "~£40", b: "£0 (included)", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£3 (DLR)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: every 5–10 min", winner: "b" as const },
+    { label: "Terminal experience", a: "Functional, basic amenities", b: "Premium facilities", winner: "b" as const },
   ],
   journeyTimeline: [
-    { stage: "London city → Airport", a: "45km south of central London", b: "10km east of central London" },
+    { stage: "London city → Airport", a: "45km south of central London", b: "11km east of central London" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight (typical European)", a: "~1h 30m (typical European)", b: "~1h 30m (typical European)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "25 min (DLR)", b: "30 min (Gatwick Express)" },
-    { stage: "Total door-to-door", a: "~4h 15m", b: "~3h 30m", isFinal: true },
+    { stage: "Airport → Central London", a: "30 min (Gatwick Express)", b: "25 min (DLR)" },
+    { stage: "Total door-to-door", a: "~4h 25m", b: "~4h 15m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller (City/Canary Wharf)", "choice": "London City", "why": "DLR to Canary Wharf in 20 min. No other airport comes close."}, {"who": "Business traveller (West End)", "choice": "Gatwick", "why": "Gatwick Express to Victoria, then a short taxi or Tube. LCY goes the wrong direction."}, {"who": "Budget traveller", "choice": "Gatwick", "why": "easyJet fares from LGW are far cheaper than LCY's premium pricing."}, {"who": "Family with children", "choice": "Gatwick", "why": "More space, wider airline choice, direct train connections without DLR stairs."}, {"who": "South London / Brighton", "choice": "Gatwick", "why": "Gatwick is geographically perfect for south London and the south coast."}, {"who": "Weekend trip", "choice": "London City", "why": "Fastest door-to-door — more time in London. Worth the premium fare for a short trip."}],
+  scenarios: [
+    { who: "Business traveller (City/Canary Wharf)", choice: "London City", why: "DLR to Canary Wharf in about 25 minutes. No other airport comes close." },
+    { who: "Business traveller (West End)", choice: "Gatwick", why: "Gatwick Express to Victoria, then a short taxi or Tube. LCY goes the wrong direction." },
+    { who: "Budget traveller", choice: "Gatwick", why: "easyJet fares from LGW are far cheaper than LCY's premium pricing." },
+    { who: "Family with children", choice: "Gatwick", why: "More space, wider airline choice, direct train connections without DLR stairs." },
+    { who: "South London / Brighton", choice: "Gatwick", why: "Gatwick is geographically perfect for south London and the south coast." },
+    { who: "Weekend trip", choice: "London City", why: "About 10 minutes faster door-to-door — more time in London. Worth the premium fare for a short trip." },
+  ],
   commonMistakes: [
     { mistake: "Choosing by ticket price only", fix: "Add baggage fees, transfer cost and schedule waiting. A £50 saving on the ticket can disappear after one checked bag." },
-    { mistake: "Ignoring the airport transfer", fix: "London City is 10km from central London. Gatwick is 45km. The transfer cost and time differ significantly." },
-    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge £35–50 for a checked bag. Full-service airlines often include it." },
+    { mistake: "Ignoring the airport transfer", fix: "London City is 11km from central London. Gatwick is 45km. The transfer cost and time differ significantly." },
+    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge around £40 for a checked bag. Full-service airlines often include it." },
     { mistake: "Not checking your destination within London", fix: "Gatwick is better for south London. London City is better for east London and Canary Wharf." },
   ],
   faqItems: [
-    { question: "Which is better — Gatwick or London City?", answer: "Gatwick and London City serve different travellers. Depends on destination generally wins for most journeys when total cost and time are compared, but the right choice depends on your airline preference, destination within London, and budget." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express (~30 min to Victoria, ~£20). Every 15 min. Further from north and east London; fewer international long-haul options" },
-    { question: "How long is the transfer from London City to central London?", answer: "DLR (~25 min to Bank, ~£3). Every 5–10 min. Limited routes (short-haul European only); higher ticket prices; no long-haul" },
-    { question: "Is Gatwick or London City cheaper overall?", answer: "Gatwick typically costs ~£110 total door-to-door. London City typically costs ~£160. The difference depends on baggage and transfer choices." },
+    { question: "Which is better — Gatwick or London City?", answer: "Gatwick wins on money and route choice — about £13 cheaper door-to-door with many more flights — while London City is about 10 minutes faster and far quicker to navigate. The right answer depends on whether your destination is in the City or Canary Wharf." },
+    { question: "How long is the transfer from Gatwick to central London?", answer: "The Gatwick Express reaches Victoria in about 30 minutes (~£20 off-peak; advance fares from £9.90). Southern and Thameslink trains take 40–50 minutes and cost less." },
+    { question: "How long is the transfer from London City to central London?", answer: "The DLR reaches Bank in about 25 minutes (~£3.30 off-peak) and runs every 5–10 minutes. London City has no Elizabeth Line and no Piccadilly Line — the DLR is its only rail link." },
+    { question: "Is Gatwick or London City cheaper overall?", answer: "Gatwick typically costs around £140 door-to-door in this comparison; London City around £153 — about £13 more." },
     { question: "Which airline flies from Gatwick vs London City?", answer: "Gatwick serves mainly easyJet, BA and TUI. London City serves mainly BA CityFlyer and niche business carriers." },
   ],
   cta: {
@@ -91,7 +110,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -100,7 +119,7 @@ function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.a
       <span className={styles.glanceFactor}>{factor}</span>
       <span className={styles.glanceVal}>{a}</span>
       <span className={styles.glanceVal}>{b}</span>
-      <span className={`${styles.glanceWinner} ${winner === "Depends on destination" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
+      <span className={`${styles.glanceWinner} ${winner === "London City" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
     </div>
   );
 }
@@ -163,7 +182,7 @@ export default function GatwickVsLondonCityPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~£110</span><span className={styles.costBetter}>~£160</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~£140</span><span>~£153</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

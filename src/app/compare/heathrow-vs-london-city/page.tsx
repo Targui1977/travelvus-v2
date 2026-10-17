@@ -11,61 +11,80 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/heathrow-vs-london-city" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "heathrow-vs-london-city",
   category: "London Airport Decision",
   question: "Heathrow vs London City — which London airport wins?",
-  shortAnswer: "Depends on destination wins for most travellers once total journey time and cost are compared.",
+  shortAnswer: "London City wins for the City and Canary Wharf — about 15 minutes faster door-to-door, with a DLR transfer of roughly 25 minutes — while Heathrow is about £8 cheaper and flies far more routes.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Depends on destination wins.",
+    line: "London City wins for the City, Heathrow for the rest of London.",
     stats: [
-      { label: "Total journey time", value: "210", unit: "min" },
-      { label: "Time saved", value: "30", unit: "min", accent: true },
+      { label: "Total journey time", value: "255", unit: "min" },
+      { label: "Time saved", value: "15", unit: "min", accent: true },
       { label: "Flight duration", value: "1", unit: "h 30m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Depends on destination", a: "~4h 00m", b: "~3h 30m", verdict: "Depends on destination is ~30 faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~£155", b: "~£160", verdict: "Heathrow saves ~£5" },
-    { factor: "Transfer convenience", winner: "London City", a: "35 min (Elizabeth Line)", b: "25 min (DLR)", verdict: "London City has the faster transfer" },
-    { factor: "Route and airline choice", winner: "Heathrow", a: "Wide choice, all alliances", b: "Budget-focused, good choice", verdict: "Heathrow has more airlines and routes" },
-    { factor: "Overall winner", winner: "Depends on destination", a: "—", b: "—", verdict: "Depends on destination wins on most factors", isFinal: true },
+    { factor: "Total journey time", winner: "London City", a: "~4h 30m", b: "~4h 15m", verdict: "London City is ~15 min faster" },
+    { factor: "Total journey cost", winner: "Heathrow", a: "~£145", b: "~£153", verdict: "Heathrow saves ~£8" },
+    { factor: "Transfer convenience", winner: "London City", a: "35 min (Elizabeth Line)", b: "25 min (DLR)", verdict: "London City's transfer is ~10 min faster" },
+    { factor: "Route and airline choice", winner: "Heathrow", a: "Wide choice, all alliances", b: "Short-haul business routes", verdict: "Heathrow has far more airlines and routes" },
+    { factor: "Overall winner", winner: "Split decision", a: "—", b: "—", verdict: "London City wins on speed, Heathrow on cost and routes", isFinal: true },
   ],
-  winnerReasons: ["London City Airport is only 10km from central London — the DLR takes ~25 minutes to Bank for just ~£3.", "LCY is tiny — you walk from the plane to the DLR platform in 20 minutes. No long terminal walks.", "For business travellers heading to Canary Wharf or the City, LCY is untouchable — DLR drops you at your office.", "The total door-to-door journey through LCY is ~30 minutes faster than Heathrow.", "LCY has no crowds, no long security queues, and a genuinely calm airport experience."],
+  winnerReasons: [
+    "London City is 11km east of central London — the DLR reaches Bank in about 25 minutes for around £3.30.",
+    "LCY is tiny — you walk from the plane to the DLR platform in about 20 minutes, with no long terminal walks.",
+    "For business travellers heading to Canary Wharf or the City, LCY is untouchable — the DLR drops you at your office.",
+    "Heathrow wins on money in this comparison: roughly £145 door-to-door versus £153 for London City.",
+    "Heathrow also flies almost everywhere — if LCY does not serve your route, the choice is made for you.",
+  ],
   alternative: {
     title: "When Heathrow is actually the better choice",
-    points: ["Heathrow serves far more routes — if LCY doesn't fly where you need to go, the choice is made for you.", "Heathrow has better terminal facilities — lounges, restaurants, shops — for longer waits.", "Heathrow connects to the Tube network (Piccadilly Line) — LCY only has the DLR.", "Heathrow is better for west London, Windsor, and connecting to worldwide long-haul flights."],
+    points: [
+      "Heathrow serves far more routes — if LCY doesn't fly where you need to go, the choice is made for you.",
+      "Heathrow has better terminal facilities — lounges, restaurants, shops — for longer waits.",
+      "Heathrow connects to the Tube network (Piccadilly Line) and the Elizabeth Line; LCY has only the DLR.",
+      "Heathrow is better for west London, Windsor, and connecting to worldwide long-haul flights.",
+      "Heathrow is about £8 cheaper door-to-door in this comparison, with a lower base fare.",
+    ],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~£150 (BA CityFlyer)", b: "~£130 (full-service)", winner: "b" as const, note: "Often included vs Often included" },
-    { label: "Checked bag", a: "Often included", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — London", a: "25 min to Bank", b: "35 min", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Minimal: Every 5–10 min", b: "Minimal: Every 10–15 min", winner: "b" as const },
-    { label: "Terminal experience", a: "Premium facilities", b: "Premium facilities", winner: "b" as const },
+    { label: "Flight ticket", a: "~£130 (full-service)", b: "~£150 (BA CityFlyer)", winner: "a" as const, note: "Base fare before baggage" },
+    { label: "Checked bag", a: "£0 (included)", b: "£0 (included)", winner: "tie" as const, note: "Both fares include a checked bag" },
+    { label: "Airport transfer — London", a: "~£15 (Elizabeth Line)", b: "~£3 (DLR)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Schedule waiting", a: "Minimal: every 10–15 min", b: "Minimal: every 5–10 min", winner: "b" as const },
+    { label: "Terminal experience", a: "Premium facilities", b: "Premium facilities", winner: "tie" as const },
   ],
   journeyTimeline: [
-    { stage: "London city → Airport", a: "24km west of central London", b: "10km east of central London" },
+    { stage: "London city → Airport", a: "24km west of central London", b: "11km east of central London" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight (typical European)", a: "~1h 30m (typical European)", b: "~1h 30m (typical European)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "25 min (DLR)", b: "35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~4h 00m", b: "~3h 30m", isFinal: true },
+    { stage: "Airport → Central London", a: "35 min (Elizabeth Line)", b: "25 min (DLR)" },
+    { stage: "Total door-to-door", a: "~4h 30m", b: "~4h 15m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller (Canary Wharf)", "choice": "London City", "why": "DLR to the office in 20-25 min. The fastest city-to-desk journey in London."}, {"who": "Business traveller (West End)", "choice": "Heathrow", "why": "Elizabeth Line to Tottenham Court Road in ~30 min. Better for West End offices."}, {"who": "Tourist (central London)", "choice": "London City", "why": "DLR to Bank, then Central Line — easy access to central London sights."}, {"who": "Flying long-haul", "choice": "Heathrow", "why": "LCY has no long-haul flights. Heathrow is the UK's international hub."}, {"who": "Budget traveller", "choice": "Neither — try Gatwick or Stansted", "why": "Both LCY and Heathrow are premium-price airports. Budget options are at STN, LGW and LTN."}, {"who": "Weekend trip", "choice": "London City", "why": "Fastest door-to-door — maximise your short trip."}],
+  scenarios: [
+    { who: "Business traveller (Canary Wharf)", choice: "London City", why: "DLR to the office in about 25 minutes. The fastest city-to-desk journey in London." },
+    { who: "Business traveller (West End)", choice: "Heathrow", why: "Elizabeth Line to Tottenham Court Road in about 30 minutes. Better for West End offices." },
+    { who: "Tourist (central London)", choice: "London City", why: "DLR to Bank, then the Central Line — easy access to central London sights." },
+    { who: "Flying long-haul", choice: "Heathrow", why: "LCY has no long-haul flights. Heathrow is the UK's international hub." },
+    { who: "Budget traveller", choice: "Neither — try Gatwick or Stansted", why: "Both LCY and Heathrow are premium-price airports. Budget options are at STN, LGW and LTN." },
+    { who: "Weekend trip", choice: "London City", why: "About 15 minutes faster door-to-door — more time in London." },
+  ],
   commonMistakes: [
     { mistake: "Choosing by ticket price only", fix: "Add baggage fees, transfer cost and schedule waiting. A £50 saving on the ticket can disappear after one checked bag." },
-    { mistake: "Ignoring the airport transfer", fix: "London City is 10km from central London. Heathrow is 24km. The transfer cost and time differ significantly." },
-    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge £35–50 for a checked bag. Full-service airlines often include it." },
+    { mistake: "Ignoring the airport transfer", fix: "London City is 11km from central London. Heathrow is 24km. The transfer cost and time differ significantly." },
+    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge around £40 for a checked bag. Full-service airlines often include it." },
     { mistake: "Not checking your destination within London", fix: "Heathrow is better for west London. London City is better for east London and Canary Wharf." },
   ],
   faqItems: [
-    { question: "Which is better — Heathrow or London City?", answer: "Heathrow and London City serve different travellers. Depends on destination generally wins for most journeys when total cost and time are compared, but the right choice depends on your airline preference, destination within London, and budget." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line (~35 min, ~£12). Every 10–15 min. Most expensive for budget travellers; furthest from east London" },
-    { question: "How long is the transfer from London City to central London?", answer: "DLR (~25 min to Bank, ~£3). Every 5–10 min. Limited routes (short-haul European only); higher ticket prices; no long-haul" },
-    { question: "Is Heathrow or London City cheaper overall?", answer: "Heathrow typically costs ~£155 total door-to-door. London City typically costs ~£160. The difference depends on baggage and transfer choices." },
+    { question: "Which is better — Heathrow or London City?", answer: "It depends where you are going: London City wins for the City and Canary Wharf, Heathrow for west London, long-haul and route choice. Door-to-door, London City is about 15 minutes faster; Heathrow is about £8 cheaper." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line reaches central London in about 35 minutes (~£15). The Piccadilly Line takes 50–60 minutes (~£6) and the Heathrow Express 15 minutes (£26). Trains run every 10–15 minutes." },
+    { question: "How long is the transfer from London City to central London?", answer: "The DLR reaches Bank in about 25 minutes (~£3.30 off-peak) and runs every 5–10 minutes. London City has no Elizabeth Line and no Piccadilly Line — the DLR is its only rail link." },
+    { question: "Is Heathrow or London City cheaper overall?", answer: "Heathrow typically costs around £145 door-to-door in this comparison; London City around £153 — about £8 more. The gap is small enough that route availability usually decides." },
     { question: "Which airline flies from Heathrow vs London City?", answer: "Heathrow serves full-service and budget airlines across all alliances. London City serves mainly BA CityFlyer and niche business carriers." },
   ],
   cta: {
@@ -91,7 +110,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -100,7 +119,7 @@ function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.a
       <span className={styles.glanceFactor}>{factor}</span>
       <span className={styles.glanceVal}>{a}</span>
       <span className={styles.glanceVal}>{b}</span>
-      <span className={`${styles.glanceWinner} ${winner === "Depends on destination" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
+      <span className={`${styles.glanceWinner} ${winner === "London City" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
     </div>
   );
 }
@@ -163,7 +182,7 @@ export default function HeathrowVsLondonCityPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~£155</span><span className={styles.costBetter}>~£160</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~£145</span><span>~£153</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

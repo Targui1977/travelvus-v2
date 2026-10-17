@@ -11,61 +11,80 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/stansted-vs-london-city" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "stansted-vs-london-city",
   category: "London Airport Decision",
   question: "Stansted vs London City — which London airport wins?",
-  shortAnswer: "Depends on budget vs speed wins for most travellers once total journey time and cost are compared.",
+  shortAnswer: "Stansted wins on price — about £51 cheaper door-to-door — and flies far more budget routes; London City wins on speed, reaching Bank on the DLR in about 25 minutes and finishing the journey about 30 minutes sooner.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Depends on budget vs speed wins.",
+    line: "Stansted wins on price, London City on speed.",
     stats: [
-      { label: "Total journey time", value: "210", unit: "min" },
-      { label: "Time saved", value: "75", unit: "min", accent: true },
+      { label: "Total journey time", value: "255", unit: "min" },
+      { label: "Time saved", value: "30", unit: "min", accent: true },
       { label: "Flight duration", value: "1", unit: "h 30m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Depends on budget vs speed", a: "~4h 45m", b: "~3h 30m", verdict: "Depends on budget vs speed is ~75 faster" },
-    { factor: "Total journey cost", winner: "Stansted", a: "~£100", b: "~£160", verdict: "Stansted saves ~£60" },
-    { factor: "Transfer convenience", winner: "London City", a: "50 min (Stansted Express)", b: "25 min (DLR)", verdict: "London City has the faster transfer" },
-    { factor: "Route and airline choice", winner: "London City", a: "Budget-focused, good choice", b: "Budget-focused, good choice", verdict: "London City has more airlines and routes" },
-    { factor: "Overall winner", winner: "Depends on budget vs speed", a: "—", b: "—", verdict: "Depends on budget vs speed wins on most factors", isFinal: true },
+    { factor: "Total journey time", winner: "London City", a: "~4h 45m", b: "~4h 15m", verdict: "London City is ~30 min faster" },
+    { factor: "Total journey cost", winner: "Stansted", a: "~£102", b: "~£153", verdict: "Stansted saves ~£51" },
+    { factor: "Transfer convenience", winner: "London City", a: "50 min (Stansted Express)", b: "25 min (DLR)", verdict: "London City's transfer is ~25 min faster" },
+    { factor: "Route and airline choice", winner: "Stansted", a: "Budget-focused, widest UK network", b: "Short-haul business routes", verdict: "Stansted has more airlines and routes" },
+    { factor: "Overall winner", winner: "Split decision", a: "—", b: "—", verdict: "Stansted wins on price and routes, London City on speed", isFinal: true },
   ],
-  winnerReasons: ["This is the most extreme comparison in London — the furthest budget airport versus the closest premium airport.", "London City Airport saves ~1h 15m door-to-door versus Stansted — but costs ~£60 more.", "LCY's DLR to Bank takes 25 min and costs ~£3. Stansted Express takes 50 min and costs ~£17.", "LCY serves a handful of European business routes. Stansted serves hundreds of budget routes across Europe.", "The choice is stark: speed and convenience (LCY) versus budget and route choice (Stansted)."],
+  winnerReasons: [
+    "This is the most extreme comparison in London — the furthest budget airport versus the closest premium airport.",
+    "London City saves about 30 minutes door-to-door — the DLR reaches Bank in about 25 minutes and the airport itself takes about 20 minutes from plane to platform.",
+    "LCY's DLR costs about £3.30; the Stansted Express costs about £22 and takes about 50 minutes.",
+    "Stansted serves hundreds of budget routes across Europe — LCY serves a handful of business routes.",
+    "The choice is stark: speed and convenience (LCY) versus price and route choice (Stansted).",
+  ],
   alternative: {
     title: "When Stansted is actually the better choice",
-    points: ["Ryanair from Stansted flies to vastly more destinations than LCY serves — route choice alone may decide.", "The price difference can exceed £100 — significant for budget-conscious travellers.", "Stansted is better for northeast London, Cambridge and East Anglia.", "If you have time and value the saving, the Stansted Express transfer is comfortable and reliable."],
+    points: [
+      "Ryanair from Stansted flies to vastly more destinations than LCY serves — route choice alone may decide.",
+      "Stansted is about £51 cheaper door-to-door in this comparison — significant for budget-conscious travellers.",
+      "Stansted is better for northeast London, Cambridge and East Anglia.",
+      "If you have time and value the saving, the Stansted Express transfer is comfortable and reliable.",
+      "The last Stansted Express leaves around 00:30, so late arrivals are less constrained than often assumed.",
+    ],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~£150 (BA CityFlyer)", b: "~£40 (Ryanair)", winner: "b" as const, note: "+£35–50 vs Often included" },
-    { label: "Checked bag", a: "Often included", b: "+£35–50", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — London", a: "25 min to Bank", b: "50 min to Liverpool St", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Minimal: Every 5–10 min", b: "Risk: 20–40 min gap", winner: "b" as const },
-    { label: "Terminal experience", a: "Premium facilities", b: "Functional, basic amenities", winner: "b" as const },
+    { label: "Flight ticket", a: "~£40 (Ryanair)", b: "~£150 (BA CityFlyer)", winner: "a" as const, note: "Base fare before baggage" },
+    { label: "Checked bag", a: "~£40", b: "£0 (included)", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — London", a: "~£22 (Stansted Express)", b: "~£3 (DLR)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: every 5–10 min", winner: "b" as const },
+    { label: "Terminal experience", a: "Functional, basic amenities", b: "Premium facilities", winner: "b" as const },
   ],
   journeyTimeline: [
-    { stage: "London city → Airport", a: "55km northeast of central London", b: "10km east of central London" },
+    { stage: "London city → Airport", a: "55km northeast of central London", b: "11km east of central London" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
-    { stage: "Flight (typical European)", a: "~1h 30m (BA CityFlyer)", b: "~1h 30m (Ryanair)" },
+    { stage: "Flight (typical European)", a: "~1h 30m (Ryanair)", b: "~1h 30m (BA CityFlyer)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "25 min (DLR)", b: "50 min (Stansted Express)" },
-    { stage: "Total door-to-door", a: "~4h 45m", b: "~3h 30m", isFinal: true },
+    { stage: "Airport → Central London", a: "50 min (Stansted Express)", b: "25 min (DLR)" },
+    { stage: "Total door-to-door", a: "~4h 45m", b: "~4h 15m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller (City/Canary Wharf)", "choice": "London City", "why": "1h 15m faster. The DLR drops you at the office. The premium is worth it."}, {"who": "Budget traveller", "choice": "Stansted", "why": "Ryanair fares can be £30–40. The saving of £100+ justifies the longer transfer."}, {"who": "Family with children", "choice": "London City", "why": "If LCY serves your route, the short transfer is a game-changer with tired children."}, {"who": "Weekend trip", "choice": "London City", "why": "The 1h 15m saving means an extra afternoon in London on a short trip."}, {"who": "Route not served by LCY", "choice": "Stansted", "why": "LCY has limited routes. If your destination isn't served, Stansted is the budget fallback."}, {"who": "Cambridge / East Anglia", "choice": "Stansted", "why": "Stansted is the closest airport to Cambridge — direct train in 30 min."}],
+  scenarios: [
+    { who: "Business traveller (City/Canary Wharf)", choice: "London City", why: "About 30 minutes faster. The DLR drops you at the office. The premium is worth it." },
+    { who: "Budget traveller", choice: "Stansted", why: "Ryanair fares can be very low. The saving of around £50 justifies the longer transfer." },
+    { who: "Family with children", choice: "London City", why: "If LCY serves your route, the short transfer is a game-changer with tired children." },
+    { who: "Weekend trip", choice: "London City", why: "The 30-minute saving means more time in London on a short trip." },
+    { who: "Route not served by LCY", choice: "Stansted", why: "LCY has limited routes. If your destination isn't served, Stansted is the budget fallback." },
+    { who: "Cambridge / East Anglia", choice: "Stansted", why: "Stansted is the closest airport to Cambridge — direct train in about 30 minutes." },
+  ],
   commonMistakes: [
     { mistake: "Choosing by ticket price only", fix: "Add baggage fees, transfer cost and schedule waiting. A £50 saving on the ticket can disappear after one checked bag." },
-    { mistake: "Ignoring the airport transfer", fix: "London City is 10km from central London. Stansted is 55km. The transfer cost and time differ significantly." },
-    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge £35–50 for a checked bag. Full-service airlines often include it." },
+    { mistake: "Ignoring the airport transfer", fix: "London City is 11km from central London. Stansted is 55km. The transfer cost and time differ significantly." },
+    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge around £40 for a checked bag. Full-service airlines often include it." },
     { mistake: "Not checking your destination within London", fix: "Stansted is better for northeast London. London City is better for east London and Canary Wharf." },
   ],
   faqItems: [
-    { question: "Which is better — Stansted or London City?", answer: "Stansted and London City serve different travellers. Depends on budget vs speed generally wins for most journeys when total cost and time are compared, but the right choice depends on your airline preference, destination within London, and budget." },
-    { question: "How long is the transfer from Stansted to central London?", answer: "Stansted Express (~50 min to Liverpool St, ~£17). Every 15–30 min. Furthest from central London; few late-night options; coach or train transfer required" },
-    { question: "How long is the transfer from London City to central London?", answer: "DLR (~25 min to Bank, ~£3). Every 5–10 min. Limited routes (short-haul European only); higher ticket prices; no long-haul" },
-    { question: "Is Stansted or London City cheaper overall?", answer: "Stansted typically costs ~£100 total door-to-door. London City typically costs ~£160. The difference depends on baggage and transfer choices." },
+    { question: "Which is better — Stansted or London City?", answer: "Stansted wins on price — about £51 cheaper door-to-door — and has far more budget routes. London City wins on speed: about 30 minutes faster door-to-door, with a DLR transfer of about 25 minutes to Bank." },
+    { question: "How long is the transfer from Stansted to central London?", answer: "The Stansted Express reaches Liverpool Street in about 50 minutes (~£22 walk-up; advance fares from £9.90). Coaches take 75–90 minutes for about £10–15. The last Express leaves around 00:30." },
+    { question: "How long is the transfer from London City to central London?", answer: "The DLR reaches Bank in about 25 minutes (~£3.30 off-peak) and runs every 5–10 minutes. London City has no Elizabeth Line and no Piccadilly Line — the DLR is its only rail link." },
+    { question: "Is Stansted or London City cheaper overall?", answer: "Stansted typically costs around £102 door-to-door in this comparison; London City around £153 — about £51 more." },
     { question: "Which airline flies from Stansted vs London City?", answer: "Stansted serves mainly Ryanair (largest UK base). London City serves mainly BA CityFlyer and niche business carriers." },
   ],
   cta: {
@@ -91,7 +110,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -100,7 +119,7 @@ function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.a
       <span className={styles.glanceFactor}>{factor}</span>
       <span className={styles.glanceVal}>{a}</span>
       <span className={styles.glanceVal}>{b}</span>
-      <span className={`${styles.glanceWinner} ${winner === "Depends on budget vs speed" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
+      <span className={`${styles.glanceWinner} ${winner === "London City" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
     </div>
   );
 }
@@ -163,7 +182,7 @@ export default function StanstedVsLondonCityPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~£100</span><span className={styles.costBetter}>~£160</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~£102</span><span>~£153</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

@@ -11,61 +11,80 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/gatwick-vs-luton" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "gatwick-vs-luton",
   category: "London Airport Decision",
   question: "Gatwick vs Luton — which London airport wins?",
-  shortAnswer: "Gatwick wins for most travellers once total journey time and cost are compared.",
+  shortAnswer: "Gatwick wins for most travellers: its direct train and wider route choice outweigh a higher door-to-door cost, while Luton is around £30 cheaper and only about 5 minutes slower.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
     line: "Gatwick wins.",
     stats: [
-      { label: "Total journey time", value: "255", unit: "min" },
-      { label: "Time saved", value: "15", unit: "min", accent: true },
+      { label: "Total journey time", value: "295", unit: "min" },
+      { label: "Time saved", value: "5", unit: "min", accent: true },
       { label: "Flight duration", value: "2", unit: "h 00m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Gatwick", a: "~4h 15m", b: "~4h 30m", verdict: "Gatwick is ~15 faster" },
-    { factor: "Total journey cost", winner: "Gatwick", a: "~£105", b: "~£100", verdict: "Gatwick saves ~£5" },
-    { factor: "Transfer convenience", winner: "Gatwick", a: "30 min (Gatwick Express)", b: "40 min (DART+Thameslink)", verdict: "Gatwick has the faster transfer" },
-    { factor: "Route and airline choice", winner: "Luton", a: "Wide choice, all alliances", b: "Budget-focused, good choice", verdict: "Luton has more airlines and routes" },
-    { factor: "Overall winner", winner: "Gatwick", a: "—", b: "—", verdict: "Gatwick wins on most factors", isFinal: true },
+    { factor: "Total journey time", winner: "Gatwick", a: "~4h 55m", b: "~5h 00m", verdict: "Gatwick is ~5 min faster" },
+    { factor: "Total journey cost", winner: "Luton", a: "~£130", b: "~£100", verdict: "Luton saves ~£30" },
+    { factor: "Transfer convenience", winner: "Gatwick", a: "30 min (Gatwick Express)", b: "40 min (DART + Thameslink)", verdict: "Gatwick's transfer is ~10 min faster" },
+    { factor: "Route and airline choice", winner: "Gatwick", a: "Wide choice, all alliances", b: "Budget-focused, good choice", verdict: "Gatwick has more airlines and routes" },
+    { factor: "Overall winner", winner: "Gatwick", a: "—", b: "—", verdict: "Gatwick wins on time, transfer and route choice", isFinal: true },
   ],
-  winnerReasons: ["Gatwick has a direct rail connection — Gatwick Express and Southern trains go straight from the terminal. Luton requires a shuttle bus (DART).", "Gatwick's single-terminal design (mostly South Terminal) is simpler to navigate than Luton.", "Gatwick serves more airlines and routes than Luton, giving you more flight options.", "Gatwick Express to Victoria in 30 min, plus Southern/Thameslink connections across London.", "Gatwick is better located for south London and Brighton — Luton is better only for the far north."],
+  winnerReasons: [
+    "Gatwick has a direct train from the terminal — the Gatwick Express reaches Victoria in about 30 minutes, while Luton needs the DART rail link plus Thameslink.",
+    "Gatwick's single-terminal layout is simpler to navigate than Luton's.",
+    "Gatwick serves more airlines and routes than Luton, giving you more flight options.",
+    "Gatwick Express trains run every 15 minutes, and Southern/Thameslink add further connections across London.",
+    "Gatwick is better located for south London and Brighton — Luton is better only for the far north.",
+  ],
   alternative: {
     title: "When Luton is actually the better choice",
-    points: ["Wizz Air's base at Luton offers very low fares to Eastern Europe — routes Gatwick doesn't serve.", "Luton's DART shuttle is fast (5 min) — the transfer is smoother than its reputation.", "Luton is better for north London, Milton Keynes, Bedford and Luton itself.", "Both airports are comparable for budget travellers — the choice depends on airline and destination availability."],
+    points: [
+      "Wizz Air's base at Luton offers very low fares to Eastern Europe — routes Gatwick doesn't serve.",
+      "Luton is around £30 cheaper door-to-door in this comparison, mostly because its flight fares are lower.",
+      "Luton's DART rail link takes about 5 minutes, so the change is smoother than its reputation suggests.",
+      "Luton is better for north London, Milton Keynes, Bedford and the Midlands.",
+      "Both airports are comparable for budget travellers — the choice depends on airline and destination availability.",
+    ],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~£45 (Wizz Air/easyJet)", b: "~£70 (easyJet/British Airways)", winner: "b" as const, note: "Varies by airline vs +£35–50" },
-    { label: "Checked bag", a: "+£35–50", b: "Varies by airline", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — London", a: "40 min to St Pancras", b: "30 min to Victoria", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Risk: 20–40 min gap", winner: "b" as const },
-    { label: "Terminal experience", a: "Functional, basic amenities", b: "Functional, basic amenities", winner: "b" as const },
+    { label: "Flight ticket", a: "~£70 (easyJet/BA)", b: "~£45 (Wizz Air/easyJet)", winner: "b" as const, note: "Varies by airline" },
+    { label: "Checked bag", a: "~£40", b: "~£40", winner: "tie" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£15 (DART + Thameslink)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Risk: 20–40 min gap", winner: "tie" as const },
+    { label: "Terminal experience", a: "Functional, basic amenities", b: "Functional, basic amenities", winner: "tie" as const },
   ],
   journeyTimeline: [
     { stage: "London city → Airport", a: "45km south of central London", b: "45km north of central London" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight (typical European)", a: "~2h 00m (typical European)", b: "~2h 00m (typical European)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "40 min (DART+Thameslink)", b: "30 min (Gatwick Express)" },
-    { stage: "Total door-to-door", a: "~4h 15m", b: "~4h 30m", isFinal: true },
+    { stage: "Airport → Central London", a: "30 min (Gatwick Express)", b: "40 min (DART + Thameslink)" },
+    { stage: "Total door-to-door", a: "~4h 55m", b: "~5h 00m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller", "choice": "Gatwick", "why": "Direct rail, no shuttle bus, better terminal facilities, more route options."}, {"who": "Family with children", "choice": "Gatwick", "why": "No shuttle bus transfer — direct train from terminal. Easier with luggage."}, {"who": "Budget traveller", "choice": "Luton", "why": "Wizz Air fares to Eastern Europe from LTN can be extremely low — the savings are real."}, {"who": "South London / Brighton", "choice": "Gatwick", "why": "Gatwick is the natural choice — direct trains to both south London and the south coast."}, {"who": "North London / Home Counties", "choice": "Luton", "why": "Luton is closer to north London, Bedfordshire and Milton Keynes."}, {"who": "Weekend trip", "choice": "Gatwick", "why": "Slightly faster door-to-door and more reliable train connections."}],
+  scenarios: [
+    { who: "Business traveller", choice: "Gatwick", why: "Direct rail, no DART change, better terminal facilities, more route options." },
+    { who: "Family with children", choice: "Gatwick", why: "One direct train — no DART rail link and Thameslink change. Easier with luggage." },
+    { who: "Budget traveller", choice: "Luton", why: "Wizz Air fares to Eastern Europe from LTN can be extremely low — the savings are real." },
+    { who: "South London / Brighton", choice: "Gatwick", why: "Gatwick is the natural choice — direct trains to both south London and the south coast." },
+    { who: "North London / Home Counties", choice: "Luton", why: "Luton is closer to north London, Bedfordshire and Milton Keynes." },
+    { who: "Weekend trip", choice: "Gatwick", why: "About 5 minutes faster door-to-door and more reliable train connections." },
+  ],
   commonMistakes: [
     { mistake: "Choosing by ticket price only", fix: "Add baggage fees, transfer cost and schedule waiting. A £50 saving on the ticket can disappear after one checked bag." },
-    { mistake: "Ignoring the airport transfer", fix: "Luton is 45km from central London. Gatwick is 45km. The transfer cost and time differ significantly." },
-    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge £35–50 for a checked bag. Full-service airlines often include it." },
+    { mistake: "Ignoring the airport transfer", fix: "Both airports sit about 45km from central London, but Gatwick's train is direct while Luton's needs the DART change." },
+    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge around £40 for a checked bag. Full-service airlines often include it." },
     { mistake: "Not checking your destination within London", fix: "Gatwick is better for south London. Luton is better for north London." },
   ],
   faqItems: [
-    { question: "Which is better — Gatwick or Luton?", answer: "Gatwick and Luton serve different travellers. Gatwick generally wins for most journeys when total cost and time are compared, but the right choice depends on your airline preference, destination within London, and budget." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express (~30 min to Victoria, ~£20). Every 15 min. Further from north and east London; fewer international long-haul options" },
-    { question: "How long is the transfer from Luton to central London?", answer: "DART + Thameslink (~40 min to St Pancras, ~£15). Every 10–15 min. No direct rail — shuttle bus (DART) required to reach station; limited airline choice" },
-    { question: "Is Gatwick or Luton cheaper overall?", answer: "Gatwick typically costs ~£105 total door-to-door. Luton typically costs ~£100. The difference depends on baggage and transfer choices." },
+    { question: "Which is better — Gatwick or Luton?", answer: "Gatwick wins for most travellers because of its direct train and wider route choice, but Luton is around £30 cheaper door-to-door in this comparison. If Wizz Air or easyJet flies your route from Luton, the saving can outweigh Gatwick's convenience." },
+    { question: "How long is the transfer from Gatwick to central London?", answer: "The Gatwick Express reaches Victoria in about 30 minutes (~£20 off-peak; advance fares from £9.90). Southern and Thameslink trains take 40–50 minutes and cost less." },
+    { question: "How long is the transfer from Luton to central London?", answer: "The DART rail link connects the terminal to Luton Airport Parkway in about 5 minutes (£4.90), then Thameslink reaches St Pancras in about 30 minutes — roughly 40 minutes and ~£15 in total. DART is an automated people mover on rails, not a bus." },
+    { question: "Is Gatwick or Luton cheaper overall?", answer: "Gatwick typically costs around £130 door-to-door in this comparison; Luton around £100 — about £30 less." },
     { question: "Which airline flies from Gatwick vs Luton?", answer: "Gatwick serves mainly easyJet, BA and TUI. Luton serves mainly Wizz Air and easyJet." },
   ],
   cta: {
@@ -91,7 +110,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -100,7 +119,7 @@ function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.a
       <span className={styles.glanceFactor}>{factor}</span>
       <span className={styles.glanceVal}>{a}</span>
       <span className={styles.glanceVal}>{b}</span>
-      <span className={`${styles.glanceWinner} ${winner === "Gatwick" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
+      <span className={`${styles.glanceWinner} ${winner === "Luton" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
     </div>
   );
 }
@@ -163,7 +182,7 @@ export default function GatwickVsLutonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~£105</span><span className={styles.costBetter}>~£100</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span>~£130</span><span className={styles.costBetter}>~£100</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

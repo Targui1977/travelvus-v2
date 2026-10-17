@@ -23,6 +23,8 @@ export interface NYAirport {
   weaknesses: string;
   bestFor: string;
   typicalTraveller: string;
+  /** Date on which the fares and times below were last verified. */
+  lastVerified: string;
 }
 
 export interface NYTransfer {
@@ -43,16 +45,17 @@ export const NY_AIRPORTS: Record<string, NYAirport> = {
     type: "international",
     currency: "USD",
     transferOptions: [
-      { name: "AirTrain + LIRR", time: "~35 min to Penn Station", cost: "~$15", frequency: "Every 5–10 min" },
-      { name: "AirTrain + Subway (A/E)", time: "~60 min to Midtown", cost: "~$8", frequency: "Every 5–10 min" },
-      { name: "Taxi (flat rate)", time: "45–75 min", cost: "$70 flat + tolls/tip", frequency: "On demand" },
+      { name: "AirTrain + LIRR", time: "~35–40 min to Midtown", cost: "~$15–19", frequency: "Every 5–10 min" },
+      { name: "AirTrain + Subway (A/E)", time: "~60 min to Midtown", cost: "~$11.75", frequency: "Every 5–10 min" },
+      { name: "Taxi (flat rate)", time: "45–75 min", cost: "$70 flat + ~$7–12 surcharges + tolls/tip", frequency: "On demand" },
       { name: "Rideshare", time: "45–75 min", cost: "$55–80", frequency: "On demand" },
     ],
     dominantAirlines: ["Delta (~35%)", "JetBlue (~26%)", "American (~15%)"],
     strengths: "Most international routes. AirTrain + LIRR is fast and reliable. Excellent terminal facilities with lounges and dining.",
-    weaknesses: "Longer transfer to Midtown than LGA. Major construction through 2030 may cause delays. Rideshare pickup relocated at some terminals.",
+    weaknesses: "Longer transfer to Midtown than LGA. Reported major construction may cause delays (timeline unconfirmed). Rideshare pickup relocated at some terminals.",
     bestFor: "International travellers, Brooklyn and Queens destinations, JetBlue and Delta flyers.",
     typicalTraveller: "Long-haul international flyers, Brooklyn and Lower Manhattan residents, Delta and JetBlue loyalists.",
+    lastVerified: "2026-10-17",
   },
   EWR: {
     code: "EWR",
@@ -64,7 +67,7 @@ export const NY_AIRPORTS: Record<string, NYAirport> = {
     type: "international",
     currency: "USD",
     transferOptions: [
-      { name: "AirTrain + NJ Transit", time: "~40 min to Penn Station", cost: "~$15", frequency: "Every 15–30 min" },
+      { name: "AirTrain + NJ Transit", time: "~40–45 min to Penn Station", cost: "$17.25 incl. AirTrain fee", frequency: "Every 15–30 min" },
       { name: "Taxi", time: "35–60 min", cost: "$65–85 + tolls", frequency: "On demand" },
       { name: "Rideshare", time: "35–60 min", cost: "$55–80", frequency: "On demand" },
     ],
@@ -73,6 +76,7 @@ export const NY_AIRPORTS: Record<string, NYAirport> = {
     weaknesses: "In New Jersey — taxi/rideshare costs include $17.50 airport surcharge + tolls. AirTrain replacement work may involve shuttle buses in 2026.",
     bestFor: "United flyers, Midtown West and Penn Station area, New Jersey destinations.",
     typicalTraveller: "United loyalists, Midtown Manhattan business travellers, New Jersey residents.",
+    lastVerified: "2026-10-17",
   },
   LGA: {
     code: "LGA",
@@ -89,10 +93,11 @@ export const NY_AIRPORTS: Record<string, NYAirport> = {
       { name: "Rideshare", time: "25–45 min", cost: "$35–55", frequency: "On demand" },
     ],
     dominantAirlines: ["Delta", "American", "Southwest"],
-    strengths: "Closest to Midtown Manhattan (8 miles). $8B renovation complete — rated best airport in North America for domestic travel (Skytrax 2025). Cheapest taxi/rideshare of the three.",
+    strengths: "Closest to Midtown Manhattan (8 miles). $8B renovation complete — reported among the best airports in North America for domestic travel (Skytrax 2025). Cheapest taxi/rideshare of the three.",
     weaknesses: "No direct rail or subway connection — bus required. Domestic-only (perimeter rule). Traffic on Grand Central Parkway can erase time advantage.",
     bestFor: "Domestic flights, Midtown East and Upper East/West Side, shortest drive to Manhattan.",
     typicalTraveller: "Domestic flyers, Midtown and Uptown Manhattan residents, Delta and American loyalists.",
+    lastVerified: "2026-10-17",
   },
 };
 
@@ -105,7 +110,7 @@ export interface NYNeighbourhood {
 }
 
 export const NY_NEIGHBOURHOODS: NYNeighbourhood[] = [
-  { area: "Midtown Manhattan (Times Square, Hudson Yards)", bestAirport: "EWR", note: "NJ Transit to Penn Station in ~25 min train. Direct and reliable." },
+  { area: "Midtown Manhattan (Times Square, Hudson Yards)", bestAirport: "EWR", note: "NJ Transit to Penn Station in ~30 min (~40–45 min door to door). Direct and reliable." },
   { area: "Lower Manhattan (Financial District, Wall Street)", bestAirport: "EWR", note: "NJ Transit to Penn Station, then subway downtown. Also accessible via JFK AirTrain + A train." },
   { area: "Upper East Side / Upper West Side", bestAirport: "LGA", note: "Closest distance — 8 miles. Taxi or rideshare in 25–45 min." },
   { area: "Brooklyn (Williamsburg, Park Slope, DUMBO)", bestAirport: "JFK", note: "AirTrain to A train serves most Brooklyn neighbourhoods directly." },

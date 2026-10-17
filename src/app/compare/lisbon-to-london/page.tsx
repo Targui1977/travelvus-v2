@@ -6,44 +6,44 @@ import FAQAccordion from "@/components/guide/FAQAccordion";
 import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
-  title: "Lisbon to London: Heathrow, Gatwick or Stansted? | Travelvus",
-  description: "Flying Lisbon to London? Compare Heathrow and Gatwick on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  title: "Lisbon to London: Gatwick or Heathrow? | Travelvus",
+  description: "Flying Lisbon to London? Compare Gatwick and Heathrow on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/lisbon-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "lisbon-to-london",
   category: "London Airport Decision",
-  question: "Lisbon to London: Heathrow, Gatwick or Stansted?",
-  shortAnswer: "Heathrow wins for most travellers from Lisbon once total journey time and cost are compared.",
+  question: "Lisbon to London: Gatwick or Heathrow?",
+  shortAnswer: "Gatwick wins for most travellers from Lisbon on cost: it is ~€42 cheaper door-to-door while total journey time is level at ~6h 10m.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Heathrow wins.",
+    line: "Gatwick wins on price.",
     stats: [
-      { label: "Total journey time", value: "330", unit: "min" },
-      { label: "Time saved", value: "20", unit: "min", accent: true },
-      { label: "Flight duration", value: "2", unit: "h 50m" },
+      { label: "Total journey cost", value: "137", unit: "€" },
+      { label: "Money saved", value: "42", unit: "€", accent: true },
+      { label: "Door-to-door time", value: "370", unit: "min" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Heathrow", a: "~5h 30m", b: "~5h 50m", verdict: "Heathrow is ~20 min faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€188", b: "~€145", verdict: "Heathrow saves ~€43" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Train, 30–50 min", b: "~35 min (Elizabeth Line)", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Tie", a: "~6h 10m", b: "~6h 10m", verdict: "Journey times are level (~6h 10m)" },
+    { factor: "Total journey cost", winner: "Gatwick", a: "~€137", b: "~€179", verdict: "Gatwick saves ~€42" },
+    { factor: "Transfer convenience", winner: "Gatwick", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)", verdict: "Gatwick Express is ~5 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Gatwick Express every 15 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Gatwick", a: "—", b: "—", verdict: "Gatwick wins on cost — times are level", isFinal: true },
   ],
-  winnerReasons: ["Heathrow saves ~20 minutes door-to-door versus Gatwick on this longer route.", "TAP Air Portugal and BA flights include baggage — budget Gatwick fares add €35–50.", "Lisbon's airport is well-connected by Metro — the London side is where the difference matters.", "Elizabeth Line frequency (10–15 min) beats Gatwick Express (15 min) for total reliability.", "For a ~3-hour flight, the transfer difference matters less — but Heathrow still edges it."],
+  winnerReasons: ["Gatwick saves ~€42 door-to-door once the checked bag is included.", "Budget easyJet fares from Lisbon are ~€90 below full-service TAP/BA fares.", "The Gatwick Express takes ~30 minutes — about 5 minutes quicker than the Elizabeth Line from Heathrow.", "Journey times are level at ~6h 10m, so the cost difference decides it.", "For south London and the south coast, Gatwick is also geographically closer."],
   alternative: {
-    title: "When Gatwick or Stansted is better",
-    points: ["easyJet and Ryanair offer competitive LIS–LGW/STN fares — often €70 or less.", "Hand luggage only? The baggage cost gap on budget airlines disappears.", "Gatwick is better for south London and connections to Brighton.", "Stansted is better for northeast London, Cambridge and East Anglia."],
+    title: "When Heathrow is actually the better choice",
+    points: ["If the Heathrow fare is within ~€42 of the Gatwick fare — baggage inclusion and the cheaper Elizabeth Line can swing the total.", "If you are heading to west London or the West End — the Elizabeth Line runs direct to Paddington and Tottenham Court Road.", "If you need TAP Air Portugal's network or a long-haul connection — Heathrow is the hub.", "If frequency matters most — Elizabeth Line trains run every 10–15 minutes versus every 15 on the Gatwick Express."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€70 (budget/easyJet)", b: "~€160 (full-service/TAP/BA)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "+€35–50 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Flight ticket", a: "~€70 (budget/easyJet)", b: "~€160 (full-service/TAP/BA)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€42 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
     { label: "Airport transfer — Lisbon", a: "Metro Vermelha — ~25 min from central Lisbon, ~€2", b: "Metro Vermelha — ~25 min from central Lisbon, ~€2", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Airport transfer — London", a: "~€23 (~£20, Gatwick Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
     { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
   journeyTimeline: [
@@ -51,17 +51,17 @@ const DATA = {
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Lisbon → London", a: "~2h 50m", b: "~2h 50m" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~45 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~5h 30m", b: "~5h 50m", isFinal: true },
+    { stage: "Airport → Central London", a: "~30 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
+    { stage: "Total door-to-door", a: "~6h 10m", b: "~6h 10m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "TAP/BA full-service flights. Faster, more reliable London transfer."}, {"who": "Family with children", "choice": "Heathrow", "why": "Baggage included on TAP/BA. Easier transfer with children."}, {"who": "Budget traveller", "choice": "Gatwick or Stansted", "why": "easyJet/Ryanair fares can be very low from Lisbon — worth the extra transfer."}, {"who": "Weekend trip", "choice": "Heathrow", "why": "Faster door-to-door means more time in London on a short trip."}, {"who": "Surf trip return", "choice": "Gatwick", "why": "If combining with south coast, Gatwick is convenient for Brighton and the Channel."}, {"who": "Long stay", "choice": "Either", "why": "The transfer difference matters less. Choose by total cost and preferred airline."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Lisbon airport access", "fix": "Metro Vermelha — factor this into the total journey before comparing London airports."}],
+  scenarios: [{"who": "Business traveller", "choice": "Heathrow", "why": "TAP/BA full-service flights, more frequent trains and better links to west London offices."}, {"who": "Family with children", "choice": "Heathrow", "why": "Baggage is usually included on TAP/BA fares — no checked-bag fee."}, {"who": "Budget traveller", "choice": "Gatwick", "why": "easyJet fares can be very low from Lisbon — the ~€42 saving is real."}, {"who": "Weekend trip", "choice": "Gatwick", "why": "Cheaper overall, and the journey time is level with Heathrow."}, {"who": "Surf trip return", "choice": "Gatwick", "why": "If combining with the south coast, Gatwick is convenient for Brighton and the Channel."}, {"who": "Long stay", "choice": "Either", "why": "The transfer difference matters less. Choose by total cost and preferred airline."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €30 saving on the ticket can disappear after one checked bag and the Gatwick Express."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km south of central London. The Gatwick Express takes ~30 min and costs ~£20 — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Lisbon airport access", "fix": "Metro Vermelha — factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Lisbon?", answer: "Gatwick and other budget-airline airports often have cheaper advertised ticket prices from Lisbon. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express — ~30 min, ~£20 off-peak." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Lisbon?", answer: "Yes. Late-night arrivals at Gatwick mean fewer transport options. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Lisbon?", answer: "Gatwick usually has the cheaper advertised fare from Lisbon. Even after a checked bag (~€42) and the Gatwick Express (~£20), the total is ~€42 below a full-service Heathrow fare on our illustrative numbers — and the journey times are level. Always compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Gatwick to central London?", answer: "The Gatwick Express takes ~30 min to Victoria and costs ~£20 off-peak." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "Does the time of day change which airport is better from Lisbon?", answer: "Yes. Late-night arrivals at Gatwick mean fewer rail options after the last Gatwick Express. Heathrow still has the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£15 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
   ],
   cta: {
     title: "Compare your own Lisbon–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Gatwick and Heathrow distances and terminal information", source: "Heathrow Airport Ltd, Gatwick Airport Ltd" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Lisbon airport access and fares", source: "Metro de Lisboa, ANA Aeroportos" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -159,7 +159,7 @@ export default function LisbonToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€188</span><span className={styles.costBetter}>~€145</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€137</span><span>~€179</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

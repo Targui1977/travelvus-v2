@@ -13,24 +13,24 @@ export const metadata: Metadata = {
   alternates: { canonical: "/guides/cdg-vs-orly" },
 };
 
-const TOC_ITEMS = ["The 30-second answer","Why distance does not decide","Transfer comparison","Best by neighbourhood","When CDG wins","When Orly wins","The verdict","FAQ"];
+const TOC_ITEMS = ["The 30-second answer","Why distance only half-decides","Transfer comparison","Best by neighbourhood","When CDG wins","When Orly wins","The verdict","FAQ"];
 
 export default function CdgVsOrly() {
   return (
     <div style={{ background: "var(--paper)", minHeight: "100vh" }}>
       <div style={{ maxWidth: 1240, margin: "0 auto" }}>
         <HomeHeader />
-        <HeroEditorial category="Airport Decision" question="CDG vs Orly: Which Paris Airport Is Actually Better?" subtitle="Both are 13–25km from central Paris with rail connections. But the airline, your destination in Paris, and the type of flight change which one wins." metadata={{ readTime: "5 min read", reviewedDate: "Jul 2026", verified: true }}
-          decisionCard={{ winner: "CDG wins for international · Orly for domestic", timeSaved: "~35 min RER to central", moneySaved: "From ~€11 RER B", bestFor: "CDG: international, Air France. Orly: domestic, southern Paris.", confidence: "context-dependent" }}
-          visual={{ type: "airport-map", data: { cityName: "Central Paris", airports: [{ code: "CDG", name: "CDG", distance: "25 km NE", isWinner: true },{ code: "ORY", name: "Orly", distance: "13 km S" }] }}}
-          snapshot={[{ label: "Best for international", value: "CDG" },{ label: "Best for domestic", value: "Orly" },{ label: "Fastest to central", value: "Tied ~35 min" }]}
+        <HeroEditorial category="Airport Decision" question="CDG vs Orly: Which Paris Airport Is Actually Better?" subtitle="Both are 13–25km from central Paris with direct rail connections. But the airline, your destination in Paris, and the type of flight change which one wins." metadata={{ readTime: "5 min read", reviewedDate: "Oct 2026", verified: true }}
+          decisionCard={{ winner: "CDG for long-haul · Orly for central and southern Paris", timeSaved: "~25 min Metro 14 to central", moneySaved: "€14 rail from both airports", bestFor: "CDG: long-haul, Right Bank. Orly: central, Left Bank, domestic.", confidence: "context-dependent" }}
+          visual={{ type: "airport-map", data: { cityName: "Central Paris", airports: [{ code: "ORY", name: "Orly", distance: "13 km S — Metro 14 ~25 min", isWinner: true },{ code: "CDG", name: "CDG", distance: "25 km NE — RER B ~35–40 min" }] }}}
+          snapshot={[{ label: "Best for long-haul", value: "CDG" },{ label: "Best for central Paris", value: "Orly" },{ label: "Fastest to central", value: "Orly ~25 min" }]}
           cta={{ label: "Compare your own trip →", href: "/#compare" }}
-          decisionIntelligence={{ state: "balanced", recommendation: "No universal winner — your flight type and Paris destination decide", summary: "CDG and Orly both reach central Paris in ~35 minutes by rail. The choice depends on whether you are flying internationally or domestically, and which side of Paris you are heading to.", advantages: ["CDG: France's primary international hub with the widest route network","Orly: Closer to central and southern Paris — cheaper taxis","Both: Comparable rail transfer time to central Paris (~35 min)"], tradeoffs: [{ advantage: "CDG's direct RER B connection", disadvantage: "Larger airport — longer walking distances between gates" },{ advantage: "Orly's proximity to southern Paris", disadvantage: "Orlyval light rail requires a transfer at Antony — not a direct train" },{ advantage: "Orly's cheaper taxis (€35–40)", disadvantage: "Fewer long-haul routes than CDG" }], flips: [{ condition: "Flying internationally outside Europe", result: "CDG becomes the practical choice — most long-haul routes only serve CDG" },{ condition: "Destination is southern Paris or Left Bank", result: "Orly becomes the stronger recommendation — closer and cheaper by taxi" },{ condition: "Destination is northern Paris or direct RER B corridor", result: "CDG becomes stronger — direct train without the Orlyval transfer" },{ condition: "Flying domestically within France", result: "Orly often has more domestic options and better schedules" }], limitations: [{ condition: "Major transport disruption or strike", impact: "Normal transfer comparison no longer applies — both airports affected" },{ condition: "Construction at either airport", impact: "Transfer times may be longer than published estimates" }], unknowns: ["Whether you are flying long-haul, medium-haul or domestic","Your exact arrondissement or final destination in Paris","Your preferred airline — Air France operates from both airports on different routes","Your arrival time — CDG has better night bus connections"] }}
+          decisionIntelligence={{ state: "conditionally_recommended", recommendation: "Orly for central Paris and the Left Bank — CDG for long-haul and the Right Bank", summary: "Orly is now the faster airport to central Paris: Metro 14 runs direct to Châtelet in ~25 minutes. CDG's RER B takes ~35–40 minutes. Both use the same €14 airport ticket. Orly also has cheaper taxis (€36–45 vs €56–65), while CDG wins on long-haul routes and Right Bank access.", advantages: ["Orly: Metro 14 direct to Châtelet in ~25 min for €14","Orly: cheaper official taxis (€36–45 vs CDG €56–65)","CDG: widest long-haul network and Air France hub","CDG: direct RER B to Gare du Nord in ~35–40 min"], tradeoffs: [{ advantage: "Orly's direct Metro 14 connection", disadvantage: "Fewer long-haul and international routes than CDG" },{ advantage: "CDG's direct RER B to Gare du Nord", disadvantage: "Higher taxi flat fares than Orly (€56–65 vs €36–45)" },{ advantage: "Both airports use the same €14 rail ticket", disadvantage: "Rail cost no longer separates the two airports" }], flips: [{ condition: "Flying internationally outside Europe", result: "CDG becomes the practical choice — most long-haul routes only serve CDG" },{ condition: "Destination is central Paris or the Left Bank", result: "Orly becomes the stronger recommendation — Metro 14 direct and cheaper taxis" },{ condition: "Destination is the Right Bank or northern Paris", result: "CDG becomes stronger — RER B serves Gare du Nord and Châtelet directly" },{ condition: "Flying domestically within France", result: "Orly often has more domestic options and better schedules" }], limitations: [{ condition: "Major transport disruption or strike", impact: "Normal transfer comparison no longer applies — both airports affected" },{ condition: "Construction at either airport", impact: "Transfer times may be longer than published estimates" }], unknowns: ["Whether you are flying long-haul, medium-haul or domestic","Your exact arrondissement or final destination in Paris","Your preferred airline — Air France operates from both airports on different routes","Your arrival time — late-night options differ between the two airports"] }}
           evidence={{ factors: [
             { title: "Flight availability", explanation: "CDG and Orly serve different route and airline networks. Long-haul international flights require CDG; many domestic and medium-haul routes use Orly.", weight: "critical" },
             { title: "Paris destination", explanation: "The final arrondissement or onward connection can change the best airport. Orly is closer to the Left Bank; CDG serves the Right Bank better.", weight: "critical" },
-            { title: "Public transport connection", explanation: "Both airports reach central Paris in ~35 minutes by rail, but the transfer experience differs — CDG has direct RER B; Orly requires the Orlyval transfer at Antony.", weight: "high" },
-            { title: "Total transfer cost", explanation: "Orly taxis are cheaper (€35–40 vs €55–60) but CDG's RER B is slightly cheaper than Orlyval+RER for public transit.", weight: "high" },
+            { title: "Public transport connection", explanation: "Both airports now have a direct train to central Paris: CDG's RER B (~35–40 min) and Orly's Metro 14 (~25 min).", weight: "high" },
+            { title: "Total transfer cost", explanation: "Rail costs are identical (€14 airport ticket from both). Orly taxis are cheaper: €36–45 flat versus €56–65 from CDG.", weight: "high" },
             { title: "Traveller profile", explanation: "International connections, families and short city trips have different priorities between the two airports.", weight: "medium" },
           ], limitations: [
             "Long-haul or connecting flights may require CDG.",
@@ -44,52 +44,53 @@ export default function CdgVsOrly() {
           <div className={styles.guideContent}>
             <div className={styles.decisionSummary}>
               <div><div className={styles.decisionSummaryLabel}>Decision</div><div className={styles.decisionSummaryValue}>Which Paris airport creates the better journey</div></div>
-              <div><div className={styles.decisionSummaryLabel}>Key takeaway</div><div className={styles.decisionSummaryValue}>CDG for international and Air France. Orly for domestic, medium-haul, and southern Paris.</div></div>
+              <div><div className={styles.decisionSummaryLabel}>Key takeaway</div><div className={styles.decisionSummaryValue}>CDG for long-haul and Air France. Orly for central Paris, the Left Bank, and domestic.</div></div>
             </div>
             <h2 id="section-0">The 30-second answer</h2>
-            <p><strong>CDG wins for international flights and Air France connections.</strong> It is France's primary hub with the widest route choice. <strong>Orly wins for domestic French flights, medium-haul European routes, and southern Paris.</strong> Both airports have rail connections that reach central Paris in ~35 minutes. The airports are tied on transfer speed — your airline and destination in Paris should decide.</p>
-            <h2 id="section-1">Why distance does not decide</h2>
-            <p>Orly is 13km from central Paris — half the distance of CDG at 25km. But CDG's RER B train takes ~35 min to Châtelet–Les Halles. Orly requires the Orlyval light rail to Antony station, then a transfer to the RER B — also ~35 min total. <strong>Distance is misleading. Both airports reach central Paris in about the same time by rail.</strong> The quality of the transit link matters more than the mileage.</p>
+            <p><strong>CDG wins for long-haul international flights and Air France connections.</strong> It has the widest route choice and the direct RER B to Gare du Nord and Châtelet in ~35–40 minutes (€14). <strong>Orly wins for central Paris and the Left Bank</strong> — Metro 14 runs direct to Châtelet in ~25 minutes for the same €14, and official taxis are cheaper (€36–45 vs €56–65). Orly also remains strong for domestic French and medium-haul European routes. Your airline, your destination in Paris, and how you leave the airport should decide.</p>
+            <h2 id="section-1">Why distance only half-decides</h2>
+            <p>Orly is 13km from central Paris — half the distance of CDG at 25km. Since Metro 14 opened direct to Châtelet in June 2024, that proximity shows up in the journey time: ~25 minutes from Orly versus ~35–40 from CDG on the RER B. <strong>The distance gap is real, but it is only half the decision.</strong> Your destination side of Paris and your airline network still decide which airport is actually better for your trip.</p>
             <h2 id="section-2">Transfer comparison: CDG vs Orly to central Paris</h2>
             <table className={styles.compTable}><thead><tr><th>Factor</th><th>CDG</th><th>Orly</th></tr></thead><tbody>
               <tr><td>Distance</td><td>25 km</td><td><strong>13 km</strong></td></tr>
-              <tr><td>Fastest rail to central Paris</td><td>RER B ~35 min, ~€11</td><td>Orlyval + RER B ~35 min, ~€14</td></tr>
-              <tr><td>Cheapest transit</td><td><strong>RER B ~€11</strong></td><td>Tram T7 + Métro ~€4</td></tr>
-              <tr><td>Taxi to central</td><td>€55–60 flat</td><td><strong>€35–40 flat</strong></td></tr>
-              <tr><td>24-hour transit</td><td><strong>Noctilien night buses</strong></td><td>Limited night service</td></tr>
+              <tr><td>Fastest rail to central Paris</td><td>RER B ~35–40 min, €14</td><td><strong>Metro 14 ~25 min, €14</strong></td></tr>
+              <tr><td>Other rail option</td><td>—</td><td>Orlyval + RER B ~50 min, same €14 ticket</td></tr>
+              <tr><td>Cheapest transit</td><td>€14 airport ticket</td><td>€14 airport ticket · T7 ~€4 (approx, ~55 min)</td></tr>
+              <tr><td>Taxi to central</td><td>€56–65 flat</td><td><strong>€36–45 flat</strong></td></tr>
+              <tr><td>Late-night service</td><td>RER B until ~00:30, then Noctilien buses</td><td>Metro 14 until ~00:40 (approx), then night buses</td></tr>
             </tbody></table>
             <h2 id="section-3">Best airport by Paris neighbourhood</h2>
             <table className={styles.compTable}><thead><tr><th>Neighbourhood</th><th>Best</th><th>Why</th></tr></thead><tbody>
-              <tr><td>Central Paris (Le Marais, Île de la Cité)</td><td><strong>Orly</strong></td><td>Closer — taxi in 30–40 min. OrlyBus to Denfert-Rochereau.</td></tr>
+              <tr><td>Central Paris (Le Marais, Île de la Cité)</td><td><strong>Orly</strong></td><td>Metro 14 direct to Châtelet ~25 min. Taxi €36–45.</td></tr>
               <tr><td>Right Bank (Opéra, Champs-Élysées)</td><td><strong>CDG</strong></td><td>RER B to Châtelet. Roissybus direct to Opéra.</td></tr>
-              <tr><td>Left Bank (Saint-Germain, Montparnasse)</td><td><strong>Orly</strong></td><td>Orly is on the south side. OrlyBus to Denfert in ~30 min.</td></tr>
-              <tr><td>La Défense</td><td><strong>CDG</strong></td><td>RER B to Châtelet, then RER A to La Défense.</td></tr>
+              <tr><td>Left Bank (Saint-Germain, Montparnasse)</td><td><strong>Orly</strong></td><td>Metro 14 to Châtelet ~25 min. OrlyBus to Denfert in ~30 min.</td></tr>
+              <tr><td>La Défense</td><td><strong>Orly</strong></td><td>Metro 14 to Châtelet ~25 min, then RER A ~10 min (≈40 total). CDG: RER B + RER A ≈50 min.</td></tr>
               <tr><td>Eastern Paris (Bastille, Nation)</td><td><strong>CDG</strong></td><td>RER B to Gare du Nord, then Métro 5.</td></tr>
-              <tr><td>Versailles</td><td><strong>Orly</strong></td><td>Orlyval + RER C direct to Versailles–Rive Gauche.</td></tr>
+              <tr><td>Versailles</td><td><strong>Orly</strong></td><td>Closer by road. By rail, both reach Versailles–Rive Gauche via central Paris (Metro 14 + RER C / RER B + RER C).</td></tr>
             </tbody></table>
             <h2 id="section-4">When CDG wins</h2>
             <ul style={{ fontFamily: "var(--sans)", fontSize: 15, lineHeight: 1.7, color: "#4a5560", marginBottom: 18, paddingLeft: 22 }}>
               <li><strong>You are flying internationally outside Europe.</strong> CDG is France's primary long-haul hub.</li>
               <li><strong>You fly Air France.</strong> CDG is Air France's main base — the best schedules and connections.</li>
               <li><strong>You are staying on the Right Bank or eastern Paris.</strong> RER B serves these areas directly.</li>
-              <li><strong>You need 24-hour transit options.</strong> CDG has Noctilien night buses when the RER stops.</li>
+              <li><strong>You arrive after the last RER B.</strong> Noctilien night buses keep serving Paris when the train stops.</li>
             </ul>
             <h2 id="section-5">When Orly wins</h2>
             <ul style={{ fontFamily: "var(--sans)", fontSize: 15, lineHeight: 1.7, color: "#4a5560", marginBottom: 18, paddingLeft: 22 }}>
+              <li><strong>You are staying in central Paris or on the Left Bank.</strong> Metro 14 is direct and the fastest rail link to Châtelet (~25 min).</li>
               <li><strong>You are flying domestically within France.</strong> Orly has extensive domestic and medium-haul routes.</li>
               <li><strong>You fly Transavia, easyJet, or Vueling.</strong> These budget/leisure airlines primarily use Orly.</li>
-              <li><strong>You are staying on the Left Bank or southern Paris.</strong> Orly is on the south side — closer and cheaper by taxi.</li>
-              <li><strong>You want the cheapest possible taxi.</strong> Orly's flat-rate taxis are €35–40 versus CDG's €55–60.</li>
+              <li><strong>You want the cheapest possible taxi.</strong> Orly's flat-rate taxis are €36–45 versus €56–65 from CDG.</li>
             </ul>
             <div className={styles.bridge}><div className={styles.bridgeRule} /><span className={styles.bridgeText}>Travelvus concludes:</span><div className={styles.bridgeRule} /></div>
-            <TravelvusVerdict verdictLine="CDG for international. Orly for domestic." stats={[{ label: "CDG RER to central", value: "35", unit: "min" },{ label: "Orly transit to central", value: "35", unit: "min" },{ label: "Orly taxi", value: "35", unit: "€", accent: true }]} />
+            <TravelvusVerdict verdictLine="CDG for long-haul. Orly for central Paris." stats={[{ label: "CDG RER to central", value: "35–40", unit: "min" },{ label: "Orly Metro 14 to central", value: "25", unit: "min" },{ label: "Orly taxi", value: "36", unit: "€", accent: true }]} />
             <h2 id="section-6">FAQ</h2>
             <FAQAccordion items={[
-              { question: "Which is better — CDG or Orly?", answer: "CDG wins for international flights and Air France connections. Orly wins for domestic French flights, medium-haul European routes, and southern Paris. Both reach central Paris in ~35 minutes by rail. The right choice depends on your airline and where in Paris you are staying." },
-              { question: "Is Orly closer to Paris than CDG?", answer: "Yes — Orly is 13km from central Paris versus CDG at 25km. However, the transit time to central Paris is nearly identical (~35 min) because CDG has a direct RER B connection while Orly requires the Orlyval light rail plus a transfer at Antony. Distance does not equal speed." },
-              { question: "How much is a taxi from CDG to central Paris?", answer: "Official flat-rate taxis cost €55 to the Right Bank and €60 to the Left Bank. The journey takes 45–70 minutes depending on traffic. Rideshare services cost approximately €35–55." },
-              { question: "How much is a taxi from Orly to central Paris?", answer: "Official flat-rate taxis cost €35 to the Right Bank and €40 to the Left Bank. The journey takes 30–50 minutes depending on traffic. Orly taxis are significantly cheaper than CDG taxis due to the shorter distance." },
-              { question: "Should I consider Beauvais (BVA) for Paris?", answer: "Only if you are on a very tight budget and value ticket price over time. Beauvais is 85km from Paris. The Ryanair shuttle bus takes 1h 15m and costs €17 each way. A €20 Ryanair ticket becomes €54 with the bus, and costs you 2h 30m in transfers. For most travellers, CDG or Orly are better choices." },
+              { question: "Which is better — CDG or Orly?", answer: "CDG wins for long-haul international flights, Air France connections, and the Right Bank. Orly wins for central Paris, the Left Bank, domestic French flights, and medium-haul European routes. Orly's Metro 14 reaches Châtelet in ~25 minutes; CDG's RER B takes ~35–40. Both cost €14 by rail." },
+              { question: "Is Orly closer to Paris than CDG?", answer: "Yes — Orly is 13km from central Paris versus CDG at 25km. Since Metro 14 opened direct to Châtelet in June 2024, Orly is also faster to central Paris: ~25 minutes versus ~35–40 minutes on CDG's RER B." },
+              { question: "How much is a taxi from CDG to central Paris?", answer: "Official flat-rate taxis cost €56 to the Right Bank and €65 to the Left Bank. The journey takes 45–70 minutes depending on traffic. Rideshare services are typically cheaper." },
+              { question: "How much is a taxi from Orly to central Paris?", answer: "Official flat-rate taxis cost €45 to the Right Bank and €36 to the Left Bank. The journey takes 30–50 minutes depending on traffic. Orly taxis are significantly cheaper than CDG taxis due to the shorter distance." },
+              { question: "Should I consider Beauvais (BVA) for Paris?", answer: "Only if you are on a very tight budget and value ticket price over time. Beauvais is 85km from Paris. The Ryanair shuttle bus takes 1h 15m and costs about €17 each way (approximate). A €20 Ryanair ticket becomes ~€54 with the bus, and costs you 2h 30m in transfers. For most travellers, CDG or Orly are better choices." },
             ]} />
             <div style={{ background: "var(--navy)", borderRadius: "var(--radius-card)", padding: "22px 26px", display: "flex", alignItems: "center", gap: 20, marginTop: 32, marginBottom: 32 }}>
               <div style={{ flex: 1 }}><span style={{ fontFamily: "var(--mono)", fontWeight: 600, fontSize: 10, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--copper-lt)", display: "block", marginBottom: 6 }}>Travelvus</span><span style={{ fontFamily: "var(--serif)", fontSize: 17, color: "var(--paper)" }}>Compare your complete Paris journey.</span></div>

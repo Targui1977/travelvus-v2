@@ -7,61 +7,61 @@ import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
   title: "Rome to London: Fiumicino or Ciampino? | Travelvus",
-  description: "Flying Rome to London? Compare Heathrow and Gatwick on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  description: "Flying Rome to London? Compare Heathrow and Stansted on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/rome-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "rome-to-london",
   category: "London Airport Decision",
   question: "Rome to London: Fiumicino or Ciampino?",
-  shortAnswer: "Heathrow wins for most travellers from Rome once total journey time and cost are compared.",
+  shortAnswer: "Heathrow wins for most travellers from Rome: the Fiumicino + Heathrow route is ~23 minutes faster door-to-door, though Ciampino + Stansted is ~€50 cheaper.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
     line: "Heathrow wins.",
     stats: [
-      { label: "Total journey time", value: "330", unit: "min" },
-      { label: "Time saved", value: "20", unit: "min", accent: true },
+      { label: "Total journey time", value: "372", unit: "min" },
+      { label: "Time saved", value: "23", unit: "min", accent: true },
       { label: "Flight duration", value: "2", unit: "h 45m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Heathrow", a: "~5h 30m", b: "~5h 50m", verdict: "Heathrow is ~20 min faster" },
-    { factor: "Total journey cost", winner: "Heathrow", a: "~€181", b: "~€135", verdict: "Heathrow saves ~€46" },
-    { factor: "Transfer convenience", winner: "Heathrow", a: "Train, 30–50 min", b: "~35 min (Elizabeth Line)", verdict: "Heathrow has more options" },
-    { factor: "Arrival reliability", winner: "Heathrow", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "Heathrow is more predictable" },
-    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 4 of 4 factors", isFinal: true },
+    { factor: "Total journey time", winner: "Heathrow", a: "~6h 35m", b: "~6h 12m", verdict: "Heathrow is ~23 min faster" },
+    { factor: "Total journey cost", winner: "Stansted", a: "~€131", b: "~€181", verdict: "Stansted saves ~€50" },
+    { factor: "Transfer convenience", winner: "Heathrow", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)", verdict: "Heathrow transfer is ~15 min quicker" },
+    { factor: "Arrival reliability", winner: "Heathrow", a: "Stansted Express every 15–30 min", b: "Elizabeth Line every 10–15 min", verdict: "Heathrow trains run more often" },
+    { factor: "Overall winner", winner: "Heathrow", a: "—", b: "—", verdict: "Heathrow wins on 3 of 4 factors", isFinal: true },
   ],
-  winnerReasons: ["Heathrow's faster London transfer (35 min Elizabeth Line vs 50 min Stansted Express) saves ~20 minutes door-to-door.", "Fiumicino has a direct train (Leonardo Express, 32 min) — faster and more reliable than Ciampino's bus.", "Full-service ITA/BA flights include baggage — Ryanair adds €40–60.", "Heathrow trains run every 10–15 min versus Stansted Express every 15–30 min.", "The Rome airport choice matters too — FCO has better connections than CIA."],
+  winnerReasons: ["Heathrow's faster London transfer (35 min Elizabeth Line vs 50 min Stansted Express) saves ~23 minutes door-to-door.", "Fiumicino has a direct train (Leonardo Express, 32 min) — faster and more reliable than Ciampino's bus.", "Full-service ITA/BA flights include baggage — Ryanair adds ~€50.", "Heathrow trains run every 10–15 min versus Stansted Express every 15–30 min.", "The Rome airport choice matters too — FCO has better connections than CIA."],
   alternative: {
     title: "When Ciampino + Stansted is the better choice",
-    points: ["Ryanair fares from Ciampino can be €100 less than full-service from Fiumicino — significant savings.", "Travelling with only hand luggage eliminates Ryanair's baggage fee.", "Ciampino is a small airport — security and walking time are often shorter than at Fiumicino.", "If you are on a very tight budget, the CIA+STN combination can save €80–100 total."],
+    points: ["Ryanair fares from Ciampino can be €100 less than full-service from Fiumicino — significant savings.", "Travelling with only hand luggage eliminates Ryanair's baggage fee.", "Ciampino is a small airport — security and walking time are often shorter than at Fiumicino.", "With hand luggage only, the CIA + STN total can be ~€100 below the FCO + Heathrow route on our illustrative numbers."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€50 (Ryanair)", b: "~€150 (full-service/ITA/BA)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "+€40–60 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — Rome", a: "Leonardo Express — ~32 min from Termini to FCO, ~€14. Bus to CIA — ~40 min, ~€6", b: "Leonardo Express — ~32 min from Termini to FCO, ~€14. Bus to CIA — ~40 min, ~€6", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£20 (Gatwick Express)", b: "~£12 (Elizabeth Line)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Flight ticket", a: "~€50 (Ryanair)", b: "~€150 (full-service/ITA/BA)", winner: "a" as const, note: "Budget vs full-service airline — illustrative fares" },
+    { label: "Checked bag", a: "+€50 (typically)", b: "Often included", winner: "b" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — Rome", a: "Bus to CIA — ~40 min, ~€6", b: "Leonardo Express to FCO — ~32 min, ~€14", winner: "a" as const, note: "Ciampino is the budget airport" },
+    { label: "Airport transfer — London", a: "~€25 (~£22, Stansted Express)", b: "~€17 (~£15, Elizabeth Line)", winner: "b" as const, note: "Typical single fares" },
     { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
   ],
   journeyTimeline: [
-    { stage: "Rome city → Airport", a: "Leonardo Express — ~32 min from Termini to FCO, ~€14. Bus to CIA — ~40 min, ~€6", b: "Leonardo Express — ~32 min from Termini to FCO, ~€14. Bus to CIA — ~40 min, ~€6" },
+    { stage: "Rome city → Airport", a: "Bus to CIA — ~40 min, ~€6", b: "Leonardo Express to FCO — ~32 min, ~€14" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Rome → London", a: "~2h 40m (from CIA)", b: "~2h 45m (from FCO)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~45 min (Gatwick Express)", b: "~35 min (Elizabeth Line)" },
-    { stage: "Total door-to-door", a: "~5h 30m", b: "~5h 50m", isFinal: true },
+    { stage: "Airport → Central London", a: "~50 min (Stansted Express)", b: "~35 min (Elizabeth Line)" },
+    { stage: "Total door-to-door", a: "~6h 35m", b: "~6h 12m", isFinal: true },
   ],
   scenarios: [{"who": "Business traveller", "choice": "FCO + Heathrow", "why": "More reliable trains at both ends. Better for meetings and connections."}, {"who": "Family with children", "choice": "FCO + Heathrow", "why": "Easier transfers at both ends. Baggage included on full-service flights."}, {"who": "Budget traveller", "choice": "CIA + Stansted", "why": "Ryanair from Ciampino can be remarkably cheap — the double-transfer is worth the saving."}, {"who": "Weekend trip", "choice": "FCO + Heathrow", "why": "Every hour counts. The faster transfers at both ends maximise your time."}, {"who": "Rome city break return", "choice": "Either", "why": "If you are returning to London, choose by total door-to-door convenience."}, {"who": "Long stay or relocation", "choice": "FCO + Heathrow", "why": "Less friction on a one-way journey with more luggage."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Gatwick is 45km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Gatwick often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Rome airport access", "fix": "Leonardo Express — factor this into the total journey before comparing London airports."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Stansted is 55km from central London. The Stansted Express takes ~50 min and costs ~£22 walk-up (advance fares from £9.90) — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Stansted often charge €35–60 for a checked bag. Full-service airlines into Heathrow frequently include it."}, {"mistake": "Not comparing Rome airport access", "fix": "The Leonardo Express to FCO is ~32 min and ~€14; the bus to Ciampino is ~40 min and ~€6 — factor this into the total journey."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Rome?", answer: "Gatwick and other budget-airline airports often have cheaper advertised ticket prices from Rome. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, Heathrow is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Gatwick to central London?", answer: "Gatwick Express — ~30 min, ~£20 off-peak." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Rome?", answer: "Yes. Late-night arrivals at Gatwick mean fewer transport options. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Rome?", answer: "Ciampino + Stansted usually has the cheaper advertised fare from Rome. Add a checked bag (~€50) and the Stansted Express (~£20), and the total is still ~€50 below the Fiumicino + Heathrow route on our illustrative numbers — but the journey is ~23 minutes longer door-to-door. Which matters more depends on your trip. Always compare the complete door-to-door cost." },
+    { question: "How long is the transfer from Stansted to central London?", answer: "The Stansted Express takes ~50 min to Liverpool Street and costs ~£22 walk-up; advance fares start from £9.90." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "Does the time of day change which airport is better from Rome?", answer: "Yes. Late-night arrivals at Stansted mean fewer train departures — the last Stansted Express leaves around 23:30, though coaches run later. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from Heathrow to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£15 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
   ],
   cta: {
     title: "Compare your own Rome–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "Heathrow and Gatwick distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "Heathrow and Stansted distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Aeroporti di Roma" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Rome airport access and fares", source: "Trenitalia, Aeroporti di Roma" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -126,7 +126,7 @@ export default function RomeToLondonPage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>At a glance</h2>
             <p className={styles.sectionSub} style={{ marginBottom: 14 }}>Illustrative comparison based on typical fares and public transport costs. Ticket prices vary by airline, season and booking date.</p>
-            <div className={styles.glanceHeader}><span /><span className={styles.glanceColLabel}>Gatwick</span><span className={styles.glanceColLabel}>Heathrow</span><span /></div>
+            <div className={styles.glanceHeader}><span /><span className={styles.glanceColLabel}>Stansted</span><span className={styles.glanceColLabel}>Heathrow</span><span /></div>
             {DATA.atAGlance.map((row, i) => <AtAGlanceRow key={i} {...row} />)}
           </section>
           <section className={styles.section}>
@@ -151,7 +151,7 @@ export default function RomeToLondonPage() {
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>How the real cost compares</h2>
             <p className={styles.sectionSub}>Illustrative breakdown. Actual costs depend on your specific flight, baggage and chosen transfer option.</p>
-            <div className={styles.costHeader}><span>Cost factor</span><span>Gatwick</span><span>Heathrow</span></div>
+            <div className={styles.costHeader}><span>Cost factor</span><span>Stansted</span><span>Heathrow</span></div>
             {DATA.costBreakdown.map((row, i) => (
               <div key={i} className={styles.costRow}>
                 <span className={styles.costLabel}>{row.label}{row.note && <span style={{ display: "block", fontFamily: "var(--sans)", fontWeight: 400, fontSize: 11, color: "var(--muted)", marginTop: 1 }}>{row.note}</span>}</span>
@@ -159,7 +159,7 @@ export default function RomeToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€181</span><span className={styles.costBetter}>~€135</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span className={styles.costBetter}>~€131</span><span>~€181</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

@@ -18,22 +18,22 @@ export const metadata: Metadata = {
 };
 
 /* ── Static data ──────────────────────────────────────── */
-const THRESHOLD = {
+export const THRESHOLD = {
   ...MOCK_RESULT.threshold,
   leadLabel: "The line — where Stansted becomes worth it",
   statementHtml:
-    'Stansted only wins once the flight saves at least <em class="threshold-amt">€62</em> upfront. Today it saves €68 — a thin margin.',
-  lineValue: 62,
+    'Stansted only wins once the flight saves more than <em class="threshold-amt">€101</em> upfront. Today it saves €68 — €33 short, so Heathrow still wins on total cost.',
+  lineValue: 101,
   currentValue: 68,
-  distanceToLine: 6,
-  linePct: 62,
-  nowPct: 68,
-  gapLabel: "just €6 of margin",
+  distanceToLine: 33,
+  linePct: 72.1,
+  nowPct: 48.6,
+  gapLabel: "€33 short of the line",
 };
 
 const EXPLANATION_PARAS = [
   "The ticket price you see on a flight-search site is only part of the story. Once you add the cost of getting to the departure airport, checked baggage, seat selection, and — crucially — the transfer from the arrival airport into central London, the picture can shift dramatically.",
-  "Heathrow is connected to central London by the Piccadilly line (off-peak ~£6) and the Heathrow Express (~£25). Stansted relies on the Stansted Express train (~£20–25) or a coach — and after roughly 23:00, only a taxi is realistic, which can cost €70–90.",
+  "Heathrow is connected to central London by the Piccadilly line (off-peak ~£6) and the Heathrow Express (£26). Stansted relies on the Stansted Express train (~£22) or a coach (75–90 min, ~£10–15) — and after about 00:30, when the last Express has gone, a taxi becomes the realistic option at €70–90.",
   "This is why a €58 Stansted ticket can produce a €204 journey, while a €126 Heathrow ticket can land at €171. The airport you fly into shapes every cost that follows.",
 ];
 
@@ -47,8 +47,8 @@ const SCENARIOS = [
   {
     title: "Couple · 1 checked bag",
     description:
-      "The fare gap narrows. Heathrow's included baggage and cheaper transfer start to matter.",
-    outcome: "→ Too close to call",
+      "The fare gap narrows but does not close: the paid bag and the pricier transfer still put Heathrow ahead.",
+    outcome: "→ Heathrow wins",
   },
   {
     title: "Family · 2+ checked bags",
@@ -57,9 +57,9 @@ const SCENARIOS = [
     outcome: "→ Heathrow wins",
   },
   {
-    title: "Late arrival · after 23:00",
+    title: "Late arrival · after 00:30",
     description:
-      "Stansted's only option is a taxi into London — that single line can add €70–90 and flip the comparison.",
+      "Once the last Stansted Express has gone, a taxi into London is the realistic option — that single line can add €70–90 and flip the comparison.",
     outcome: "→ Heathrow wins",
   },
   {
@@ -132,7 +132,7 @@ export default function DecisionPage() {
               Official + transit data
             </span>
             <span>&middot;</span>
-            <span>Verified Jul 2026</span>
+            <span>Verified Oct 2026</span>
             <span>&middot;</span>
             <span>Volatility: medium</span>
           </div>
@@ -175,13 +175,13 @@ export default function DecisionPage() {
                   conditionHtml:
                     "<b>No checked baggage</b> keeps the real cost low",
                   outcomeHtml:
-                    '<span class="flip-arrow">→</span> Stansted leads by €10–€30',
+                    '<span class="flip-arrow">→</span> Stansted leads by about €12',
                 },
                 {
                   conditionHtml:
                     "If <b>someone collects you</b> from Stansted",
                   outcomeHtml:
-                    '<span class="flip-arrow">→</span> Stansted wins clearly',
+                    '<span class="flip-arrow">→</span> Stansted wins by about €41',
                 },
               ]}
             />
@@ -195,12 +195,12 @@ export default function DecisionPage() {
           <DecisionDebt
             title="The hidden trade-off with Stansted"
             textHtml={
-              'Choosing Stansted means accepting more <span class="debt-term">decision debt</span> — a secondary airport farther from the city, a late arrival window, a night-only transfer option, and greater dependence on estimated taxi costs that can swing the comparison.'
+              'Choosing Stansted means accepting more <span class="debt-term">decision debt</span> — a secondary airport farther from the city, a late arrival window after the last train, a taxi-only late-night option, and greater dependence on estimated taxi costs that can swing the comparison.'
             }
             factors={[
               "Secondary airport",
               "Late arrival risk",
-              "Night-only transfer",
+              "Late-night taxi risk",
               "Bag not included",
               "Estimate-dependent",
             ]}

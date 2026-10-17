@@ -6,62 +6,62 @@ import FAQAccordion from "@/components/guide/FAQAccordion";
 import styles from "@/components/decision-page/decision-page.module.css";
 
 export const metadata: Metadata = {
-  title: "Dublin to London: Heathrow, Gatwick, Stansted or City? | Travelvus",
-  description: "Flying Dublin to London? Compare London City and Heathrow on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
+  title: "Dublin to London: Heathrow or London City? | Travelvus",
+  description: "Flying Dublin to London? Compare Heathrow and London City on total journey time, door-to-door cost, airport transfers and convenience. Which airport really wins?",
   alternates: { canonical: "/compare/dublin-to-london" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "dublin-to-london",
   category: "London Airport Decision",
-  question: "Dublin to London: Heathrow, Gatwick, Stansted or City?",
-  shortAnswer: "London City wins for most travellers from Dublin once total journey time and cost are compared.",
+  question: "Dublin to London: Heathrow or London City?",
+  shortAnswer: "London City wins for most travellers from Dublin: the DLR reaches Bank in ~25 minutes, making the door-to-door journey ~15 minutes faster and ~€3 cheaper than Heathrow once baggage and transfers are included.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
     line: "London City wins.",
     stats: [
-      { label: "Total journey time", value: "175", unit: "min" },
-      { label: "Time saved", value: "35", unit: "min", accent: true },
+      { label: "Total journey time", value: "280", unit: "min" },
+      { label: "Time saved", value: "15", unit: "min", accent: true },
       { label: "Flight duration", value: "1", unit: "h 20m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "London City", a: "~3h 30m", b: "~2h 55m", verdict: "London City is ~35 min faster" },
-    { factor: "Total journey cost", winner: "London City", a: "~€125", b: "~€105", verdict: "London City saves ~€20" },
-    { factor: "Transfer convenience", winner: "London City", a: "Train, 30–50 min", b: "~25 min (DLR)", verdict: "London City has more options" },
-    { factor: "Arrival reliability", winner: "London City", a: "Fewer, less frequent connections", b: "Trains every 10–15 min", verdict: "London City is more predictable" },
+    { factor: "Total journey time", winner: "London City", a: "~4h 55m", b: "~4h 40m", verdict: "London City is ~15 min faster" },
+    { factor: "Total journey cost", winner: "London City", a: "~€115", b: "~€112", verdict: "London City saves ~€3" },
+    { factor: "Transfer convenience", winner: "London City", a: "~35 min (Elizabeth Line)", b: "~25 min (DLR to Bank)", verdict: "London City's DLR is quicker" },
+    { factor: "Arrival reliability", winner: "London City", a: "Elizabeth Line every 10–15 min", b: "DLR every 5–10 min", verdict: "London City is more predictable" },
     { factor: "Overall winner", winner: "London City", a: "—", b: "—", verdict: "London City wins on 4 of 4 factors", isFinal: true },
   ],
-  winnerReasons: ["London City Airport's DLR connection is dramatically faster — ~25 min to Bank versus Elizabeth Line ~35 min from Heathrow.", "LCY is a small airport — baggage arrives faster, walking distances are shorter.", "For Dublin flights (Common Travel Area), there is no passport control at LCY — even faster.", "Total door-to-door is ~35 minutes shorter through City Airport on this route.", "For business travellers heading to Canary Wharf or the City, LCY is the clear winner."],
+  winnerReasons: ["London City Airport's DLR connection is dramatically faster — ~25 min to Bank versus ~35 min on the Elizabeth Line from Heathrow.", "LCY is a small airport — baggage arrives faster and walking distances are shorter.", "For Dublin flights (Common Travel Area), there is no passport control at LCY — even faster.", "Total door-to-door is ~15 minutes shorter through City Airport on this route.", "For business travellers heading to Canary Wharf or the City, LCY is the clear winner."],
   alternative: {
-    title: "When Heathrow or Stansted is better",
-    points: ["Heathrow has more flight options and airlines on the Dublin route — better schedule flexibility.", "Stansted has the cheapest Ryanair fares — often €20–40 one-way with hand luggage only.", "Heathrow is better for west London, Windsor, and connecting to long-haul flights.", "Heathrow terminals have more shops, lounges and facilities than City Airport."],
+    title: "When Heathrow is actually the better choice",
+    points: ["Heathrow has more flight options and airlines on the Dublin route — better schedule flexibility.", "Heathrow is better for west London, Windsor and connecting to long-haul flights.", "Heathrow terminals have more shops, lounges and facilities than London City.", "If the Heathrow fare is more than ~€3 below the City fare, the Elizabeth Line's higher cost no longer decides the total."],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~€90 (BA Cityflyer)", b: "~€100 (Aer Lingus/BA)", winner: "b" as const, note: "Budget vs full-service airline — illustrative fares" },
-    { label: "Checked bag", a: "Often included on City routes", b: "Often included on Aer Lingus", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — Dublin", a: "Aircoach or Dublin Bus — ~30–40 min from city centre, ~€8", b: "Aircoach or Dublin Bus — ~30–40 min from city centre, ~€8", winner: "tie" as const },
-    { label: "Airport transfer — London", a: "~£12 (Elizabeth Line)", b: "~£3 (DLR)", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Minimal: frequent service", winner: "b" as const },
+    { label: "Flight ticket", a: "~€90 (Aer Lingus/BA)", b: "~€100 (BA Cityflyer)", winner: "a" as const, note: "Illustrative fares — Heathrow vs London City" },
+    { label: "Checked bag", a: "Often included on Aer Lingus", b: "Often included on City routes", winner: "tie" as const, note: "Both carriers usually include a cabin bag; checked bags may cost extra" },
+    { label: "Airport transfer — Dublin", a: "Aircoach or Dublin Bus — ~35 min from city centre, ~€8", b: "Aircoach or Dublin Bus — ~35 min from city centre, ~€8", winner: "tie" as const },
+    { label: "Airport transfer — London", a: "~€17 (~£15, Elizabeth Line)", b: "~€4 (~£3.30, DLR to Bank)", winner: "b" as const, note: "Typical single fares" },
+    { label: "Schedule waiting", a: "Minimal: trains every 10–15 min", b: "Minimal: DLR every 5–10 min", winner: "tie" as const },
   ],
   journeyTimeline: [
-    { stage: "Dublin city → Airport", a: "Aircoach or Dublin Bus — ~30–40 min from city centre, ~€8", b: "Aircoach or Dublin Bus — ~30–40 min from city centre, ~€8" },
+    { stage: "Dublin city → Airport", a: "Aircoach or Dublin Bus — ~35 min from city centre, ~€8", b: "Aircoach or Dublin Bus — ~35 min from city centre, ~€8" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight Dublin → London", a: "~1h 20m", b: "~1h 20m" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "~35 min (Elizabeth Line)", b: "~25 min (DLR)" },
-    { stage: "Total door-to-door", a: "~3h 30m", b: "~2h 55m", isFinal: true },
+    { stage: "Airport → Central London", a: "~35 min (Elizabeth Line)", b: "~25 min (DLR to Bank)" },
+    { stage: "Total door-to-door", a: "~4h 55m", b: "~4h 40m", isFinal: true },
   ],
-  scenarios: [{"who": "Business traveller (City/Canary Wharf)", "choice": "London City", "why": "DLR to the office in ~25 min. No passport control. The fastest option."}, {"who": "Business traveller (West End)", "choice": "Heathrow", "why": "Elizabeth Line to Tottenham Court Road. Better for West End meetings."}, {"who": "Family with children", "choice": "Heathrow", "why": "More facilities, more space, wider choice of airlines and flight times."}, {"who": "Budget traveller", "choice": "Stansted", "why": "Ryanair DUB–STN fares can be €20–40. The saving is worth the longer transfer."}, {"who": "Weekend trip", "choice": "London City", "why": "Fastest door-to-door — more time enjoying London."}, {"who": "Connecting to long-haul", "choice": "Heathrow", "why": "Heathrow is the UK hub — seamless connections to worldwide destinations."}],
-  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A €50 saving on the ticket can disappear after one checked bag and a coach transfer."}, {"mistake": "Ignoring the airport transfer", "fix": "Heathrow is 24km from central London. The transfer costs time and money — factor it in."}, {"mistake": "Forgetting baggage costs", "fix": "Budget airlines into Heathrow often charge €35–60 for a checked bag. Full-service airlines into London City frequently include it."}, {"mistake": "Not comparing Dublin airport access", "fix": "Aircoach or Dublin Bus — factor this into the total journey before comparing London airports."}],
+  scenarios: [{"who": "Business traveller (City/Canary Wharf)", "choice": "London City", "why": "DLR to the office in ~25 min. No passport control. The fastest option."}, {"who": "Business traveller (West End)", "choice": "Heathrow", "why": "Elizabeth Line to Tottenham Court Road. Better for West End meetings."}, {"who": "Family with children", "choice": "Heathrow", "why": "More facilities, more space, wider choice of airlines and flight times."}, {"who": "Budget traveller", "choice": "Heathrow", "why": "Aer Lingus sale fares are often the cheapest option and include a cabin bag."}, {"who": "Weekend trip", "choice": "London City", "why": "Fastest door-to-door — more time enjoying London."}, {"who": "Connecting to long-haul", "choice": "Heathrow", "why": "Heathrow is the UK hub — seamless connections to worldwide destinations."}],
+  commonMistakes: [{"mistake": "Choosing by ticket price only", "fix": "Add baggage fees, airport transfer cost and schedule waiting time. A small fare saving can disappear once the Elizabeth Line and a checked bag are added."}, {"mistake": "Ignoring the airport transfer", "fix": "Heathrow is 24km west of central London. The Elizabeth Line takes ~35 min and costs ~£15 — factor it in."}, {"mistake": "Assuming baggage is free", "fix": "Both Aer Lingus and BA Cityflyer usually include a cabin bag, but checked luggage can cost extra on the cheapest fares. Check the fare rules."}, {"mistake": "Not comparing Dublin airport access", "fix": "Aircoach or Dublin Bus takes ~35 min — factor this into the total journey before comparing London airports."}],
   faqItems: [
-    { question: "Which London airport is cheaper overall for flights from Dublin?", answer: "Heathrow and other budget-airline airports often have cheaper advertised ticket prices from Dublin. However, once you add baggage fees (€35–60 on budget airlines) and the longer, more expensive airport transfer, London City is frequently cheaper overall. Always compare the complete door-to-door cost." },
-    { question: "How long is the transfer from Heathrow to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "How long is the transfer from London City to central London?", answer: "Elizabeth Line — ~35 min, ~£12 off-peak." },
-    { question: "Does the time of day change which airport is better from Dublin?", answer: "Yes. Late-night arrivals at Heathrow mean fewer transport options. Late-night arrivals at London City still have the Piccadilly Line (24-hour on Fri/Sat) and night buses. Early morning departures may require arriving at the airport the night before." },
-    { question: "What is the cheapest way to get from London City to central London?", answer: "The Piccadilly Line costs £5–6 and takes 50–60 minutes. The Elizabeth Line costs ~£12 and takes ~35 minutes. Both run frequently throughout the day. The Piccadilly Line is the budget option; the Elizabeth Line is faster and more comfortable." },
+    { question: "Which London airport is cheaper overall for flights from Dublin?", answer: "Heathrow and London City are closely matched on price once baggage is included. Heathrow's advertised fares are sometimes lower, but the Elizabeth Line costs ~£15 versus ~£3.30 on the DLR, which offsets most of the difference. On our illustrative numbers London City is ~€3 cheaper overall — a small gap, so compare your exact fares." },
+    { question: "How long is the transfer from Heathrow to central London?", answer: "The Elizabeth Line takes ~35 min and costs ~£15 off-peak (approx. 2026)." },
+    { question: "How long is the transfer from London City to central London?", answer: "The DLR takes ~25 min to Bank and costs ~£3.30 off-peak. London City has no Elizabeth Line station — the DLR is the only rail link." },
+    { question: "Does the time of day change which airport is better from Dublin?", answer: "Yes. Heathrow keeps the Piccadilly Line (24-hour on Fri/Sat) and night buses after the Elizabeth Line stops. London City's DLR runs until around 00:30, with night buses from Canary Wharf after that. Early morning departures may require arriving at the airport the night before." },
+    { question: "What is the cheapest way to get from London City to central London?", answer: "The DLR — ~25 min to Bank, ~€4 (~£3.30 off-peak). There is no Elizabeth Line and no Piccadilly Line at London City; the DLR is the only rail connection." },
   ],
   cta: {
     title: "Compare your own Dublin–London journey",
@@ -75,7 +75,7 @@ const DATA = {
     { kicker: "Decision Hub", title: "London Airport Decisions", desc: "Explore real comparisons between London's major airports.", href: "/london-airports", link: "Explore →" },
   ],
   sources: [
-    { claim: "London City and Heathrow distances and terminal information", source: "Heathrow Airport Ltd, Stansted Airport Ltd, Gatwick Airport Ltd" },
+    { claim: "London City and Heathrow distances and terminal information", source: "Heathrow Airport Ltd, London City Airport" },
     { claim: "London transfer times and off-peak fares", source: "Transport for London (TfL), National Rail", url: "https://tfl.gov.uk" },
     { claim: "Dublin airport access and fares", source: "Dublin Airport Authority, Aircoach" },
     { claim: "Flight durations", source: "Typical scheduled times for direct flights" },
@@ -87,7 +87,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -159,7 +159,7 @@ export default function DublinToLondonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~€125</span><span className={styles.costBetter}>~€105</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span>~€115</span><span className={styles.costBetter}>~€112</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

@@ -32,11 +32,13 @@ export default function DecisionThreshold({ data }: DecisionThresholdProps) {
           <div className="threshold-axis-rule" />
 
           {/* Copper segment between the two ticks */}
+          {/* The segment spans between the two ticks regardless of which
+              side of the line the current value sits on. */}
           <div
             className="threshold-axis-seg"
             style={{
-              left: `${data.linePct}%`,
-              width: `${data.nowPct - data.linePct}%`,
+              left: `${Math.min(data.linePct, data.nowPct)}%`,
+              width: `${Math.abs(data.nowPct - data.linePct)}%`,
             }}
           />
 

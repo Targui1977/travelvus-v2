@@ -24,7 +24,7 @@ export default function BestLondonAirportForBusinessTravelPage() {
           <h1 className={styles.guideHeroH1}>Which London airport is best for business travel?</h1>
           <p className={styles.guideHeroSub}>London City Airport wins for Canary Wharf and the City. Heathrow wins for west London, international connections and airline choice.</p>
           <div className={styles.guideHeroMeta}>
-            <span>4 min read</span><span>·</span><span>Last reviewed: July 2026</span><span>·</span>
+            <span>4 min read</span><span>·</span><span>Last reviewed: October 2026</span><span>·</span>
             <span><span className={styles.guideHeroDot} /> Methodology verified</span>
           </div>
         </section>

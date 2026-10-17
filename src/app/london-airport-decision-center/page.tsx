@@ -39,7 +39,7 @@ const AIRPORTS = [
     name: "Stansted",
     bestFor: "Budget travellers, northeast London, Cambridge",
     strengths: "Ryanair's largest UK base. Very low ticket prices. Efficient single-terminal layout.",
-    weaknesses: "55km from central London. Coach or train transfer adds 50-90 min and £17+. Few transport options late at night.",
+    weaknesses: "55km from central London. Coach or train transfer adds 50-90 min and ~£22+. Few transport options late at night.",
     typicalTraveller: "Budget-conscious travellers, Ryanair passengers, northeast London and Cambridge residents.",
     href: "/compare/heathrow-vs-stansted",
   },
@@ -47,8 +47,8 @@ const AIRPORTS = [
     code: "LTN",
     name: "Luton",
     bestFor: "Budget airlines, north London, Milton Keynes",
-    strengths: "easyJet and Wizz Air hub. Low ticket prices. DART shuttle to Luton Airport Parkway (5 min).",
-    weaknesses: "45km from central London. No direct rail connection — bus or shuttle+train required.",
+    strengths: "easyJet and Wizz Air hub. Low ticket prices. DART automated rail link to Luton Airport Parkway (5 min, £4.90).",
+    weaknesses: "45km from central London. No direct rail from the terminal — DART rail link plus Thameslink required.",
     typicalTraveller: "Budget travellers, easyJet and Wizz Air passengers, north London and Home Counties residents.",
     href: "/london-airports",
   },
@@ -56,7 +56,7 @@ const AIRPORTS = [
     code: "LCY",
     name: "London City",
     bestFor: "Business travellers, Canary Wharf, short-haul",
-    strengths: "Only 10km from central London. DLR connection. Tiny airport — 20 min from landing to train. No long walks.",
+    strengths: "Only 11km from central London. DLR connection. Tiny airport — 20 min from landing to train. No long walks.",
     weaknesses: "Limited routes (mostly European business destinations). Short runway — no long-haul. Higher ticket prices.",
     typicalTraveller: "Business travellers, Canary Wharf and City workers, short-haul European flyers who value speed.",
     href: "/london-airports",
@@ -71,7 +71,7 @@ const NEIGHBORHOODS = [
   { area: "The City & Canary Wharf", best: "LCY", note: "DLR from City Airport to Bank in 25 min. Canary Wharf in 20 min. Unbeatable for Docklands." },
   { area: "South London (Brixton, Croydon, Clapham)", best: "LGW", note: "Gatwick Express and Southern trains connect directly to Clapham Junction and Victoria." },
   { area: "East London (Stratford, Hackney, Shoreditch)", best: "STN", note: "Stansted Express to Liverpool Street — close to Shoreditch and east London." },
-  { area: "North London (Camden, Islington, King's Cross)", best: "STN", note: "Stansted Express to Tottenham Hale for Victoria Line connections to north London." },
+  { area: "North London (Camden, Islington, King's Cross)", best: "LTN", note: "DART rail link plus Thameslink to St Pancras — King&rsquo;s Cross, Camden and Islington are adjacent or a short bus ride." },
   { area: "Brighton & South Coast", best: "LGW", note: "Direct Thameslink and Southern trains from Gatwick to Brighton in 30 min." },
   { area: "Cambridge & East Anglia", best: "STN", note: "Stansted is the closest London airport to Cambridge — direct train in 30 min." },
 ];
@@ -80,24 +80,24 @@ const NEIGHBORHOODS = [
 
 const TRANSFERS = [
   { airport: "Heathrow", options: [
-    { name: "Elizabeth Line", time: "~35 min to central London", cost: "~£12 off-peak", freq: "Every 10–15 min" },
-    { name: "Heathrow Express", time: "15 min to Paddington", cost: "~£25", freq: "Every 15 min" },
-    { name: "Piccadilly Line", time: "50–60 min to central London", cost: "~£5–6", freq: "Every 5–10 min" },
+    { name: "Elizabeth Line", time: "~35 min to central London", cost: "~£15", freq: "Every 10–15 min" },
+    { name: "Heathrow Express", time: "15 min to Paddington", cost: "~£26", freq: "Every 15 min" },
+    { name: "Piccadilly Line", time: "50–60 min to central London", cost: "~£6", freq: "Every 5–10 min" },
   ]},
   { airport: "Gatwick", options: [
     { name: "Gatwick Express", time: "~30 min to Victoria", cost: "~£20 off-peak", freq: "Every 15 min" },
     { name: "Southern / Thameslink", time: "40–50 min to London Bridge", cost: "~£15", freq: "Every 10–15 min" },
   ]},
   { airport: "Stansted", options: [
-    { name: "Stansted Express", time: "~50 min to Liverpool Street", cost: "~£17 off-peak", freq: "Every 15–30 min" },
+    { name: "Stansted Express", time: "~50 min to Liverpool Street", cost: "~£22 (advance from ~£9.90)", freq: "Every 15–30 min" },
     { name: "National Express coach", time: "75–90 min to central London", cost: "~£10–15", freq: "Every 30–60 min" },
   ]},
   { airport: "Luton", options: [
-    { name: "DART + Thameslink", time: "~40 min to St Pancras", cost: "~£15", freq: "Every 10–15 min" },
+    { name: "DART + Thameslink", time: "~40 min to St Pancras", cost: "~£15 (DART £4.90)", freq: "Every 10–15 min" },
     { name: "National Express coach", time: "60–75 min to central London", cost: "~£10–12", freq: "Every 30–60 min" },
   ]},
   { airport: "London City", options: [
-    { name: "DLR", time: "~25 min to Bank", cost: "~£3 off-peak", freq: "Every 5–10 min" },
+    { name: "DLR", time: "~25 min to Bank", cost: "~£3.30 off-peak", freq: "Every 5–10 min" },
   ]},
 ];
 
@@ -129,15 +129,15 @@ const FAQ_ITEMS = [
   },
   {
     question: "Which London airport is closest to central London?",
-    answer: "London City Airport (LCY) is closest — only 10km from central London with a 25-minute DLR connection to Bank. However, LCY has limited routes (mostly short-haul European business destinations). Of the three major airports, Heathrow is closest at 24km with the fastest transfer (Elizabeth Line, ~35 min). Stansted is furthest at 55km.",
+    answer: "London City Airport (LCY) is closest — only 11km from central London with a 25-minute DLR connection to Bank. However, LCY has limited routes (mostly short-haul European business destinations). Of the three major airports, Heathrow is closest at 24km with the fastest transfer (Elizabeth Line, ~35 min). Stansted is furthest at 55km.",
   },
   {
     question: "Is the Heathrow Express worth the cost?",
-    answer: "The Heathrow Express is the fastest option at 15 minutes to Paddington, but it costs ~£25. The Elizabeth Line takes ~35 minutes and costs ~£12 — the 20-minute time saving costs roughly £13 extra. If speed is your priority and you are heading to west London or Paddington, it is worth it. For most travellers, the Elizabeth Line offers better value.",
+    answer: "The Heathrow Express is the fastest option at 15 minutes to Paddington, but it costs ~£26. The Elizabeth Line takes ~35 minutes and costs ~£15 — the 20-minute time saving costs roughly £11 extra. If speed is your priority and you are heading to west London or Paddington, it is worth it. For most travellers, the Elizabeth Line offers better value.",
   },
   {
     question: "How much does the airport transfer cost from each London airport?",
-    answer: "Heathrow: £5–25 (Piccadilly Line £5–6, Elizabeth Line ~£12, Heathrow Express ~£25). Gatwick: £15–20 (Thameslink ~£15, Gatwick Express ~£20). Stansted: £10–17 (coach £10–15, Stansted Express ~£17). Luton: £10–15 (coach or DART+train). London City: ~£3 (DLR). All prices are off-peak single adult fares as of July 2026.",
+    answer: "Heathrow: £6–26 (Piccadilly Line ~£6, Elizabeth Line ~£15, Heathrow Express ~£26). Gatwick: £15–20 (Thameslink ~£15, Gatwick Express ~£20). Stansted: £10–22 (coach £10–15, Stansted Express ~£22). Luton: ~£15 (coach or DART £4.90 + Thameslink). London City: ~£3.30 (DLR). All prices are off-peak single adult fares as of October 2026.",
   },
   {
     question: "Which London airport is best for families with children?",
@@ -145,15 +145,15 @@ const FAQ_ITEMS = [
   },
   {
     question: "Does the time of day change which airport is better?",
-    answer: "Yes — significantly. Late-night arrivals at Stansted and Luton have fewer transport options; the last Stansted Express leaves around 23:30. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fridays and Saturdays) and night buses. Early morning departures from any airport may require arriving the night before if public transport is not running. Always check your flight time against available transfers.",
+    answer: "Yes — significantly. Late-night arrivals at Stansted and Luton have fewer transport options; the last Stansted Express leaves around 00:30. Late-night arrivals at Heathrow still have the Piccadilly Line (24-hour on Fridays and Saturdays) and night buses. Early morning departures from any airport may require arriving the night before if public transport is not running. Always check your flight time against available transfers.",
   },
   {
     question: "Which airport has the best public transport connection?",
-    answer: "Heathrow has the best public transport — three separate rail options (Elizabeth Line, Piccadilly Line, Heathrow Express) plus coaches and taxis. It is the only London airport connected to the Tube network. London City has the simplest connection (DLR, one line, ~25 min to Bank). Gatwick and Stansted each have a dedicated express train plus coaches. Luton requires a shuttle bus (DART) to reach the train station.",
+    answer: "Heathrow has the best public transport — three separate rail options (Elizabeth Line, Piccadilly Line, Heathrow Express) plus coaches and taxis. It is the only London airport connected to the Tube network. London City has the simplest connection (DLR, one line, ~25 min to Bank). Gatwick and Stansted each have a dedicated express train plus coaches. Luton requires the DART automated rail link to reach the train station.",
   },
   {
     question: "Should I choose my London airport based on where I'm staying?",
-    answer: "Yes — this is one of the most important factors. West London → Heathrow. South London → Gatwick. East/Northeast London → Stansted. Canary Wharf/City → London City. North London → Luton or Stansted. The transfer geography can change your door-to-door journey by 30–60 minutes. Check our neighbourhood guide on this page for specific recommendations.",
+    answer: "Yes — this is one of the most important factors. West London → Heathrow. South London → Gatwick. East/Northeast London → Stansted. Canary Wharf/City → London City. North London → Luton (DART + Thameslink to St Pancras). The transfer geography can change your door-to-door journey by 30–60 minutes. Check our neighbourhood guide on this page for specific recommendations.",
   },
   {
     question: "How does Travelvus compare London airports?",
@@ -175,17 +175,17 @@ export default function LondonDecisionCenterPage() {
             category="Airport Decision"
             question="Which London airport is actually the best?"
             subtitle="The answer depends on where you are flying from, where in London you are heading, your budget, and who you are travelling with."
-            metadata={{ readTime: "11 min read", reviewedDate: "Jul 2026", verified: true }}
+            metadata={{ readTime: "11 min read", reviewedDate: "Oct 2026", verified: true }}
             decisionCard={{
               winner: "Heathrow wins for most travellers",
               timeSaved: "Fastest transfer",
-              moneySaved: "From ~£5 Tube",
+              moneySaved: "From ~£6 Tube",
               bestFor: "International flights, west & central London, families",
               confidence: "high",
             }}
             visual={{ type: "airport-map", data: { cityName: "Central London", airports: [
               { code: "LHR", name: "Heathrow", distance: "24 km west", isWinner: true },
-              { code: "LCY", name: "London City", distance: "10 km east" },
+              { code: "LCY", name: "London City", distance: "11 km east" },
               { code: "LGW", name: "Gatwick", distance: "45 km south" },
               { code: "STN", name: "Stansted", distance: "55 km northeast" },
               { code: "LTN", name: "Luton", distance: "45 km north" },
@@ -246,15 +246,15 @@ export default function LondonDecisionCenterPage() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><td><strong>Heathrow</strong></td><td>International, west London</td><td>★★★★★</td><td>£5–25</td><td>★★★★★</td><td>★★★★★</td><td>★★★</td><td>★★★★★</td></tr>
+                  <tr><td><strong>Heathrow</strong></td><td>International, west London</td><td>★★★★★</td><td>£6–26</td><td>★★★★★</td><td>★★★★★</td><td>★★★</td><td>★★★★★</td></tr>
                   <tr><td><strong>Gatwick</strong></td><td>South London, Europe</td><td>★★★★</td><td>£15–20</td><td>★★★★</td><td>★★★★</td><td>★★★★</td><td>★★★★</td></tr>
-                  <tr><td><strong>Stansted</strong></td><td>Budget, east London</td><td>★★★</td><td>£10–17</td><td>★★</td><td>★★</td><td>★★★★★</td><td>★★★</td></tr>
-                  <tr><td><strong>Luton</strong></td><td>Budget, north London</td><td>★★★</td><td>£10–15</td><td>★★</td><td>★★</td><td>★★★★★</td><td>★★★</td></tr>
-                  <tr><td><strong>London City</strong></td><td>Business, Canary Wharf</td><td>★★★★★</td><td>~£3</td><td>★★★★★</td><td>★★★</td><td>★</td><td>★★★★</td></tr>
+                  <tr><td><strong>Stansted</strong></td><td>Budget, east London</td><td>★★★</td><td>£10–22</td><td>★★</td><td>★★</td><td>★★★★★</td><td>★★★</td></tr>
+                  <tr><td><strong>Luton</strong></td><td>Budget, north London</td><td>★★★</td><td>~£15</td><td>★★</td><td>★★</td><td>★★★★★</td><td>★★★</td></tr>
+                  <tr><td><strong>London City</strong></td><td>Business, Canary Wharf</td><td>★★★★★</td><td>~£3.30</td><td>★★★★★</td><td>★★★</td><td>★</td><td>★★★★</td></tr>
                 </tbody>
               </table>
             </div>
-            <p className={styles.matrixNote}>Ratings are editorial assessments based on publicly available transfer data, terminal facilities and traveller feedback. Transfer costs are off-peak single adult fares as of July 2026. ★ = poor fit, ★★★★★ = excellent fit.</p>
+            <p className={styles.matrixNote}>Ratings are editorial assessments based on publicly available transfer data, terminal facilities and traveller feedback. Transfer costs are off-peak single adult fares as of October 2026. ★ = poor fit, ★★★★★ = excellent fit.</p>
           </section>
 
           {/* ═══ 4. AIRPORT PROFILES ═══ */}
@@ -308,13 +308,13 @@ export default function LondonDecisionCenterPage() {
                 </div>
               ))}
             </div>
-            <p className={styles.matrixNote} style={{ marginTop: 18 }}>All fares are off-peak single adult as of July 2026. Sources: Transport for London (TfL), National Rail, airport operators. Verify current fares before travelling.</p>
+            <p className={styles.matrixNote} style={{ marginTop: 18 }}>All fares are off-peak single adult as of October 2026. Sources: Transport for London (TfL), National Rail, airport operators. Verify current fares before travelling.</p>
           </section>
 
           {/* ═══ 7. REAL COST ═══ */}
           <section className={styles.section}>
             <h2 className={styles.sectionH2}>The real cost of flying into London</h2>
-            <p className={styles.sectionSub}>The ticket price shows one number. The real trip cost includes baggage, airport transfer, and schedule waiting. A £30 budget ticket to Stansted can become a £90+ journey once everything is counted.</p>
+            <p className={styles.sectionSub}>The ticket price shows one number. The real trip cost includes baggage, airport transfer, and schedule waiting. A £30 budget ticket to Stansted can become a £95+ journey once everything is counted.</p>
             <div className={styles.guideCard}>
               <div>
                 <span className={styles.guideCardKicker}>Flagship Guide</span>
@@ -411,7 +411,7 @@ export default function LondonDecisionCenterPage() {
                 </ul>
               </div>
             </div>
-            <p className={styles.sourceReview}>Last reviewed: July 2026 · Next factual review: January 2027</p>
+            <p className={styles.sourceReview}>Last reviewed: October 2026 · Next factual review: April 2027</p>
           </section>
 
           {/* ═══ 13. FAQ ═══ */}

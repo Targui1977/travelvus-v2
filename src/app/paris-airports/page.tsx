@@ -12,11 +12,11 @@ export const metadata: Metadata = {
 
 const ROWS = [
   { n: "01", label: "The core decision", question: "CDG or Orly — which Paris airport wins?", pair: "Charles de Gaulle vs Orly",
-    insight: "CDG wins for international flights and Air France connections. Orly wins for medium-haul European flights, domestic routes, and southern Paris. Beauvais is budget-only — 85km from Paris with a 1h 15m shuttle bus.", cta: "Compare CDG vs Orly →", href: "/guides/cdg-vs-orly" },
+    insight: "CDG wins for long-haul international flights, Air France connections, and the Right Bank. Orly wins for central Paris, the Left Bank, medium-haul European and domestic routes — Metro 14 reaches Châtelet in ~25 min. Beauvais is budget-only — 85km from Paris with a 1h 15m shuttle bus.", cta: "Compare CDG vs Orly →", href: "/guides/cdg-vs-orly" },
   { n: "02", label: "Transit reality", question: "Closest airport is not always fastest.", pair: "Orly vs CDG",
-    insight: "Orly is 13km from central Paris — half the distance of CDG at 25km. But CDG's RER B takes ~35 min to Châtelet. Orly requires the Orlyval light rail plus a transfer at Antony to reach the same RER B — also ~35 min total. Distance alone does not decide.", cta: "Compare CDG vs Orly →", href: "/guides/cdg-vs-orly" },
+    insight: "Orly is 13km from central Paris — half the distance of CDG at 25km. Since Metro 14 opened direct to Châtelet in June 2024, Orly is also faster: ~25 min versus ~35–40 on CDG's RER B. Orly's older Orlyval + RER B route takes ~50 min. Distance now shows up in the rail time — but your destination side of Paris still decides.", cta: "Compare CDG vs Orly →", href: "/guides/cdg-vs-orly" },
   { n: "03", label: "Budget reality", question: "Is Beauvais worth the 1h 15m shuttle bus?", pair: "Beauvais vs CDG/Orly",
-    insight: "Ryanair tickets from Beauvais can be €15–30. But the shuttle bus costs €17 and takes 1h 15m — each way. A €30 ticket becomes €64 with the bus, and costs you 2h 30m in transfers. Compare the total door-to-door cost before choosing Beauvais.", cta: "Compare your journey →", href: "/#compare" },
+    insight: "Ryanair tickets from Beauvais can be €15–30. But the shuttle bus costs about €17 (approximate) and takes 1h 15m — each way. A €30 ticket becomes about €64 with the return bus, and costs you 2h 30m in transfers. Compare the total door-to-door cost before choosing Beauvais.", cta: "Compare your journey →", href: "/#compare" },
 ];
 
 export default function ParisHubPage() {
@@ -30,7 +30,7 @@ export default function ParisHubPage() {
             <h1 style={{ fontFamily: "var(--serif)", fontWeight: 400, fontSize: 36, lineHeight: 1.15, color: "var(--ink)", margin: "0 0 14px", maxWidth: 680 }}>Which Paris airport is actually best for your journey?</h1>
             <p style={{ fontFamily: "var(--serif)", fontSize: 17, lineHeight: 1.5, color: "#4a5560", maxWidth: 580 }}>CDG, Orly, or Beauvais? Each wins for different travellers. This hub shows you which airport fits <strong style={{ fontWeight: 600, color: "var(--ink)" }}>your</strong> journey — based on your destination, your airline, and what you value.</p>
           </section>
-          <AirportComparisonMap cityName="Central Paris" airports={[{ code: "CDG", name: "CDG", distance: "25 km NE", isWinner: true },{ code: "ORY", name: "Orly", distance: "13 km S" },{ code: "BVA", name: "Beauvais", distance: "85 km N" }]} />
+          <AirportComparisonMap cityName="Central Paris" airports={[{ code: "ORY", name: "Orly", distance: "13 km S — Metro 14 ~25 min", isWinner: true },{ code: "CDG", name: "CDG", distance: "25 km NE — RER B ~35–40 min" },{ code: "BVA", name: "Beauvais", distance: "85 km N" }]} />
           <section style={{ marginTop: 32 }}>
             {ROWS.map((row) => (
               <div key={row.n} style={{ padding: "22px 0", borderBottom: "1px solid var(--line)" }}>
@@ -48,7 +48,7 @@ export default function ParisHubPage() {
               <Link href="/#compare" style={{ fontFamily: "var(--sans)", fontWeight: 600, fontSize: 14, color: "var(--paper)", background: "var(--copper)", borderRadius: 8, padding: "12px 22px", textDecoration: "none", whiteSpace: "nowrap" }}>Reveal the real winner</Link>
             </div>
           </section>
-          <section style={{ marginTop: 24 }}><TrustGraphic verified lastReviewed="July 2026" sources={["RATP", "SNCF", "Aéroports de Paris"]} methodologyHref="/methodology" /></section>
+          <section style={{ marginTop: 24 }}><TrustGraphic verified lastReviewed="October 2026" sources={["Île-de-France Mobilités", "RATP", "SNCF", "Aéroports de Paris"]} methodologyHref="/methodology" /></section>
         </div>
         <Footer />
       </div>

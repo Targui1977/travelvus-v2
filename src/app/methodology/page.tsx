@@ -24,11 +24,11 @@ export default function Page() {
         },
         {
           heading: "How transfer profiles work",
-          body: "Each airport has a transfer profile for every supported destination zone. These profiles include the recommended public transport route, the illustrative cost, the typical journey time, the number of interchanges, and the service window (e.g., 'RER B until 00:30'). Transfer profiles are based on official transport authority fares and timetables — TfL for London, RATP/SNCF for Paris, MTA/NJ Transit for New York. Values are illustrative planning estimates, not live fares. They are reviewed periodically and updated when significant changes occur.",
+          body: "Each airport has a transfer profile for every supported destination zone. These profiles include the recommended public transport route, the illustrative cost, the typical journey time, the number of interchanges, and the service window (e.g., 'RER B until 00:30'). Transfer profiles are based on official transport authority fares and timetables — TfL for London, Île-de-France Mobilités/RATP for Paris, MTA/NJ Transit for New York. Values are illustrative planning estimates, not live fares. They are reviewed periodically and updated when significant changes occur.",
         },
         {
           heading: "Why recommendations vary by destination",
-          body: "An airport that's best for one destination may not be best for another — even within the same city. Heathrow is excellent for Paddington (15 minutes direct) but less dominant for Canary Wharf (48 minutes). Orly is better for Montparnasse than for La Défense. Our destination-aware engine accounts for this: changing the destination can change the recommendation. This is why we always ask 'Where exactly are you going?' — because it genuinely matters.",
+          body: "An airport that's best for one destination may not be best for another — even within the same city. Heathrow is excellent for Paddington (15 minutes direct) but less dominant for Canary Wharf (48 minutes). Orly reaches Montparnasse quickly via Orlybus (~30 minutes), while CDG dominates Gare du Nord (RER B direct). Our destination-aware engine accounts for this: changing the destination can change the recommendation. This is why we always ask 'Where exactly are you going?' — because it genuinely matters.",
         },
         {
           heading: "How evidence and confidence work",

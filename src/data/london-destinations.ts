@@ -5,7 +5,7 @@
  * for each supported airport. Destination-aware engine V2.
  *
  * Values are illustrative planning estimates grounded in official
- * TfL/National Rail fares and timetables as of July 2026.
+ * TfL/National Rail fares and timetables as of October 2026.
  * NOT live fares. NOT real-time data.
  *
  * Phase 107.2 — Part B+C.
@@ -77,7 +77,7 @@ export interface LondonDestination {
  * London destination transfer data.
  *
  * Transfer costs are illustrative EUR values converted from GBP
- * at ~1.17 (editorial rate, July 2026). Times include average wait
+ * at ~1.17 (editorial rate, October 2026). Times include average wait
  * and platform-to-exit walking time.
  *
  * Sources: TfL single fares, National Rail off-peak singles,
@@ -103,8 +103,8 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
       },
       LHR: {
         mode: "Heathrow Express direct (15 min) or Elizabeth Line direct",
-        transferCostEUR: 29,
-        transferDurationMin: 30,
+        transferCostEUR: 30,
+        transferDurationMin: 15,
         interchangeCount: 0,
         serviceWindow: "Heathrow Express 05:00–23:30, Elizabeth Line 05:00–23:30",
         isIllustrative: false,
@@ -112,7 +112,7 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
     },
     sourceLabel: "TfL single fares + Heathrow Express + Stansted Express",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── Westminster / Central London ──────────────────────── */
@@ -143,7 +143,7 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
     },
     sourceLabel: "TfL single fares + Stansted Express",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── King's Cross / North Central ─────────────────────── */
@@ -174,7 +174,7 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
     },
     sourceLabel: "TfL single fares + Stansted Express",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── Liverpool Street / City ───────────────────────────── */
@@ -188,8 +188,8 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
     transfers: {
       STN: {
         mode: "Stansted Express direct to Liverpool Street (50 min)",
-        transferCostEUR: 28,
-        transferDurationMin: 55,
+        transferCostEUR: 26,
+        transferDurationMin: 50,
         interchangeCount: 0,
         serviceWindow: "Stansted Express until 00:30, every 15 min",
         isIllustrative: false,
@@ -197,7 +197,7 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
       LHR: {
         mode: "Elizabeth Line direct (35 min) or Piccadilly → Central",
         transferCostEUR: 20,
-        transferDurationMin: 40,
+        transferDurationMin: 35,
         interchangeCount: 0,
         serviceWindow: "Elizabeth Line 05:00–23:30, Piccadilly 24h (Night Tube Fri–Sat)",
         isIllustrative: false,
@@ -205,7 +205,7 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
     },
     sourceLabel: "TfL single fares + Stansted Express + Elizabeth Line",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── Canary Wharf / Docklands ──────────────────────────── */
@@ -228,7 +228,7 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
       LHR: {
         mode: "Elizabeth Line direct (45 min) or Piccadilly → Jubilee",
         transferCostEUR: 22,
-        transferDurationMin: 48,
+        transferDurationMin: 45,
         interchangeCount: 0,
         serviceWindow: "Elizabeth Line 05:00–23:30",
         isIllustrative: false,
@@ -236,7 +236,7 @@ export const LONDON_DESTINATIONS: Record<LondonDestinationId, LondonDestination>
     },
     sourceLabel: "TfL single fares + Stansted Express + Elizabeth Line",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 };
 

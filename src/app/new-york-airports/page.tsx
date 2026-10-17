@@ -30,7 +30,7 @@ const SUPPORTING_ROWS = [
     question: "Closest airport is not always fastest.",
     pair: "JFK vs LaGuardia",
     insight:
-      "LaGuardia is closest at 8 miles — but it has no rail connection. You need a bus to reach the subway. JFK is further but the AirTrain + LIRR reaches Penn Station in ~35 minutes. Rail access changes the real journey time more than distance.",
+      "LaGuardia is closest at 8 miles — but it has no rail connection. You need a bus to reach the subway. JFK is further but the AirTrain + LIRR reaches Penn Station in ~35–40 minutes. Rail access changes the real journey time more than distance.",
   },
   {
     n: "03",
@@ -416,7 +416,7 @@ export default function NYHubPage() {
           <section style={{ marginTop: 28 }}>
             <TrustGraphic
               verified
-              lastReviewed="July 2026"
+              lastReviewed="October 2026"
               sources={["PANYNJ", "MTA", "NJ Transit", "Port Authority"]}
               methodologyHref="/methodology"
             />

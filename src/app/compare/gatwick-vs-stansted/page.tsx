@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/gatwick-vs-stansted" },
 };
 
+/* Canonical dataset — exported for regression tests */
+export const DATA = CANONICAL;
+
 /* ═══════════════════════════════════════════════════════ */
 
 export default function DecisionPage() {
@@ -64,7 +67,7 @@ export default function DecisionPage() {
               fontFamily: "var(--mono)", fontWeight: 400, fontSize: 11, lineHeight: 1, color: "var(--muted)",
             }}
           >
-            <span>1 traveller &middot; Victoria &middot; daytime &middot; Jul 2026</span>
+            <span>1 traveller &middot; Victoria &middot; daytime &middot; Oct 2026</span>
           </div>
         </div>
       </section>

@@ -5,7 +5,7 @@
  * for JFK and Newark (EWR). Follows the London dataset conventions.
  *
  * Values are illustrative planning estimates grounded in official
- * MTA/NJ Transit/AirTrain fares and timetables as of July 2026.
+ * MTA/NJ Transit/AirTrain fares and timetables as of October 2026.
  * NOT live fares. NOT real-time data.
  *
  * Phase 108.0 — Part C.
@@ -66,8 +66,9 @@ export interface NewYorkDestination {
  * New York destination transfer data.
  *
  * Transfer costs are illustrative EUR values. Times include average wait
- * and platform-to-exit walking time. AirTrain JFK ($8.50) and NJ Transit
- * / Amtrak from EWR used as baselines, converted at ~0.92 EUR/USD.
+ * and platform-to-exit walking time. AirTrain JFK ($8.75) and the
+ * NJ Transit fare from EWR ($17.25, including the AirTrain access fee)
+ * are used as baselines, converted at ~0.92 EUR/USD.
  *
  * Sources: MTA AirTrain, NJ Transit, Amtrak, NYC Ferry, Subway.
  */
@@ -82,16 +83,16 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
     representativeStation: "Grand Central Terminal",
     transfers: {
       JFK: {
-        mode: "AirTrain → Jamaica → LIRR to Grand Central (35 min) or E subway",
-        transferCostEUR: 16,
-        transferDurationMin: 50,
+        mode: "AirTrain → Jamaica → LIRR to Grand Central (~35–40 min) or E subway",
+        transferCostEUR: 15,
+        transferDurationMin: 40,
         interchangeCount: 1,
         serviceWindow: "AirTrain 24h, LIRR until 01:00, Subway 24h",
         isIllustrative: false,
       },
       EWR: {
-        mode: "AirTrain → Newark Liberty → NJ Transit/Amtrak to Penn Station (30 min)",
-        transferCostEUR: 20,
+        mode: "AirTrain → Newark Liberty → NJ Transit/Amtrak to Penn Station (~30 min train, ~40–45 min total)",
+        transferCostEUR: 16,
         transferDurationMin: 40,
         interchangeCount: 1,
         serviceWindow: "NJ Transit until 01:30, Amtrak until 23:00",
@@ -100,7 +101,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
     },
     sourceLabel: "MTA AirTrain + LIRR + NJ Transit",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── Lower Manhattan ──────────────────────────────────── */
@@ -114,7 +115,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
     transfers: {
       JFK: {
         mode: "AirTrain → Jamaica → LIRR to Penn Station → Subway downtown",
-        transferCostEUR: 16,
+        transferCostEUR: 15,
         transferDurationMin: 60,
         interchangeCount: 2,
         serviceWindow: "AirTrain 24h, LIRR until 01:00, Subway 24h",
@@ -122,7 +123,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
       },
       EWR: {
         mode: "AirTrain → NJ Transit to Penn Station → Subway downtown",
-        transferCostEUR: 20,
+        transferCostEUR: 16,
         transferDurationMin: 50,
         interchangeCount: 2,
         serviceWindow: "NJ Transit until 01:30, Subway 24h",
@@ -131,7 +132,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
     },
     sourceLabel: "MTA AirTrain + NJ Transit + Subway",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── Financial District ────────────────────────────────── */
@@ -153,7 +154,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
       },
       EWR: {
         mode: "AirTrain → NJ Transit to Penn Station → 2/3 subway to Fulton St",
-        transferCostEUR: 20,
+        transferCostEUR: 16,
         transferDurationMin: 55,
         interchangeCount: 2,
         serviceWindow: "NJ Transit until 01:30, Subway 24h",
@@ -162,7 +163,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
     },
     sourceLabel: "MTA AirTrain + NJ Transit + Subway",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── Brooklyn Downtown ─────────────────────────────────── */
@@ -184,7 +185,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
       },
       EWR: {
         mode: "AirTrain → NJ Transit to Penn Station → 2/3/4/5 subway to Atlantic Ave",
-        transferCostEUR: 20,
+        transferCostEUR: 16,
         transferDurationMin: 60,
         interchangeCount: 2,
         serviceWindow: "NJ Transit until 01:30, Subway 24h",
@@ -193,7 +194,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
     },
     sourceLabel: "MTA AirTrain + LIRR + NJ Transit",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 
   /* ── Long Island City ──────────────────────────────────── */
@@ -215,7 +216,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
       },
       EWR: {
         mode: "AirTrain → NJ Transit to Penn Station → E subway to Court Square",
-        transferCostEUR: 20,
+        transferCostEUR: 16,
         transferDurationMin: 60,
         interchangeCount: 2,
         serviceWindow: "NJ Transit until 01:30, Subway 24h",
@@ -224,7 +225,7 @@ export const NEW_YORK_DESTINATIONS: Record<NewYorkDestinationId, NewYorkDestinat
     },
     sourceLabel: "MTA AirTrain + Subway + NJ Transit",
     sourceDate: "2026-07",
-    reviewedDate: "2026-07",
+    reviewedDate: "2026-10",
   },
 };
 

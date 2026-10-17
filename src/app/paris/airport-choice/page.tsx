@@ -123,10 +123,10 @@ const PARIS_HUB: CityAirportHub = {
       name: "Charles de Gaulle",
       tagline: "France's main international hub — largest airport, most routes",
       strengths: [
-        "Direct RER B to central Paris (35–40 min)",
+        "Direct RER B to central Paris (~35–40 min, €14)",
         "More airline and route choice",
         "Better for long-haul connections",
-        "24h RER B service",
+        "RER B ~05:00–00:30 (approx), then Noctilien night buses",
       ],
       watchOut: [
         "Longer walking distances between terminals",
@@ -138,34 +138,35 @@ const PARIS_HUB: CityAirportHub = {
     {
       code: "ORY",
       name: "Orly",
-      tagline: "Closer to southern Paris — popular for domestic and European flights",
+      tagline: "Closer to central and southern Paris — popular for domestic and European flights",
       strengths: [
-        "Closer to southern Paris and Montparnasse",
-        "Smaller, easier to navigate",
-        "Orlybus direct to Denfert-Rochereau",
+        "Closer to central and southern Paris",
+        "Metro 14 direct to Châtelet (~25 min, €14)",
+        "Orlybus direct to Denfert-Rochereau (~30 min, ~€11 approx)",
+        "Cheaper taxis than CDG (€36–45)",
         "Often cheaper on European budget airlines",
       ],
       watchOut: [
         "Fewer long-haul routes",
-        "Orlyval premium adds €9.30 to transfer cost",
-        "No direct RER — requires shuttle or bus",
-        "Limited connections after 23:30",
+        "Metro 14 can be crowded at peak times",
+        "Orlyval + RER B is slower (~50 min)",
+        "Limited connections after ~00:40 (approx)",
       ],
-      bestFor: "European flights, southern Paris, budget travellers",
+      bestFor: "European flights, central and southern Paris, budget travellers",
     },
   ],
   quickFacts: [
-    { label: "CDG → Central Paris", value: "€12", note: "RER B, ~40 min, direct" },
-    { label: "ORY → Central Paris", value: "€15", note: "Orlyval + RER B, ~50 min" },
-    { label: "CDG → Gare du Nord", value: "€12", note: "RER B direct, ~35 min" },
-    { label: "ORY → Montparnasse", value: "€11", note: "Orlybus, ~35 min" },
+    { label: "CDG → Central Paris", value: "€14", note: "RER B, ~35–40 min, direct" },
+    { label: "ORY → Central Paris", value: "€14", note: "Metro 14, ~25 min, direct" },
+    { label: "CDG → Gare du Nord", value: "€14", note: "RER B direct, ~35–40 min" },
+    { label: "ORY → Montparnasse", value: "~€11", note: "Orlybus, ~35 min (approx)" },
   ],
   scenarios: [
-    { id: "lowest-cost", title: "Lowest total cost", description: "CDG is often the cheaper complete journey — lower transfer cost and more airline competition.", suggestedWinner: "CDG", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "Compare cost →" },
-    { id: "fastest-arrival", title: "Fastest city arrival", description: "CDG with RER B direct reaches central Paris in ~40 min. ORY requires the Orlyval shuttle.", suggestedWinner: "CDG", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "See times →" },
-    { id: "business-traveller", title: "Business traveller", description: "La Défense is closer to CDG. Gare du Nord is a CDG direct stop — ideal for Eurostar connections.", suggestedWinner: "CDG", prefilledParams: buildHubCompareUrl("paris", "la-defense"), ctaLabel: "La Défense →" },
-    { id: "family-luggage", title: "Family with luggage", description: "CDG offers direct RER with step-free access. ORY's interchange is harder with bags and children.", suggestedWinner: "CDG", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "With baggage →" },
-    { id: "late-night", title: "Late-night arrival", description: "CDG has RER B until 00:30 and Noctilien night buses. ORY has limited options after 23:30.", suggestedWinner: "CDG", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "Late arrival →" },
+    { id: "lowest-cost", title: "Lowest total cost", description: "Rail costs are identical (€14 from both airports). Orly's taxis are cheaper, but the airfare, baggage and seat fees decide.", suggestedWinner: "Conditional", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "Compare cost →" },
+    { id: "fastest-arrival", title: "Fastest city arrival", description: "Orly's Metro 14 reaches Châtelet in ~25 min — faster than CDG's ~35–40 min RER B.", suggestedWinner: "ORY", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "See times →" },
+    { id: "business-traveller", title: "Business traveller", description: "Orly's Metro 14 + RER A reaches La Défense in ~40 min, versus ~50 from CDG. CDG has the better lounges and long-haul network.", suggestedWinner: "ORY", prefilledParams: buildHubCompareUrl("paris", "la-defense"), ctaLabel: "La Défense →" },
+    { id: "family-luggage", title: "Family with luggage", description: "Conditional: both airports now have a direct train. Orly is a slight lean for central and southern Paris; CDG has larger family facilities and more long-haul routes.", suggestedWinner: "ORY", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "With baggage →" },
+    { id: "late-night", title: "Late-night arrival", description: "Conditional: RER B runs until ~00:30 and Metro 14 until ~00:40 (approx). After that both rely on night buses or taxis — and Orly taxis are cheaper.", suggestedWinner: "Conditional", prefilledParams: buildHubCompareUrl("paris", "central-paris"), ctaLabel: "Late arrival →" },
   ],
   comparisonLinks: [
     { label: "CDG vs Orly — full cost comparison", href: buildHubCompareUrl("paris", "central-paris"), description: "Interactive Decision Engine: real cost, door-to-door time, evidence, and flip rules." },
@@ -176,8 +177,8 @@ const PARIS_HUB: CityAirportHub = {
     { label: "Paris Airports overview", href: "/paris-airports" },
   ],
   methodology:
-    "Transfer costs are illustrative EUR values based on RATP/SNCF fares reviewed July 2026. Airfares are illustrative planning estimates. The Decision Engine calculates real trip cost including baggage, seat selection, and airport transfers.",
-  lastReviewed: "July 2026",
+    "Transfer costs and times are based on the unified Paris Region ⇄ Airports ticket (€14 from 2026) and official taxi flat fares (service-public.gouv.fr A15396, effective 2026-02-01), reviewed October 2026. Bus and tram fares are approximate. Airfares are illustrative planning estimates. The Decision Engine calculates real trip cost including baggage, seat selection, and airport transfers.",
+  lastReviewed: "October 2026",
 };
 
 /* ── Trust Capsules ────────────────────────────────────────── */

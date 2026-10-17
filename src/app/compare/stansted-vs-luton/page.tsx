@@ -11,61 +11,80 @@ export const metadata: Metadata = {
   alternates: { canonical: "/compare/stansted-vs-luton" },
 };
 
-const DATA = {
+export const DATA = {
   slug: "stansted-vs-luton",
   category: "London Airport Decision",
   question: "Stansted vs Luton — which London airport wins?",
-  shortAnswer: "Tie — depends on destination wins for most travellers once total journey time and cost are compared.",
+  shortAnswer: "Luton edges it for most travellers: its DART + Thameslink transfer is about 10 minutes faster, the total journey is about 15 minutes shorter, and total costs are effectively level. Stansted wins on route choice through Ryanair.",
   confidence: "Strong confidence",
-  lastReviewed: "July 2026",
+  lastReviewed: "October 2026",
   methodologyVerified: true,
   verdict: {
-    line: "Tie — depends on destination wins.",
+    line: "Luton edges it.",
     stats: [
-      { label: "Total journey time", value: "270", unit: "min" },
+      { label: "Total journey time", value: "300", unit: "min" },
       { label: "Time saved", value: "15", unit: "min", accent: true },
       { label: "Flight duration", value: "2", unit: "h 00m" },
     ] as [any, any, any],
   },
   atAGlance: [
-    { factor: "Total journey time", winner: "Tie — depends on destination", a: "~4h 45m", b: "~4h 30m", verdict: "Tie — depends on destination is ~15 faster" },
-    { factor: "Total journey cost", winner: "Stansted", a: "~£100", b: "~£100", verdict: "Roughly equal" },
-    { factor: "Transfer convenience", winner: "Luton", a: "50 min (Stansted Express)", b: "40 min (DART+Thameslink)", verdict: "Luton has the faster transfer" },
-    { factor: "Route and airline choice", winner: "Luton", a: "Budget-focused, good choice", b: "Budget-focused, good choice", verdict: "Luton has more airlines and routes" },
-    { factor: "Overall winner", winner: "Tie — depends on destination", a: "—", b: "—", verdict: "Tie — depends on destination wins on most factors", isFinal: true },
+    { factor: "Total journey time", winner: "Luton", a: "~5h 15m", b: "~5h 00m", verdict: "Luton is ~15 min faster" },
+    { factor: "Total journey cost", winner: "Luton", a: "~£102", b: "~£100", verdict: "Luton saves ~£2 — effectively a tie" },
+    { factor: "Transfer convenience", winner: "Luton", a: "50 min (Stansted Express)", b: "40 min (DART + Thameslink)", verdict: "Luton's transfer is ~10 min faster" },
+    { factor: "Route and airline choice", winner: "Stansted", a: "Widest UK budget network (Ryanair)", b: "Budget-focused, good choice", verdict: "Stansted has more airlines and routes" },
+    { factor: "Overall winner", winner: "Luton", a: "—", b: "—", verdict: "Luton wins on time, cost and transfer", isFinal: true },
   ],
-  winnerReasons: ["Both airports are budget-focused with similar total costs — the choice depends on your destination in London.", "Stansted has the Stansted Express (50 min, direct train) — Luton requires the DART shuttle + Thameslink combination.", "Luton's DART+Thameslink is slightly faster overall (~40 min to St Pancras).", "Stansted is better for northeast London, Cambridge and East Anglia. Luton is better for north London and the Home Counties.", "Ryanair's base at Stansted offers the widest budget route network in the UK."],
+  winnerReasons: [
+    "Luton's DART + Thameslink reaches St Pancras in about 40 minutes versus about 50 minutes on the Stansted Express — about 10 minutes faster.",
+    "Total costs are effectively level in this comparison — about £100 at Luton versus about £102 at Stansted.",
+    "Luton's total journey is about 15 minutes shorter door-to-door once baggage and the transfer are counted.",
+    "Stansted still wins on route choice: Ryanair's base there is the widest budget network in the UK.",
+    "Luton is better placed for north London, Milton Keynes, Bedford and the Midlands.",
+  ],
   alternative: {
     title: "Which budget airport is right for you?",
-    points: ["Choose Stansted if flying Ryanair — it is their largest UK base with the most routes.", "Choose Luton if flying Wizz Air or easyJet — both have major operations at LTN.", "Stansted is better for Cambridge, northeast London and East Anglia.", "Luton is better for north London, Milton Keynes, Bedford and the Midlands."],
+    points: [
+      "Choose Stansted if flying Ryanair — it is their largest UK base with the most routes.",
+      "Choose Luton if flying Wizz Air or easyJet — both have major operations at LTN.",
+      "Stansted is better for Cambridge, northeast London and East Anglia.",
+      "Luton is better for north London, Milton Keynes, Bedford and the Midlands.",
+      "Choose Luton if a 10-minute faster transfer and slightly lower total cost matter to you.",
+    ],
   },
   costBreakdown: [
-    { label: "Flight ticket", a: "~£45 (Wizz Air/easyJet)", b: "~£40 (Ryanair)", winner: "b" as const, note: "+£35–50 vs +£35–50" },
-    { label: "Checked bag", a: "+£35–50", b: "+£35–50", winner: "b" as const, note: "Budget airlines typically charge extra" },
-    { label: "Airport transfer — London", a: "40 min to St Pancras", b: "50 min to Liverpool St", winner: "b" as const, note: "Off-peak single fares" },
-    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Risk: 20–40 min gap", winner: "b" as const },
-    { label: "Terminal experience", a: "Functional, basic amenities", b: "Functional, basic amenities", winner: "b" as const },
+    { label: "Flight ticket", a: "~£40 (Ryanair)", b: "~£45 (Wizz Air/easyJet)", winner: "a" as const, note: "Budget fare, varies by airline" },
+    { label: "Checked bag", a: "~£40", b: "~£40", winner: "tie" as const, note: "Budget airlines typically charge extra" },
+    { label: "Airport transfer — London", a: "~£22 (Stansted Express)", b: "~£15 (DART + Thameslink)", winner: "b" as const, note: "Off-peak single fares" },
+    { label: "Schedule waiting", a: "Risk: 20–40 min gap", b: "Risk: 20–40 min gap", winner: "tie" as const },
+    { label: "Terminal experience", a: "Functional, basic amenities", b: "Functional, basic amenities", winner: "tie" as const },
   ],
   journeyTimeline: [
     { stage: "London city → Airport", a: "55km northeast of central London", b: "45km north of central London" },
     { stage: "Check-in + security", a: "2h before departure", b: "2h before departure" },
     { stage: "Flight (typical European)", a: "~2h 00m (typical European)", b: "~2h 00m (typical European)" },
     { stage: "Baggage + terminal", a: "~25 min", b: "~20 min" },
-    { stage: "Airport → Central London", a: "40 min (DART+Thameslink)", b: "50 min (Stansted Express)" },
-    { stage: "Total door-to-door", a: "~4h 45m", b: "~4h 30m", isFinal: true },
+    { stage: "Airport → Central London", a: "50 min (Stansted Express)", b: "40 min (DART + Thameslink)" },
+    { stage: "Total door-to-door", a: "~5h 15m", b: "~5h 00m", isFinal: true },
   ],
-  scenarios: [{"who": "Ryanair flyer", "choice": "Stansted", "why": "Ryanair's biggest UK base — maximum route choice and frequency."}, {"who": "Wizz Air / easyJet flyer", "choice": "Luton", "why": "Both airlines have major operations at Luton with competitive fares."}, {"who": "Northeast London / Cambridge", "choice": "Stansted", "why": "Stansted is geographically closer and the Stansted Express serves Liverpool Street."}, {"who": "North London / Home Counties", "choice": "Luton", "why": "Luton is closer to north London, Luton, Bedford and Milton Keynes."}, {"who": "Budget weekend trip", "choice": "Either", "why": "Both are budget airports. Choose by which airline has the best fare and schedule."}, {"who": "Family with children", "choice": "Neither — try Gatwick", "why": "Both budget airports involve longer transfers. Gatwick is more family-friendly with direct trains."}],
+  scenarios: [
+    { who: "Ryanair flyer", choice: "Stansted", why: "Ryanair's biggest UK base — maximum route choice and frequency." },
+    { who: "Wizz Air / easyJet flyer", choice: "Luton", why: "Both airlines have major operations at Luton with competitive fares." },
+    { who: "Northeast London / Cambridge", choice: "Stansted", why: "Stansted is geographically closer and the Stansted Express serves Liverpool Street." },
+    { who: "North London / Home Counties", choice: "Luton", why: "Luton is closer to north London, Luton, Bedford and Milton Keynes." },
+    { who: "Budget weekend trip", choice: "Either", why: "Both are budget airports. Choose by which airline has the best fare and schedule." },
+    { who: "Family with children", choice: "Neither — try Gatwick", why: "Both budget airports involve longer transfers. Gatwick is more family-friendly with direct trains." },
+  ],
   commonMistakes: [
     { mistake: "Choosing by ticket price only", fix: "Add baggage fees, transfer cost and schedule waiting. A £50 saving on the ticket can disappear after one checked bag." },
     { mistake: "Ignoring the airport transfer", fix: "Luton is 45km from central London. Stansted is 55km. The transfer cost and time differ significantly." },
-    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge £35–50 for a checked bag. Full-service airlines often include it." },
+    { mistake: "Forgetting baggage costs", fix: "Budget airlines charge around £40 for a checked bag. Full-service airlines often include it." },
     { mistake: "Not checking your destination within London", fix: "Stansted is better for northeast London. Luton is better for north London." },
   ],
   faqItems: [
-    { question: "Which is better — Stansted or Luton?", answer: "Stansted and Luton serve different travellers. Tie — depends on destination generally wins for most journeys when total cost and time are compared, but the right choice depends on your airline preference, destination within London, and budget." },
-    { question: "How long is the transfer from Stansted to central London?", answer: "Stansted Express (~50 min to Liverpool St, ~£17). Every 15–30 min. Furthest from central London; few late-night options; coach or train transfer required" },
-    { question: "How long is the transfer from Luton to central London?", answer: "DART + Thameslink (~40 min to St Pancras, ~£15). Every 10–15 min. No direct rail — shuttle bus (DART) required to reach station; limited airline choice" },
-    { question: "Is Stansted or Luton cheaper overall?", answer: "Stansted typically costs ~£100 total door-to-door. Luton typically costs ~£100. The difference depends on baggage and transfer choices." },
+    { question: "Which is better — Stansted or Luton?", answer: "Luton edges it for most travellers: its transfer is about 10 minutes faster, the total journey about 15 minutes shorter, and total costs are effectively level. Stansted wins if Ryanair's route network is the reason you are flying there." },
+    { question: "How long is the transfer from Stansted to central London?", answer: "The Stansted Express reaches Liverpool Street in about 50 minutes (~£22 walk-up; advance fares from £9.90). Coaches take 75–90 minutes for about £10–15. The last Express leaves around 00:30." },
+    { question: "How long is the transfer from Luton to central London?", answer: "The DART rail link connects the terminal to Luton Airport Parkway in about 5 minutes (£4.90), then Thameslink reaches St Pancras in about 30 minutes — roughly 40 minutes and ~£15 in total. DART is an automated people mover on rails, not a bus." },
+    { question: "Is Stansted or Luton cheaper overall?", answer: "Stansted typically costs around £102 door-to-door in this comparison; Luton around £100. The difference is within £2 — effectively a tie." },
     { question: "Which airline flies from Stansted vs Luton?", answer: "Stansted serves mainly Ryanair (largest UK base). Luton serves mainly Wizz Air and easyJet." },
   ],
   cta: {
@@ -91,7 +110,7 @@ const DATA = {
     "The Verdict is illustrative — use the Comparison Engine with your real flight data.",
     "Transfer times assume off-peak, no major disruption.",
   ],
-  factualReviewDate: "January 2027",
+  factualReviewDate: "April 2027",
 };
 
 function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.atAGlance)[0]) {
@@ -100,7 +119,7 @@ function AtAGlanceRow({ factor, winner, a, b, verdict, isFinal }: (typeof DATA.a
       <span className={styles.glanceFactor}>{factor}</span>
       <span className={styles.glanceVal}>{a}</span>
       <span className={styles.glanceVal}>{b}</span>
-      <span className={`${styles.glanceWinner} ${winner === "Tie — depends on destination" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
+      <span className={`${styles.glanceWinner} ${winner === "Luton" ? styles.glanceWinnerB : styles.glanceWinnerA}`}>{verdict}</span>
     </div>
   );
 }
@@ -163,7 +182,7 @@ export default function StanstedVsLutonPage() {
                 <span className={`${styles.costVal} ${(row.winner as string) === "b" ? styles.costBetter : ""}`}>{row.b}</span>
               </div>
             ))}
-            <div className={styles.costTotal}><span>Estimated total</span><span>~£100</span><span className={styles.costBetter}>~£100</span></div>
+            <div className={styles.costTotal}><span>Estimated total</span><span>~£102</span><span className={styles.costBetter}>~£100</span></div>
           </section>
           <section className={styles.section}>
             <h2 className={styles.sectionTitle}>Door-to-door journey timeline</h2>

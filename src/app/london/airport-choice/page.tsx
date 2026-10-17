@@ -4,9 +4,9 @@ import Footer from "@/components/ui/Footer";
 import { buildHubCompareUrl } from "@/lib/hub-model";
 
 export const metadata: Metadata = {
-  title: "London Airport Choice — Heathrow or Stansted? | Travelvus",
+  title: "London Airport Choice — Heathrow, Gatwick, Stansted, Luton or City? | Travelvus",
   description:
-    "Which London airport should you choose? Heathrow (LHR) or Stansted (STN)? Compare costs, transfer times, and find the best airport for your London destination.",
+    "Heathrow, Gatwick, Stansted, Luton or London City? Compare transfer costs and times, and find the best airport for your London destination.",
   alternates: { canonical: "/london/airport-choice" },
 };
 
@@ -35,7 +35,7 @@ const TRUST_CAPSULES = ["Interactive Decision Engine", "Destination-aware", "Doo
 
 const DATA = {
   title: "Which London airport should you choose?",
-  hero: "London has six airports, but for most travellers flying from Europe, the real choice is between Heathrow and Stansted. Different airlines, different transfers, different total costs. Choosing the right one saves you money and time.",
+  hero: "London has six airports, but most trips from Europe come down to a handful of real choices — and the right one depends on your airline and where you are staying. This page compares Heathrow and Stansted in detail; Gatwick, Luton and London City are covered in our guides. Different airlines, different transfers, different total costs.",
   airports: [
     { code: "LHR", name: "Heathrow", tagline: "London's main international hub — fastest transfer, most routes",
       strengths: ["Direct Tube/Elizabeth Line to central London", "Fastest door-to-door journey times", "Checked bag often included in full-service fares", "24h Piccadilly Line (Night Tube Fri–Sat)"],
@@ -47,17 +47,17 @@ const DATA = {
       bestFor: "Budget travellers, East London, Liverpool Street area" },
   ],
   quickFacts: [
-    { label: "LHR → Central London", value: "€18", note: "Piccadilly/Elizabeth Line, ~50 min" },
-    { label: "STN → Central London", value: "€32", note: "Stansted Express + Tube, ~70 min" },
-    { label: "LHR → Paddington", value: "€29", note: "Heathrow Express direct, ~30 min — fastest" },
-    { label: "STN → Liverpool St", value: "€28", note: "Stansted Express direct, ~55 min — best STN connection" },
+    { label: "LHR → Central London", value: "€18", note: "Elizabeth Line, ~35 min (Piccadilly ~€7, 50–60 min)" },
+    { label: "STN → Central London", value: "€32", note: "Stansted Express + Tube, ~60 min" },
+    { label: "LHR → Paddington", value: "€30", note: "Heathrow Express direct, 15 min — fastest" },
+    { label: "STN → Liverpool St", value: "€26", note: "Stansted Express direct, ~50 min — best STN connection" },
   ],
   scenarios: [
     { id: "lowest-cost", title: "Lowest total cost", description: "With a €58 ticket, Stansted is often cheaper even after adding baggage and transfer costs. But the gap is narrower than it looks.", suggestedWinner: "STN", prefilledParams: buildHubCompareUrl("london", "westminster"), ctaLabel: "Compare cost →" },
-    { id: "fastest-arrival", title: "Fastest city arrival", description: "Heathrow reaches central London in ~50 min with direct Tube. Stansted takes 70+ min with at least one change.", suggestedWinner: "LHR", prefilledParams: buildHubCompareUrl("london", "westminster"), ctaLabel: "See times →" },
+    { id: "fastest-arrival", title: "Fastest city arrival", description: "Heathrow reaches central London in ~35 min on the Elizabeth Line. Stansted takes ~60 min or more with at least one change.", suggestedWinner: "LHR", prefilledParams: buildHubCompareUrl("london", "westminster"), ctaLabel: "See times →" },
     { id: "business-traveller", title: "Business traveller", description: "Heathrow Express reaches Paddington in 15 min. Stansted Express to Liverpool Street takes 50 min but serves the City directly.", suggestedWinner: "LHR", prefilledParams: buildHubCompareUrl("london", "paddington"), ctaLabel: "Paddington →" },
     { id: "family-luggage", title: "Family with luggage", description: "Heathrow's checked bag is often included. Stansted charges €45 — which can negate the cheaper ticket for families.", suggestedWinner: "LHR", prefilledParams: buildHubCompareUrl("london", "westminster"), ctaLabel: "With baggage →" },
-    { id: "east-london", title: "East London destination", description: "Stansted Express arrives at Liverpool Street in 55 min direct. For Shoreditch, Canary Wharf, or Stratford, Stansted can be the smarter choice.", suggestedWinner: "STN", prefilledParams: buildHubCompareUrl("london", "liverpool-street"), ctaLabel: "Liverpool St →" },
+    { id: "east-london", title: "East London destination", description: "Stansted Express arrives at Liverpool Street in ~50 min direct. For Shoreditch, Canary Wharf, or Stratford, Stansted can be the smarter choice.", suggestedWinner: "STN", prefilledParams: buildHubCompareUrl("london", "liverpool-street"), ctaLabel: "Liverpool St →" },
   ],
   ctaHref: buildHubCompareUrl("london", "westminster"),
   ctaLabel: "Compare Heathrow vs Stansted",
@@ -66,8 +66,8 @@ const DATA = {
     { label: "Heathrow vs Gatwick", href: "/guides/heathrow-vs-gatwick" },
     { label: "London Airports overview", href: "/london-airports" },
   ],
-  methodology: "Transfer costs are illustrative EUR values based on TfL/National Rail fares reviewed July 2026. Airfares are illustrative planning estimates. The Decision Engine calculates real trip cost including baggage, seat selection, and airport transfers.",
-  lastReviewed: "July 2026",
+  methodology: "Transfer costs are illustrative EUR values based on TfL/National Rail fares reviewed October 2026. Airfares are illustrative planning estimates. The Decision Engine calculates real trip cost including baggage, seat selection, and airport transfers.",
+  lastReviewed: "October 2026",
 };
 
 export default function LondonAirportChoicePage() {
