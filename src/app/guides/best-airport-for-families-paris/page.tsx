@@ -6,6 +6,7 @@ import { buildHubCompareUrl } from "@/lib/hub-model";
 export const metadata: Metadata = {
   title: "Best Paris Airport for Families — CDG or Orly? | Travelvus",
   description: "Which Paris airport is best for families with children and luggage? Compare CDG vs Orly — direct trains, step-free access, baggage costs, and transfer ease.",
+  alternates: { canonical: "/guides/best-airport-for-families-paris" },
 };
 
 const guide: GuideConfig = {

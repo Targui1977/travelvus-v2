@@ -4,6 +4,7 @@ import TrustPage from "@/components/ui/TrustPage";
 export const metadata: Metadata = {
   title: "How Travelvus Works — Airport Comparison Methodology",
   description: "How Travelvus evaluates and compares airports. Our methodology for real-cost comparison, transfer profiles, and data-driven recommendations.",
+  alternates: { canonical: "/methodology" },
 };
 
 export default function Page() {

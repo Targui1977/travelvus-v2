@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Paris Airport Choice — CDG or Orly? | Travelvus",
   description:
     "Which Paris airport should you choose? Charles de Gaulle (CDG) or Orly (ORY)? Compare costs, transfer times, and find the best airport for your Paris destination.",
+  alternates: { canonical: "/paris/airport-choice" },
 };
 
 /* ── Design System — Hub Standard (FROZEN) ─────────────────── */

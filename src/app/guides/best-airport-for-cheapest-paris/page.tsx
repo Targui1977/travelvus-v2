@@ -6,6 +6,7 @@ import { buildHubCompareUrl } from "@/lib/hub-model";
 export const metadata: Metadata = {
   title: "Cheapest Paris Airport — CDG or Orly? | Travelvus",
   description: "Which Paris airport is cheapest? Compare CDG vs Orly — real trip cost including baggage, seat selection, and airport transfers.",
+  alternates: { canonical: "/guides/best-airport-for-cheapest-paris" },
 };
 
 const guide: GuideConfig = {

@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "London Airport Choice — Heathrow or Stansted? | Travelvus",
   description:
     "Which London airport should you choose? Heathrow (LHR) or Stansted (STN)? Compare costs, transfer times, and find the best airport for your London destination.",
+  alternates: { canonical: "/london/airport-choice" },
 };
 
 /* ── Design System — Hub Standard (FROZEN) ─────────────────── */

@@ -66,7 +66,7 @@ export default function TrustPage({
         </section>
       </main>
       <Footer columns={[
-        { title: "Trust", links: [{ label: "Methodology", href: "/methodology" }, { label: "Editorial Standards", href: "/editorial-standards" }, { label: "Limitations", href: "/limitations" }] },
+        { title: "Trust", links: [{ label: "Methodology", href: "/methodology" }, { label: "Editorial Standards", href: "/editorial-standards" }, { label: "Limitations", href: "/limits" }] },
         { title: "Product", links: [{ label: "Compare", href: "/" }, { label: "Arrival Planner", href: "/planner" }, { label: "About", href: "/about" }, { label: "Contact", href: "/contact" }] },
       ]} />
     </>

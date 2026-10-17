@@ -647,7 +647,6 @@ const NY_GUIDES: GuideConfig[] = [
     ctaLabel: "Compare JFK vs Newark for Lower Manhattan →", ctaHref: buildHubCompareUrl("new-york", "lower-manhattan"),
     relatedGuides: [
       { label: "Best Airport for Midtown", href: "/guides/best-airport-for-midtown" },
-      { label: "Best Airport for Financial District", href: "/guides/best-airport-for-financial-district" },
       { label: "JFK vs Newark", href: "/guides/jfk-vs-newark" },
     ], lastReviewed: "July 2026",
   },

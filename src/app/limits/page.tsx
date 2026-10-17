@@ -4,6 +4,7 @@ import TrustPage from "@/components/ui/TrustPage";
 export const metadata: Metadata = {
   title: "Limitations — What Travelvus Cannot Do | Travelvus",
   description: "Honest limitations of the Travelvus Decision Engine. Transfer estimates, illustrative fares, and what our comparisons can and cannot tell you.",
+  alternates: { canonical: "/limits" },
 };
 
 export default function Page() {

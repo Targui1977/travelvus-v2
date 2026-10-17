@@ -4,6 +4,7 @@ import TrustPage from "@/components/ui/TrustPage";
 export const metadata: Metadata = {
   title: "Editorial Standards — How We Maintain Accuracy | Travelvus",
   description: "Travelvus editorial standards: independence, accuracy, review process, corrections policy, and how we maintain trustworthy airport comparisons.",
+  alternates: { canonical: "/editorial-standards" },
 };
 
 export default function Page() {

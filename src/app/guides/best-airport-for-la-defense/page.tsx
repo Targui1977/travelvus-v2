@@ -6,6 +6,7 @@ import { buildHubCompareUrl } from "@/lib/hub-model";
 export const metadata: Metadata = {
   title: "Best Airport for La Défense — CDG or Orly? | Travelvus",
   description: "Which Paris airport is best for La Défense business district? Compare Charles de Gaulle (CDG) vs Orly (ORY) — transfer costs, times, and real trip cost.",
+  alternates: { canonical: "/guides/best-airport-for-la-defense" },
 };
 
 const guide: GuideConfig = {

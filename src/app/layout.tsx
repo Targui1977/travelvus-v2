@@ -3,6 +3,7 @@ import { geistSans, instrumentSerif, ibmPlexMono } from "@/lib/fonts";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.travelvus.com"),
   title: "Travelvus — Which really wins?",
   description:
     "A second opinion before you book. You found two flights. Travelvus compares the full trip and tells you which one really wins.",

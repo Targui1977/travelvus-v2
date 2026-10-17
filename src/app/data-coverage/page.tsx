@@ -9,6 +9,7 @@ import { getKnowledgeByCity } from "@/data/knowledge-registry";
 export const metadata: Metadata = {
   title: "Data Coverage — Supported Cities & Airports | Travelvus",
   description: "Travelvus currently supports London, Paris, and New York airports. See our full data coverage: airports, destinations, guides, and knowledge articles.",
+  alternates: { canonical: "/data-coverage" },
 };
 
 export default function Page() {

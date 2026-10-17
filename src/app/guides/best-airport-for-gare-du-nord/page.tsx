@@ -6,6 +6,7 @@ import { buildHubCompareUrl } from "@/lib/hub-model";
 export const metadata: Metadata = {
   title: "Best Airport for Gare du Nord — CDG or Orly? | Travelvus",
   description: "Which Paris airport is best for Gare du Nord? Compare Charles de Gaulle (CDG) vs Orly (ORY) — CDG has a direct RER B connection in 35 min.",
+  alternates: { canonical: "/guides/best-airport-for-gare-du-nord" },
 };
 
 const guide: GuideConfig = {

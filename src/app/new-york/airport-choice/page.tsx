@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: "New York Airport Choice — JFK or Newark? | Travelvus",
   description:
     "Which New York airport should you choose? JFK or Newark (EWR)? Compare costs, transfer times, and find the best airport for your New York destination.",
+  alternates: { canonical: "/new-york/airport-choice" },
 };
 
 const DS = {
