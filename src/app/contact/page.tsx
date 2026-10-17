@@ -45,7 +45,7 @@ export default function ContactPage() {
           Please contact us by email at:
         </p>
         <p style={{ fontFamily: "var(--mono)", fontWeight: 500, fontSize: 16, lineHeight: 1.4, color: "var(--ink)", margin: "0 0 24px" }}>
-          travelvus@outlook.com
+          contact@travelvus.com
         </p>
         <p style={{ fontFamily: "var(--sans)", fontSize: 13, lineHeight: 1.5, color: "var(--muted)", margin: "0 0 24px" }}>
           We read every message. We aim to respond within a few days. We do not accept guest posts, sponsored content, or link exchanges.

@@ -1,0 +1,136 @@
+url_path,category,city,source,in_sitemap,robots_directive,canonical_behavior,intended_indexable,internal_inlinks_count,notes
+/,home,multi,static,yes,"index,follow (default)",self (relative),yes,117,sitemap priority 1.0; canonical self (/)
+/aaa-travel,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,1,legacy article; in sitemap
+/about,trust,none,static,yes,"index,follow (default)",self (relative),yes,42,sitemap; canonical self
+/bart-trip-planner,legacy,none,static,yes,"index,follow (default)",self (relative),yes,2,legacy article; in sitemap
+/compare/amsterdam-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/barcelona-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,2,compare route; NOT in sitemap
+/compare/berlin-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/dublin-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/frankfurt-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,3,compare route; NOT in sitemap
+/compare/gatwick-vs-london-city,compare,london,static,no,"index,follow (default)",self (relative),yes,0,compare route; NOT in sitemap; ORPHAN: 0 literal inlinks
+/compare/gatwick-vs-luton,compare,london,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/gatwick-vs-stansted,compare,london,static,yes,"index,follow (default)",self (relative),yes,7,compare route; in sitemap via legacy list
+/compare/heathrow-vs-gatwick,compare,london,static,yes,"index,follow (default)",self (relative),yes,14,compare route; in sitemap via legacy list
+/compare/heathrow-vs-london-city,compare,london,static,no,"index,follow (default)",self (relative),yes,3,compare route; NOT in sitemap
+/compare/heathrow-vs-luton,compare,london,static,no,"index,follow (default)",self (relative),yes,0,compare route; NOT in sitemap; ORPHAN: 0 literal inlinks
+/compare/heathrow-vs-stansted,compare,london,static,yes,"index,follow (default)",self (relative),yes,11,compare route; in sitemap via legacy list
+/compare/lisbon-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/luton-vs-london-city,compare,london,static,no,"index,follow (default)",self (relative),yes,0,compare route; NOT in sitemap; ORPHAN: 0 literal inlinks
+/compare/madrid-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/milan-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/paris-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,3,compare route; NOT in sitemap
+/compare/rome-to-london,compare,multi,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/stansted-vs-london-city,compare,london,static,no,"index,follow (default)",self (relative),yes,1,compare route; NOT in sitemap
+/compare/stansted-vs-luton,compare,london,static,no,"index,follow (default)",self (relative),yes,2,compare route; NOT in sitemap
+/contact,trust,none,static,yes,"index,follow (default)",self (relative),yes,36,sitemap; canonical self
+/costco-vacation,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,2,legacy article; in sitemap
+/coverage,internal-tool,none,static,no,"noindex, nofollow",none,no,1,"internal; noindex,nofollow + robots.ts disallow; not in sitemap (correct)"
+/data-coverage,trust,none,static,yes,"index,follow (default)",none,yes,0,sitemap trust page; NO canonical; ORPHAN - 0 inlinks anywhere in src; ORPHAN: 0 literal inlinks
+/decision-master,internal-tool,none,static,no,"noindex, nofollow",none,no,0,"internal; noindex,nofollow; not in sitemap; 0 inlinks; ORPHAN: 0 literal inlinks"
+/defense-travel-system,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,0,legacy article; in sitemap; ORPHAN: 0 literal inlinks
+/editorial-standards,trust,none,static,yes,"index,follow (default)",none,yes,1,sitemap trust page; NO canonical; only 1 inlink
+/expedia-taap,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,1,legacy article; in sitemap
+/google-flight-matrix,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,1,legacy article; in sitemap
+/guides/best-airport-for-airport-hotel-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,2,registry guide; in sitemap
+/guides/best-airport-for-backpackers-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-backpackers-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-backpackers-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-bercy,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-business-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,2,registry guide; in sitemap
+/guides/best-airport-for-business-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,2,registry guide; in sitemap
+/guides/best-airport-for-business-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry guide; in sitemap
+/guides/best-airport-for-canary-wharf,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry guide; in sitemap
+/guides/best-airport-for-carry-on-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-carry-on-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-central-london,guide,london,static,no,"index,follow (default)",self (relative),yes,2,static guide; NOT in sitemap
+/guides/best-airport-for-central-paris,guide,paris,static,no,"index,follow (default)",self (relative),yes,7,static guide; NOT in sitemap; duplicate topic of registry /guides/best-airport-for-central-paris-guide
+/guides/best-airport-for-central-paris-guide,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,6,registry guide; in sitemap
+/guides/best-airport-for-cheapest-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry guide; in sitemap
+/guides/best-airport-for-cheapest-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-cheapest-paris,guide,paris,static,no,"index,follow (default)",none,yes,6,static guide; NOT in sitemap; NO canonical
+/guides/best-airport-for-downtown-brooklyn,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,7,registry guide; in sitemap
+/guides/best-airport-for-early-departure-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry guide; in sitemap
+/guides/best-airport-for-early-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-early-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-east-london,guide,london,static,no,"index,follow (default)",self (relative),yes,0,static guide; NOT in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-families-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry guide; in sitemap
+/guides/best-airport-for-families-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-families-paris,guide,paris,static,no,"index,follow (default)",none,yes,3,static guide; NOT in sitemap; NO canonical
+/guides/best-airport-for-fastest-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-fastest-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-first-time-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-first-time-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-gare-du-nord,guide,paris,static,no,"index,follow (default)",none,yes,6,static guide; NOT in sitemap; NO canonical; duplicate topic of registry /guides/best-airport-for-gare-du-nord-guide
+/guides/best-airport-for-gare-du-nord-guide,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-kings-cross,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,2,registry guide; in sitemap
+/guides/best-airport-for-la-defense,guide,paris,static,no,"index,follow (default)",none,yes,3,static guide; NOT in sitemap; NO canonical; duplicate topic of registry /guides/best-airport-for-la-defense-guide
+/guides/best-airport-for-la-defense-guide,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-late-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-late-night-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry guide; in sitemap
+/guides/best-airport-for-late-ny,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-lic,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,2,registry guide; in sitemap
+/guides/best-airport-for-lower-manhattan,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,1,registry guide; in sitemap
+/guides/best-airport-for-luxury-london,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-luxury-paris,guide,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry guide; in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-manhattan,guide,new-york,static,no,"index,follow (default)",self (relative),yes,2,static guide; NOT in sitemap
+/guides/best-airport-for-midtown,guide,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,17,registry guide; in sitemap
+/guides/best-airport-for-montparnasse,guide,paris,static,no,"index,follow (default)",none,yes,4,static guide; NOT in sitemap; NO canonical
+/guides/best-airport-for-north-london,guide,london,static,no,"index,follow (default)",self (relative),yes,0,static guide; NOT in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-paddington,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,5,registry guide; in sitemap
+/guides/best-airport-for-south-london,guide,london,static,no,"index,follow (default)",self (relative),yes,0,static guide; NOT in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-west-london,guide,london,static,no,"index,follow (default)",self (relative),yes,0,static guide; NOT in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-airport-for-westminster,guide,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,5,registry guide; in sitemap
+/guides/best-london-airport-for-budget-travellers,guide,london,static,no,"index,follow (default)",self (relative),yes,0,static guide; NOT in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-london-airport-for-business-travel,guide,london,static,no,"index,follow (default)",self (relative),yes,0,static guide; NOT in sitemap; ORPHAN: 0 literal inlinks
+/guides/best-london-airport-for-families,guide,london,static,no,"index,follow (default)",self (relative),yes,0,static guide; NOT in sitemap; ORPHAN: 0 literal inlinks
+/guides/cdg-vs-orly,guide,paris,static,no,"index,follow (default)",self (relative),yes,20,static guide; NOT in sitemap
+/guides/cheapest-london-airport,guide,london,static,no,"index,follow (default)",self (relative),yes,2,static guide; NOT in sitemap
+/guides/fastest-london-airport,guide,london,static,no,"index,follow (default)",self (relative),yes,7,static guide; NOT in sitemap
+/guides/heathrow-vs-gatwick,guide,london,static,no,"index,follow (default)",self (relative),yes,10,"static guide; NOT in sitemap; duplicate topic of /compare/heathrow-vs-gatwick (compare version sitemapped, guide not)"
+/guides/jfk-vs-newark,guide,new-york,static,no,"index,follow (default)",self (relative),yes,8,static guide; NOT in sitemap
+/guides/real-cost-of-a-flight,guide,multi,static,no,"index,follow (default)",self (relative),yes,29,static guide; NOT in sitemap
+/guides/total-travel-time-comparison,guide,multi,static,no,"index,follow (default)",self (relative),yes,28,static guide; NOT in sitemap
+/irctc-train-ticket-booking,legacy,none,static,yes,"index,follow (default)",self (relative),yes,1,legacy article; in sitemap
+/kayak-flights,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,3,legacy article; in sitemap
+/knowledge/airtrain-jfk-guide,knowledge,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry knowledge; in sitemap
+/knowledge/airtrain-newark-guide,knowledge,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry knowledge; in sitemap
+/knowledge/cdg-terminals-guide,knowledge,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry knowledge; in sitemap
+/knowledge/cdg-to-central-paris,knowledge,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry knowledge; in sitemap
+/knowledge/heathrow-arrival-guide,knowledge,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry knowledge; in sitemap; ORPHAN: 0 literal inlinks
+/knowledge/heathrow-express-guide,knowledge,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry knowledge; in sitemap
+/knowledge/jfk-terminals-guide,knowledge,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry knowledge; in sitemap; ORPHAN: 0 literal inlinks
+/knowledge/orly-to-central-paris,knowledge,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry knowledge; in sitemap
+/knowledge/sleeping-at-cdg,knowledge,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,2,registry knowledge; in sitemap
+/knowledge/sleeping-at-heathrow,knowledge,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry knowledge; in sitemap
+/knowledge/sleeping-at-jfk,knowledge,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,4,registry knowledge; in sitemap
+/knowledge/sleeping-at-newark,knowledge,new-york,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry knowledge; in sitemap
+/knowledge/sleeping-at-orly,knowledge,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,2,registry knowledge; in sitemap
+/knowledge/sleeping-at-stansted,knowledge,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry knowledge; in sitemap
+/knowledge/stansted-express-guide,knowledge,london,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,3,registry knowledge; in sitemap
+/knowledge/when-to-arrive-at-cdg,knowledge,paris,dynamic-registry,yes,"index,follow (default)",self (absolute),yes,0,registry knowledge; in sitemap; ORPHAN: 0 literal inlinks
+/limits,trust,none,static,no,"index,follow (default)",none,yes,0,NOT in sitemap; NO canonical; 0 inlinks; sitemap instead publishes nonexistent /limitations; ORPHAN: 0 literal inlinks
+/london-airport-decision-center,hub,london,static,no,"index,follow (default)",self (relative),yes,17,NOT in sitemap despite unique content; links 3 compare + 2 static guides
+/london-airports,hub,london,static,yes,"index,follow (default)",self (relative),yes,78,sitemap city hub; links 10 city-compare + 3 comparisons + break-even question
+/london/airport-choice,hub,london,static,yes,"index,follow (default)",none,yes,6,sitemap city hub; NO canonical; links 2 static guides
+/methodology,trust,none,static,yes,"index,follow (default)",none,yes,61,sitemap trust page; NO canonical
+/mta-trip-planner,legacy,new-york,static,yes,"index,follow (default)",self (relative),yes,2,legacy article; in sitemap
+/new-york-airports,hub,new-york,static,yes,"index,follow (default)",self (relative),yes,19,sitemap city hub; DEAD END: outbound links only /#compare + footer (no NY guides/choice hub)
+/new-york/airport-choice,hub,new-york,static,yes,"index,follow (default)",none,yes,6,sitemap city hub; NO canonical; links 2 static guides
+/paris-airports,hub,paris,static,yes,"index,follow (default)",self (relative),yes,15,sitemap city hub; only content outlink is /guides/cdg-vs-orly
+/paris/airport-choice,hub,paris,static,yes,"index,follow (default)",none,yes,8,sitemap city hub; NO canonical; links 2 static guides
+/planner,tool,multi,static,yes,"index,follow (default)",none (no metadata),yes,2,sitemap priority 0.9; NO metadata export (client component) -> inherits root layout title
+/points-guy,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,0,legacy article; in sitemap; ORPHAN: 0 literal inlinks
+/questions/london-airport-break-even,compare,london,static,yes,"index,follow (default)",self (relative),yes,7,compare route; in sitemap via legacy list
+/result,internal-tool,none,static,no,"noindex, follow",none,no,0,"internal; noindex,follow + robots.ts disallow; not in sitemap (correct); ORPHAN: 0 literal inlinks"
+/top-rated-tourists-attractions-in-rome,legacy,none,static,yes,"index,follow (default)",self (relative),yes,1,legacy article; in sitemap
+/trimet-trip-planner,legacy,none,static,yes,"index,follow (default)",self (relative),yes,2,legacy article; in sitemap
+/tsa-lock,legacy,none,static,yes,"index,follow (default)",self (relative),yes,2,legacy article; in sitemap
+/tsa-precheck-cost,legacy,none,static,yes,"index,follow (default)",self (relative),yes,3,legacy article; in sitemap
+/ultimate-guide-to-interrailing-explore-europe-by-train-with-ease,legacy,multi,static,no,"index,follow (default)",self (relative),yes,1,legacy article; NOT in sitemap
+/unlock-global-travel-efficiency-with-global-entry-your-ultimate-guide,legacy,multi,static,no,"index,follow (default)",self (relative),yes,4,legacy article; NOT in sitemap
+/unlock-the-convenience-of-oyster-card-your-ultimate-guide-to-londons-transport-system,legacy,london,static,no,"index,follow (default)",self (relative),yes,1,legacy article; NOT in sitemap
+/visual-system-preview,internal-tool,none,static,no,"noindex, nofollow",none,no,0,"internal; noindex,nofollow; not in sitemap; 0 inlinks; ORPHAN: 0 literal inlinks"
+/vrl-bus-booking,legacy,none,static,yes,"index,follow (default)",self (relative),yes,1,legacy article; in sitemap
+/wego-flight,legacy,multi,static,yes,"index,follow (default)",self (relative),yes,38,legacy article; in sitemap
+/limitations,trust,none,static,yes,n/a (no route),n/a (no route),no,1,GHOST: no page.tsx; sitemap.ts line 39 + TrustPage.tsx line 69 -> 404; real route is /limits
