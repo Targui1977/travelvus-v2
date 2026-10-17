@@ -42,6 +42,15 @@
 
 /* ---- Sticky TOC ---- */
 .tocRail { display: grid; grid-template-columns: 220px 1fr; gap: 48px; align-items: start; max-width: 1120px; margin: 0 auto; padding: 16px 48px 0; }
+
+/* Pages without a TOC rail (no .tocSticky anywhere inside): give the
+   article the same 756px content measure as the two-column guides
+   instead of dropping it into the empty 220px rail track. Desktop only —
+   the responsive rules below already collapse .tocRail below 1024px.
+   Descendant selector: some pages wrap .tocSticky in an extra div. */
+@media (min-width: 1025px) {
+  .tocRail:not(:has(.tocSticky)) { grid-template-columns: 1fr; max-width: 852px; }
+}
 .tocSticky { position: sticky; top: 28px; }
 .tocSticky ul { list-style: none; margin: 0; padding: 0; border-left: 1.5px solid var(--line); }
 .tocSticky li { padding: 7px 0 7px 18px; }
@@ -191,7 +200,12 @@
   .guideHeroSub { font-size: 15px; }
   .decisionSummary { grid-template-columns: 1fr; padding: 24px; max-width: 100%; }
   .tocRail { padding: 0 20px; max-width: 100%; }
-  .guideContent { max-width: 100%; }
+  .guideContent { max-width: 100%; min-width: 0; }
+  /* Wide comparison tables scroll inside the column instead of
+     forcing the grid track wider than the viewport (mobile overflow). */
+  .compTable { display: block; overflow-x: auto; }
+  /* Anticipation-bridge label wraps instead of pushing the page wide. */
+  .bridgeText { white-space: normal; }
   .verdict { padding: 24px 22px 22px; }
   .verdictHeadline { font-size: 24px; }
   .verdictStats { grid-template-columns: 1fr 1fr 1fr; gap: 12px; }

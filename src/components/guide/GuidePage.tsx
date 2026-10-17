@@ -40,7 +40,9 @@ export default function GuidePage({ guide }: { guide: GuideConfig }) {
           </nav>
         </div>
       </header>
-      <style>{`.hub-nav-link:hover { color: var(--copper) !important; background: rgba(184,92,56,.06) !important; }`}</style>
+      <style>{`.hub-nav-link:hover { color: var(--copper) !important; background: rgba(184,92,56,.06) !important; }
+.related-guides-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+@media (max-width: 720px) { .related-guides-grid { grid-template-columns: 1fr; } }`}</style>
 
       <main>
         {/* Hero */}
@@ -108,7 +110,7 @@ export default function GuidePage({ guide }: { guide: GuideConfig }) {
         <section style={{ padding: "48px 0" }}>
           <div style={DS.container}>
             <h2 style={{ ...DS.h2, fontSize: 22, marginBottom: 16 }}>Related guides</h2>
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 10 }}>
+            <div className="related-guides-grid">
               {guide.relatedGuides.map((g, i) => (
                 <Link key={i} href={g.href} style={{ ...DS.card, textDecoration: "none", display: "block", padding: "18px 20px" }}>
                   <div style={{ fontFamily: "var(--serif)", fontSize: 16, color: "var(--ink)", marginBottom: 4, lineHeight: 1.25 }}>{g.label}</div>
