@@ -67,19 +67,34 @@ const OPERATORS = [
   },
 ];
 
-const SOURCES = [
-  { label: "Sixt Croatia — cross-border terms (local rental information, HR)", url: "https://www.sixt.com/php/terms/view?liso=HR&rtar=000&view=IL&tlang=en_US&language=en_US" },
-  { label: "Sixt Croatia — General Rental Terms (GTC PDF)", url: "https://www.sixt.hr/shared/t-c/sixt_HR_en.pdf" },
-  { label: "Hertz Croatia — General Terms & Conditions", url: "https://www.hertz.hr/en/car-rental/support-center/general-terms-conditions/" },
-  { label: "Enterprise — Dubrovnik Airport location terms", url: "https://www.enterprise.co.uk/en/car-hire-locations/hr/dubrovnik-airport-jhag.html" },
-  { label: "Nova Rent a Car — FAQ (cross-border terms)", url: "https://novarentacar.hr/index.php/faq?lang=en" },
-  { label: "Council of Bureaux — Green Card System (Multilateral Agreement)", url: "https://www.cobx.org/article/4130/green-card-system-final" },
-  { label: "European Commission — Implementing Decision (EU) 2020/1358 (Bosnia and Herzegovina)", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32020D1358" },
-  { label: "European Commission — Implementing Decision (EU) 2021/1145 (Montenegro)", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021D1145" },
-  { label: "Croatian Insurance Bureau (HUO) — Bosnia and Herzegovina", url: "https://huo.hr/hr/vijesti/pristup-bosne-i-hercegovine-multilateralnom-sporazumu-o-jamstvu-temeljem-registracijske-plocice-712" },
-  { label: "Croatian Insurance Bureau (HUO) — Montenegro", url: "https://huo.hr/hr/vijesti/pristup-crne-gore-multilateralnom-sporazumu-o-jamstvu-temeljem-registracijske-plocice-753" },
-  { label: "Green Card Bureau of Bosnia and Herzegovina (BZKBiH) — foreign vehicles", url: "https://www.bzkbih.ba/en/informacije-za-vozace-stranih-vozila-koja-ulaze-u-bosnu-i-hercegovinu" },
-  { label: "European Commission — Entry/Exit System (EES)", url: "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/smart-borders/entry-exit-system_en" },
+const SOURCE_GROUPS = [
+  {
+    title: "Rental operator policies",
+    items: [
+      { label: "Sixt Croatia — cross-border terms (local rental information, HR)", url: "https://www.sixt.com/php/terms/view?liso=HR&rtar=000&view=IL&tlang=en_US&language=en_US" },
+      { label: "Sixt Croatia — General Rental Terms (GTC PDF)", url: "https://www.sixt.hr/shared/t-c/sixt_HR_en.pdf" },
+      { label: "Hertz Croatia — General Terms & Conditions", url: "https://www.hertz.hr/en/car-rental/support-center/general-terms-conditions/" },
+      { label: "Enterprise — Dubrovnik Airport location terms", url: "https://www.enterprise.co.uk/en/car-hire-locations/hr/dubrovnik-airport-jhag.html" },
+      { label: "Nova Rent a Car — FAQ (cross-border terms)", url: "https://novarentacar.hr/index.php/faq?lang=en" },
+    ],
+  },
+  {
+    title: "Insurance and legal requirements",
+    items: [
+      { label: "Council of Bureaux — Green Card System (Multilateral Agreement)", url: "https://www.cobx.org/article/4130/green-card-system-final" },
+      { label: "European Commission — Implementing Decision (EU) 2020/1358 (Bosnia and Herzegovina)", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32020D1358" },
+      { label: "European Commission — Implementing Decision (EU) 2021/1145 (Montenegro)", url: "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32021D1145" },
+      { label: "Croatian Insurance Bureau (HUO) — Bosnia and Herzegovina", url: "https://huo.hr/hr/vijesti/pristup-bosne-i-hercegovine-multilateralnom-sporazumu-o-jamstvu-temeljem-registracijske-plocice-712" },
+      { label: "Croatian Insurance Bureau (HUO) — Montenegro", url: "https://huo.hr/hr/vijesti/pristup-crne-gore-multilateralnom-sporazumu-o-jamstvu-temeljem-registracijske-plocice-753" },
+      { label: "Green Card Bureau of Bosnia and Herzegovina (BZKBiH) — foreign vehicles", url: "https://www.bzkbih.ba/en/informacije-za-vozace-stranih-vozila-koja-ulaze-u-bosnu-i-hercegovinu" },
+    ],
+  },
+  {
+    title: "Border and travel administration",
+    items: [
+      { label: "European Commission — Entry/Exit System (EES)", url: "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/smart-borders/entry-exit-system_en" },
+    ],
+  },
 ];
 
 const ARTICLE_JSON_LD = {
@@ -105,6 +120,18 @@ export default function DubrovnikCrossBorderFeesPage() {
 
         {/* ═══ HERO — CSS-only editorial (no licensed image asset available) ═══ */}
         <section className={styles.hero}>
+          <svg className={styles.heroRoute} width="520" height="300" viewBox="0 0 520 300" fill="none" aria-hidden="true">
+            <path d="M40 260 C 130 200, 150 120, 230 90" stroke="rgba(214,232,229,0.5)" strokeWidth="1.5" strokeDasharray="5 6" />
+            <path d="M230 90 C 300 66, 380 70, 470 30" stroke="rgba(214,232,229,0.5)" strokeWidth="1.5" strokeDasharray="5 6" />
+            <path d="M230 90 C 320 130, 420 200, 480 250" stroke="rgba(214,232,229,0.5)" strokeWidth="1.5" strokeDasharray="5 6" />
+            <circle cx="40" cy="260" r="7" fill="#D17A52" />
+            <circle cx="230" cy="90" r="5" fill="rgba(214,232,229,0.85)" />
+            <circle cx="470" cy="30" r="5" fill="rgba(214,232,229,0.85)" />
+            <circle cx="480" cy="250" r="5" fill="rgba(214,232,229,0.85)" />
+            <text x="12" y="286" fill="rgba(214,232,229,0.75)" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="1.5">DBV</text>
+            <text x="478" y="20" fill="rgba(214,232,229,0.75)" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="1.5">MOSTAR</text>
+            <text x="474" y="278" fill="rgba(214,232,229,0.75)" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="1.5">KOTOR</text>
+          </svg>
           <div className={styles.heroInner}>
             <div className={styles.heroRule} />
             <span className={styles.heroEyebrow}>Car Rental Fine Print · Croatia</span>
@@ -184,6 +211,9 @@ export default function DubrovnikCrossBorderFeesPage() {
           </p>
         </div>
         <div className={styles.wide}>
+          <div className={styles.unitsNote}>
+            <span>The figures below are not directly comparable: Sixt charges per day, while Hertz, Enterprise and Nova charge per rental. Read the unit before comparing prices.</span>
+          </div>
           <div className={styles.operatorGrid}>
             {OPERATORS.map((op) => (
               <div key={op.name} className={styles.operatorCard}>
@@ -413,11 +443,18 @@ export default function DubrovnikCrossBorderFeesPage() {
               operator&rsquo;s page before booking.
             </p>
             <ul className={styles.sourceList}>
-              {SOURCES.map((s, i) => (
-                <li key={i}>
-                  <span className={styles.sourceIndex}>{String(i + 1).padStart(2, "0")}</span>
-                  <span className={styles.sourceLabel}>{s.label}</span>
-                  <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url.replace("https://", "")}</a>
+              {SOURCE_GROUPS.map((group) => (
+                <li key={group.title} className={styles.sourceGroup}>
+                  <span className={styles.sourceGroupTitle}>{group.title}</span>
+                  <ul className={styles.sourceList}>
+                    {group.items.map((s, i) => (
+                      <li key={i}>
+                        <span className={styles.sourceIndex}>{String(i + 1).padStart(2, "0")}</span>
+                        <span className={styles.sourceLabel}>{s.label}</span>
+                        <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url.replace("https://", "")}</a>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>

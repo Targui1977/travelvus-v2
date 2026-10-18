@@ -46,7 +46,7 @@
   font-family: var(--serif);
 }
 
-/* ── HERO (CSS-only editorial) ───────────────────────────────── */
+/* ── HERO (CSS-only editorial + route geometry) ──────────────── */
 .hero {
   background:
     radial-gradient(1100px 480px at 85% -20%, rgba(209, 122, 82, 0.14), transparent 60%),
@@ -54,11 +54,30 @@
     var(--dv-petrol);
   color: var(--dv-paper);
   padding: 72px 48px 64px;
+  position: relative;
+  overflow: hidden;
 }
 
 .heroInner {
   max-width: 900px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.heroRoute {
+  position: absolute;
+  right: -40px;
+  bottom: -30px;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+@media (max-width: 900px) {
+  .heroRoute {
+    opacity: 0.22;
+    right: -120px;
+  }
 }
 
 .heroRule {
@@ -325,12 +344,14 @@
 
 .operatorFee {
   font-family: var(--serif);
-  font-size: 30px;
-  line-height: 1.1;
+  font-size: 36px;
+  line-height: 1.05;
   color: var(--dv-ink);
   display: flex;
   align-items: baseline;
   gap: 10px;
+  border-left: 3px solid var(--dv-terracotta);
+  padding-left: 14px;
 }
 
 .operatorFeeUnit {
@@ -345,57 +366,94 @@
 .operatorRows {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 9px;
   border-top: 1px solid var(--dv-line);
-  padding-top: 14px;
+  padding-top: 15px;
 }
 
 .operatorRow {
   display: flex;
   justify-content: space-between;
   gap: 16px;
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.5;
 }
 
 .operatorRowKey {
   font-family: var(--mono);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 10.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--dv-muted);
+  color: #4E636B;
   padding-top: 3px;
-  min-width: 88px;
+  min-width: 92px;
 }
 
 .operatorRowValue {
   text-align: right;
-  color: var(--dv-body);
-  font-weight: 500;
-}
-
-.operatorRowValue strong {
   color: var(--dv-ink);
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .operatorSource {
   margin-top: auto;
   font-family: var(--mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.02em;
+  background: var(--dv-sage);
+  border-radius: 10px;
+  padding: 10px 14px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  align-self: flex-start;
+}
+
+.operatorSource::before {
+  content: "↗";
+  color: var(--dv-terracotta);
+  font-weight: 600;
 }
 
 .operatorSource a {
-  color: var(--dv-petrol-soft);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: var(--dv-sage-strong);
+  color: var(--dv-petrol);
+  text-decoration: none;
 }
 
 .operatorSource a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.unitsNote {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--dv-body);
+  background: var(--dv-paper-deep);
+  border: 1px solid var(--dv-line);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 0 0 20px;
+}
+
+.unitsNote::before {
+  content: "!";
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 13px;
   color: var(--dv-terracotta);
+  border: 1.5px solid var(--dv-terracotta);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
 }
 
 /* ── WIDE comparison container (breaks out of prose measure) ── */
@@ -605,7 +663,26 @@
   padding: 0;
 }
 
-.sourceList li {
+.sourceGroup {
+  display: block;
+  border-bottom: none;
+  padding: 0;
+  margin: 18px 0 6px;
+}
+
+.sourceGroupTitle {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dv-terracotta);
+  display: block;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--dv-line);
+}
+
+.sourceList > li {
   display: flex;
   gap: 16px;
   align-items: baseline;
@@ -613,7 +690,7 @@
   border-bottom: 1px solid var(--dv-line);
 }
 
-.sourceList li:last-child {
+.sourceList > li:last-child {
   border-bottom: none;
 }
 
