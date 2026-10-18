@@ -58,6 +58,7 @@ export const STATIC_INDEXABLE_ROUTES: string[] = [
   "/guides/jfk-vs-newark",
   "/guides/real-cost-of-a-flight",
   "/guides/total-travel-time-comparison",
+  "/guides/dubrovnik-car-rental-cross-border-fees",
   // Compare pages
   "/compare/heathrow-vs-stansted",
   "/compare/heathrow-vs-gatwick",

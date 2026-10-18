@@ -305,7 +305,14 @@ export default function TotalTravelTimeGuide() {
               Connections and terminal changes. Baggage collection. The final
               transfer to your real destination. A flight that spends 45 fewer
               minutes in the air can still produce a journey that takes two
-              hours longer door to door.{" "}
+              hours longer door to door. The same logic applies on four wheels:
+              border queues and rental paperwork are waiting stages too — and an
+              undeclared border crossing can void a rental&rsquo;s insurance entirely
+              (see our{" "}
+              <Link href="/guides/dubrovnik-car-rental-cross-border-fees" style={{ color: "var(--copper)" }}>
+                verified Dubrovnik car rental cross-border fees
+              </Link>
+              ).{" "}
               <strong>
                 Do not ask which flight is shorter. Ask which complete journey
                 gets you there sooner.
