@@ -1,0 +1,319 @@
+cluster,query,impressions,clicks,ctr,position
+legacy-ita,ita matrix,92,0,0%,20.35
+other,matrix flights,47,0,0%,30.81
+legacy-ita,flight matrix,37,0,0%,20.73
+other,ita software matrix,30,0,0%,39.6
+other,matrix ita software,27,0,0%,44.81
+legacy-ita,google flight matrix,24,0,0%,36.54
+legacy-ita,google ita matrix,21,0,0%,23.05
+legacy-ita,ita flight matrix,18,0,0%,29.78
+legacy-ita,google flights matrix,18,0,0%,47.56
+transfer-cost,airfare matrix,18,0,0%,57.56
+other,ita google,16,0,0%,50.56
+other,ita software,16,0,0%,64.75
+legacy-ita,ita matrix flights,12,0,0%,32.42
+transfer-cost,matrix airfare search,12,0,0%,49
+legacy-brand,expedia taap,11,0,0%,37.09
+other,ita travel matrix,11,0,0%,40.82
+other,google matrix flights,10,0,0%,15
+legacy-brand,what is tsa locks,10,0,0%,84.2
+transfer-cost,matrix airfare,9,0,0%,69.22
+transfer-rail,heathrow express price,9,0,0%,72.78
+other,matrix flight,8,0,0%,65.62
+other,matrix ita,7,0,0%,33.57
+legacy-brand,vrl bus,7,0,0%,79.86
+other,flight search engine matrix,6,0,0%,20
+other,google ita,6,0,0%,39.67
+other,google flight ita,6,0,0%,40.33
+other,matrix flight search,6,0,0%,54.5
+sleeping-overnight,can you sleep in stansted airport overnight,6,0,0%,59.83
+transfer-cost,google airfare matrix,6,0,0%,61.5
+other,matrix plane tickets,6,0,0%,65.17
+legacy-ita,flight matrix ita,5,0,0%,14.2
+legacy-brand,trimet trip planner,5,0,0%,17.4
+other,ita flight search,5,0,0%,27.2
+legacy-ita,ita google flights,5,0,0%,29.2
+legacy-ita,google flights ita,5,0,0%,34.2
+other,airline matrix,5,0,0%,48.2
+other,google travel matrix,5,0,0%,48.4
+legacy-brand,vrl bus booking,5,0,0%,65
+other,matrix travel site,5,0,0%,76.8
+other,flights matrix,4,0,0%,10.5
+legacy-ita,ita matrix google,4,0,0%,18.25
+other,matrix air flights,4,0,0%,57.25
+other,google iata,4,0,0%,63.5
+sleeping-overnight,stansted airport overnight stay rules,4,0,0%,81.5
+transfer-cost,matrix airfare finder,4,0,0%,84.5
+other,itamatrix,3,0,0%,10.33
+transfer-cost,ita matrix airfare,3,0,0%,27.33
+other,google matrix flight,3,0,0%,40.67
+other,ita search flights,3,0,0%,42
+other,matrix flight finder,3,0,0%,44.67
+other,ita by google,3,0,0%,46
+other,flightmatrix,3,0,0%,47.33
+other,google airline matrix,3,0,0%,50.67
+legacy-brand,vrl booking bus,3,0,0%,52.33
+other,matrix ita flights,3,0,0%,54
+legacy-brand,bus booking vrl,3,0,0%,55
+transfer-cost,ita airfare,3,0,0%,58.67
+other,vtl bus ticket,3,0,0%,63
+legacy-brand,vrl travels bus booking,3,0,0%,63.67
+legacy-ita,imatrix google flights,3,0,0%,67.33
+other,imatrix flights,3,0,0%,73
+unrelated-info,top 10 tourist attractions in rome,3,0,0%,75.67
+other,flight price matrix,3,0,0%,77
+other,matrix airlines,3,0,0%,78
+legacy-brand,trimet plan your trip,2,0,0%,6.5
+legacy-brand,plan my trip trimet,2,0,0%,8.5
+other,flights google ita,2,0,0%,21.5
+other,computickettravel,2,0,0%,24
+legacy-brand,trimet plan a trip,2,0,0%,30.5
+other,ita google matrix,2,0,0%,31
+other,imatrix flight,2,0,0%,31.5
+other,air matrix flights,2,0,0%,32.5
+legacy-ita,ita matrix flight,2,0,0%,34
+transfer-cost,ita fare matrix,2,0,0%,36
+other,flight matric,2,0,0%,38.5
+other,taap,2,0,0%,39
+legacy-brand,vrl bus reservation,2,0,0%,39
+other,matrix by ita software,2,0,0%,41
+legacy-brand,expedia taab,2,0,0%,41.5
+other,google matrix ita,2,0,0%,42
+legacy-brand,taap expedia,2,0,0%,42
+transfer-rail,heathrow express,2,0,0%,48
+other,matrix itasoftware,2,0,0%,48
+other,ita.matrix,2,0,0%,50.5
+unrelated-info,rome tourist sites top 10,2,0,0%,50.5
+legacy-brand,vrl travels website,2,0,0%,52.5
+other,matrix ita travel,2,0,0%,53
+other,ita air matrix,2,0,0%,53.5
+legacy-brand,trip planner trimet,2,0,0%,53.5
+other,matrix ita search,2,0,0%,55
+other,matrix airline,2,0,0%,56.5
+other,itasoftware,2,0,0%,58
+transfer-rail,heathrow express single fare,2,0,0%,59
+other,matrix ita google,2,0,0%,59
+other,flights google matrix,2,0,0%,62.5
+transfer-cost,ita airfare matrix,2,0,0%,63
+other,flight search matrix,2,0,0%,63.5
+legacy-ita,matrix google flights,2,0,0%,64.5
+transfer-cost,matrix flights airfare search,2,0,0%,66
+other,iata flights,2,0,0%,66.5
+transfer-cost,matrix airfare flights,2,0,0%,66.5
+unrelated-info,tourist attractions in rome italy top 10,2,0,0%,67.5
+transfer-rail,heathrow express single ticket price,2,0,0%,68
+other,matrix fly,2,0,0%,68
+other,matrix air tickets,2,0,0%,69.5
+transfer-rail,heathrow express fee,2,0,0%,70.5
+legacy-brand,what is tsa lock luggage,2,0,0%,74
+unrelated-info,famous tourist places in rome,2,0,0%,76.5
+legacy-brand,vrlbus,2,0,0%,76.5
+other,matrix airline search,2,0,0%,77
+legacy-brand,vrl bus service,2,0,0%,79.5
+transfer-rail,heathrow express cost,2,0,0%,80
+legacy-brand,vrl trave,2,0,0%,80
+legacy-brand,whats tsa lock,2,0,0%,80
+legacy-brand,what is a tsa lock,2,0,0%,83
+airport-choice-city,closest airport to paris city centre,2,0,0%,86
+transfer-rail,contactless heathrow express,2,0,0%,86
+legacy-brand,vrl busses,2,0,0%,89.5
+legacy-brand,what is tsa lock,2,0,0%,91.5
+legacy-brand,what is a tsa lock for luggage,2,0,0%,93.5
+legacy-brand,tsa locks on luggage,2,0,0%,97
+legacy-ita,flight matrix google,1,0,0%,5
+other,itamatrix software,1,0,0%,5
+other,matrix flight ita,1,0,0%,5
+other,ita airline matrix,1,0,0%,6
+other,ita flight finder,1,0,0%,6
+other,ita natrix,1,0,0%,6
+other,ita search matrix,1,0,0%,6
+other,itamatrix flights,1,0,0%,6
+transfer-cost,ita matrix airfare search official google,1,0,0%,8
+other,ita amtrix,1,0,0%,9
+legacy-ita,ita matrix search,1,0,0%,9
+legacy-ita,itaflight matrix,1,0,0%,9
+other,its matrix,1,0,0%,9
+transfer-cost,air fare matrix,1,0,0%,10
+legacy-ita,google.flight matrix,1,0,0%,12
+other,tri-met trip planner,1,0,0%,13
+legacy-brand,trimet route planner,1,0,0%,13
+other,which paris airport,1,0,0%,15
+legacy-ita,ita matrix flights search,1,0,0%,16
+transfer-rail,is newark airtrain free,1,0,0%,17
+legacy-ita,ita matrix software,1,0,0%,18
+transfer-rail,airtrain to newark,1,0,0%,19
+legacy-brand,trimet trip planning,1,0,0%,19
+legacy-brand,trimet plan,1,0,0%,25
+legacy-brand,trimet planner,1,0,0%,28
+other,computicket travel,1,0,0%,33
+other,googleflightmatrix,1,0,0%,38
+legacy-ita,ita matrix buchen,1,0,0%,40
+other,matrix flüge,1,0,0%,42
+legacy-brand,trimet plan my trip,1,0,0%,42
+legacy-ita,ita matrix travel,1,0,0%,43
+other,google flight software,1,0,0%,45
+legacy-brand,vrl bus booking for marriage,1,0,0%,45
+legacy-brand,vrl official website,1,0,0%,45
+legacy-ita,google flights matrix ita,1,0,0%,46
+legacy-ita,google flights advanced,1,0,0%,47
+legacy-brand,trimet trip planner app,1,0,0%,47
+airport-choice-city,nearest airport to kings cross london,1,0,0%,48
+other,iata google,1,0,0%,49
+other,ita software by google,1,0,0%,49
+other,ita trip planner,1,0,0%,49
+other,matrix vuelos,1,0,0%,49
+legacy-ita,google ita matrix flight search,1,0,0%,50
+other,iata matrix,1,0,0%,50
+other,ita flights google,1,0,0%,50
+other,flug matrix,1,0,0%,51
+transfer-cost,matrix airfare search by ita software,1,0,0%,51
+other,matrix flights google,1,0,0%,51
+legacy-brand,vrl bus for rent,1,0,0%,51
+other,computicket flights prices,1,0,0%,52
+transfer-rail,jfk airport airtrain,1,0,0%,52
+legacy-brand,vrlbus booking,1,0,0%,52
+sleeping-overnight,can i stay overnight at heathrow airport,1,0,0%,53
+legacy-brand,expedia taap rewards program,1,0,0%,53
+other,ita ticket matrix,1,0,0%,53
+other,matrix voo,1,0,0%,53
+sleeping-overnight,can you stay overnight at heathrow airport,1,0,0%,54
+legacy-brand,expedia.taap,1,0,0%,54
+legacy-brand,vrlbusbooking,1,0,0%,54
+other,computicket flights,1,0,0%,55
+legacy-brand,expedia tapp,1,0,0%,55
+legacy-ita,flight matrix search,1,0,0%,55
+other,iata travel matrix,1,0,0%,55
+other,matrix flight google,1,0,0%,55
+other,matrix google flight,1,0,0%,55
+other,מטריקס טיסות,1,0,0%,55
+airport-vs-comparison,ita matrix vs google flights reddit,1,0,0%,56
+legacy-brand,vrl bus pickup point near me,1,0,0%,56
+other,ita flight google,1,0,0%,57
+airport-vs-comparison,lgw vs lhr,1,0,0%,57
+unrelated-info,top 10 tourist sites in rome italy,1,0,0%,57
+legacy-ita,flights ita matrix,1,0,0%,58
+other,google air matrix,1,0,0%,58
+legacy-ita,google flights ita matrix,1,0,0%,59
+transfer-cost,google matrix airfare,1,0,0%,59
+other,ita google flight,1,0,0%,59
+other,ita software flight search,1,0,0%,59
+other,meglio gatwick o stansted,1,0,0%,59
+legacy-ita,google flight matrix old,1,0,0%,60
+other,ita matric,1,0,0%,60
+other,flight google matrix,1,0,0%,61
+other,google flight matriz,1,0,0%,61
+other,google matrix alternative,1,0,0%,61
+other,orly or cdg,1,0,0%,61
+airport-vs-comparison,paris airports orly vs cdg,1,0,0%,61
+other,what airport is close to brooklyn,1,0,0%,61
+airport-vs-comparison,gatwick airport vs heathrow,1,0,0%,62
+transfer-rail,heathrow express test,1,0,0%,62
+airport-vs-comparison,heathrow vs gatwick airport,1,0,0%,62
+legacy-ita,ita matrix flight search,1,0,0%,62
+other,ita software matrix old,1,0,0%,62
+other,matrix airline tickets,1,0,0%,62
+other,google its,1,0,0%,63
+sleeping-overnight,overnight at heathrow airport,1,0,0%,63
+legacy-brand,book vrl bus,1,0,0%,64
+transfer-rail,heathrow express single,1,0,0%,64
+legacy-ita,ita matrix software flights,1,0,0%,64
+other,jfk airport train,1,0,0%,64
+legacy-ita,ita matrix old,1,0,0%,65
+airport-vs-comparison,london gatwick vs london heathrow,1,0,0%,65
+transfer-cost,matrix fare search,1,0,0%,65
+transfer-rail,heathrow express return cost,1,0,0%,66
+other,heathrow or gatwick,1,0,0%,66
+legacy-brand,vrl booking,1,0,0%,66
+other,airport closest to brooklyn,1,0,0%,67
+sleeping-overnight,heathrow airport overnight stay,1,0,0%,67
+sleeping-overnight,heathrow airport stay overnight,1,0,0%,67
+legacy-brand,bus ticket booking vrl,1,0,0%,68
+airport-vs-comparison,gatwick vs heathrow airport,1,0,0%,68
+transfer-cost,matrix airline fares,1,0,0%,68
+legacy-brand,vrl travels booking,1,0,0%,68
+other,cdg or orly,1,0,0%,69
+other,matrix software ita,1,0,0%,69
+sleeping-overnight,sleeping at stansted airport,1,0,0%,69
+unrelated-info,top 10 rome sightseeing attractions,1,0,0%,69
+transfer-rail,how much does the heathrow express cost,1,0,0%,70
+other,iata flight search,1,0,0%,70
+other,matrix travel search engine,1,0,0%,70
+legacy-brand,vrl bus tickets,1,0,0%,70
+transfer-cost,airfare search matrix,1,0,0%,71
+other,v r l bus,1,0,0%,71
+transfer-rail,fare heathrow express,1,0,0%,72
+transfer-cost,fare matrix,1,0,0%,72
+other,flight index,1,0,0%,72
+airport-choice-city,nearest airport to paris centre,1,0,0%,72
+transfer-rail,heathrow express ticket cost,1,0,0%,73
+airport-vs-comparison,heathrow vs gatwick,1,0,0%,73
+transfer-rail,how much does heathrow express cost,1,0,0%,73
+other,matrix airline flights,1,0,0%,73
+transfer-rail,what is the cost of the heathrow express,1,0,0%,73
+transfer-rail,why is the heathrow express so expensive,1,0,0%,73
+transfer-cost,flight fare matrix,1,0,0%,74
+legacy-brand,how do tsa approved locks work,1,0,0%,74
+other,matrix flights booking,1,0,0%,74
+other,are locks allowed on checked luggage,1,0,0%,75
+transfer-rail,heathrow express fares,1,0,0%,75
+other,matrix itasoftware com flights,1,0,0%,75
+legacy-brand,vrl bus ticket,1,0,0%,75
+transfer-rail,airtrain to jfk airport,1,0,0%,76
+legacy-brand,is tsa lock mandatory for usa,1,0,0%,76
+other,matrix air ticket,1,0,0%,76
+legacy-ita,google ita matrix flights,1,0,0%,77
+legacy-brand,how do tsa luggage locks work,1,0,0%,77
+other,ita google flight search,1,0,0%,77
+other,kings cross airport,1,0,0%,77
+other,matrix flight tickets,1,0,0%,77
+other,matrix search,1,0,0%,77
+legacy-brand,vrl bus book,1,0,0%,77
+legacy-brand,what are tsa locks,1,0,0%,77
+transfer-rail,heathrow express contactless,1,0,0%,78
+unrelated-info,top 10 tourist attraction in rome,1,0,0%,78
+other,what is taap,1,0,0%,78
+transfer-rail,how much is the heathrow express,1,0,0%,79
+sleeping-overnight,sleep pods london heathrow,1,0,0%,79
+legacy-brand,what is a tsa lock on a suitcase,1,0,0%,79
+legacy-brand,what is a tsa lock on luggage,1,0,0%,79
+other,advanced flight search,1,0,0%,80
+other,heatrow express price,1,0,0%,80
+airport-vs-comparison,london gatwick airport vs heathrow,1,0,0%,80
+sleeping-overnight,sleeping pods in heathrow airport,1,0,0%,80
+unrelated-info,top 5 tourist attractions in rome,1,0,0%,80
+transfer-rail,price heathrow express,1,0,0%,81
+unrelated-info,top 10 tourist attractions in rome italy,1,0,0%,81
+other,v r l travels,1,0,0%,81
+legacy-brand,what are tsa locks on luggage,1,0,0%,81
+transfer-rail,airtrain nyc jfk,1,0,0%,82
+transfer-rail,heathrow express tap in tap out,1,0,0%,82
+unrelated-info,top 10 tourist attractions rome,1,0,0%,82
+legacy-brand,vrl travells,1,0,0%,82
+other,cheapest london airport,1,0,0%,83
+unrelated-info,top tourist spots in rome,1,0,0%,83
+legacy-brand,vrlbus in,1,0,0%,84
+other,can i lock my suitcase when travelling to usa,1,0,0%,86
+transfer-rail,cost of heathrow express,1,0,0%,86
+unrelated-info,most visited places in rome,1,0,0%,86
+legacy-brand,how does a tsa combination lock work,1,0,0%,87
+legacy-brand,how does tsa lock work on luggage,1,0,0%,87
+unrelated-info,top rated tropical vacations,1,0,0%,87
+legacy-brand,whats a tsa lock,1,0,0%,87
+legacy-brand,how do tsa combination locks work,1,0,0%,88
+legacy-brand,luggage tsa,1,0,0%,88
+transfer-cost,matrix airfare search flights,1,0,0%,88
+other,air train cost,1,0,0%,90
+legacy-brand,how do tsa locks work on luggage,1,0,0%,90
+legacy-brand,what is tsa compliant,1,0,0%,90
+legacy-brand,what is a tsa lock on suitcase,1,0,0%,91
+legacy-brand,vrl buss,1,0,0%,93
+other,air matrix,1,0,0%,94
+airport-choice-city,closest airport to paris city center,1,0,0%,95
+other,google tickets matrix,1,0,0%,95
+unrelated-info,top tropical vacations,1,0,0%,96
+unrelated-info,tropical vacations,1,0,0%,96
+airport-choice-city,orly airport to centre of paris,1,0,0%,97
+other,vtl bus,1,0,0%,97
+legacy-brand,what is tsa luggage lock,1,0,0%,98
+airport-vs-comparison,which airport in france is closest to paris,1,0,0%,98
+legacy-brand,lock on luggage tsa,1,0,0%,100
