@@ -159,9 +159,10 @@ export default function DubrovnikCrossBorderFeesPage() {
             You can usually drive a Dubrovnik Airport rental car into Bosnia and Herzegovina or
             Montenegro <strong>if you tell the company in advance</strong>. The four operators
             with published terms charge between <strong>€11.20 per day (Sixt, capped at €56)</strong>{" "}
-            and <strong>€40–60 per rental (Hertz, Enterprise, Nova)</strong>. Hertz needs the
-            request <strong>5 days before pickup</strong>. Driving across without declaring it
-            voids the rental&rsquo;s insurance cover and can trigger penalties of €825 to €2,000.
+            and <strong>€40 (Hertz), €40 / €60 (Enterprise) or €56 / €136 (Nova)</strong>. Hertz
+            needs the request <strong>5 days before pickup</strong>. Driving across without
+            declaring it voids the rental&rsquo;s insurance cover and can trigger penalties of
+            €825 to €2,000.
           </div>
 
           <div className={styles.sectionKicker}><span>02 · Three questions people mix up</span></div>
@@ -212,7 +213,7 @@ export default function DubrovnikCrossBorderFeesPage() {
         </div>
         <div className={styles.wide}>
           <div className={styles.unitsNote}>
-            <span>The figures below are not directly comparable: Sixt charges per day, while Hertz, Enterprise and Nova charge per rental. Read the unit before comparing prices.</span>
+            <span>These fees are not directly comparable. Sixt publishes a daily fee with a maximum cap; Enterprise specifies a per-hire fee for non-EU travel. Hertz and Nova do not clearly publish the charging unit in the sources reviewed.</span>
           </div>
           <div className={styles.operatorGrid}>
             {OPERATORS.map((op) => (
