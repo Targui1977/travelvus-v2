@@ -26,7 +26,7 @@ const QUESTIONS: { id: keyof typeof INITIAL; label: string; why: string }[] = [
   {
     id: "arrivalBeforeClosing",
     label: "Will your flight arrive before the desk closes?",
-    why: "Every hold rule we verified is bounded by branch opening hours. Even a 24-hour guarantee is 'pickup available anytime during business hours' at SIXT. If you land after closing, only specific, conditional after-hours arrangements apply (and they can carry fees).",
+    why: "Most hold rules are bounded by branch opening hours. Even a 24-hour guarantee is 'pickup available anytime during business hours' at SIXT. If you land after closing, only specific, conditional after-hours arrangements apply (and they can carry fees).",
   },
   {
     id: "prepaid",
@@ -91,7 +91,7 @@ function evaluate(a: Answers): Outcome {
       level: "low",
       title: "Low uncertainty — with two final checks",
       summary:
-        "Your setup matches the strongest verified protections: an airport office, a flight number on file, and an arrival inside opening hours. Most verified policies will hold the car for you. Two conditions still matter.",
+        "Your setup matches the strongest protections in the verified policies: an airport office, a flight number on file, and an arrival inside opening hours. Under these conditions the policies we reviewed generally keep the reservation available. Two conditions still matter.",
       steps: [
         "Check the desk's actual closing time for your date — 'airport branches stay open up to 1 hour beyond closing' is a SIXT rule, not a universal one.",
         "One verified policy (Hertz Switzerland) only keeps the station open after hours if the airline has notified the delay — if your airline has not published the new arrival time, tell the branch yourself.",

@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 };
 
 const FAQ_ITEMS = [
-  { question: "Does adding my flight number guarantee my rental car will be held?", answer: "No. A flight number changes the rules at several companies — SIXT extends the hold to up to 24 hours, Hertz Switzerland holds until one hour after actual landing, Enterprise UK holds an airport booking until the flight lands and clears — but every one of these rules is bounded by branch opening hours and by the company's own conditions. Budget and Avis only promise to track the flight. A flight number reduces risk; it is not a guarantee." },
+  { question: "Does adding my flight number guarantee my rental car will be held?", answer: "No. A flight number changes the rules at several companies — SIXT extends the hold to up to 24 hours, Hertz Switzerland holds until one hour after actual landing, Enterprise UK holds an airport booking until the flight lands and clears — but these rules are bounded by the company's own conditions; after-hours pickup exists only under specific arrangements. Budget (Sweden) and Avis (Germany/Sweden) only promise to track the flight. A flight number reduces risk; it is not a guarantee." },
   { question: "What is the typical grace period if I am late without a flight number?", answer: "There is no universal number. SIXT states 60 minutes within branch opening hours. Hertz Switzerland states 1 hour, or until closing if earlier. Enterprise UK holds non-airport bookings for 2 hours. Budget publishes no official grace period on the pages we verified. Any figure you see presented as a universal rule is wrong — check your company and branch." },
-  { question: "Will my prepaid booking be refunded if my flight is delayed and I miss the pickup?", answer: "Not necessarily. If the booking is marked as a no-show, the outcome differs by company and country: Budget UK and Spain refuse refunds, Enterprise UK refunds minus £125, Europcar Germany refunds minus up to €95, Hertz prepaid refunds minus the no-show charge on written request within 90 days. Europcar Germany explicitly states that a flight delay is not treated as force majeure. Prepaid is not the same as refundable." },
-  { question: "What happens if my flight lands after the rental desk has closed?", answer: "Only specific, conditional arrangements exist. SIXT says airport branches stay open up to 1 hour beyond closing for delayed pickups. Enterprise Switzerland offers after-hours collection at airport stations with a valid flight number for CHF 50 per 30 minutes. Europcar UK charges £60 for out-of-hours collection, reduced to £20 for airport bookings linked to a flight number. Hertz Switzerland keeps the station open only if the airline has notified the delay. If your provider has no such arrangement, your reservation is at risk." },
+  { question: "Will my prepaid booking be refunded if my flight is delayed and I miss the pickup?", answer: "Not necessarily. If the booking is marked as a no-show, the outcome differs by company and country: Budget UK and Spain refuse refunds, Enterprise UK refunds minus the lesser of the total and £125 (£150 for residents of Ireland or other EU countries), Europcar Germany refunds minus up to €95, and Hertz refunds the prepayment minus the no-show charge (CHF 140 for Swiss prepaid rates) on written request within 90 days. Europcar Germany explicitly states that a flight delay is not treated as force majeure. Prepaid is not the same as refundable." },
+  { question: "What happens if my flight lands after the rental desk has closed?", answer: "Only specific, conditional arrangements exist. SIXT says airport branches stay open up to 1 hour beyond closing for delayed pickups with a flight number. Enterprise Switzerland offers after-hours collection at airport stations with a valid flight number for CHF 50 per 30 minutes. Europcar UK charges £60 for out-of-hours collection, reduced to £20 for airport bookings linked to a flight number. Hertz Switzerland keeps the station open only if the airline has notified the delay. If your provider has no such arrangement, your reservation is at risk." },
   { question: "Is a booking through a broker protected differently?", answer: "Yes — broker terms are not supplier terms. Rentalcars.com's own conditions state that the supplier's rental agreement governs the rental and that the platform is not a party to it. If you booked through a broker, read the supplier's pickup and no-show terms in the supplier's own documentation, because those are the rules the desk will apply." },
-  { question: "Should I call the rental branch when my flight is delayed?", answer: "Yes, unless your booking terms say otherwise. Enterprise Norway asks customers to contact the rental company at least 30 minutes before the pickup time even when a flight number is on file. SIXT asks you to message via live chat only if you will be later than 60 minutes. Hertz Switzerland does not require contact when a flight number was provided. A short call costs minutes and removes ambiguity — and ask for written confirmation of whatever you are told." },
+  { question: "Should I call the rental branch when my flight is delayed?", answer: "Yes, unless your booking terms say otherwise. Enterprise Norway asks customers to contact the rental company at least 30 minutes before the pickup time even when a flight number is on file. SIXT asks you to message via live chat only if you will be later than 60 minutes. Hertz Switzerland's published terms do not state a contact requirement when flight data is provided; the hold runs to one hour after actual landing. A short call costs minutes and removes ambiguity — and ask for written confirmation of whatever you are told." },
   { question: "Is a delayed flight treated as force majeure so no-show fees are waived?", answer: "No provider we verified says so, and Europcar Germany's terms explicitly state that flight delays do not release the customer from the no-show fee (up to €95). Do not assume a delay waives anything — check the fee and the conditions before you decide how to respond." },
   { question: "What is the difference between being delayed and missing the pickup?", answer: "A delay means you arrive later than scheduled but within the company's hold rules. A missed pickup (no-show) means you did not collect the car within the applicable window — and that is what triggers cancellation and no-show fees. The difference between them is the company's hold rule, your flight number, and the desk's opening hours. That is exactly what the three determinants in this guide are for." },
 ];
@@ -27,18 +27,24 @@ const SOURCE_GROUPS = [
   {
     title: "Rental company policies (by country)",
     items: [
-      { label: "SIXT — What happens if my flight is delayed? (14 countries listed)", url: "https://www.sixt.com/help-center/articles/what-happens-if-my-flight-is-delayed/" },
+      { label: "SIXT — What happens if my flight is delayed? (13 countries listed)", url: "https://www.sixt.com/help-center/articles/what-happens-if-my-flight-is-delayed/" },
       { label: "SIXT — Grace period for late pickup", url: "https://www.sixt.com/help-center/articles/what-is-the-sixt-grace-period-if-i-arrive-late-for-pick-up/" },
       { label: "Hertz — Late pickup terms, Switzerland (ZRH)", url: "https://www.hertz.com/rentacar/reservation/reviewmodifycancel/templates/rentalTerms.jsp?EOAG=ZRH&KEYWORD=LATE" },
-      { label: "Hertz — No-show and cancellation terms, US/Canada", url: "https://www.hertz.com/rentacar/reservation/reviewmodifycancel/templates/rentalTerms.jsp?KEYWORD=CANCELLATIONUSA&EOAG=LAX" },
+      { label: "Hertz — Prepaid no-show and refund schedule (CHF 140, 90-day refund rule)", url: "https://images.hertz.com/pdfs/RentalAgreementMTEN.pdf" },
       { label: "Enterprise UK — Pay Now terms (airport flight-number hold)", url: "https://www.enterprise.co.uk/content/dam/eu-brand/eu-pdfs/pre-pay-ts-cs/pay-now-ts-and-cs.pdf" },
       { label: "Enterprise Switzerland — After-hours pickup policy", url: "https://www.enterprise.ch/en/support/pick-up-after-opening-hours" },
       { label: "Enterprise Switzerland — No-show / expired policy", url: "https://www.enterprise.ch/en/support/no-show-/-expired-policy" },
+      { label: "Enterprise Norway — Pickup grace period FAQ", url: "https://www.enterprise.no/en/help/faq/%20Nar-er-siste-frist-for-henting%20.html" },
       { label: "Europcar Germany — Rental terms (delay and no-show clauses)", url: "https://www.europcar.de/files/live/sites/Europcar.de/files/PDF/AVB/EUROPCAR%20AVB_DE_06_2024.pdf" },
       { label: "Europcar UK — Terms and conditions (out-of-hours collection)", url: "https://www.europcar.co.uk/files/live/sites/Europcar/files/Conf_email_attachment/CGL_EN_GB.pdf" },
       { label: "Budget UK — No-show fee FAQ", url: "https://budgetinternational.com/budgetonline/eu-gb/faq.nsf/(FAQByDOCID)/1901848F3FAB0896C12576090056A792?1901848F3FAB0896C12576090056A792&Answer=n&Level=Sub%20Topic&OpenDocument" },
       { label: "Budget Sweden — Flight tracking FAQ", url: "https://faq.budget.se/?question=what-happens-if-my-flight-is-late" },
+      { label: "Budget Spain — Cancellation and no-show FAQ", url: "https://faq.budget.es/?question=puedo-cancelar-una-reserva" },
+      { label: "Budget Spain — Prepaid terms", url: "https://www.budget.es//pre-pay-terms-conditions" },
+      { label: "Budget Australia — Terms and conditions (Pay Now no-show clause)", url: "https://www.budget.com.au/content/dam/budget/oc/au/common/files/terms_and_conditions.pdf" },
       { label: "Avis Germany — Flight tracking FAQ", url: "https://faq.avis.de/?question=was-passiert-wenn-sich-mein-flug-verspatet" },
+      { label: "Avis Sweden — Flight tracking FAQ", url: "https://faq.avis.se/?question=what-happens-if-my-flight-is-late" },
+      { label: "Avis Spain — Cancellation and no-show FAQ", url: "https://faq.avis.es/?question=puedo-cancelar-una-reserva" },
       { label: "Avis Switzerland — Pay-on-arrival and no-show terms", url: "https://eixnbeweb03.rent-at-avis.com/avisonline/terms.nsf/termsbycountryandlngcategories/ch-de-poa?OpenDocument" },
     ],
   },
@@ -131,18 +137,22 @@ export default function RentalCarPickupFlightDelayedPage() {
               <p>
                 SIXT holds up to 24 hours with a flight number. Hertz Switzerland holds one
                 hour after actual landing. Enterprise UK holds an airport booking until the
-                flight lands and clears. Budget and Avis only promise to track the flight.
-                The policy is company-specific and country-specific.
+                flight lands and clears. Budget (Sweden) and Avis (Germany/Sweden) only
+                promise to track the flight — though Avis Switzerland also applies a
+                24-hour collection window before a no-show fee, and Budget UK applies a
+                no-show fee. The policy is company-specific and country-specific.
               </p>
             </div>
             <div className={styles.factorCard}>
               <span className={styles.factorTag}>Factor 2 · Opening hours</span>
               <h3>When the desk closes</h3>
               <p>
-                Every hold rule we verified is bounded by branch opening hours. Even a
-                24-hour guarantee means pickup during business hours. If you land after
-                closing, only specific, conditional after-hours arrangements apply — and
-                they usually cost money.
+                Most hold rules are bounded by branch opening hours. Even a 24-hour
+                guarantee means pickup during business hours. If you land after closing,
+                only specific, conditional after-hours arrangements apply — Enterprise UK
+                staff wait for a delayed flight past closing, Enterprise Switzerland
+                charges CHF 50 per 30 minutes, and SIXT airport branches can stay open up
+                to 1 hour beyond closing with a flight number.
               </p>
             </div>
             <div className={styles.factorCard}>
@@ -176,10 +186,10 @@ export default function RentalCarPickupFlightDelayedPage() {
             </thead>
             <tbody>
               <tr>
-                <td><span className={styles.providerCell}>SIXT<span className={styles.providerCountry}>14 countries listed by SIXT</span></span></td>
+                <td><span className={styles.providerCell}>SIXT<span className={styles.providerCountry}>13 countries listed by SIXT</span></span></td>
                 <td>60 minutes, within branch opening hours</td>
                 <td>Reservation guaranteed up to 24 hours; pickup still only during business hours</td>
-                <td>Airport branches stay open up to 1 hour beyond closing for delayed pickups</td>
+                <td>With a flight number, airport branches stay open up to 1 hour beyond closing for delayed pickups</td>
                 <td>Booking may be marked no-show after grace period expires; prepaid held for the rental period (no fee amount published)</td>
                 <td className={styles.sourceCell}><a href="https://www.sixt.com/help-center/articles/what-happens-if-my-flight-is-delayed/" target="_blank" rel="noopener noreferrer">Sixt policy</a></td>
               </tr>
@@ -204,13 +214,13 @@ export default function RentalCarPickupFlightDelayedPage() {
                 <td>2-hour grace without a valid flight number</td>
                 <td>After-hours collection at airport stations with a valid flight number</td>
                 <td>CHF 50 per 30 minutes; staff wait maximum 30 minutes after landing</td>
-                <td>No-show policy published (fee per local terms)</td>
+                <td>No-show page: reservation expires after 2 hours without a valid flight number; vehicle may be released (no fee stated)</td>
                 <td className={styles.sourceCell}><a href="https://www.enterprise.ch/en/support/pick-up-after-opening-hours" target="_blank" rel="noopener noreferrer">Enterprise CH policy</a></td>
               </tr>
               <tr>
                 <td><span className={styles.providerCell}>Europcar<span className={styles.providerCountry}>Germany</span></span></td>
                 <td>Without prepayment or card/personal data: vehicle not guaranteed beyond 2 hours</td>
-                <td>Flight/train number affects the airport closing-time wait</td>
+                <td>No separate with-number rule published; the terms state only that without a train/flight number the station waits up to 1 hour after regular closing</td>
                 <td>Airport/rail stations without a number: staff wait up to 1 hour after regular closing</td>
                 <td>No-show fee up to €95, capped at the rental price; flight delays explicitly not force majeure</td>
                 <td className={styles.sourceCell}><a href="https://www.europcar.de/files/live/sites/Europcar.de/files/PDF/AVB/EUROPCAR%20AVB_DE_06_2024.pdf" target="_blank" rel="noopener noreferrer">Europcar DE terms</a></td>
@@ -220,7 +230,7 @@ export default function RentalCarPickupFlightDelayedPage() {
                 <td>Per terms; airport bookings linked to a flight number get a reduced out-of-hours charge</td>
                 <td>Reduced out-of-hours charge for delayed arrivals</td>
                 <td>Out-of-hours collection £60; £20 for airport bookings with a flight number</td>
-                <td>Prepayment refunded less the No Show Charge</td>
+                <td>Prepayment may be refunded less the No Show Charge (Tariff Guide)</td>
                 <td className={styles.sourceCell}><a href="https://www.europcar.co.uk/files/live/sites/Europcar/files/Conf_email_attachment/CGL_EN_GB.pdf" target="_blank" rel="noopener noreferrer">Europcar UK terms</a></td>
               </tr>
               <tr>
@@ -233,7 +243,7 @@ export default function RentalCarPickupFlightDelayedPage() {
               </tr>
               <tr>
                 <td><span className={styles.providerCell}>Avis<span className={styles.providerCountry}>Switzerland · Germany · Sweden · Spain</span></span></td>
-                <td>Swiss terms: 24-hour collection window before a no-show fee (hold not guaranteed)</td>
+                <td>Swiss terms: 24-hour collection window before a no-show fee; the terms state the booking is guaranteed by the local provider</td>
                 <td>Tracking only (Germany/Sweden) with correct flight details</td>
                 <td>No desk-closing or after-hours rule found</td>
                 <td>Switzerland: Non Cancellation Fee €60/€65/CHF 76. Spain: prepaid not refunded on no-show</td>
@@ -300,11 +310,12 @@ export default function RentalCarPickupFlightDelayedPage() {
           <p>
             If your booking is marked as a no-show, the refund outcome depends on company and
             country: <strong>Budget UK and Spain refuse refunds</strong>, Enterprise UK refunds
-            minus £125, Europcar Germany refunds minus up to €95, and Hertz prepaid refunds minus
-            the no-show charge on written request within 90 days. SIXT is the outlier — it
-            describes prepaid reservations as held throughout the rental period. None of this
-            changes because a flight was delayed: Europcar Germany explicitly states that flight
-            delays do not release you from the fee.
+            minus the lesser of the total and £125 (£150 for residents of Ireland or other EU
+            countries), Europcar Germany refunds minus up to €95, and Hertz refunds the prepayment
+            minus the no-show charge on written request within 90 days (CHF 140 for Swiss prepaid
+            rates). SIXT is the outlier — it describes prepaid reservations as held throughout
+            the rental period. None of this changes because a flight was delayed: Europcar
+            Germany explicitly states that flight delays do not release you from the fee.
           </p>
           <p>
             If you booked through a broker, the desk applies the <strong>supplier&rsquo;s</strong>{" "}
@@ -330,16 +341,15 @@ export default function RentalCarPickupFlightDelayedPage() {
                 With a flight number on the booking: SIXT holds up to 24 hours, Hertz Switzerland
                 holds until landing + 1 hour, Enterprise UK holds until the flight lands and clears.
                 Low risk — but carry your booking reference and the flight number confirmation.
-              </p>
-            </div>
+              </p>            </div>
             <div className={styles.scenarioCard}>
               <span className={styles.scenarioTag}>Scenario 2</span>
               <h3>Flight arrives after the desk closes</h3>
               <p>
                 You are now in after-hours territory: conditional and priced. SIXT airport branches
-                may stay open up to 1 hour past closing. Enterprise Switzerland: CHF 50 per 30
-                minutes with a flight number. Europcar UK: £60, or £20 with a flight-number booking.
-                If your provider has no arrangement, the reservation is at risk.
+                may stay open up to 1 hour past closing with a flight number. Enterprise Switzerland:
+                CHF 50 per 30 minutes with a flight number. Europcar UK: £60, or £20 with a flight-number
+                booking. If your provider has no arrangement, the reservation is at risk.
               </p>
             </div>
             <div className={styles.scenarioCard}>
@@ -368,8 +378,9 @@ export default function RentalCarPickupFlightDelayedPage() {
               <p>
                 You are on the fallback clock: 60 minutes at SIXT, 1 hour (or closing) at Hertz
                 Switzerland, 2 hours at Enterprise non-airport branches — and tracking-only at
-                Budget and Avis. If the delay exceeds the window, you risk cancellation and a
-                no-show fee. Add the flight number now if the booking allows it.
+                Budget Sweden and Avis Germany/Sweden (Avis Switzerland has a 24-hour window;
+                Budget UK charges a no-show fee). If the delay exceeds the window, you risk
+                cancellation and a no-show fee. Add the flight number now if the booking allows it.
               </p>
             </div>
           </div>
