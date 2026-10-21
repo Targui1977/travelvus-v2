@@ -196,7 +196,7 @@
 
 .chainTitle { font-family: var(--serif); font-weight: 400; font-size: 22px; margin: 0 0 16px; }
 
-.chainSteps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; }
+.chainSteps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; border-top: 1px solid var(--dv-line); padding-top: 18px; }
 
 .chainStep {
   flex: 1;
@@ -214,7 +214,7 @@
   margin-bottom: 6px;
 }
 
-.chainStepName { font-weight: 600; font-size: 15px; color: var(--dv-ink); display: block; margin-bottom: 4px; }
+.chainStepName { font-family: var(--serif); font-weight: 400; font-size: 17px; color: var(--dv-ink); display: block; margin-bottom: 4px; }
 .chainStepDesc { font-size: 13px; line-height: 1.55; color: var(--dv-muted); display: block; }
 
 .chainArrow {

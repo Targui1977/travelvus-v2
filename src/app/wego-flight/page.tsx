@@ -24,9 +24,11 @@ const SOURCE_GROUPS = [
   {
     title: "Official Wego documentation",
     items: [
-      { label: "Wego.com — Flights (what Wego is, booking models, payments)", url: "https://www.wego.com/flights" },
+      { label: "Wego About — what Wego is (meta-search engine; largest MENA/APAC travel marketplace)", url: "https://company.wego.com/about-us" },
+      { label: "Wego — Book on Wego and price transparency (the two booking models)", url: "https://company.wego.com/how-price-transparency-works-when-you-book-with-wego" },
       { label: "Wego Support — bookings, cancellations, refunds FAQ", url: "https://support.wego.com/" },
       { label: "Wego Terms of Service (Sep 1, 2026) — fees, refunds, currency", url: "https://company.wego.com/terms-of-service/" },
+      { label: "Wego — Refund request form (90-day disruption caveat)", url: "https://www.wego.com/forms/refund-request" },
       { label: "Wego — Partner contact information", url: "https://www.wego.com/partners-contact-info?lang=en" },
     ],
   },
@@ -80,7 +82,7 @@ export default function WegoFlightPage() {
             <div className={styles.heroRule} />
             <span className={styles.heroEyebrow}>Booking Safety · Wego Flights</span>
             <h1 className={styles.heroTitle}>
-              Is Wego legit? <em>Yes — but which Wego are you booking with?</em>
+              Is Wego Legit? <em>Who You Actually Book With Matters</em>
             </h1>
             <p className={styles.heroSub}>
               Wego is a licensed travel agency and metasearch engine — and it has two different
@@ -205,9 +207,9 @@ export default function WegoFlightPage() {
             published refund timeline:
           </p>
           <ol className={styles.timeline}>
-            <li><strong>Initiation:</strong> Wego initiates refunds within 2 working days (Book on Wego bookings).</li>
-            <li><strong>Arrival:</strong> usually 15–20 working days — up to 30 days for some local payment methods.</li>
-            <li><strong>Involuntary cancellations:</strong> airline-cancelled flights can take up to 3 months in some cases.</li>
+            <li><strong>Initiation:</strong> for bookings paid through Wego, its Terms state Wego initiates refunds within 2 working days. Partner bookings are refunded by the partner, not Wego.</li>
+            <li><strong>Arrival:</strong> depends on your issuing bank — usually 15–20 working days, and up to 30 days for Mada and some local bank transfers (such as in Pakistan).</li>
+            <li><strong>Involuntary cancellations:</strong> airline-cancelled flights may take up to 3 months in some cases. Wego&rsquo;s refund request form currently warns that during Middle East flight disruptions returning funds can take up to 90 days.</li>
             <li><strong>Deductions:</strong> cancellation charges, Wego service fees and any discounts may be deducted from the refund amount.</li>
           </ol>
         </div>
