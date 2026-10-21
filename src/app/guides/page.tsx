@@ -108,7 +108,10 @@ const CATEGORIES: Category[] = [
   },
 ];
 
-const TOTAL_GUIDES = FEATURED.length + CATEGORIES.reduce((sum, c) => sum + c.items.length, 0);
+const TOTAL_GUIDES = new Set([
+  ...FEATURED.map((g) => g.href),
+  ...CATEGORIES.flatMap((c) => c.items.map((i) => i.href)),
+]).size;
 
 const HUB_JSON_LD = {
   "@context": "https://schema.org",
@@ -120,9 +123,15 @@ const HUB_JSON_LD = {
   mainEntity: {
     "@type": "ItemList",
     itemListElement: [
-      ...FEATURED.map((g) => ({ "@type": "ListItem", name: g.title, url: `https://www.travelvus.com${g.href}` })),
-      ...CATEGORIES.flatMap((c) => c.items.map((i) => ({ "@type": "ListItem", name: i.title, url: `https://www.travelvus.com${i.href}` }))),
-    ],
+      ...new Map(
+        [...FEATURED, ...CATEGORIES.flatMap((c) => c.items)].map((g) => [g.href, g]),
+      ).values(),
+    ].map((g, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: g.title,
+      url: `https://www.travelvus.com${g.href}`,
+    })),
   },
 };
 
@@ -145,7 +154,7 @@ export default function GuidesIndexPage() {
               with verified numbers and the sources to check them.
             </p>
             <div className={styles.heroMeta}>
-              <span className={styles.heroCount}>{TOTAL_GUIDES} guides · Sources verified October 2026</span>
+              <span className={styles.heroCount}>{TOTAL_GUIDES} decision guides · Independent travel decision guides</span>
             </div>
           </div>
         </section>
@@ -201,7 +210,7 @@ export default function GuidesIndexPage() {
           ))}
         </div>
 
-        <Footer verifiedWith="TfL · National Rail · Public airport information · Official rental company terms" />
+        <Footer verifiedWith="TfL · National Rail · Public airport information" />
       </div>
     </div>
   );
