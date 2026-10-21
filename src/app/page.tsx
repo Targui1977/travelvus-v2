@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { QuickCompare } from "@/components/compare";
 import HomeHeader from "@/components/ui/HomeHeader";
+import Footer from "@/components/ui/Footer";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import Link from "next/link";
 import styles from "./page.module.css";
@@ -254,37 +255,8 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ═══ FOOTER ═══ */}
-        <footer className={styles.footer}>
-          <div className={styles.footerGrid}>
-            <div>
-              <span className={styles.footerBrand}>Travelvus</span>
-              <p className={styles.footerBrandText}>Decision engine for smarter air travel.</p>
-            </div>
-            <div>
-              <div className={styles.footerColTitle}>Product</div>
-              <div className={styles.footerColLinks}>
-                <Link href="/">Compare</Link>
-                <Link href="/london-airports">Airport Decisions</Link>
-                <Link href="/wego-flight">Travel Guides</Link>
-                <Link href="/methodology">Methodology</Link>
-              </div>
-            </div>
-            <div>
-              <div className={styles.footerColTitle}>Company</div>
-              <div className={styles.footerColLinks} style={{ marginBottom: 28 }}>
-                <Link href="/about">About</Link>
-                <Link href="/contact">Contact</Link>
-              </div>
-              <div className={styles.footerColTitle} style={{ marginBottom: 12 }}>Verified with</div>
-              <p className={styles.footerVerified}>TfL · National Rail · Public airport information</p>
-            </div>
-          </div>
-          <div className={styles.footerBottom}>
-            <span className={styles.footerTagline}>Know the real cost before you book.</span>
-            <span className={styles.footerCopy}>© 2026 Travelvus</span>
-          </div>
-        </footer>
+        {/* ═══ FOOTER (shared premium component, Phase 127.2) ═══ */}
+        <Footer verifiedWith="TfL · National Rail · Public airport information" />
 
       </div>
     </div>

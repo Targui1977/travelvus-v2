@@ -18,6 +18,8 @@ interface Props {
   columns?: FooterColumn[];
   /** Optional tagline override */
   tagline?: string;
+  /** Optional verification line shown under the last column (e.g. data sources) */
+  verifiedWith?: string;
 }
 
 const DEFAULT_COLUMNS: FooterColumn[] = [
@@ -39,7 +41,7 @@ const DEFAULT_COLUMNS: FooterColumn[] = [
   },
 ];
 
-export default function Footer({ columns, tagline }: Props) {
+export default function Footer({ columns, tagline, verifiedWith }: Props) {
   const displayColumns = columns || DEFAULT_COLUMNS;
 
   return (
@@ -69,6 +71,12 @@ export default function Footer({ columns, tagline }: Props) {
               </ul>
             </div>
           ))}
+          {verifiedWith ? (
+            <div>
+              <span className={styles.colTitle}>Verified with</span>
+              <p className={styles.verifiedLine}>{verifiedWith}</p>
+            </div>
+          ) : null}
         </div>
       </div>
       <div className={styles.bottom}>
