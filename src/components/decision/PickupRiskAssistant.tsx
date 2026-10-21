@@ -153,6 +153,7 @@ export default function PickupRiskAssistant() {
         </p>
       </header>
 
+      <div className="riskBody">
       <div className="riskQuestions">
         {QUESTIONS.map((q, i) => (
           <fieldset key={q.id} className="riskQuestion">
@@ -208,6 +209,7 @@ export default function PickupRiskAssistant() {
             </p>
           </>
         )}
+      </div>
       </div>
     </section>
   );

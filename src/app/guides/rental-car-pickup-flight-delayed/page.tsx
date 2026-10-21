@@ -112,8 +112,8 @@ export default function RentalCarPickupFlightDelayedPage() {
           </div>
         </section>
 
-        {/* ═══ IMMEDIATE ANSWER ═══ */}
-        <div className={styles.content}>
+        {/* ═══ IMMEDIATE ANSWER (wide decision summary) ═══ */}
+        <div className={styles.wide}>
           <div className={styles.sectionKicker}><span>01 · The short answer</span></div>
           <h2>It depends on three things — and two of them you control</h2>
           <div className={styles.answerBlock}>
@@ -158,76 +158,86 @@ export default function RentalCarPickupFlightDelayedPage() {
           </div>
         </div>
 
-        {/* ═══ POLICY MATRIX ═══ */}
+        {/* ═══ POLICY MATRIX (flagship evidence band) ═══ */}
+        <section className={styles.band}>
         <div className={styles.wide}>
           <div className={styles.sectionKicker}><span>02 · The verified policies</span></div>
           <div className={styles.tableScroll}>
           <table className={styles.dataTable}>
             <thead>
               <tr>
-                <th>Provider (country)</th>
+                <th>Provider</th>
                 <th>Grace without flight number</th>
                 <th>With flight number</th>
                 <th>Desk closed / after hours</th>
                 <th>No-show &amp; prepaid outcome</th>
+                <th>Source</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>SIXT (14 countries listed by SIXT)</td>
+                <td><span className={styles.providerCell}>SIXT<span className={styles.providerCountry}>14 countries listed by SIXT</span></span></td>
                 <td>60 minutes, within branch opening hours</td>
                 <td>Reservation guaranteed up to 24 hours; pickup still only during business hours</td>
                 <td>Airport branches stay open up to 1 hour beyond closing for delayed pickups</td>
                 <td>Booking may be marked no-show after grace period expires; prepaid held for the rental period (no fee amount published)</td>
+                <td className={styles.sourceCell}><a href="https://www.sixt.com/help-center/articles/what-happens-if-my-flight-is-delayed/" target="_blank" rel="noopener noreferrer">Sixt policy</a></td>
               </tr>
               <tr>
-                <td>Hertz (Switzerland)</td>
+                <td><span className={styles.providerCell}>Hertz<span className={styles.providerCountry}>Switzerland</span></span></td>
                 <td>1 hour, or until closing if earlier</td>
                 <td>Until 1 hour after actual landing; Gold Plus Rewards: 2 hours</td>
                 <td>Station stays open only if the airline has notified the delay and new arrival time</td>
                 <td>Reservation expires if the window is missed; prepaid no-show fee CHF 140 (prepaid schedule)</td>
+                <td className={styles.sourceCell}><a href="https://www.hertz.com/rentacar/reservation/reviewmodifycancel/templates/rentalTerms.jsp?EOAG=ZRH&KEYWORD=LATE" target="_blank" rel="noopener noreferrer">Hertz CH terms</a></td>
               </tr>
               <tr>
-                <td>Enterprise (UK)</td>
+                <td><span className={styles.providerCell}>Enterprise<span className={styles.providerCountry}>United Kingdom</span></span></td>
                 <td>Airport: 2 hours or closing, whichever earlier. Non-airport: 2 hours</td>
                 <td>Airport: held until the flight has landed and cleared; staff wait if landing passes closing</td>
                 <td>Staff member waits for the flight when a flight number is on the booking</td>
                 <td>Prepaid no-show refunded minus £125</td>
+                <td className={styles.sourceCell}><a href="https://www.enterprise.co.uk/content/dam/eu-brand/eu-pdfs/pre-pay-ts-cs/pay-now-ts-and-cs.pdf" target="_blank" rel="noopener noreferrer">Enterprise UK terms</a></td>
               </tr>
               <tr>
-                <td>Enterprise (Switzerland)</td>
+                <td><span className={styles.providerCell}>Enterprise<span className={styles.providerCountry}>Switzerland</span></span></td>
                 <td>2-hour grace without a valid flight number</td>
                 <td>After-hours collection at airport stations with a valid flight number</td>
                 <td>CHF 50 per 30 minutes; staff wait maximum 30 minutes after landing</td>
                 <td>No-show policy published (fee per local terms)</td>
+                <td className={styles.sourceCell}><a href="https://www.enterprise.ch/en/support/pick-up-after-opening-hours" target="_blank" rel="noopener noreferrer">Enterprise CH policy</a></td>
               </tr>
               <tr>
-                <td>Europcar (Germany)</td>
+                <td><span className={styles.providerCell}>Europcar<span className={styles.providerCountry}>Germany</span></span></td>
                 <td>Without prepayment or card/personal data: vehicle not guaranteed beyond 2 hours</td>
                 <td>Flight/train number affects the airport closing-time wait</td>
                 <td>Airport/rail stations without a number: staff wait up to 1 hour after regular closing</td>
                 <td>No-show fee up to €95, capped at the rental price; flight delays explicitly not force majeure</td>
+                <td className={styles.sourceCell}><a href="https://www.europcar.de/files/live/sites/Europcar.de/files/PDF/AVB/EUROPCAR%20AVB_DE_06_2024.pdf" target="_blank" rel="noopener noreferrer">Europcar DE terms</a></td>
               </tr>
               <tr>
-                <td>Europcar (UK)</td>
+                <td><span className={styles.providerCell}>Europcar<span className={styles.providerCountry}>United Kingdom</span></span></td>
                 <td>Per terms; airport bookings linked to a flight number get a reduced out-of-hours charge</td>
                 <td>Reduced out-of-hours charge for delayed arrivals</td>
                 <td>Out-of-hours collection £60; £20 for airport bookings with a flight number</td>
                 <td>Prepayment refunded less the No Show Charge</td>
+                <td className={styles.sourceCell}><a href="https://www.europcar.co.uk/files/live/sites/Europcar/files/Conf_email_attachment/CGL_EN_GB.pdf" target="_blank" rel="noopener noreferrer">Europcar UK terms</a></td>
               </tr>
               <tr>
-                <td>Budget (UK / Spain / Sweden / Australia)</td>
+                <td><span className={styles.providerCell}>Budget<span className={styles.providerCountry}>UK · Spain · Sweden · Australia</span></span></td>
                 <td>No official grace period published on the pages verified</td>
                 <td>Tracking only (Sweden: &ldquo;Budget will still track late flights&rdquo; with correct flight details)</td>
                 <td>No desk-closing or after-hours rule found</td>
                 <td>UK: €40/£40 no-show fee, booking cancelled with no refund. Spain/Australia: prepaid forfeited</td>
+                <td className={styles.sourceCell}><a href="https://budgetinternational.com/budgetonline/eu-gb/faq.nsf/(FAQByDOCID)/1901848F3FAB0896C12576090056A792?1901848F3FAB0896C12576090056A792&Answer=n&Level=Sub%20Topic&OpenDocument" target="_blank" rel="noopener noreferrer">Budget UK FAQ</a></td>
               </tr>
               <tr>
-                <td>Avis (Switzerland / Germany / Sweden / Spain)</td>
+                <td><span className={styles.providerCell}>Avis<span className={styles.providerCountry}>Switzerland · Germany · Sweden · Spain</span></span></td>
                 <td>Swiss terms: 24-hour collection window before a no-show fee (hold not guaranteed)</td>
                 <td>Tracking only (Germany/Sweden) with correct flight details</td>
                 <td>No desk-closing or after-hours rule found</td>
                 <td>Switzerland: Non Cancellation Fee €60/€65/CHF 76. Spain: prepaid not refunded on no-show</td>
+                <td className={styles.sourceCell}><a href="https://eixnbeweb03.rent-at-avis.com/avisonline/terms.nsf/termsbycountryandlngcategories/ch-de-poa?OpenDocument" target="_blank" rel="noopener noreferrer">Avis CH terms</a></td>
               </tr>
             </tbody>
           </table>
@@ -239,6 +249,7 @@ export default function RentalCarPickupFlightDelayedPage() {
             confirm your branch&rsquo;s terms before you fly.
           </p>
         </div>
+        </section>
 
         {/* ═══ FLIGHT NUMBER ═══ */}
         <div className={styles.content}>
@@ -364,32 +375,40 @@ export default function RentalCarPickupFlightDelayedPage() {
           </div>
         </div>
 
-        {/* ═══ DECISION ASSISTANT ═══ */}
+        {/* ═══ DECISION ASSISTANT (flagship tool band) ═══ */}
+        <section className={styles.band}>
         <div className={styles.wide}>
           <div className={styles.sectionKicker}><span>06 · Decision assistant</span></div>
           <PickupRiskAssistant />
         </div>
+        </section>
 
         {/* ═══ CHECKLISTS ═══ */}
         <div className={styles.content}>
           <div className={styles.sectionKicker}><span>07 · Checklists</span></div>
           <h2>Before you fly — and the moment a delay is announced</h2>
-          <h3>Before you fly</h3>
-          <ol className={styles.checklist}>
-            <li><span><strong>Add your flight number</strong> to the booking — the single highest-value action in every verified policy.</span></li>
-            <li><span>Check the branch&rsquo;s <strong>closing time for your exact date</strong> and compare it with your scheduled arrival.</span></li>
-            <li><span>Look up the <strong>grace period and no-show fee</strong> for your company and country — in the supplier&rsquo;s own terms if you booked through a broker.</span></li>
-            <li><span>If prepaid, note <strong>what a no-show costs you</strong> (forfeit vs fixed fee) before you rely on the booking.</span></li>
-            <li><span>Save the <strong>branch phone number</strong> in your phone and screenshot your booking reference.</span></li>
-          </ol>
-          <h3>The moment a delay is announced</h3>
-          <ol className={styles.checklist}>
-            <li><span>Check whether the airline has <strong>published a new arrival time</strong> — one verified policy depends on it.</span></li>
-            <li><span><strong>Call or message the branch</strong> with the new estimate; ask how long the car will be held and whether after-hours collection exists and at what price.</span></li>
-            <li><span>Ask them to <strong>move the pickup time</strong> if the delay threatens the window — modifying beats gambling.</span></li>
-            <li><span>Get <strong>written confirmation</strong> naming the branch, the new time and any fee. A verbal promise is not evidence.</span></li>
-            <li><span>Re-check before landing — <strong>if the desk closes before you arrive, the after-hours rules (and fees) now apply</strong>.</span></li>
-          </ol>
+          <div className={styles.checklistGrid}>
+            <div className={styles.checklistGroup}>
+              <span className={styles.checklistGroupTitle}>Before you fly</span>
+              <ol className={styles.checklist}>
+                <li><span><strong>Add your flight number</strong> to the booking — the single highest-value action in every verified policy.</span></li>
+                <li><span>Check the branch&rsquo;s <strong>closing time for your exact date</strong> and compare it with your scheduled arrival.</span></li>
+                <li><span>Look up the <strong>grace period and no-show fee</strong> for your company and country — in the supplier&rsquo;s own terms if you booked through a broker.</span></li>
+                <li><span>If prepaid, note <strong>what a no-show costs you</strong> (forfeit vs fixed fee) before you rely on the booking.</span></li>
+                <li><span>Save the <strong>branch phone number</strong> in your phone and screenshot your booking reference.</span></li>
+              </ol>
+            </div>
+            <div className={styles.checklistGroup}>
+              <span className={styles.checklistGroupTitle}>The moment a delay is announced</span>
+              <ol className={styles.checklist}>
+                <li><span>Check whether the airline has <strong>published a new arrival time</strong> — one verified policy depends on it.</span></li>
+                <li><span><strong>Call or message the branch</strong> with the new estimate; ask how long the car will be held and whether after-hours collection exists and at what price.</span></li>
+                <li><span>Ask them to <strong>move the pickup time</strong> if the delay threatens the window — modifying beats gambling.</span></li>
+                <li><span>Get <strong>written confirmation</strong> naming the branch, the new time and any fee. A verbal promise is not evidence.</span></li>
+                <li><span>Re-check before landing — <strong>if the desk closes before you arrive, the after-hours rules (and fees) now apply</strong>.</span></li>
+              </ol>
+            </div>
+          </div>
         </div>
 
         {/* ═══ FAQ ═══ */}
@@ -432,18 +451,23 @@ export default function RentalCarPickupFlightDelayedPage() {
               says so rather than guessing.
             </p>
             <ul className={styles.sourceList}>
-              {SOURCE_GROUPS.map((group) => (
-                <li key={group.title} className={styles.sourceGroup}>
-                  <span className={styles.sourceGroupTitle}>{group.title}</span>
-                  <ul className={styles.sourceList}>
-                    {group.items.map((s, i) => (
-                      <li key={i}>
-                        <span className={styles.sourceIndex}>{String(i + 1).padStart(2, "0")}</span>
-                        <span className={styles.sourceLabel}>{s.label}</span>
-                        <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url.replace("https://", "")}</a>
-                      </li>
-                    ))}
-                  </ul>
+              {SOURCE_GROUPS.map((group, gi) => (
+                <li key={group.title} style={{ display: "block", border: "none", padding: 0 }}>
+                  <details className={styles.sourceDetails} open={gi === 0}>
+                    <summary>
+                      {group.title}
+                      <span className={styles.sourceCount}>{group.items.length} sources</span>
+                    </summary>
+                    <ul className={styles.sourceList}>
+                      {group.items.map((s, i) => (
+                        <li key={i}>
+                          <span className={styles.sourceIndex}>{String(i + 1).padStart(2, "0")}</span>
+                          <span className={styles.sourceLabel}>{s.label}</span>
+                          <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url.replace("https://", "")}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
                 </li>
               ))}
             </ul>
