@@ -1,419 +1,343 @@
 import type { Metadata } from "next";
-import { LegacyArticleLayout } from "@/components/legacy";
-import type { RelatedItem } from "@/components/legacy";
+import Link from "next/link";
+import HomeHeader from "@/components/ui/HomeHeader";
+import FAQAccordion from "@/components/guide/FAQAccordion";
+import Footer from "@/components/ui/Footer";
+import styles from "./page.module.css";
 
-const related: RelatedItem[] = [
+export const metadata: Metadata = {
+  title: "Is Wego Legit? How Wego Flights Works, Fees and Booking Risks | Travelvus",
+  description: "How Wego flight search really works: the two booking models, who handles your booking and refunds, what the displayed price includes — checked October 2026.",
+  alternates: { canonical: "/wego-flight" },
+};
+
+const FAQ_ITEMS = [
+  { question: "Is Wego a legitimate flight booking site?", answer: "Yes — Wego is an established travel metasearch and marketplace, licensed as a travel agency in Singapore (TA03513) and operating through licensed entities in several markets. That answers legality. The more useful question is which model your booking uses, because it changes who you deal with when something goes wrong." },
+  { question: "Does Wego sell flights itself, or just compare them?", answer: "Both. Wego compares prices from airlines and online travel agencies, and most fares redirect you to the provider's site to pay. But Wego also offers a 'Book on Wego' checkout where you complete the purchase without leaving Wego. The two models have different support and refund paths — check which one your booking uses before you pay." },
+  { question: "Who handles changes and refunds on a Wego booking?", answer: "It depends on the booking model. For bookings made with a partner, Wego's own support pages say you should contact the booking partner directly — the partner manages your reservation and payment. For bookings made directly on Wego, Wego support submits the request on your behalf. In both cases the fare rules and fees are set by the airline, not by Wego." },
+  { question: "Does the price Wego shows include all fees?", answer: "Not always. Wego's official help pages state the displayed fare includes the base fare and taxes, but that payment processing fees 'may be added at a later stage of the booking process', and credit card payments 'may include a small surcharge' shown before confirmation. Wego also states prices can change during booking because airlines control fares. Compare the final total before you pay — not the search-result price." },
+  { question: "How long do Wego refunds take?", answer: "Wego's published terms say it initiates refunds within 2 working days, with funds usually arriving in 15–20 working days — up to 30 days for some local payment methods, and for involuntary cancellations (airline-cancelled flights) Wego's support pages warn refunds can take up to 3 months in some cases. Cancellation charges, Wego service fees and discounts may be deducted from the refund." },
+  { question: "Is Wego always the cheapest option?", answer: "No provider guarantees the lowest price, and Wego does not claim to. Its own FAQ admits it reuses cached search results for similar searches, so prices are not strictly real-time. Treat Wego as one comparison source, check the final total at checkout, and compare against at least one alternative before booking." },
+];
+
+const SOURCE_GROUPS = [
   {
-    title: "Find Affordable Kayak Flights",
-    description: "Compare 400+ airlines with Kayak's flight search engine.",
-    href: "/kayak-flights",
-    label: "Related Guide",
-  },
-  {
-    title: "London Airport Decisions",
-    description: "Which London airport really wins for your journey?",
-    href: "/london-airports",
-    label: "Decision Guide",
+    title: "Official Wego documentation",
+    items: [
+      { label: "Wego.com — Flights (what Wego is, booking models, payments)", url: "https://www.wego.com/flights" },
+      { label: "Wego Support — bookings, cancellations, refunds FAQ", url: "https://support.wego.com/" },
+      { label: "Wego Terms of Service (Sep 1, 2026) — fees, refunds, currency", url: "https://company.wego.com/terms-of-service/" },
+      { label: "Wego — Partner contact information", url: "https://www.wego.com/partners-contact-info?lang=en" },
+    ],
   },
 ];
 
+const ARTICLE_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "Is Wego Legit? How Wego Flights Works, Fees and Booking Risks",
+  description: "How Wego flight search really works: the two booking models, who handles your booking and refunds, and what the displayed price includes.",
+  datePublished: "2026-10-21",
+  dateModified: "2026-10-21",
+  author: { "@type": "Organization", name: "Travelvus", url: "https://www.travelvus.com" },
+  publisher: { "@type": "Organization", name: "Travelvus", url: "https://www.travelvus.com" },
+  mainEntityOfPage: "https://www.travelvus.com/wego-flight",
+};
 
-export const metadata: Metadata = {
-  title: "WeGo Flight: Your Ultimate Guide to Booking Affordable Flights - Outdoor Adventure",
-  description:
-    "Discover how WeGo Flight helps you find affordable flights across Europe. Compare over 800 providers, save up to 30%, and book smart with full-price transparency.",
-  alternates: { canonical: "/wego-flight" },
+const FAQ_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_ITEMS.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
 };
 
 export default function WegoFlightPage() {
   return (
-    <LegacyArticleLayout
-      category="Flight Booking Guide"
-      title="WeGo Flight: Your Ultimate Guide to Booking Affordable Flights - Outdoor Adventure"
-      subtitle="Compare over 800 European providers, find the cheapest fares, and book with confidence using WeGo Flight's powerful search platform."
-      readingTime="9 min"
-      lastReviewed="Jul 2026"
-      heroImage="/legacy/wego-flight/wego-flight-1024x640.webp"
-      heroImageAlt="WeGo Flight banner showing affordable flight booking"
-      summaryTitle="What this guide covers"
-      summaryPoints={[
-        "WeGo compares 800+ European flight providers in one search.",
-        "Flexible date searches can save up to 30% on airfare.",
-        "Price alerts notify you when fares drop on your route.",
-        "Full-price transparency — no hidden fees at checkout."
-      ]}
-      tocItems={[
-        { id: "cheapest-flight-deals", title: "Cheapest Flight Deals" },
-        { id: "find-cheap-flights", title: "Find Cheap Flights" },
-        { id: "last-minute-vacation", title: "Last Minute Vacation" },
-        { id: "book-smart", title: "Book Smart" },
-        { id: "compare-cheapest", title: "Compare Cheapest" },
-        { id: "save-up-to-30", title: "Save up to 30%" },
-        { id: "find-best-price", title: "Find Best Price" },
-        { id: "european-flight-providers", title: "European Flight Providers" },
-        { id: "book-your-flight-today", title: "Book Your Flight Today" },
-        { id: "cheap-flight-tickets-europe", title: "Cheap Flight Tickets Europe" },
-        { id: "travel-like-a-pro", title: "Travel Like a Pro" }
-      ]}
-      ctaText="Found your flight? Compare the real journey cost before you book."
-      ctaLink="/#compare"
-      ctaHint="Ticket price is just the start. Baggage, transfers and time change the real cost."
-      methodologyText="Travelvus compares complete journeys — not just the listed fare. Once you find a flight on WeGo, our engine adds baggage, airport transfers and door-to-door time to reveal which option really wins."
-      trustNote="Flight search platforms compared editorially. Prices and availability change continuously."
-      related={related}
-    >
-{/* Introductory paragraphs */}
-        
-        <p>Are you ready to embark on your next adventure without breaking the bank? Look no further than <strong><a href="https://www.wego.com/flights" rel="noopener noreferrer" target="_blank">WeGo Flight</a></strong>, the ultimate platform for finding <strong>affordable flights</strong> to destinations around the world. Whether you are planning a weekend getaway or a once-in-a-lifetime journey, WeGo Flight empowers you to compare prices across hundreds of airlines and travel providers, ensuring you get the best possible deal on your airfare. With its intuitive interface and powerful search capabilities, finding cheap flights has never been easier.</p>
-
-        <p>In today&rsquo;s fast-paced travel landscape, the ability to quickly and efficiently compare flight options is essential. WeGo Flight offers a comprehensive solution that brings together <strong>over 800 European providers</strong>, allowing you to search, compare, and book with confidence. The platform is designed with the modern traveler in mind, offering features such as flexible date searches, price alerts, and detailed fare breakdowns that give you <strong>full-price transparency</strong> at every step of the booking process. No hidden fees, no surprises, just honest pricing that lets you make informed decisions about your travel plans.</p>
-
-        <p>What sets WeGo Flight apart from other flight search engines is its unwavering commitment to providing the most accurate and up-to-date information available. The platform aggregates data from airlines, online travel agencies, and direct booking channels to present you with a complete picture of the market. Whether you are looking for last-minute deals, planning months in advance, or exploring multiple destination options, WeGo Flight gives you the tools you need to find the perfect flight at the perfect price. The <strong>user-friendly app</strong> makes it even easier, allowing you to search and book on the go from your smartphone or tablet.</p>
-
-        <p>This comprehensive guide will walk you through everything you need to know about using WeGo Flight to book affordable flights. From understanding the platform&rsquo;s core features to mastering advanced search techniques, we will cover it all. You will learn how to find the cheapest flight deals, compare prices across providers, save up to 30% on your bookings, and travel like a seasoned pro. By the end of this guide, you will have all the knowledge and confidence you need to make WeGo Flight your go-to travel companion for every journey.</p>
-
-        <p></p>
-
-        <h2 id="cheapest-flight-deals">Cheapest Flight Deals</h2>
-
-        <p>When it comes to finding the <strong>cheapest flight deals</strong>, WeGo Flight is quite simply the best tool for the job. The platform scours hundreds of airlines and travel providers to bring you the most competitive prices available. Whether you are looking for a short domestic hop or a long-haul international journey, WeGo Flight&rsquo;s powerful search engine analyzes millions of fare combinations to identify the absolute lowest prices for your desired route and travel dates. The result is a curated list of options that puts the best deals right at your fingertips.</p>
-
-<div className="callout calloutImportant">
-<span className="calloutLabel">Important to know</span>
-<p className="calloutText">Listed fares can change after baggage, seats or transfer costs are added. The cheapest ticket price is not always the cheapest journey.</p>
-</div>
-
-        <p>One of the key features that makes WeGo Flight so effective at finding cheap flight deals is its ability to search across multiple booking channels simultaneously. Instead of visiting dozens of individual airline websites or online travel agencies, you can conduct one single search on WeGo Flight and receive results from all major providers. This comprehensive approach ensures that you never miss out on a great deal simply because you did not check the right website. The platform&rsquo;s extensive network includes budget carriers, full-service airlines, and everything in between.</p>
-
-        <p>Another advantage of using WeGo Flight to find cheap flight deals is the platform&rsquo;s flexible date search feature. If your travel dates are not set in stone, you can use the flexible dates option to see prices across a range of dates, often spanning an entire month. This allows you to identify the cheapest days to fly, which can lead to substantial savings. In many cases, flying a day earlier or later can result in a significantly lower fare. WeGo Flight makes it easy to spot these opportunities and adjust your plans accordingly to maximize your savings.</p>
-
-        <p>The platform also offers a &ldquo;nearby airports&rdquo; feature that expands your search to include airports close to your origin and destination. This can be particularly useful when traveling to or from cities with multiple airports, as fares can vary dramatically between different airports serving the same metropolitan area. By considering nearby alternatives, WeGo Flight opens up additional possibilities for finding cheaper flights. You might discover that flying into a secondary airport and taking a short train or bus ride to your final destination saves you a significant amount of money.</p>
-
-        <p>Price alerts are another valuable tool for securing the cheapest flight deals. When you set up a price alert on WeGo Flight, the platform monitors fare changes for your desired route and notifies you when prices drop. This means you do not have to check the website obsessively; the alerts do the work for you. When a great deal becomes available, you will know about it immediately and can book before the price increases again. Price alerts are especially useful for popular routes where fares can fluctuate frequently based on demand and availability.</p>
-
-        <p>WeGo Flight also provides detailed fare breakdowns that show you exactly what you are paying for. When you select a flight option, the platform displays the base fare, taxes, fees, and any additional charges such as baggage fees or seat selection costs. This <strong>full-price transparency</strong> ensures that there are no surprises at checkout. You can compare the total cost of different options side by side, taking into account all applicable fees to determine which deal is truly the best value for your money. This level of detail empowers you to make informed, confident booking decisions.</p>
-
-        <p>For travelers who are open to exploring new destinations, WeGo Flight offers an explore feature that shows the cheapest flights available from your origin to a wide range of destinations. This is perfect for spontaneous travelers who are looking for inspiration and want to take advantage of the best deals on offer. By displaying prices in a visual map format, the explore feature makes it easy to see which destinations are most affordable at any given time. You might find that a destination you had never considered is currently offering incredible flight deals.</p>
-
-        <p>The platform&rsquo;s filtering and sorting options further enhance your ability to find cheap flight deals. You can filter results by airline, number of stops, flight duration, departure time, and price range. Sorting options allow you to organize results by price, duration, departure time, or arrival time. This level of control ensures that you can quickly narrow down the options to find the deal that best matches your preferences. Whether you prioritize the lowest price above all else or prefer to balance cost with convenience, WeGo Flight gives you the flexibility to customize your search.</p>
-
-        <p>Booking through WeGo Flight also provides access to exclusive deals and promotional fares that may not be available through other channels. Airlines and travel agencies often partner with WeGo Flight to offer special discounts to users of the platform. These exclusive deals can provide additional savings on top of the already competitive prices available through the standard search. By checking the promotions and deals section regularly, you can stay informed about the latest offers and take advantage of limited-time discounts on popular routes.</p>
-
-        <p>The mobile app experience is particularly well-suited for finding cheap flight deals on the go. The <strong>user-friendly app</strong> provides all the functionality of the desktop website in a convenient mobile format. You can search for flights, compare prices, set up alerts, and book your tickets directly from your smartphone. The app also supports push notifications for price drops and deal alerts, ensuring you never miss an opportunity to save. With the WeGo app installed on your phone, you have a powerful flight search tool in your pocket at all times.</p>
-
-        <p>When searching for cheap flight deals, timing can be everything. WeGo Flight provides insights into historical price trends and booking patterns that can help you determine the best time to purchase your tickets. While past performance does not guarantee future results, understanding seasonal trends and typical pricing patterns can inform your booking strategy. The platform may highlight whether prices are currently high or low compared to historical averages, giving you a sense of whether it is a good time to book or whether you might want to wait for a better deal.</p>
-
-        <p>Group travel is another area where WeGo Flight excels at finding cheap deals. If you are traveling with family or friends, the platform allows you to search for multiple passengers and see pricing for the entire group. Some airlines offer group discounts or special fares for parties of a certain size, and WeGo Flight&rsquo;s comprehensive search includes these options where available. By searching for your entire group in one transaction, you can ensure that everyone gets the same fare and that seats are available together on the plane.</p>
-
-        <p>Ultimately, the key to finding the cheapest flight deals on WeGo Flight is to be flexible, patient, and strategic in your approach. Use the platform&rsquo;s various tools and features to cast a wide net, compare options thoroughly, and act quickly when you find a great deal. Prices can change rapidly, especially during peak travel seasons, so being ready to book when the right opportunity arises is essential. With WeGo Flight as your partner in travel planning, finding cheap flight deals becomes not just possible but routine.</p>
-
-        <p>Remember that <strong>the cheapest flight is not always the best value</strong> when you consider factors like baggage fees, seat comfort, and the overall travel experience. WeGo Flight helps you evaluate all these factors by providing comprehensive information about each option. Take the time to read the details, consider your priorities, and choose the deal that offers the best overall value for your specific needs. With practice and experience, you will develop an instinct for identifying the truly exceptional deals that make travel both affordable and enjoyable.</p>
-
-        <h2 id="find-cheap-flights">Find Cheap Flights</h2>
-
-        <p>Finding cheap flights has become something of a modern art form, and WeGo Flight is the ultimate canvas for your masterpieces. The platform&rsquo;s sophisticated search algorithms work tirelessly behind the scenes to identify the most cost-effective options for your travel needs. When you use WeGo Flight to <strong>find cheap flights</strong>, you are tapping into a vast network of pricing data that spans the entire globe. The platform&rsquo;s reach extends to virtually every major airline and travel provider, ensuring that you have access to the full spectrum of available fares.</p>
-
-        <p>One of the most effective strategies for finding cheap flights on WeGo Flight is to use the &ldquo;anywhere&rdquo; search feature. If you are flexible about your destination, this tool allows you to see the cheapest flights available from your origin to destinations around the world. The results are displayed in a ranked list or on an interactive map, making it easy to identify the most affordable travel opportunities. This is an excellent option for spontaneous travelers who are driven by the deal rather than a specific destination, allowing you to let the market guide your adventures.</p>
-
-        <p>The &ldquo;whole month&rdquo; view is another powerful feature for finding cheap flights. Instead of searching for a specific date, you can view an entire month of prices at a glance. This visual representation makes it immediately clear which days offer the lowest fares. Typically, mid-week flights (Tuesday, Wednesday, and Thursday) are cheaper than weekend flights, and this pattern is easy to spot using the month view. By adjusting your travel dates by just a day or two, you can often achieve significant savings without substantially altering your plans.</p>
-
-        <p>WeGo Flight also allows you to search for flights with multiple destinations or open-jaw itineraries. If you plan to visit several cities on a single trip, you can use the multi-city search feature to find the most cost-effective routing. This is particularly useful for travelers who want to maximize their time abroad and minimize backtracking. The platform compares different combinations of flights to find the optimal balance of price and convenience, ensuring that your multi-destination trip remains affordable.</p>
-
-        <p>For those who prefer to book directly with airlines, WeGo Flight provides all the information you need to make an informed choice and then book directly. The platform&rsquo;s <strong>full-price transparency</strong> means you can see exactly what each airline charges, including any additional fees. If you find a fare that looks good, you can click through to the airline&rsquo;s website to complete the booking directly. This approach gives you the best of both worlds: the comprehensive search capabilities of WeGo Flight combined with the security and familiarity of booking directly with the airline.</p>
-
-        <p>Another effective technique for finding cheap flights is to use the incognito or private browsing mode when searching. Some travel websites use cookies and browsing history to track your search behavior and may increase prices if they detect repeated searches for the same route. While the extent of this practice is debated, using private browsing ensures that your searches remain anonymous. WeGo Flight operates transparently, but taking this extra precaution can provide peace of mind and potentially help you secure lower fares.</p>
-
-        <p>The time of day you search can also impact the prices you see. While there is no magic hour that guarantees the lowest prices, many travel experts recommend searching in the early morning or late evening when competition for seats may be lower. WeGo Flight&rsquo;s price alert feature eliminates the need to time your searches perfectly; instead, you can set an alert and let the platform notify you when prices drop. This hands-off approach to finding cheap flights is both efficient and effective, saving you time while still delivering great results.</p>
-
-        <p>When using WeGo Flight to find cheap flights, it is important to consider the total journey time, not just the price. A very cheap flight with a long layover or multiple connections may end up costing you more in terms of time and convenience than a slightly more expensive direct flight. WeGo Flight displays the duration of each option clearly, allowing you to weigh the trade-off between cost and travel time. For short trips where every day counts, paying a bit more for a faster journey can be well worth the extra expense.</p>
-
-        <p>Baggage policies are another crucial factor to consider when comparing cheap flight options. Some budget airlines offer very low base fares but charge significant fees for checked baggage, carry-on bags, and even seat selection. WeGo Flight provides information about baggage policies and fees, helping you calculate the true cost of each option. A flight that appears cheaper at first glance may end up being more expensive once you add baggage fees, so it is important to factor in these costs when comparing your options.</p>
-
-<div className="callout calloutInsight">
-<span className="calloutLabel">Travelvus Insight</span>
-<p className="calloutText">A cheap flight only wins when the complete journey — ticket, baggage, transfers and time — remains cheaper. Always compare the total, not just the fare.</p>
-</div>
-
-        <p>WeGo Flight also offers a calendar view that shows the lowest prices for an entire month or even several months. This is particularly useful for travelers who have flexibility in their planning and want to identify the cheapest travel periods. The calendar view can reveal seasonal patterns and help you avoid peak travel times when prices are at their highest. By planning your trip during off-peak periods, you can enjoy significantly lower fares and less crowded airports and attractions.</p>
-
-        <p>For international travel, WeGo Flight allows you to search in different currencies, which can sometimes lead to better deals. Currency fluctuations and regional pricing strategies mean that booking in a different currency may occasionally result in a lower fare. The platform makes it easy to switch between currencies and see the equivalent price in your preferred currency. Keep in mind that your credit card may charge foreign transaction fees, so factor those in when evaluating the total cost.</p>
-
-        <p>WeGo Flight&rsquo;s search results also include information about the booking class and fare conditions. Understanding these details can help you avoid unexpected restrictions or penalties. Some cheap fares are non-refundable or have strict change policies, while others offer more flexibility for a slightly higher price. By reviewing the fare conditions before booking, you can choose an option that aligns with your needs and provides the right balance of affordability and flexibility for your travel plans.</p>
-
-        <p>Finally, building loyalty with WeGo Flight through regular use can lead to additional benefits over time. Frequent users may receive personalized recommendations, early access to promotions, or other perks that enhance the flight search experience. While the platform does not currently have a traditional loyalty program, its commitment to providing the best possible search experience means that regular users benefit from continuous improvements and new features. The more you use WeGo Flight, the more you will discover its capabilities and the better you will become at finding cheap flights for every journey.</p>
-
-        <h2 id="last-minute-vacation">Last Minute Vacation</h2>
-
-        <p>Planning a <strong>last minute vacation</strong> can be an exhilarating experience, and WeGo Flight is the perfect companion for spontaneous travelers. The platform excels at finding great deals for those who can pack a bag and go at a moment&rsquo;s notice. Airlines often discount unsold seats as the departure date approaches, and WeGo Flight&rsquo;s powerful search engine is designed to capture these last-minute bargains. Whether you have a free weekend coming up or simply feel the urge for an impromptu getaway, WeGo Flight can help you find affordable flights on short notice.</p>
-
-        <p>One of the biggest advantages of booking a last-minute vacation with WeGo Flight is the potential for significant savings. Airlines use sophisticated pricing algorithms that adjust fares based on demand and remaining inventory. As the departure date nears and seats remain unsold, prices may drop dramatically to fill the plane. WeGo Flight&rsquo;s real-time search capabilities ensure that you see these discounted fares as soon as they become available. This dynamic pricing environment creates opportunities for savvy travelers to book premium seats at budget-friendly prices.</p>
-
-        <p>WeGo Flight&rsquo;s mobile app is particularly valuable for last-minute travelers. The <strong>user-friendly app</strong> allows you to search for flights, compare options, and book your tickets within minutes, all from the palm of your hand. Whether you are at home, at work, or already on the road, the app gives you the flexibility to act on last-minute deals as soon as they appear. Push notifications for price drops and special promotions ensure that you are always aware of the best opportunities for spontaneous travel.</p>
-
-        <p>The explore feature on WeGo Flight is another excellent tool for last-minute vacation planning. By showing the cheapest available flights from your current location to a wide range of destinations, the explore feature provides instant inspiration for where to go. You can filter results by region, price range, or travel duration to find options that match your preferences. This is perfect for travelers who are flexible about their destination and simply want to find the best deal for a spontaneous trip.</p>
-
-        <p>When booking a last-minute vacation, it is important to <strong>be flexible with your travel dates</strong> and times. WeGo Flight&rsquo;s flexible date search allows you to see prices across a range of dates, helping you identify the cheapest options. Red-eye flights (those departing late at night or very early in the morning) are often cheaper than daytime flights and can be an excellent choice for last-minute travelers on a budget. Similarly, flights on less popular days of the week may offer better availability and lower prices for spontaneous bookings.</p>
-
-        <p>Another strategy for last-minute travel is to consider alternative airports. WeGo Flight&rsquo;s nearby airports feature expands your search to include airports within a reasonable distance of your origin and destination. This can unlock additional options and potentially lower fares. For example, if you are based in London, you might find cheaper last-minute flights from Stansted or Luton compared to Heathrow or Gatwick. The slight inconvenience of traveling to a different airport can be well worth the savings on a last-minute booking.</p>
-
-        <p>WeGo Flight also provides information about package deals that combine flights with hotels or car rentals. For last-minute travelers, these packages can offer exceptional value by bundling multiple travel components together at a discounted rate. If you need both a flight and accommodation for your spontaneous trip, searching for a package deal on WeGo Flight can save you both time and money. The platform compares package options from various providers to find the best combined value for your travel needs.</p>
-
-        <p>Travel insurance is an important consideration for last-minute vacations. When you book at the last minute, you may have less time to research your destination and prepare for unexpected events. WeGo Flight provides information about travel insurance options, allowing you to add coverage to your booking if desired. While insurance adds to the upfront cost, it provides valuable protection against cancellations, medical emergencies, and other unforeseen circumstances that can disrupt your trip.</p>
-
-        <p>For solo travelers, last-minute vacations can be particularly rewarding. Airlines sometimes offer special deals for single travelers on flights where they need to fill individual seats. WeGo Flight&rsquo;s search results include pricing for solo travelers and groups of various sizes, so you can see the best options for your specific party. Solo travelers also have the advantage of being able to make decisions quickly without needing to coordinate with others, making them ideal candidates for taking advantage of last-minute deals.</p>
-
-        <p>Group last-minute travel presents additional challenges, as finding multiple seats together on short notice can be difficult. However, WeGo Flight&rsquo;s comprehensive search across multiple providers maximizes your chances of finding availability for your entire group. If you are planning a spontaneous group trip with friends or family, start your search early in the day and be prepared to consider multiple options. The platform&rsquo;s filtering tools allow you to sort by the number of available seats, making it easier to find flights that can accommodate your entire party.</p>
-
-        <p>WeGo Flight&rsquo;s price alert feature is particularly useful for last-minute travelers who have a specific destination in mind but are waiting for the right price. By setting an alert for your desired route, you will be notified when prices drop to a level that makes the trip worthwhile. This allows you to monitor fares passively and spring into action when the deal meets your criteria. The alerts can be customized to notify you based on specific price thresholds, ensuring that you only receive notifications for truly compelling offers.</p>
-
-        <p>Booking last-minute travel requires quick decision-making and confidence in your choices. WeGo Flight streamlines the booking process so that you can go from search to confirmation in just a few minutes. The platform&rsquo;s intuitive interface minimizes the steps required to complete a booking, reducing the risk of losing a great deal because you hesitated too long. When you find a last-minute deal that meets your needs, trust your instincts and book promptly. Great last-minute deals have a way of disappearing quickly as other travelers snap them up.</p>
-
-        <p>The thrill of a last-minute vacation is part of what makes spontaneous travel so appealing. With WeGo Flight, you have the tools and information you need to embrace spontaneity without sacrificing affordability. The platform&rsquo;s comprehensive search capabilities, real-time pricing, and user-friendly interface make it the ideal choice for travelers who want to seize the moment and explore the world on their own terms. So go ahead, be spontaneous, and let WeGo Flight help you turn your last-minute travel dreams into reality.</p>
-
-        <p>As you gain experience with last-minute bookings on WeGo Flight, you will develop a sense for when and where the best deals appear. Some routes have predictable patterns, with prices dropping at certain times of the day or week. The platform&rsquo;s historical data and trend information can help you identify these patterns and plan your spontaneous trips more effectively. With practice, you will become a master of last-minute travel, able to book incredible trips at a moment&rsquo;s notice for a fraction of the regular price.</p>
-
-        <h2 id="book-smart">Book Smart</h2>
-
-        <p>Booking flights is not just about finding the lowest price; it is about making smart decisions that balance cost, convenience, and comfort. WeGo Flight empowers you to <strong>book smart</strong> by providing all the information you need to make informed choices. The platform&rsquo;s <strong>full-price transparency</strong> ensures that you see the complete cost of each option upfront, including taxes, fees, and any additional charges. This transparency is the foundation of smart booking, allowing you to compare options on an apples-to-apples basis and avoid unpleasant surprises at checkout.</p>
-
-<div className="callout calloutTip">
-<span className="calloutLabel">Booking tip</span>
-<p className="calloutText">Compare final checkout totals, not the first search result price. Baggage, seat selection and payment fees can add 20–40% to the listed fare.</p>
-</div>
-
-        <p>One of the smartest things you can do when booking flights is to consider the total travel experience, not just the ticket price. A cheap flight with a very early departure time might require expensive transportation to the airport or an extra night of accommodation. A longer flight with a layover might save money but cost you a day of your vacation. WeGo Flight provides detailed information about each option, including departure and arrival times, layover duration, and total journey time, allowing you to evaluate the complete picture before making a decision.</p>
-
-        <p>Another smart booking strategy is to understand the fare class and its associated rules. Some cheap fares are non-refundable and do not allow changes, while others offer flexibility for a higher price.</p>
-
-        <p>If there is any chance your plans might change, it may be worth paying a bit more for a refundable or changeable fare. WeGo Flight displays fare conditions clearly, so you can make an informed decision based on your specific needs. The peace of mind that comes with a flexible fare can be well worth the additional cost for many travelers.</p>
-
-        <p>WeGo Flight also helps you book smart by providing information about airline quality and customer satisfaction. While price is important, so is the overall travel experience. Some airlines have better on-time performance, more comfortable seating, and higher quality service than others. WeGo Flight includes airline ratings and reviews in its search results, giving you a sense of what to expect from each carrier. By considering both price and quality, you can choose an option that offers the best overall value for your travel preferences.</p>
-
-        <p>Loyalty programs and frequent flyer miles are another important consideration for smart booking. If you are a member of an airline&rsquo;s loyalty program, booking directly may allow you to earn miles or qualify for elite status benefits. WeGo Flight provides information about earning miles on different fare options, helping you maximize your loyalty benefits. Even if you are not currently a member of a loyalty program, choosing a single airline or alliance for your travel can help you accumulate points for future rewards and upgrades.</p>
-
-        <p>Timing your purchase is another critical aspect of smart booking. While there is no universally perfect time to buy, research suggests that booking domestic flights around one to three months in advance and international flights two to six months in advance often yields the best prices. WeGo Flight&rsquo;s price trend data can help you determine whether current prices are reasonable or whether you might benefit from waiting. However, for popular routes during peak seasons, booking early is generally the safest strategy to secure both availability and a fair price.</p>
-
-        <p>The day of the week you book can also impact the price you pay. While the differences are not always dramatic, many studies suggest that booking flights on Tuesday or Wednesday tends to result in lower fares. This is because airlines often release weekly sales on Monday evening, and competitors match these prices on Tuesday. By booking on Tuesday or Wednesday, you may benefit from these weekly pricing cycles. WeGo Flight&rsquo;s price alerts ensure that you do not need to wait for a specific day to find a great deal; the platform will notify you when prices drop regardless of the day.</p>
-
-        <p>WeGo Flight also offers a multi-city booking feature that is ideal for travelers planning complex itineraries. Instead of booking multiple one-way or round-trip tickets separately, you can use the multi-city search to find the most efficient and cost-effective routing for your entire trip. This can be particularly useful for travelers who want to visit several destinations in a single journey. The platform compares different combinations to find the optimal balance of price and convenience for your multi-destination adventure.</p>
-
-        <p>Another smart booking strategy is to consider alternative airports at both your origin and destination. WeGo Flight&rsquo;s search includes nearby airports by default, ensuring that you see all available options. Flying into a smaller or secondary airport can sometimes result in significant savings, especially for popular destinations served by multiple airports. While you may need to factor in additional ground transportation costs, the overall trip cost can still be lower when you choose an alternative airport with cheaper flight options.</p>
-
-        <p>For business travelers, WeGo Flight offers features that support corporate travel needs. The platform can search for fares that meet specific company travel policies, compare business class options, and provide detailed receipts for expense reporting. Business travelers often value flexibility and comfort over the absolute lowest price, and WeGo Flight&rsquo;s filtering tools make it easy to find options that meet these priorities. By using WeGo Flight for business travel, companies can ensure their employees are getting competitive fares while adhering to travel policies.</p>
-
-        <p>WeGo Flight also helps you book smart by providing clear information about cancellation and change policies. Before you complete your booking, take a moment to review the terms and conditions, particularly the cancellation policy. If you need to cancel or change your flight, knowing the rules and fees in advance can save you from costly surprises later. The platform&rsquo;s detailed fare information includes links to the full terms and conditions, allowing you to review the fine print before committing to a purchase.</p>
-
-        <p>Finally, booking smart means using the right payment method. Some credit cards offer travel rewards, purchase protection, or travel insurance benefits that can add value to your booking. WeGo Flight accepts a wide range of payment methods, including credit cards, debit cards, and digital wallets. Before completing your purchase, consider which payment method offers the best combination of rewards, security, and convenience for your specific situation. A small difference in rewards or protection can add up over multiple bookings.</p>
-
-        <p>By combining all these smart booking strategies with WeGo Flight&rsquo;s powerful search and comparison tools, you can approach every flight purchase with confidence and knowledge. The platform is designed to support informed decision-making at every step of the booking process, from initial search to final payment. Whether you are a seasoned traveler or booking your first flight, WeGo Flight gives you the information and tools you need to book smart and get the best value for your money.</p>
-
-        <h2 id="compare-cheapest">Compare Cheapest</h2>
-
-        <p>When it comes to finding the best flight deals, comparison is everything. WeGo Flight is purpose-built to help you <strong>compare cheapest</strong> options across hundreds of airlines and travel providers, presenting you with a clear picture of the market. The platform&rsquo;s comparison engine evaluates millions of fare combinations in real time, ranking options by price and displaying them in an easy-to-read format. This allows you to quickly identify the cheapest options and evaluate them against other factors such as travel time, number of stops, and airline quality.</p>
-
-<div className="callout calloutInsight">
-<span className="calloutLabel">Travelvus Insight</span>
-<p className="calloutText">The cheapest visible fare may use a less convenient airport or schedule. Factor in transfer time and cost before deciding.</p>
-</div>
-
-        <p>The search results page on WeGo Flight is designed for efficient comparison. Each option is displayed with key information at a glance: the airline, departure and arrival times, flight duration, number of stops, and the total price. You can sort results by price, duration, or departure time to prioritize the factors that matter most to you. The color-coded price indicators make it easy to spot the cheapest options, with the lowest fares highlighted prominently at the top of the list when sorting by price.</p>
-
-        <p>WeGo Flight also allows you to compare prices across different booking channels. Some options may be available directly from the airline, while others come from online travel agencies or aggregators. The platform shows you the source of each fare so you can decide whether you prefer to book directly or through a third-party provider. Direct bookings may offer better customer service and easier changes, while third-party bookings may occasionally offer lower prices. Having this information allows you to make an informed choice based on your preferences.</p>
-
-        <p>The platform&rsquo;s filter options enhance your ability to compare cheapest flights effectively. You can filter by price range, airline alliance, number of stops, flight duration, departure time, and more. By narrowing down the options to those that meet your specific criteria, you can focus your comparison on the most relevant choices. This is particularly useful when searching for flights on popular routes where there may be dozens or even hundreds of available options to consider.</p>
-
-        <p>WeGo Flight&rsquo;s comparison tools also extend to fare classes within the same flight. Some airlines offer multiple fare types on the same flight, ranging from basic economy to business class. The platform displays these different fare options side by side, allowing you to compare the price difference between economy, premium economy, business, and first class. This comparison helps you decide whether upgrading to a higher cabin class is worth the additional cost for your specific trip and preferences.</p>
-
-        <p>Another powerful comparison feature is the ability to view prices for nearby dates simultaneously. When you search for a specific date, WeGo Flight also shows prices for the days before and after, allowing you to see whether adjusting your travel dates by a day or two could result in significant savings. This side-by-side comparison of adjacent dates is one of the most effective ways to find cheaper alternatives without dramatically changing your travel plans. Even a small shift in dates can sometimes result in substantial savings.</p>
-
-        <p>The platform also offers a graph view that visualizes price trends over time. This graphical comparison shows how fares for your route have changed over the past weeks or months, giving you context for the current prices. If prices are currently near their historical low, it may be a good time to book. If they are elevated compared to recent trends, you might consider waiting or exploring alternative options. This data-driven approach to comparison helps you make more strategic booking decisions.</p>
-
-        <p>For travelers considering multiple destinations, WeGo Flight&rsquo;s explore and compare feature allows you to see prices for several destinations in a single view. This is ideal for vacation planning when you have a few potential destinations in mind and want to see which one offers the best flight deals. By comparing prices across destinations, you can choose the most affordable option for your next trip. This feature is particularly useful when you are flexible about where to go and want to let the deals guide your decision.</p>
-
-        <p>WeGo Flight also makes it easy to compare the total cost of different options, including any additional fees. When you view the fare details, you can see a complete breakdown of the price, including taxes, carrier-imposed surcharges, and any optional extras like baggage or seat selection. This allows you to compare the true cost of each option, not just the base fare. A flight that appears slightly more expensive at first glance may actually be cheaper once you factor in included amenities or lower fees.</p>
-
-        <p>The platform&rsquo;s comparison capabilities extend to multi-city and open-jaw itineraries as well. If you are planning a trip that involves multiple destinations, WeGo Flight can compare different routing combinations to find the most cost-effective option. This is particularly useful for complex itineraries where the order of destinations can significantly impact the total fare. By comparing multiple routing options, you can identify the most efficient and affordable way to visit all your desired destinations.</p>
-
-        <p>WeGo Flight&rsquo;s comparison tools also include information about layover duration and airport details for connecting flights. When comparing options with stops, you can see the length of each layover and whether you will need to change terminals or airports. This detail helps you evaluate the convenience of different connecting options. A slightly more expensive flight with a shorter, more convenient layover may be a better choice than a cheaper option with a long, inconvenient connection.</p>
-
-        <p>For frequent flyers, WeGo Flight&rsquo;s comparison features can be customized to prioritize airlines within your preferred alliance or loyalty program. If you are trying to earn miles or maintain status with a specific airline, you can filter results to show only airlines that contribute to your loyalty goals. This targeted comparison ensures that you find the best price among your preferred carriers, helping you balance cost with your loyalty program objectives.</p>
-
-        <p>In conclusion, WeGo Flight&rsquo;s comparison capabilities are among the most comprehensive available in the flight search market. The platform presents information clearly, offers robust filtering and sorting options, and provides the context you need to make informed comparisons. Whether you are comparing prices across airlines, dates, destinations, or fare classes, WeGo Flight gives you the tools to identify the cheapest and best-valued options for your travel needs.</p>
-
-        <img src="/legacy/wego-flight/wego-flight-2-300x225.jpg" alt="WeGo Flight comparison tools showing affordable flight options" />
-
-        <h2 id="save-up-to-30">Save up to 30%</h2>
-
-        <p>One of the most compelling reasons to use WeGo Flight is the potential to <strong>save up to 30%</strong> on your flight bookings compared to booking directly or through traditional channels. The platform achieves these savings through a combination of comprehensive search, smart algorithms, and strategic partnerships with airlines and travel providers. By aggregating pricing data from hundreds of sources, WeGo Flight ensures that you are always seeing the most competitive fares available in the market at any given time.</p>
-
-        <p>How does WeGo Flight deliver such significant savings? The platform&rsquo;s advanced search algorithms analyze pricing data from multiple sources simultaneously, identifying the lowest fares across airlines, online travel agencies, and consolidators. This comprehensive approach ensures that no stone is left unturned in the search for the best deal. WeGo Flight also has access to exclusive fares and negotiated rates that may not be available through other channels, providing additional opportunities for savings that can add up to the 30% figure.</p>
-
-        <p>Booking in advance is one of the most reliable ways to save up to 30% on your flights. Airlines typically release their cheapest fares when they first go on sale, and these introductory prices can be significantly lower than what you will find closer to the departure date. WeGo Flight helps you identify these advance purchase opportunities by showing you the lowest available fares and alerting you when new deals become available. By planning ahead and booking early, you can lock in the best prices before they increase.</p>
-
-        <p>Flexibility with your travel dates is another key factor in achieving maximum savings. WeGo Flight&rsquo;s flexible date search allows you to see how prices vary across different days and weeks, helping you choose the most cost-effective travel dates. Travelers who can avoid peak periods like school holidays, major holidays, and popular events can achieve substantial savings. Even shifting your trip by a week or two can make a significant difference in the fare, and WeGo Flight makes it easy to identify these opportunities.</p>
-
-        <p>Choosing flights with stops or layovers is another way to save up to 30% on your airfare. Direct flights are convenient, but they often come at a premium price. WeGo Flight&rsquo;s search results clearly show you the options with one or more stops, which can be significantly cheaper than non-stop alternatives. For travelers who are not in a rush and do not mind spending a few extra hours in transit, connecting flights can offer exceptional value. The platform helps you weigh the savings against the additional travel time.</p>
-
-        <p>WeGo Flight&rsquo;s price drop alerts are an essential tool for maximizing your savings. By setting up alerts for your desired routes, you will be notified when prices decrease, allowing you to book at the optimal time. The platform monitors fares continuously and sends notifications when significant price drops occur. This means you do not need to check the website repeatedly or guess when the best time to book is. The alerts do the monitoring for you, ensuring that you never miss an opportunity to save.</p>
-
-        <p>Another way to save up to 30% is by considering alternative airports. WeGo Flight&rsquo;s search includes airports near your origin and destination, opening up additional options that may offer lower fares. For example, if you are flying to Paris, checking prices for Orly as well as Charles de Gaulle might reveal significant savings. Similarly, departing from a different airport near your home city could unlock cheaper fares. The slight inconvenience of traveling to a different airport is often outweighed by the savings achieved.</p>
-
-        <p>Seasonal timing plays a major role in flight pricing, and WeGo Flight helps you navigate seasonal variations to maximize your savings. Traveling during shoulder seasons, just before or after peak periods, can result in fares that are 20% to 30% lower than during the busiest times. The platform&rsquo;s calendar and trend features help you identify these optimal travel windows. By aligning your travel plans with periods of lower demand, you can enjoy both lower prices and less crowded destinations.</p>
-
-        <p>WeGo Flight also helps you save by providing clear information about budget airlines and their fee structures. While budget carriers often advertise very low base fares, they may charge extra for baggage, seat selection, and other services. WeGo Flight&rsquo;s detailed fare breakdowns allow you to compare the total cost, including these additional fees, so you can make an apples-to-apples comparison. This transparency ensures that you are truly saving money and not just seeing a lower base price that ends up costing more overall.</p>
-
-        <p>For group travel, WeGo Flight can help you save up to 30% by identifying group discounts and special fares. Some airlines offer reduced rates for groups of ten or more passengers, and WeGo Flight&rsquo;s comprehensive search includes these options where available. If you are planning a family reunion, corporate retreat, or group tour, be sure to use WeGo Flight to search for group fares. The savings on group bookings can be substantial, especially for long-haul or premium cabin travel.</p>
-
-        <p>WeGo Flight occasionally offers promotional codes and special discounts to its users. These promotions can provide additional savings on top of the already competitive prices available through the platform. To stay informed about the latest promotions, check the WeGo Flight website regularly and consider signing up for the newsletter. Flash sales and limited-time offers can provide exceptional value, but they require quick action to take advantage of before they expire.</p>
-
-        <p>Finally, combining your flight booking with other travel components like hotels or car rentals can result in package savings that approach the 30% mark. WeGo Flight offers package search capabilities that allow you to compare combined flight and hotel deals. These package bookings often include discounts that are not available when booking components separately. By using WeGo Flight to search for packages, you can simplify your planning while maximizing your overall travel savings.</p>
-
-        <p>Saving up to 30% on your flights is not just a marketing claim; it is a realistic goal for travelers who use WeGo Flight strategically. By combining the platform&rsquo;s powerful search capabilities with smart booking practices, you can consistently find exceptional deals on airfare. The key is to be flexible, plan ahead, use all the tools available to you, and act quickly when you find a great deal. With WeGo Flight as your travel partner, significant savings are well within reach for every journey you take.</p>
-
-        <h2 id="find-best-price">Find Best Price</h2>
-
-        <p>Finding the absolute <strong>best price</strong> on flights requires more than just a quick search; it demands a systematic approach that leverages the right tools and strategies. WeGo Flight is designed to help you <strong>find best price</strong> options by aggregating data from hundreds of sources and presenting it in a clear, comparable format. The platform&rsquo;s mission is to ensure that every user can find the optimal balance of price, convenience, and quality for their specific travel needs.</p>
-
-        <p>The first step to finding the best price on WeGo Flight is to use the platform&rsquo;s comprehensive search capabilities. Enter your origin, destination, and travel dates to see a complete list of available options. The search results include airlines of all types, from major carriers to budget airlines, as well as online travel agencies that may offer exclusive fares. By casting such a wide net, WeGo Flight ensures that you are seeing the full range of pricing options, not just a subset of the market.</p>
-
-        <p>Once you have your initial search results, use WeGo Flight&rsquo;s filtering and sorting tools to refine your search. If the lowest price is your absolute priority, sort by price and scan the cheapest options first. Pay attention to the total price, including any taxes and fees, to ensure that you are comparing the true cost of each option. Remember that the cheapest fare may not always be the best value, so consider other factors like travel time and airline quality as well.</p>
-
-        <p>WeGo Flight&rsquo;s calendar view is one of the most powerful tools for finding the best price. By viewing an entire month of prices at once, you can immediately identify the cheapest days to fly. This is particularly useful when your travel dates are flexible. The calendar view often reveals significant price variations within the same week, with mid-week flights typically offering better value than weekend departures. Use this information to choose the most cost-effective dates for your trip.</p>
-
-        <p>Another effective strategy for finding the best price is to use the &ldquo;anywhere&rdquo; or explore feature. If you are flexible about your destination, this tool shows you the cheapest flights from your origin to destinations around the world. This is an excellent way to discover affordable travel opportunities that you might not have considered. Sometimes the best price leads you to an unexpected destination that turns out to be a perfect fit for your travel desires and budget.</p>
-
-        <p>WeGo Flight also helps you find the best price by showing fare comparisons across different booking classes on the same flight. You can compare the price of economy, premium economy, business, and first class on the same flight to see whether upgrading is worth the additional cost. In some cases, the price difference between economy and premium economy is surprisingly small, making the upgrade an excellent value. WeGo Flight makes it easy to evaluate these options side by side.</p>
-
-        <p>The platform&rsquo;s price trend data provides valuable context for determining whether the current fare represents a good deal. By showing how prices have changed over recent weeks and months, WeGo Flight helps you assess whether prices are likely to go up or down. If prices are near their historical low, it is probably a good time to book. If they are elevated, you may want to wait or explore alternative options. This data-driven approach takes the guesswork out of timing your purchase.</p>
-
-        <p>For travelers who are planning a round trip, consider searching for two one-way flights instead of a traditional round-trip booking. WeGo Flight allows you to search for one-way fares, and in some cases, booking two one-way tickets on different airlines can be cheaper than a round-trip ticket on a single carrier. This strategy requires a bit more research but can result in significant savings. The platform makes it easy to compare the combined cost of two one-way flights against round-trip options.</p>
-
-        <p>WeGo Flight&rsquo;s nearby airports feature is another essential tool for finding the best price. By expanding your search to include alternative airports, you may discover significantly cheaper options. For example, if you are flying to the New York area, checking prices for Newark, JFK, and LaGuardia can reveal substantial price differences. The same applies to departure airports; you might find a much cheaper flight from an airport an hour or two away from your home.</p>
-
-        <p>Consider using WeGo Flight&rsquo;s multi-city search feature if your itinerary involves visiting multiple destinations. Instead of booking separate flights for each leg of your journey, the multi-city search can find a single itinerary that covers all your destinations at a lower combined price. This is particularly useful for complex trips where you want to maximize your time in each location without paying a premium for separate bookings.</p>
-
-        <p>WeGo Flight also helps you find the best price by providing fare alerts for your desired routes. Set up alerts for specific destinations and travel dates, and the platform will notify you when prices drop to your target level. This passive monitoring approach means you do not have to check prices constantly; the alerts do the work for you. When the price reaches a level you are comfortable with, you can book immediately with confidence that you are getting a good deal.</p>
-
-        <p>Finally, remember that the best price is not always the absolute lowest fare. The best price considers the complete value proposition, including the airline&rsquo;s reputation, the convenience of the schedule, the comfort of the aircraft, and the flexibility of the fare conditions. WeGo Flight provides all the information you need to evaluate these factors and determine which option offers the best overall value for your specific needs. By taking a holistic approach to your flight search, you can find not just the cheapest option but the best price for your personal travel preferences.</p>
-
-        <p>In the end, finding the best price on WeGo Flight is about using the platform&rsquo;s comprehensive tools and your own judgment to identify the option that offers the optimal combination of cost, convenience, and quality. With practice and experience, you will develop an intuitive sense for spotting great deals and making smart booking decisions. WeGo Flight gives you the information and tools you need; your own travel preferences and priorities will guide you to the best price for your unique situation.</p>
-
-        <h2 id="european-flight-providers">European Flight Providers</h2>
-
-        <p>WeGo Flight provides access to <strong>over 800 European providers</strong>, making it one of the most comprehensive platforms for finding flights within Europe and from Europe to destinations worldwide. The European aviation market is one of the most competitive and diverse in the world, with a rich mix of full-service carriers, low-cost airlines, regional operators, and charter companies.</p>
-
-        <p>WeGo Flight&rsquo;s extensive network ensures that you can compare options across the entire spectrum of European flight providers to find the best deal for your journey.</p>
-
-        <p>The European low-cost carrier market has revolutionized air travel on the continent, making it possible to fly between major cities for prices that were unimaginable just a few decades ago. Airlines like Ryanair, easyJet, Wizz Air, and Norwegian have opened up travel to millions of passengers by offering no-frills service at rock-bottom prices. WeGo Flight includes all of these budget carriers in its search results, allowing you to find incredibly cheap fares for intra-European travel. Just be sure to factor in baggage fees and other extras when comparing prices.</p>
-
-        <p>Full-service European carriers such as Lufthansa, Air France, British Airways, KLM, Swiss, and Austrian Airlines offer a more comprehensive travel experience with included amenities like checked baggage, meals, and entertainment. While their base fares are typically higher than low-cost competitors, they often provide better value for long-haul flights or travelers who value service and comfort. WeGo Flight includes all major full-service carriers in its search, allowing you to compare their offerings against budget alternatives and choose the option that best fits your needs.</p>
-
-        <p>Regional European airlines play a vital role in connecting smaller cities and providing essential air service to communities that might otherwise be isolated. Carriers like Flybe, Loganair, and Air Baltic operate networks of regional routes that complement the major airlines&rsquo; services. WeGo Flight&rsquo;s comprehensive search includes these regional providers, ensuring that you can find flights to and from smaller airports that may not be covered by other search engines. This is particularly valuable for travelers visiting less touristy destinations or conducting business in regional centers.</p>
-
-        <p>Charter airlines are another important segment of the European aviation market. Companies like TUI Airways, Jet2, and Condor offer package holidays and scheduled charter flights to popular leisure destinations, particularly in the Mediterranean, the Canary Islands, and other holiday hotspots. WeGo Flight includes charter airlines in its search results, giving you access to fares that may not be available through traditional airline channels. Charter flights can offer exceptional value for travelers heading to popular vacation destinations, especially during peak summer months.</p>
-
-        <p>The European airline landscape also includes premium carriers that focus on business class and high-end service. Airlines like La Compagnie offer all-business-class service between Europe and the United States, while carriers like Brussels Airlines and Finnair provide excellent business class products for travelers who prioritize comfort and service. WeGo Flight&rsquo;s search includes these premium options, allowing business travelers and those seeking a luxury experience to compare prices and features across different high-end providers.</p>
-
-        <p>WeGo Flight&rsquo;s coverage of European providers extends to airline alliances and codeshare partnerships. The three major global alliances, Star Alliance, oneworld, and SkyTeam, have a strong presence in Europe, with multiple member airlines operating extensive networks across the continent. WeGo Flight&rsquo;s search algorithms are designed to handle codeshare flights and alliance connections, ensuring that you see all available options even when flights are operated by partner airlines. This comprehensive approach maximizes your choices and helps you find the best possible fares.</p>
-
-        <p>The platform also includes European online travel agencies and consolidators in its search results. These third-party providers sometimes offer exclusive fares or package deals that are not available through direct airline bookings. Companies like eDreams, Opodo, and lastminute.com are popular in the European market and can provide competitive pricing on flights. WeGo Flight shows you options from these agencies alongside direct airline bookings, allowing you to compare and choose the source that offers the best combination of price and reliability.</p>
-
-        <p>For travelers flying within the Schengen Area, the experience is generally seamless, with no passport controls between member countries. WeGo Flight&rsquo;s search results reflect this open-border environment, showing you all available options regardless of intermediate stops within the Schengen zone. This makes it easy to find multi-stop itineraries that take advantage of the open borders to create more efficient or cheaper routing options. The platform&rsquo;s search algorithms are optimized for the unique characteristics of European air travel.</p>
-
-        <p>Brexit has introduced some changes to air travel between the United Kingdom and the European Union, but WeGo Flight continues to provide comprehensive coverage of all UK-European routes. Whether you are flying from London to Paris, Manchester to Berlin, or Edinburgh to Barcelona, the platform includes all available airlines and fare options. The UK remains one of the most important aviation markets in Europe, and WeGo Flight&rsquo;s extensive coverage ensures that travelers in and out of the UK have access to the best possible deals.</p>
-
-        <p>WeGo Flight also excels at finding connecting flights that combine different European providers. For routes where no single airline offers a direct connection, the platform can combine flights from different carriers to create an economical routing. While self-connecting involves more risk than a single-ticket itinerary, it can result in significant savings. WeGo Flight provides clear information about self-connecting options, allowing you to evaluate the trade-off between cost and convenience when considering these multi-provider itineraries.</p>
-
-        <p>The European aviation market is known for its dynamic pricing, with fares that can change multiple times per day based on demand, competition, and other factors. WeGo Flight&rsquo;s real-time search engine captures these fluctuations and presents you with the most current prices available. When you find a good deal on a European flight, it is wise to book promptly, as prices can increase quickly when demand is high. The platform&rsquo;s price alerts can help you monitor fares and book at the optimal moment.</p>
-
-        <p>With over 800 European providers accessible through a single search, WeGo Flight offers unparalleled coverage of the European aviation market. Whether you are looking for a budget fare on a low-cost carrier, a full-service experience on a major airline, or a unique routing that combines multiple providers, WeGo Flight has you covered. The platform&rsquo;s comprehensive search, transparent pricing, and user-friendly interface make it the ideal choice for anyone planning air travel in Europe or from Europe to destinations around the world.</p>
-
-        <img src="/legacy/wego-flight/wego-flight-1-300x188.webp" alt="WeGo Flight showcasing European flight providers and destinations" />
-
-        <h2 id="book-your-flight-today">Book Your Flight Today</h2>
-
-        <p>Ready to take the plunge and <strong>book your flight today</strong>? WeGo Flight makes the booking process simple, fast, and secure. Whether you are planning a trip for next week or next year, the platform guides you through every step of the booking process, from initial search to final confirmation. With its intuitive interface and comprehensive features, WeGo Flight ensures that booking your flight is a smooth and hassle-free experience that leaves you excited about your upcoming journey.</p>
-
-        <p>The first step to booking your flight today is to visit the WeGo Flight website or open the mobile app. Enter your departure city, destination, and travel dates in the search fields. You can also specify the number of passengers and whether you want a round-trip, one-way, or multi-city itinerary. The search engine will immediately begin scanning hundreds of airlines and travel providers to find the best options for your trip. Within seconds, you will see a comprehensive list of available flights ranked by price.</p>
-
-        <p>Once you have reviewed your options and selected the flight that best meets your needs, click or tap to view the full details. This page shows you the complete fare breakdown, including the base fare, taxes, fees, and any optional extras like baggage or seat selection. Take a moment to review all the information and ensure that the flights, dates, and times are correct. WeGo Flight&rsquo;s <strong>full-price transparency</strong> means that there are no hidden fees or surprise charges at checkout.</p>
-
-        <p>Before proceeding to payment, you will have the opportunity to add optional extras to your booking. Depending on the airline and fare type, you may be able to add checked baggage, select your preferred seat, choose your meal preference, or purchase travel insurance. WeGo Flight presents these options clearly, showing you the cost of each additional service. Add only the extras that are important to you, and skip those that are not needed. This flexibility allows you to customize your booking to your exact preferences and budget.</p>
-
-        <p>When you are ready to complete your booking, you will be prompted to enter passenger information, including full names as they appear on travel documents, contact details, and any required travel document information. Make sure to enter all information accurately, as errors can lead to issues at check-in or boarding. WeGo Flight&rsquo;s booking form is designed to guide you through this process, with clear labels and helpful tips to ensure that you provide all the necessary information correctly.</p>
-
-        <p>WeGo Flight accepts a wide range of payment methods to accommodate travelers from around the world. Major credit cards including Visa, Mastercard, and American Express are accepted, as are debit cards and digital wallets like PayPal and Apple Pay. Choose the payment method that is most convenient and secure for you. The platform uses industry-standard encryption to protect your payment information, ensuring that your transaction is safe and secure. Once you submit your payment, you will receive immediate confirmation of your booking.</p>
-
-        <p>After your booking is confirmed, you will receive a confirmation email with your e-ticket and booking reference number. WeGo Flight also provides a downloadable receipt and invoice for your records. Keep this confirmation handy, as you will need it for check-in and as proof of purchase. The confirmation email includes all the essential information about your flight, including departure and arrival times, terminal information, and baggage allowances.</p>
-
-        <p>WeGo Flight also offers a user-friendly account system that allows you to manage your bookings online. After creating an account, you can view all your upcoming and past bookings in one place, make changes to your itinerary if the fare conditions allow, and contact customer support if you need assistance. The account dashboard provides a centralized hub for managing all your travel plans, making it easy to stay organized and informed about your upcoming trips.</p>
-
-        <p>If you need to make changes to your booking after purchase, WeGo Flight provides clear information about the change policy and any associated fees. Depending on the fare type you purchased, you may be able to change your flight dates, times, or even your destination. Some fares are non-refundable and non-changeable, while others offer flexibility for a fee. WeGo Flight&rsquo;s booking details include information about the change and cancellation policies, so you know what options are available to you if your plans change.</p>
-
-        <p>For travelers who prefer to book directly with the airline, WeGo Flight provides a seamless path to do so. When you select a fare that is available directly from the airline, you can click through to the airline&rsquo;s website to complete your booking. This gives you the best of both worlds: the comprehensive search capabilities of WeGo Flight combined with the security and familiarity of booking directly with the airline. The platform is designed to support your preferred booking method, whether that is through the platform or directly with the carrier.</p>
-
-        <p>WeGo Flight&rsquo;s mobile app is particularly well-suited for booking on the go. Whether you are commuting, on a break at work, or relaxing at home, the app allows you to search for flights and complete your booking in minutes. The app includes all the features of the desktop version, optimized for mobile screens and touch interaction. Push notifications keep you informed about your booking status, and the app stores your booking information for easy access during your travels.</p>
-
-        <p>Finally, remember that booking your flight today is just the beginning of your travel journey. Once your flight is booked, you can start planning the rest of your trip, including accommodation, activities, and transportation at your destination. WeGo Flight offers tools and resources to help with these aspects of trip planning as well, including hotel search and package deals. By starting your booking with WeGo Flight, you are setting yourself up for a well-planned, enjoyable travel experience from start to finish.</p>
-
-        <p>So why wait? The best deals are often available to those who take action promptly. With WeGo Flight, booking your flight today is quick, easy, and secure. Whether you are an experienced traveler or booking your first flight, the platform provides the tools, information, and support you need to book with confidence. Start your search now and discover how easy it is to find and book the perfect flight for your next adventure with WeGo Flight.</p>
-
-        <h2 id="cheap-flight-tickets-europe">Cheap Flight Tickets Europe</h2>
-
-        <p>Europe is one of the most popular travel destinations in the world, and finding <strong>cheap flight tickets Europe</strong> is a top priority for millions of travelers. WeGo Flight specializes in helping travelers find affordable airfare to and within Europe, leveraging its network of <strong>over 800 European providers</strong> to deliver exceptional deals. Whether you are planning a European tour from overseas or a weekend city break within the continent, WeGo Flight can help you find cheap flight tickets that fit your budget and travel plans.</p>
-
-        <p>The European aviation market is highly competitive, with dozens of airlines competing for passengers on popular routes. This competition works to the advantage of travelers, driving down prices and creating a wealth of affordable options. WeGo Flight channels this competitive energy into your search results, presenting you with a comprehensive comparison of all available fares. By seeing the full range of options, you can identify the cheapest flight tickets for your desired European destination and travel dates.</p>
-
-        <p>For travelers flying to Europe from other continents, the key to finding cheap flight tickets is often flexibility in both timing and routing. WeGo Flight allows you to search for flights to multiple European gateway cities simultaneously, helping you identify the most affordable entry point to the continent. Flying into a major hub like London, Paris, Frankfurt, or Amsterdam and then taking a connecting flight or train to your final destination can sometimes result in significant savings compared to flying directly to a smaller airport.</p>
-
-        <p>Once you are in Europe, the continent&rsquo;s extensive network of low-cost airlines makes it possible to travel between cities for remarkably low prices. WeGo Flight includes all major European budget carriers in its search, allowing you to find cheap flight tickets between any two European destinations. Airlines like Ryanair, easyJet, Wizz Air, and Volotea offer frequent service on hundreds of routes, with promotional fares that can be as low as ten or twenty euros for a one-way ticket between popular destinations.</p>
-
-        <p>Seasonality has a major impact on flight prices within Europe. Summer months (June through August) are peak travel season, with prices at their highest and availability at its lowest. Winter months (November through February, excluding the holiday period) offer the best value for budget-conscious travelers, with significantly lower prices on most routes. Spring and fall shoulder seasons offer a good balance of pleasant weather and reasonable prices. WeGo Flight&rsquo;s calendar view helps you identify the cheapest travel periods for your chosen destination.</p>
-
-        <p>Booking in advance is one of the most reliable strategies for securing cheap flight tickets in Europe. While last-minute deals are sometimes available, particularly for off-peak travel, the best prices on European flights are typically found by booking several weeks to several months in advance. WeGo Flight&rsquo;s price alerts can help you monitor fares for your desired routes and notify you when prices drop to attractive levels, allowing you to book at the optimal time for the best value.</p>
-
-        <p>Another effective strategy for finding cheap flight tickets in Europe is to consider less popular airports and destinations. Instead of flying into a major city&rsquo;s primary airport, check prices for secondary airports that may offer lower fares. For example, flying into Brussels South Charleroi instead of Brussels Airport, or into Frankfurt Hahn instead of Frankfurt Airport, can result in significant savings. WeGo Flight&rsquo;s nearby airports feature makes it easy to explore these alternatives and compare the total cost including ground transportation.</p>
-
-        <p>The day of the week you choose to fly can significantly impact the price of your European flight tickets. Tuesday, Wednesday, and Thursday are typically the cheapest days to fly within Europe, as business travelers and weekend vacationers tend to travel on Mondays and Fridays. Weekend flights, particularly on Friday evenings and Sunday afternoons, are often the most expensive. By choosing mid-week travel dates, you can achieve substantial savings on your European flight tickets. WeGo Flight&rsquo;s flexible date search helps you identify the most cost-effective days to fly.</p>
-
-        <p>For travelers planning multi-destination European trips, WeGo Flight&rsquo;s multi-city search feature is an invaluable tool. Instead of booking separate flights for each leg of your journey, you can search for a single itinerary that covers all your destinations. This approach often results in a lower combined price than booking individual segments separately. The multi-city search also helps you optimize the order of your destinations for both cost and convenience, ensuring that your European tour is both affordable and efficiently planned.</p>
-
-        <p>WeGo Flight also helps you find cheap flight tickets by highlighting package deals that combine flights with accommodations. These bundle bookings can offer significant savings compared to booking flight and hotel separately. If you are planning a European vacation and need both airfare and accommodation, it is worth checking WeGo Flight&rsquo;s package options. The platform compares package deals from various providers to find the best combined value for your trip, potentially saving you hundreds of euros compared to à la carte bookings.</p>
-
-        <p>Travel insurance is an important consideration when booking cheap flight tickets in Europe. While we all hope our trips go smoothly, unexpected events such as flight cancellations, medical emergencies, or lost luggage can occur. WeGo Flight offers travel insurance options during the booking process, allowing you to protect your investment and travel with peace of mind. The cost of insurance is typically modest compared to the value of the coverage it provides, making it a smart addition to any travel booking.</p>
-
-        <p>WeGo Flight&rsquo;s mobile app is particularly useful for finding cheap flight tickets in Europe on the go. Whether you are already traveling and planning your next destination or just dreaming about future trips, the app gives you instant access to the best available fares. The app&rsquo;s push notification feature alerts you to price drops and special promotions, ensuring that you never miss an opportunity to save on European flights. With the WeGo app on your phone, you have a powerful flight search tool at your fingertips wherever you go.</p>
-
-        <p>In conclusion, finding cheap flight tickets to and within Europe is entirely achievable with the right tools and strategies. WeGo Flight provides the comprehensive search coverage, transparent pricing, and user-friendly interface you need to identify the best deals on European airfare. By combining the platform&rsquo;s capabilities with smart booking practices such as flexibility in dates and destinations, advance planning, and careful comparison, you can make your European travel dreams a reality without exceeding your budget.</p>
-
-        <h2 id="travel-like-a-pro">Travel Like a Pro</h2>
-
-        <p>After mastering the art of finding and booking affordable flights, it is time to learn how to <strong>travel like a pro</strong>. WeGo Flight is not just about booking flights; it is about empowering you to approach every aspect of travel with confidence, knowledge, and efficiency. By adopting the mindset and habits of experienced travelers, you can enhance every journey, reduce stress, and get the most value from your travel experiences. Let us explore the strategies and insights that will help you travel like a true professional.</p>
-
-        <p>Preparation is the foundation of successful travel. Before you even book your flight, take the time to research your destination thoroughly. Learn about the local customs, climate, currency, and transportation options. Understand the visa requirements and ensure your passport is valid for at least six months beyond your planned return date. WeGo Flight can help you find flights, but being prepared for your destination ensures that your trip goes smoothly from start to finish. Professional travelers always do their homework before they go.</p>
-
-        <p>Packing efficiently is another hallmark of a seasoned traveler. The key is to pack light, versatile clothing that can be mixed and matched for different occasions. Choose fabrics that are wrinkle-resistant and quick-drying, and limit yourself to a carry-on bag whenever possible. Not only does traveling with carry-on luggage save you time at the airport, but it also eliminates the risk of lost luggage and saves you money on baggage fees. WeGo Flight&rsquo;s fare information includes baggage allowances, helping you choose a fare that matches your packing strategy.</p>
-
-        <p>Arriving at the airport with plenty of time to spare is essential for stress-free travel. Professional travelers aim to arrive at least two hours before domestic flights and three hours before international flights. This buffer allows for unexpected delays at security, long check-in lines, or last-minute gate changes. WeGo Flight provides terminal and gate information in your booking confirmation, helping you navigate the airport efficiently. Use the extra time at the airport to relax, catch up on work, or explore the airport&rsquo;s amenities.</p>
-
-        <p>Navigating airport security efficiently is a skill that experienced travelers have honed over time. Keep your travel documents easily accessible, wear shoes that are easy to remove, and place liquids and electronics in easily accessible compartments in your carry-on bag. Consider enrolling in trusted traveler programs like Global Entry or TSA PreCheck if you travel frequently, as these can significantly speed up the security process. WeGo Flight&rsquo;s travel tips section provides additional advice for smooth airport experiences.</p>
-
-        <p>Staying connected while traveling is more important than ever. Before you depart, research mobile data options for your destination. Many travelers opt for international roaming plans, local SIM cards, or portable Wi-Fi hotspots to stay connected without incurring excessive charges. WeGo Flight&rsquo;s booking confirmation includes useful travel information that can help you prepare for connectivity at your destination. Being connected allows you to access maps, translation apps, and travel information throughout your journey.</p>
-
-        <p>Managing your budget while traveling requires planning and discipline. Set a daily budget for your trip and track your spending to ensure you stay on track. Use local currency when possible to avoid unfavorable exchange rates and foreign transaction fees. WeGo Flight helps you save on the biggest expense, your flight, freeing up more of your budget for experiences, dining, and activities at your destination. Professional travelers know that spending wisely on the flight sets the tone for a financially healthy trip.</p>
-
-        <p>Health and wellness should not be neglected when you travel. Stay hydrated, get adequate rest, and take breaks to stretch during long flights. Pack a small wellness kit with essentials like hand sanitizer, moisturizer, lip balm, and any medications you may need. WeGo Flight&rsquo;s travel resources include tips for staying healthy while traveling, helping you arrive at your destination feeling refreshed and ready to explore. Professional travelers prioritize their health to make the most of every trip.</p>
-
-        <p>Embracing local culture is what transforms a good trip into an unforgettable experience. Learn a few basic phrases in the local language, try local foods, and participate in cultural activities that give you insight into the destination&rsquo;s traditions and way of life. Respect local customs and dress codes, and be mindful of cultural differences in etiquette and social norms. Traveling like a pro means being a responsible and respectful visitor who leaves a positive impression on the communities you visit.</p>
-
-        <p>Flexibility is perhaps the most important attribute of a professional traveler. Even the best-laid plans can be disrupted by weather, delays, or unexpected events. WeGo Flight helps you build flexibility into your travel planning by offering options with favorable change policies and providing real-time updates about your booking. When disruptions occur, stay calm, assess your options, and adapt. Professional travelers know that the ability to pivot and adjust is what separates a frustrating travel experience from an adventure.</p>
-
-        <p>Documenting your travels through photos, journals, or social media allows you to preserve memories and share your experiences with others. Take time to capture the moments that matter most, but also remember to put down your phone and simply be present in the experience. The best travel memories are often the ones that cannot be captured in a photo. WeGo Flight enables you to reach incredible destinations affordably, but it is up to you to create meaningful experiences when you arrive.</p>
-
-        <p>Finally, sharing your travel experiences and knowledge with others is a rewarding aspect of being a seasoned traveler. Write reviews, share tips with friends, and recommend the tools and platforms that have served you well. WeGo Flight values the feedback and insights of its community of travelers, using this input to continuously improve the platform. By sharing what you have learned, you contribute to a community of travelers who help each other explore the world more effectively and affordably.</p>
-
-        <p>Traveling like a pro is not about being perfect; it is about being prepared, adaptable, and intentional in your approach to travel. It is about making informed decisions, embracing new experiences, and learning from every journey. WeGo Flight is proud to be part of your travel toolkit, helping you find affordable flights that enable you to explore the world. With the right tools, mindset, and strategies, every trip can be a professional-grade travel experience that enriches your life and broadens your horizons.</p>
-
-    </LegacyArticleLayout>
+    <div className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ARTICLE_JSON_LD) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_JSON_LD) }} />
+      <div className={styles.shell}>
+        <HomeHeader />
+
+        {/* ═══ HERO ═══ */}
+        <section className={styles.hero}>
+          <svg className={styles.heroChain} width="520" height="240" viewBox="0 0 520 240" fill="none" aria-hidden="true">
+            <circle cx="70" cy="200" r="7" fill="#D17A52" />
+            <circle cx="250" cy="200" r="5" fill="rgba(214,232,229,0.85)" />
+            <circle cx="430" cy="200" r="5" fill="rgba(214,232,229,0.85)" />
+            <line x1="70" y1="200" x2="430" y2="200" stroke="rgba(214,232,229,0.45)" strokeWidth="1.5" strokeDasharray="5 6" />
+            <path d="M250 200 C 270 150, 310 130, 360 122" stroke="rgba(209,122,82,0.7)" strokeWidth="1.5" strokeDasharray="3 5" />
+            <circle cx="368" cy="118" r="5" fill="rgba(209,122,82,0.8)" />
+            <text x="30" y="228" fill="rgba(214,232,229,0.75)" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="1.5">YOU</text>
+            <text x="215" y="228" fill="rgba(214,232,229,0.75)" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="1.5">WEGO</text>
+            <text x="380" y="228" fill="rgba(214,232,229,0.75)" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="1.5">AIRLINE / OTA</text>
+            <text x="378" y="108" fill="rgba(209,122,82,0.85)" fontFamily="IBM Plex Mono, monospace" fontSize="10" letterSpacing="1.5">TICKET</text>
+          </svg>
+          <div className={styles.heroInner}>
+            <div className={styles.heroRule} />
+            <span className={styles.heroEyebrow}>Booking Safety · Wego Flights</span>
+            <h1 className={styles.heroTitle}>
+              Is Wego legit? <em>Yes — but which Wego are you booking with?</em>
+            </h1>
+            <p className={styles.heroSub}>
+              Wego is a licensed travel agency and metasearch engine — and it has two different
+              booking models with different refund paths. Knowing which one you&rsquo;re using is the
+              difference between a smooth change request and a refund that gets stuck.
+            </p>
+            <div className={styles.heroMeta}>
+              <span className={styles.heroBadge}><span className={styles.heroDot} /> Official sources checked 21 October 2026</span>
+              <span className={styles.heroBadge}>6 min read</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══ DIRECT ANSWER ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>01 · The short answer</span></div>
+          <h2>What Wego actually is</h2>
+          <div className={styles.answerBlock}>
+            Wego is a <strong>travel metasearch engine and online marketplace</strong> based in
+            Singapore and Dubai, licensed as a travel agency (TA03513). It compares fares from
+            airlines and online travel agencies — and, through <strong>“Book on Wego”</strong>,
+            it also sells flights directly. <strong>Your booking is issued by the airline, not
+            by Wego</strong>, and most changes, fees and refunds follow airline rules.
+          </div>
+        </div>
+
+        {/* ═══ TWO MODELS ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>02 · The two booking models</span></div>
+          <h2>Who you’re actually buying from</h2>
+          <p>
+            This is the single most important distinction on this page. Wego’s official help
+            pages describe two separate paths, and they lead to different people when something
+            goes wrong.
+          </p>
+        </div>
+        <div className={styles.wide}>
+          <div className={styles.modelGrid}>
+            <div className={`${styles.modelCard} ${styles.modelDirect}`}>
+              <span className={styles.modelTag}>Model A · Book on Wego</span>
+              <h3>You pay on Wego’s checkout</h3>
+              <ul>
+                <li>Payment is processed in Wego’s checkout without leaving the site.</li>
+                <li>Wego’s support team submits change and refund requests on your behalf.</li>
+                <li>Wego’s terms cover processing fees and its refund timelines (2 working days to initiate; usually 15–20 working days to arrive).</li>
+                <li>The ticket is still issued by the airline.</li>
+              </ul>
+            </div>
+            <div className={`${styles.modelCard} ${styles.modelPartner}`}>
+              <span className={styles.modelTag}>Model B · Partner redirect</span>
+              <h3>You pay on the partner’s site</h3>
+              <ul>
+                <li>You are redirected to an airline or online travel agency to complete payment.</li>
+                <li>Wego’s own support pages say: contact the booking partner directly — they manage your reservation and payment.</li>
+                <li>Wego does not control that partner’s checkout, change or refund process.</li>
+                <li>Your recourse runs through the partner first — that’s the chain below.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ CHAIN ═══ */}
+        <div className={styles.wide}>
+          <div className={styles.chainPanel}>
+            <h3 className={styles.chainTitle}>The refund chain, explained</h3>
+            <div className={styles.chainSteps}>
+              <div className={styles.chainStep}>
+                <span className={styles.chainStepNum}>01</span>
+                <span className={styles.chainStepName}>You</span>
+                <span className={styles.chainStepDesc}>Request a change or refund through the party you paid.</span>
+              </div>
+              <span className={styles.chainArrow} aria-hidden="true">→</span>
+              <div className={styles.chainStep}>
+                <span className={styles.chainStepNum}>02</span>
+                <span className={styles.chainStepName}>Wego (if Book on Wego)</span>
+                <span className={styles.chainStepDesc}>Submits the request on your behalf; deducts service fees where applicable.</span>
+              </div>
+              <span className={styles.chainArrow} aria-hidden="true">→</span>
+              <div className={styles.chainStep}>
+                <span className={styles.chainStepNum}>03</span>
+                <span className={styles.chainStepName}>Partner OTA or airline</span>
+                <span className={styles.chainStepDesc}>Applies its own fare rules and refund policy.</span>
+              </div>
+              <span className={styles.chainArrow} aria-hidden="true">→</span>
+              <div className={styles.chainStep}>
+                <span className={styles.chainStepNum}>04</span>
+                <span className={styles.chainStepName}>Your card</span>
+                <span className={styles.chainStepDesc}>Funds return to the original payment method, in the original booking currency.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ PRICE ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>03 · The displayed price</span></div>
+          <h2>What the price on screen may or may not include</h2>
+          <p>
+            Wego’s official help pages are precise here: the search-result price includes the{" "}
+            <strong>base fare and taxes</strong> — but <strong>payment processing fees “may be
+            added at a later stage of the booking process”</strong>, and credit card payments{" "}
+            “may include a small surcharge”, shown before you confirm. Wego also states plainly
+            that <strong>fares can change during booking</strong> because airlines control prices
+            and nothing is locked until the ticket is issued. Its FAQ even admits it reuses
+            cached results for similar searches — so prices are not strictly real-time.
+          </p>
+          <p>
+            That is not “hidden fees” in the legal sense — Wego’s terms say the processing fee
+            is displayed before payment and is non-refundable. But it does mean the headline
+            number is a starting point, not a total. For the general method of comparing total
+            flight costs, see our{" "}
+            <Link href="/guides/real-cost-of-a-flight">real cost of a flight guide</Link>.
+          </p>
+        </div>
+
+        {/* ═══ REFUNDS ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>04 · Changes and refunds</span></div>
+          <h2>What to expect when you need money back</h2>
+          <p>
+            Fare rules and change fees are <strong>set by the airline, not Wego</strong>. Wego’s
+            published refund timeline:
+          </p>
+          <ol className={styles.timeline}>
+            <li><strong>Initiation:</strong> Wego initiates refunds within 2 working days (Book on Wego bookings).</li>
+            <li><strong>Arrival:</strong> usually 15–20 working days — up to 30 days for some local payment methods.</li>
+            <li><strong>Involuntary cancellations:</strong> airline-cancelled flights can take up to 3 months in some cases.</li>
+            <li><strong>Deductions:</strong> cancellation charges, Wego service fees and any discounts may be deducted from the refund amount.</li>
+          </ol>
+        </div>
+
+        {/* ═══ SCENARIOS ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>05 · Four realistic scenarios</span></div>
+          <h2>How the models play out</h2>
+          <p>Hypothetical examples built from the official terms above — not real customer stories.</p>
+        </div>
+        <div className={styles.wide}>
+          <div className={styles.scenarioGrid}>
+            <div className={styles.scenarioCard}>
+              <span className={styles.scenarioTag}>Scenario 1</span>
+              <h3>You used “Book on Wego”</h3>
+              <p>
+                Your contract flow runs through Wego: request changes or refunds through Wego
+                support, which applies the airline’s rules on your behalf. Expect a possible
+                Wego service charge and the published refund timeline above.
+              </p>
+            </div>
+            <div className={styles.scenarioCard}>
+              <span className={styles.scenarioTag}>Scenario 2</span>
+              <h3>You were redirected to a partner</h3>
+              <p>
+                Wego’s support pages direct you to the booking partner for changes and refunds —
+                the partner manages your reservation and payment. Contacting Wego first still
+                works for routing, but the decision sits with the partner.
+              </p>
+            </div>
+            <div className={styles.scenarioCard}>
+              <span className={styles.scenarioTag}>Scenario 3</span>
+              <h3>The price changes at checkout</h3>
+              <p>
+                Official Wego language: fares can change during booking and nothing is locked
+                until the ticket is issued. Review the final total — including any card
+                surcharge and processing fee — before you confirm payment.
+              </p>
+            </div>
+            <div className={styles.scenarioCard}>
+              <span className={styles.scenarioTag}>Scenario 4</span>
+              <h3>Your refund is taking months</h3>
+              <p>
+                For involuntary cancellations, Wego’s support pages warn refunds can take up to
+                3 months. Document every interaction in writing, confirm the booking model you
+                used, and escalate to the party you actually paid before considering a card
+                chargeback.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* ═══ CHECKLIST ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>06 · Before you pay</span></div>
+          <h2>Checklist</h2>
+          <ol className={styles.checklist}>
+            <li><span>Identify the booking model: <strong>“Book on Wego” or partner redirect?</strong> It decides who you deal with later.</span></li>
+            <li><span>Compare the <strong>final total at checkout</strong> against the search-result price — processing fees and card surcharges may appear only now.</span></li>
+            <li><span>Read the <strong>fare rules for changes and cancellations</strong> before paying — they are the airline’s, not Wego’s.</span></li>
+            <li><span>Check the <strong>displayed currency</strong> against the payment currency; refunds return in the original booking currency.</span></li>
+            <li><span>Keep the <strong>e-ticket and payment confirmation</strong> — the e-ticket is issued by the airline and is your travel document.</span></li>
+            <li><span>Compare at least <strong>one alternative search</strong> before booking; Wego reuses cached results for similar searches.</span></li>
+          </ol>
+        </div>
+
+        {/* ═══ WHO SHOULD USE ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>07 · The verdict</span></div>
+          <h2>Who should use Wego — and when to compare elsewhere</h2>
+          <p>
+            Wego is most useful as a <strong>regional comparison layer</strong>: it is strongest
+            in Middle East and Asia-Pacific markets, supports local payment methods such as MADA,
+            KNET and STC Pay, and its “Book on Wego” flow gives you a single support contact for
+            changes. Its limitations are structural, not dishonesty: partner bookings route
+            recourse elsewhere, cached search results are not strictly real-time, and there is
+            no formal trip guarantee. Use Wego to <strong>find and compare fares</strong>; decide
+            where to pay only after you know which model you’re in.
+          </p>
+          <p>
+            Browse the rest of our{" "}
+            <Link href="/guides">decision guides</Link> for the same treatment applied to
+            airports, rental cars and flight costs.
+          </p>
+        </div>
+
+        {/* ═══ FAQ ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sectionKicker}><span>08 · Quick answers</span></div>
+          <h2>FAQ</h2>
+          <FAQAccordion items={FAQ_ITEMS} />
+        </div>
+
+        {/* ═══ SOURCES ═══ */}
+        <div className={styles.content}>
+          <div className={styles.sourcesPanel}>
+            <div className={styles.sourcesHeader}>
+              <h2 className={styles.sourcesTitle}>Sources and verification</h2>
+              <span className={styles.verifiedPill}>All checked 21 October 2026</span>
+            </div>
+            <p style={{ fontSize: 14.5, lineHeight: 1.65, color: "var(--dv-body)", margin: "14px 0 8px" }}>
+              Every claim on this page was read directly from Wego’s official pages. Note one
+              internal inconsistency we found: Wego’s Terms of Service contain a clause stating
+              you must transact directly with third parties, which conflicts with the “Book on
+              Wego” checkout and the same document’s own fee and refund clauses — we have relied
+              on the specific clauses cited, not on the general wording.
+            </p>
+            <ul className={styles.sourceList}>
+              {SOURCE_GROUPS.map((group, gi) => (
+                <li key={group.title} style={{ display: "block", border: "none", padding: 0 }}>
+                  <details className={styles.sourceDetails} open={gi === 0}>
+                    <summary>{group.title}</summary>
+                    <ul className={styles.sourceList}>
+                      {group.items.map((s, i) => (
+                        <li key={i}>
+                          <span className={styles.sourceIndex}>{String(i + 1).padStart(2, "0")}</span>
+                          <span className={styles.sourceLabel}>{s.label}</span>
+                          <a href={s.url} target="_blank" rel="noopener noreferrer">{s.url.replace("https://", "")}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <Footer />
+      </div>
+    </div>
   );
 }

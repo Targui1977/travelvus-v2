@@ -119,12 +119,14 @@ describe("Image deduplication guardrail", () => {
 });
 
 describe("Tier 1 articles preserve unique inline images", () => {
-  it("wego-flight keeps 2 unique inline images", () => {
+  it("wego-flight is a text-led rebuild with no legacy inline images", () => {
     const content = fs.readFileSync(getArticlePath("wego-flight"), "utf-8");
     const bodyImages = extractBodyImages(content);
-    expect(bodyImages.length).toBeGreaterThanOrEqual(2);
-    // Verify these are unique (not the hero)
-    expect(bodyImages.every((img) => !img.includes("wego-flight-1024x640"))).toBe(true);
+    // Phase 128C rebuilt the article as a text-led premium guide;
+    // legacy V1 images (unverified provenance) are intentionally gone.
+    expect(bodyImages.length).toBe(0);
+    expect(content).not.toContain("wego-flight-1024x640");
+    expect(content).not.toContain(".webp");
   });
 
   it("tsa-precheck-cost keeps its unique inline image", () => {
