@@ -1,0 +1,138 @@
+/* Travelvus — Shared premium editorial footer (Phase 127.2)
+   Scoped module; replaces the previous inline styles + global
+   <style> block that leaked `footer` selectors into custom footers. */
+
+.footer {
+  background: var(--dv-petrol, #18343B);
+  color: #F7F5F0;
+  margin-top: 72px;
+  border-top: 3px solid var(--dv-terracotta, #D17A52);
+}
+
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 52px 48px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 40px;
+}
+
+.brandWordmark {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -0.03em;
+  color: #F7F5F0;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.brandRule {
+  width: 44px;
+  height: 2px;
+  background: var(--dv-terracotta, #D17A52);
+  margin-bottom: 16px;
+}
+
+.brandDesc {
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: rgba(247, 245, 240, 0.78);
+  max-width: 300px;
+  margin: 0;
+}
+
+.colTitle {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--dv-sage, #D6E8E5);
+  display: block;
+  margin-bottom: 16px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 14.5px;
+  line-height: 1;
+  color: rgba(247, 245, 240, 0.82);
+  text-decoration: none;
+  padding: 9px 0;
+  transition: color 0.15s ease;
+}
+
+.link:hover {
+  color: var(--dv-sage, #D6E8E5);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--dv-terracotta, #D17A52);
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--dv-terracotta, #D17A52);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.bottom {
+  border-top: 1px solid rgba(247, 245, 240, 0.16);
+  padding: 20px 48px 26px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 15px;
+  color: rgba(247, 245, 240, 0.85);
+  margin: 0;
+}
+
+.copyright {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(247, 245, 240, 0.55);
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .inner { padding: 44px 28px 0; }
+  .grid { grid-template-columns: 1fr 1fr; gap: 32px; padding-bottom: 32px; }
+  .brandCell { grid-column: 1 / -1; }
+  .bottom { padding: 18px 28px 24px; }
+  .footer { margin-top: 56px; }
+}
+
+@media (max-width: 600px) {
+  .inner { padding: 36px 20px 0; }
+  .grid { grid-template-columns: 1fr; gap: 26px; padding-bottom: 26px; }
+  .brandCell { grid-column: auto; }
+  .bottom { flex-direction: column; align-items: flex-start; gap: 8px; padding: 16px 20px 22px; }
+  .footer { margin-top: 48px; }
+}
