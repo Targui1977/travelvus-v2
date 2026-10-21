@@ -27,6 +27,8 @@ export const NOINDEX_ROUTES = [
 export const STATIC_INDEXABLE_ROUTES: string[] = [
   // Home
   "/",
+  // Guides hub
+  "/guides",
   // City hubs & choice hubs
   "/london-airports",
   "/london/airport-choice",

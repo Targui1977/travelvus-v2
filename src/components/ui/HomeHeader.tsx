@@ -17,6 +17,7 @@ export default function HomeHeader() {
   const isCompareActive = pathname === "/" || pathname?.startsWith("/result");
   const isAirportsActive = pathname?.startsWith("/compare/") || pathname === "/london-airports";
   const isGuidesActive =
+    pathname?.startsWith("/guides") ||
     pathname?.startsWith("/google-flight-matrix") ||
     pathname?.startsWith("/questions/") ||
     pathname === "/wego-flight" ||
@@ -91,7 +92,7 @@ export default function HomeHeader() {
       <nav className={styles.headerNav}>
         {desktopLink("/", "Compare", isCompareActive)}
         {desktopLink("/london-airports", "Airport Decisions", isAirportsActive)}
-        {desktopLink("/wego-flight", "Guides", isGuidesActive)}
+        {desktopLink("/guides", "Guides", isGuidesActive)}
         <Link href="/#compare" className={styles.headerCta}>Open Engine →</Link>
       </nav>
 
@@ -116,7 +117,7 @@ export default function HomeHeader() {
       >
         {mobileLink("/", "Compare", isCompareActive)}
         {mobileLink("/london-airports", "Airport Decisions", isAirportsActive)}
-        {mobileLink("/wego-flight", "Guides", isGuidesActive)}
+        {mobileLink("/guides", "Guides", isGuidesActive)}
         {mobileLink("/methodology", "Methodology", false)}
         {mobileLink("/about", "About", pathname === "/about")}
         {mobileLink("/contact", "Contact", pathname === "/contact")}
