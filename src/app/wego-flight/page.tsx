@@ -96,8 +96,8 @@ export default function WegoFlightPage() {
           </div>
         </section>
 
-        {/* ═══ DIRECT ANSWER ═══ */}
-        <div className={styles.content}>
+        {/* ═══ DIRECT ANSWER (wide sage panel) ═══ */}
+        <div className={styles.wide}>
           <div className={styles.sectionKicker}><span>01 · The short answer</span></div>
           <h2>What Wego actually is</h2>
           <div className={styles.answerBlock}>

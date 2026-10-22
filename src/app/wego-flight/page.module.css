@@ -136,26 +136,29 @@
 
 .sectionKicker::after { content: ""; flex: 1; height: 1px; background: var(--dv-line-strong); }
 
-/* ── ANSWER ──────────────────────────────────────────────────── */
+/* ── ANSWER — sage editorial panel ───────────────────────────── */
 .answerBlock {
   font-family: var(--serif);
-  font-size: clamp(21px, 2.4vw, 26px);
-  line-height: 1.42;
-  background: var(--dv-white);
-  border: 1px solid var(--dv-line);
+  font-size: clamp(21px, 2.4vw, 27px);
+  line-height: 1.45;
+  background: var(--dv-sage);
+  border: 1px solid rgba(24, 52, 59, 0.08);
   border-left: 4px solid var(--dv-terracotta);
-  border-radius: 12px;
-  padding: 26px 30px;
-  margin: 8px 0 24px;
+  border-radius: 14px;
+  padding: 32px 36px;
+  margin: 8px 0 28px;
+  color: var(--dv-ink);
 }
 
-/* ── TWO BOOKING MODELS ──────────────────────────────────────── */
-.modelGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 8px; }
+.answerBlock strong { font-weight: 600; }
 
-.modelCard { border-radius: 14px; padding: 24px 22px; }
+/* ── TWO BOOKING MODELS ──────────────────────────────────────── */
+.modelGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 20px 0 8px; align-items: stretch; }
+
+.modelCard { border-radius: 14px; padding: 28px 26px; display: flex; flex-direction: column; }
 
 .modelDirect { background: var(--dv-petrol); color: var(--dv-paper); border: 1px solid var(--dv-petrol); }
-.modelPartner { background: var(--dv-white); border: 1px solid var(--dv-line-strong); }
+.modelPartner { background: var(--dv-sage); border: 1px solid rgba(24, 52, 59, 0.08); }
 
 .modelTag {
   font-family: var(--mono);
@@ -170,14 +173,14 @@
 .modelDirect .modelTag { color: var(--dv-sage); }
 .modelPartner .modelTag { color: var(--dv-terracotta); }
 
-.modelCard h3 { font-family: var(--serif); font-weight: 400; font-size: 21px; margin: 0 0 10px; color: inherit; }
+.modelCard h3 { font-family: var(--serif); font-weight: 400; font-size: 22px; margin: 0 0 12px; color: inherit; }
 
 .modelCard ul { list-style: none; margin: 0; padding: 0; }
 .modelCard li {
   position: relative;
-  font-size: 14.5px;
-  line-height: 1.6;
-  padding: 6px 0 6px 18px;
+  font-size: 15px;
+  line-height: 1.62;
+  padding: 8px 0 8px 20px;
 }
 .modelCard li::before { content: "—"; position: absolute; left: 0; }
 .modelDirect li { color: rgba(247, 245, 240, 0.9); }
@@ -190,19 +193,19 @@
   background: var(--dv-white);
   border: 1px solid var(--dv-line);
   border-radius: 16px;
-  padding: 26px 26px 22px;
+  padding: 30px 30px 26px;
   margin: 22px 0 8px;
 }
 
-.chainTitle { font-family: var(--serif); font-weight: 400; font-size: 22px; margin: 0 0 16px; }
+.chainTitle { font-family: var(--serif); font-weight: 400; font-size: 23px; margin: 0 0 8px; }
 
-.chainSteps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; border-top: 1px solid var(--dv-line); padding-top: 18px; }
+.chainSteps { display: flex; flex-wrap: wrap; align-items: stretch; gap: 0; border-top: 1px solid var(--dv-line); padding-top: 22px; }
 
 .chainStep {
   flex: 1;
-  min-width: 150px;
+  min-width: 170px;
   position: relative;
-  padding: 0 14px 0 0;
+  padding: 0 20px 0 0;
 }
 
 .chainStepNum {
@@ -211,7 +214,7 @@
   font-size: 11px;
   color: var(--dv-terracotta);
   display: block;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .chainStepName { font-family: var(--serif); font-weight: 400; font-size: 17px; color: var(--dv-ink); display: block; margin-bottom: 4px; }
@@ -259,7 +262,8 @@
 /* ── SCENARIOS 2×2 ───────────────────────────────────────────── */
 .scenarioGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0 8px; }
 
-.scenarioCard { background: var(--dv-white); border: 1px solid var(--dv-line); border-radius: 14px; padding: 22px 20px; }
+.scenarioCard { background: var(--dv-white); border: 1px solid var(--dv-line); border-radius: 14px; padding: 24px 22px; }
+.scenarioCard:nth-child(even) { background: var(--dv-paper-deep); }
 
 .scenarioTag {
   font-family: var(--mono);
@@ -280,13 +284,14 @@
 .checklist li {
   counter-increment: cl;
   display: flex;
-  gap: 16px;
+  gap: 18px;
   align-items: flex-start;
   background: var(--dv-white);
   border: 1px solid var(--dv-line);
   border-radius: 12px;
-  padding: 16px 18px;
+  padding: 18px 20px;
 }
+.checklist li:nth-child(even) { background: var(--dv-paper-deep); }
 .checklist li::before {
   content: counter(cl, decimal-leading-zero);
   font-family: var(--serif);
